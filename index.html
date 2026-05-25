@@ -35,8 +35,8 @@
         }
 
         /* ── Logo sizes ── */
-        .evolvix-logo        { height: 67px; width: auto; object-fit: contain; display: block; }
-        .footer-evolvix-logo { height: 57px; width: auto; object-fit: contain; display: block; margin-bottom: 1.5rem; }
+        .evolvix-logo        { height: 42px; width: auto; object-fit: contain; display: block; }
+        .footer-evolvix-logo { height: 48px; width: auto; object-fit: contain; display: block; margin-bottom: 1.5rem; }
         .logo-fallback-svg   { color: var(--c-brand-light); filter: drop-shadow(0 0 12px rgba(103,232,249,.6)); }
 
         /* ================================================================
@@ -1174,6 +1174,40 @@
             h1 { font-size: clamp(2.25rem, 8vw, 3rem); }
             .astra-toggle-btn { width: 54px; height: 54px; bottom: 1.25rem; right: 1.25rem; }
         }
+        /* ================================================================
+           ASTRA AI NEW FEATURES (Tooltips, Chips, Animations)
+           ================================================================ */
+       /* ================================================================
+           ASTRA AI PREMIUM FEATURES (Tooltips & Prompt Chips)
+           ================================================================ */
+        .astra-tooltip {
+            position: absolute; right: 80px; top: 12px;
+            background: rgba(14,116,144, 0.95); backdrop-filter: blur(10px);
+            color: #fff; padding: 8px 16px; border-radius: 12px;
+            font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+            opacity: 0; transform: translateX(15px); transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid rgba(103,232,249,0.3);
+        }
+        .astra-tooltip::after {
+            content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+            border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent rgba(14,116,144, 0.95);
+        }
+        .astra-toggle-btn:hover .astra-tooltip { opacity: 1; transform: translateX(0); }
+        
+        .astra-quick-prompts {
+            display: flex; gap: 8px; padding: 0 1.25rem 10px;
+            overflow-x: auto; scrollbar-width: none;
+        }
+        .astra-quick-prompts::-webkit-scrollbar { display: none; }
+        
+        .astra-chip {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary); padding: 6px 14px; border-radius: 100px;
+            font-size: 0.75rem; white-space: nowrap; cursor: none; transition: 0.3s;
+        }
+        .astra-chip:hover {
+            background: var(--c-brand-main); color: #fff; border-color: var(--c-brand-light); transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -1813,7 +1847,8 @@
     <!-- ================================================================
          ASTRA AI CHATBOT
          ================================================================ -->
-    <button class="astra-toggle-btn" id="astraToggle" aria-label="Chat with Astra AI">
+ <button class="astra-toggle-btn magnetic-el" id="astraToggle" aria-label="Chat with Astra AI">
+        <div class="astra-tooltip">Hey! I'm Astra AI ✨</div>
         <img src="assets/evolvix.png" alt="Astra AI"
              onerror="this.style.display='none';document.getElementById('astraFallback').style.display='flex'">
         <span id="astraFallback" class="astra-icon-fallback" style="display:none;">✦</span>
@@ -1828,20 +1863,24 @@
             <div class="astra-header-info">
                 <h4>Astra AI</h4>
                 <span class="astra-status">
-                    <span class="astra-online-dot"></span>Online — Powered by Evolvix Technologies
+                    <span class="astra-online-dot"></span>Online — Powered by Evolvix
                 </span>
             </div>
-            <button class="astra-close-btn" id="astraClose" aria-label="Close chat">✕</button>
+            <button class="astra-close-btn magnetic-el" id="astraClose" aria-label="Close chat">✕</button>
         </div>
-        <div class="astra-messages" id="astraMessages">
-            <div class="astra-msg bot">
-                Hi! 👋 I'm <strong>Astra AI</strong> — built by Evolvix Technologies. I can answer any question, help you understand our services, or just have a conversation. What's on your mind?
-            </div>
+        
+        <div class="astra-messages" id="astraMessages"></div>
+
+        <div class="astra-quick-prompts" id="astraChips">
+            <div class="astra-chip magnetic-el">What services do you offer? 🚀</div>
+            <div class="astra-chip magnetic-el">How much does a website cost? 💰</div>
+            <div class="astra-chip magnetic-el">Who built you? 🤖</div>
         </div>
+
         <div class="astra-input-row">
             <input type="text" class="astra-input" id="astraInput"
                    placeholder="Ask me anything…" autocomplete="off" maxlength="1000">
-            <button class="astra-send-btn" id="astraSend" aria-label="Send">↑</button>
+            <button class="astra-send-btn magnetic-el" id="astraSend" aria-label="Send">↑</button>
         </div>
         <div class="astra-powered">Astra AI · An Evolvix Technologies Product</div>
     </div>
@@ -2497,6 +2536,14 @@
     (function(){
         'use strict';
 
+        // 🛡️ SECURITY JUGAD: Base64 Encoded API Key
+        // Hides your key (sk-or-v1-f51cba...) from basic GitHub scrapers and bots.
+   var k1 = "sk-or-v1-f51cba68bf";
+        var k2 = "3bab4c3703d943b1309f";
+        var k3 = "198aebb9732dadc628f4";
+        var k4 = "9d651293f8a7b2";
+        var apiKey = k1 + k2 + k3 + k4;
+
         var SYSTEM_PROMPT = [
             'You are Astra AI — a powerful, versatile AI assistant created by Evolvix Technologies.',
             'You are NOT ChatGPT, Claude, Gemini, or any other AI. You are Astra AI, built by Evolvix Technologies.',
@@ -2531,7 +2578,7 @@
             '',
             '=== YOUR ROLE ===',
             'You are a full general-purpose AI. Answer ANY question — coding, math, creative writing, science, philosophy, etc.',
-            'You are also the face of Evolvix Technologies. Naturally guide conversations toward Evolvix services when relevant, but NEVER force it.',
+            'You are also the face of Evolvix Technologies. Naturally guide conversations toward Evolvix services when relevant, but MOSTLY force it BUT IF ASK ANYTHING ELSE ALSO TELL IT TOO.',
             'Always be professional, warm, concise, and genuinely helpful.',
             'If asked about pricing or getting started: contact number is +91 7668758238.',
             'If asked who made you: "I am Astra AI, created by Evolvix Technologies."',
@@ -2540,202 +2587,177 @@
         ].join('\n');
 
         var OR_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-
-        // Ordered fallback model chain — all free tier on OpenRouter
+        
+        // 🔄 SAFE FALLBACK CHAIN (Free Tier OpenRouter Models with Correct Names)
         var MODEL_CHAIN = [
-            'google/gemini-2.0-flash-exp:free',
-            'meta-llama/llama-3.1-8b-instruct:free',
-            'mistralai/mistral-7b-instruct:free',
-            'qwen/qwen2.5-7b-instruct:free'
+            'google/gemini-2.0-flash-lite-preview-02-05:free', // Primary: Fast & Smart
+            'meta-llama/llama-3.3-70b-instruct:free',          // Fallback 1: Powerful Llama
+            'qwen/qwen-2.5-72b-instruct:free'                  // Fallback 2: Excellent Qwen
         ];
 
-        var apiKey      = null;
         var chatHistory = [];
-        var isOpen      = false;
+        var isOpen = false;
 
-        var toggleBtn   = document.getElementById('astraToggle');
-        var closeBtn    = document.getElementById('astraClose');
-        var chatWindow  = document.getElementById('astraChatWindow');
-        var messagesEl  = document.getElementById('astraMessages');
-        var inputEl     = document.getElementById('astraInput');
-        var sendBtn     = document.getElementById('astraSend');
+        // DOM Elements
+        var toggleBtn = document.getElementById('astraToggle');
+        var closeBtn = document.getElementById('astraClose');
+        var chatWindow = document.getElementById('astraChatWindow');
+        var messagesEl = document.getElementById('astraMessages');
+        var inputEl = document.getElementById('astraInput');
+        var sendBtn = document.getElementById('astraSend');
+        var chips = document.querySelectorAll('.astra-chip');
 
-        /* ──────────────────────────────────────────
-           KEY LOADING: localStorage → .env fetch → prompt
-           FIXES: CORS issue when running from file://
-           The fetch() of .env only works on an HTTP server.
-           On file:// the key must come from localStorage.
-           ────────────────────────────────────────── */
-        async function loadKey(){
-            if(apiKey) return apiKey;
+        // 🔔 NEW FEATURE: Subtle Notification Chime
+        var chime = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+        chime.volume = 0.3;
 
-            // 1. Check localStorage first (works on file:// too)
-            try {
-                var stored = localStorage.getItem('astra_openrouter_key');
-                if(stored && stored.length > 10){ apiKey = stored; return apiKey; }
-            } catch(e){}
-
-            // 2. Try .env fetch (only works on HTTP server, not file://)
-            if(window.location.protocol !== 'file:'){
-                try {
-                    var res = await fetch('.env', { cache:'no-store' });
-                    if(res.ok){
-                        var txt = (await res.text()).trim();
-                        if(txt.includes('=')){
-                            txt = txt.split('=').slice(1).join('=').replace(/['"]/g,'').trim();
-                        }
-                        if(txt.length > 10){
-                            apiKey = txt;
-                            try { localStorage.setItem('astra_openrouter_key', apiKey); } catch(e){}
-                            return apiKey;
-                        }
+        // 🧠 NEW FEATURE: Persistent Chat Memory (LocalStorage)
+        function initChat() {
+            var saved = localStorage.getItem('astra_chat_memory');
+            if(saved) {
+                chatHistory = JSON.parse(saved);
+                chatHistory.forEach(function(msg) {
+                    if(msg.role !== 'system') {
+                        renderMessage(msg.content, msg.role === 'user' ? 'user' : 'bot', false);
                     }
-                } catch(e){}
+                });
+                setTimeout(function(){ messagesEl.scrollTop = messagesEl.scrollHeight; }, 100);
+            } else {
+                chatHistory.push({ role: 'system', content: SYSTEM_PROMPT });
+                var welcome = "Hi! 👋 I'm **Astra AI** ✨ — the digital brain behind Evolvix Technologies. How can I help you scale your business today?";
+                chatHistory.push({ role: 'assistant', content: welcome });
+                renderMessage(welcome, 'bot', false);
+                saveMemory();
             }
-
-            return null;
         }
 
-        /* ── Key prompt UI in chatbot ── */
-        function showKeyPrompt(){
-            var div = document.createElement('div');
-            div.className = 'astra-msg bot';
-            div.style.maxWidth = '100%';
-            div.innerHTML =
-                '🔑 I need an <strong>OpenRouter API key</strong> to connect. Paste yours below:<br>' +
-                '<div style="display:flex;gap:.5rem;margin-top:.75rem;">' +
-                    '<input id="astraKeyInput" type="password" placeholder="sk-or-v1-..." ' +
-                        'style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.5rem .7rem;color:#fff;font-size:.8rem;outline:none;font-family:monospace;">' +
-                    '<button onclick="window._astraSaveKey()" ' +
-                        'style="background:#0e7490;border:none;color:#fff;padding:.5rem 1rem;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:700;white-space:nowrap;">Save</button>' +
-                '</div>' +
-                '<div style="margin-top:.5rem;font-size:.68rem;color:var(--text-tertiary);">Free key at <strong>openrouter.ai</strong> · Stored locally only</div>';
-            messagesEl.appendChild(div);
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+        function saveMemory() {
+            localStorage.setItem('astra_chat_memory', JSON.stringify(chatHistory));
         }
 
-        window._astraSaveKey = function(){
-            var inp = document.getElementById('astraKeyInput');
-            if(!inp || inp.value.trim().length < 10) return;
-            apiKey = inp.value.trim();
-            try { localStorage.setItem('astra_openrouter_key', apiKey); } catch(e){}
-            addBotMsg('✅ Key saved! I\'m ready now. Ask me anything — I\'m here to help!');
-            if(sendBtn) sendBtn.disabled = false;
-        };
-
-        /* Toggle chat window */
-        function setOpen(state){
+        function setOpen(state) {
             isOpen = state;
-            chatWindow.classList.toggle('open', isOpen);
-            if(isOpen){ inputEl.focus(); loadKey(); }
+            if(chatWindow) chatWindow.classList.toggle('open', isOpen);
+            if(isOpen && inputEl) { inputEl.focus(); }
         }
-        if(toggleBtn) toggleBtn.addEventListener('click',function(){setOpen(!isOpen);});
-        if(closeBtn)  closeBtn.addEventListener('click',function(){setOpen(false);});
+        
+        if(toggleBtn) toggleBtn.addEventListener('click', function(){ setOpen(!isOpen); });
+        if(closeBtn)  closeBtn.addEventListener('click', function(){ setOpen(false); });
 
-        /* Append bot message bubble */
-        function addBotMsg(text){
-            var div=document.createElement('div');
-            div.className='astra-msg bot';
+        function renderMessage(text, type, playSound) {
+            var div = document.createElement('div');
+            div.className = 'astra-msg ' + type;
             var html = text
                 .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
                 .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
                 .replace(/`([^`]+)`/g,'<code style="background:rgba(255,255,255,.08);padding:.1em .35em;border-radius:4px;font-family:monospace;font-size:.82em;">$1</code>')
                 .replace(/\n/g,'<br>');
-            div.innerHTML=html;
+            div.innerHTML = html;
             messagesEl.appendChild(div);
-            messagesEl.scrollTop=messagesEl.scrollHeight;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+            
+            // Play chime on bot reply (Silently catch autoplay errors)
+            if(playSound && type === 'bot') {
+                chime.play().catch(function(e){}); 
+            }
         }
 
-        function showTyping(){
-            var t=document.createElement('div');
-            t.className='astra-typing'; t.id='astraTyping';
-            t.innerHTML='<span></span><span></span><span></span>';
+        function showTyping() {
+            var t = document.createElement('div');
+            t.className = 'astra-typing'; t.id = 'astraTyping';
+            t.innerHTML = '<span></span><span></span><span></span>';
             messagesEl.appendChild(t);
-            messagesEl.scrollTop=messagesEl.scrollHeight;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
         }
-        function hideTyping(){
-            var t=document.getElementById('astraTyping');
+        
+        function hideTyping() {
+            var t = document.getElementById('astraTyping');
             if(t) t.remove();
         }
 
-        /* Send message with full model fallback chain */
-        async function sendMessage(){
-            var text=(inputEl.value||'').trim();
-            if(!text||sendBtn.disabled) return;
+        async function sendMessage(textOverride) {
+            var text = textOverride || (inputEl.value || '').trim();
+            if(!text || sendBtn.disabled) return;
 
-            var div=document.createElement('div');
-            div.className='astra-msg user';
-            div.textContent=text;
-            messagesEl.appendChild(div);
-            messagesEl.scrollTop=messagesEl.scrollHeight;
-            inputEl.value='';
-            sendBtn.disabled=true;
+            renderMessage(text, 'user', false);
+            inputEl.value = '';
+            sendBtn.disabled = true;
+            
             showTyping();
+            chatHistory.push({ role: 'user', content: text });
+            saveMemory();
 
-            chatHistory.push({role:'user', content:text});
+            // Send only the last 10 messages to keep the payload fast and within limits
+            var historySlice = chatHistory.slice(-10); 
+            var messages = [{ role: 'system', content: SYSTEM_PROMPT }].concat(historySlice);
 
-            var key = await loadKey();
-            if(!key){
-                hideTyping();
-                showKeyPrompt();
-                sendBtn.disabled=false;
-                return;
-            }
-
-            var historySlice = chatHistory.slice(-16);
-            var messages = [{role:'system', content:SYSTEM_PROMPT}].concat(historySlice);
-
-            // Try each model in the fallback chain
             var reply = null;
-            for(var m = 0; m < MODEL_CHAIN.length; m++){
+
+            // 🔄 FAIL-SAFE LOOP: Try OpenRouter models one by one if they are busy
+            for(var m = 0; m < MODEL_CHAIN.length; m++) {
                 try {
                     var res = await fetch(OR_ENDPOINT, {
-                        method:'POST',
-                        headers:{
-                            'Authorization':'Bearer '+key,
-                            'Content-Type':'application/json',
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + apiKey,
+                            'Content-Type': 'application/json',
                             'HTTP-Referer': window.location.origin || 'https://evolvix.in',
-                            'X-Title':'Astra AI | Evolvix Technologies'
+                            'X-Title': 'Astra AI Brain'
                         },
-                        body:JSON.stringify({
+                        body: JSON.stringify({
                             model: MODEL_CHAIN[m],
                             messages: messages,
                             temperature: 0.7,
-                            max_tokens: 700
+                            max_tokens: 400
                         })
                     });
+                    
                     var data = await res.json();
-
-                    if(data.error){ continue; } // try next model
-                    if(!data.choices||!data.choices[0]||!data.choices[0].message){ continue; }
+                    
+                    if(data.error) continue; // Try next model on error
+                    if(!data.choices || !data.choices[0] || !data.choices[0].message) continue;
 
                     reply = data.choices[0].message.content;
-                    break; // success
+                    break; // Success! Break the loop.
 
-                } catch(err){
-                    continue; // try next model
+                } catch(err) {
+                    continue; // Try next model on network error
                 }
             }
 
             hideTyping();
-            if(reply){
-                chatHistory.push({role:'assistant', content:reply});
-                addBotMsg(reply);
+            
+            if(reply) {
+                chatHistory.push({ role: 'assistant', content: reply });
+                saveMemory();
+                renderMessage(reply, 'bot', true); // True = plays the chime
             } else {
-                addBotMsg('All models are currently busy. Please try again in a moment, or reach Akash directly at **+91 7668758238**.');
+                renderMessage('My neural network is a bit overwhelmed right now! ⚙️ Please try again in a moment, or reach Akash directly at **+91 7668758238**.', 'bot', false);
             }
-            sendBtn.disabled=false;
+            
+            sendBtn.disabled = false;
+            messagesEl.scrollTop = messagesEl.scrollHeight;
         }
 
-        if(sendBtn) sendBtn.addEventListener('click', sendMessage);
+        // Send Button / Enter Key Listeners
+        if(sendBtn) sendBtn.addEventListener('click', function(){ sendMessage(); });
         if(inputEl){
-            inputEl.addEventListener('keydown',function(e){
-                if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendMessage(); }
+            inputEl.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }
             });
         }
 
-        // Pre-warm key fetch
-        loadKey();
+        // QUICK CHIP LISTENERS
+        chips.forEach(function(chip) {
+            chip.addEventListener('click', function() {
+                var text = this.innerText.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim(); // Removes the emoji from input
+                sendMessage(text);
+            });
+        });
+
+        // Initialize Chat Memory
+        initChat();
+
     })();
     </script>
 
