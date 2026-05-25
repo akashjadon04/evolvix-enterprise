@@ -2984,12 +2984,7 @@
         var OR_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
         
         // 🔄 TOP-TIER 70B+ FREE MODELS ON OPENROUTER
-        var MODELS = [
-            'google/gemini-2.0-flash-lite-preview-02-05:free', // Primary: Extremely fast, massive context
-            'meta-llama/llama-3.3-70b-instruct:free',          // Fallback 1: 70B Parameter Beast
-            'qwen/qwen-2.5-72b-instruct:free'                  // Fallback 2: 72B Parameter Beast
-        ];
-
+        var MODELS = "openrouter/free";
         var chatHistory = [];
         var isOpen = false;
 
