@@ -34,10 +34,18 @@
             margin-bottom: 0.75rem;
         }
 
-        /* ── Logo sizes ── */
-        .evolvix-logo        { height: 42px; width: auto; object-fit: contain; display: block; }
-        .footer-evolvix-logo { height: 48px; width: auto; object-fit: contain; display: block; margin-bottom: 1.5rem; }
+        /* ── Logo sizes FIX ── */
+        .evolvix-logo        { height: 52px !important; width: auto; object-fit: contain; display: block; }
+        .footer-evolvix-logo { height: 60px !important; width: auto; object-fit: contain; display: block; margin-bottom: 1.5rem; }
         .logo-fallback-svg   { color: var(--c-brand-light); filter: drop-shadow(0 0 12px rgba(103,232,249,.6)); }
+
+        /* ── Hero section padding fix — prevents badge overlapping fixed header ── */
+        section.hero {
+            padding-top: 8rem !important;
+        }
+        @media (max-width: 768px) {
+            section.hero { padding-top: 7rem !important; }
+        }
 
         /* ================================================================
            ENTERPRISE FEATURE 2: SCROLL PROGRESS BAR
@@ -126,13 +134,14 @@
         .btn-cta-glow:hover .btn-arrow { transform: translateX(4px); }
 
         /* ================================================================
-           KINETIC TEXT ROTATOR (FIX)
+           KINETIC TEXT ROTATOR (FIX — ensure always visible)
            ================================================================ */
         .kinetic-wrapper {
             display: inline-block;
             overflow: hidden;
             vertical-align: bottom;
             line-height: 1.1;
+            min-height: 1.1em;
         }
         .kinetic-inner {
             display: flex;
@@ -145,8 +154,9 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            color: transparent;
+            color: #67e8f9; /* fallback */
             padding-right: 4px;
+            white-space: nowrap;
         }
 
         /* ================================================================
@@ -161,6 +171,12 @@
         }
         .word-reveal .word-unit.visible { opacity:1; transform:translateY(0) rotateX(0); }
         .word-reveal .text-gradient { -webkit-text-fill-color: transparent !important; }
+
+        /* Force reveal fallback — words visible if observer never fires */
+        .words-forced .word-unit {
+            opacity: 1 !important;
+            transform: none !important;
+        }
 
         /* ================================================================
            FLOATING TAG: FIX POSITION (no header overlap)
@@ -203,11 +219,11 @@
         .macbook-device {
             width: 100%;
             max-width: 560px;
-            transform: perspective(1200px) rotateX(22deg);
+            transform: perspective(1200px) rotateX(28deg) scale(0.82);
             transform-origin: center bottom;
             will-change: transform;
             filter: drop-shadow(0 40px 60px rgba(0,0,0,.65));
-            transition: transform .15s linear;
+            transition: transform .12s linear, filter .12s linear;
         }
         .macbook-lid {
             background: linear-gradient(180deg,#c8c8c8 0%,#9a9a9a 100%);
@@ -293,6 +309,7 @@
             background: radial-gradient(ellipse, rgba(14,116,144,.4), transparent 75%);
             filter: blur(18px);
             z-index: -1;
+            transition: opacity .15s linear;
         }
         .macbook-reflect {
             position: absolute;
@@ -342,7 +359,7 @@
         .stat-label { color: var(--text-secondary); font-size:.9rem; }
 
         /* ================================================================
-           PREMIUM SERVICES CARDS
+           PREMIUM SERVICES CARDS — Enhanced
            ================================================================ */
         .services-grid-6 {
             display: grid;
@@ -351,7 +368,7 @@
         }
         .service-card {
             position: relative;
-            background: var(--bg-surface-1);
+            background: linear-gradient(145deg, rgba(14,116,144,.06), rgba(2,6,23,.9));
             border-radius: var(--radius-lg);
             padding: 2.5rem 2rem;
             overflow: hidden;
@@ -408,12 +425,12 @@
             transform: scale(1.1) rotate(-4deg);
             box-shadow: 0 8px 24px rgba(14,116,144,.35);
         }
-        .service-card h3 { font-size:1.15rem; margin-bottom:.6rem; }
-        .service-card p  { font-size:.88rem; margin-bottom:1rem; max-width:none; }
+        .service-card h3 { font-size:1.15rem; margin-bottom:.6rem; color:#fff !important; }
+        .service-card p  { font-size:.88rem; margin-bottom:1rem; max-width:none; color:rgba(255,255,255,.65) !important; }
         .service-checks { list-style:none; }
         .service-checks li {
             display:flex; align-items:center; gap:.5rem;
-            font-size:.82rem; color:var(--text-secondary);
+            font-size:.82rem; color:rgba(255,255,255,.55);
             margin-bottom:.35rem;
         }
         .service-checks li span { color:var(--c-brand-light); font-weight:700; }
@@ -449,8 +466,8 @@
             background:var(--c-brand-main); border-color:var(--c-brand-light);
             box-shadow:0 0 28px rgba(14,116,144,.5); color:#fff; transform:scale(1.1);
         }
-        .process-step h3 { font-size:1.1rem; margin-bottom:.5rem; }
-        .process-step p  { font-size:.88rem; max-width:none; }
+        .process-step h3 { font-size:1.1rem; margin-bottom:.5rem; color:#fff !important; }
+        .process-step p  { font-size:.88rem; max-width:none; color:rgba(255,255,255,.6) !important; }
 
         /* ================================================================
            SECTION DIVIDER
@@ -498,8 +515,8 @@
             padding:.3rem .8rem; border-radius:999px;
             text-transform:uppercase; letter-spacing:.1em; margin-bottom:1rem;
         }
-        .portfolio-card-body h3 { font-size:1.3rem; margin-bottom:.5rem; }
-        .portfolio-card-body p  { font-size:.875rem; margin-bottom:0; max-width:none; }
+        .portfolio-card-body h3 { font-size:1.3rem; margin-bottom:.5rem; color:#fff !important; }
+        .portfolio-card-body p  { font-size:.875rem; margin-bottom:0; max-width:none; color:rgba(255,255,255,.6) !important; }
         .portfolio-link {
             display:inline-flex; align-items:center; gap:.45rem;
             color:#67e8f9; text-decoration:none; font-weight:600; font-size:.875rem;
@@ -508,7 +525,7 @@
         .portfolio-link:hover { gap:.75rem; }
 
         /* ================================================================
-           TECH STACK – CARD GRID
+           TECH STACK – PREMIUM CARD GRID (Enhanced)
            ================================================================ */
         .tech-cards-grid {
             display: flex;
@@ -523,9 +540,9 @@
             align-items: center;
             gap: .5rem;
             padding: 1.25rem .9rem;
-            width: 92px;
-            background: var(--bg-surface-1);
-            border: 1px solid var(--border-glass);
+            width: 96px;
+            background: linear-gradient(145deg, rgba(14,116,144,.08), rgba(2,6,23,.85));
+            border: 1px solid rgba(103,232,249,.08);
             border-radius: var(--radius-md);
             cursor: default;
             transition: all .35s cubic-bezier(.16,1,.3,1);
@@ -535,19 +552,26 @@
         .tech-card::before {
             content:'';
             position:absolute; inset:0;
-            background: radial-gradient(circle at 50% 50%, rgba(14,116,144,.2), transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(14,116,144,.25), transparent 70%);
             opacity:0; transition:opacity .3s;
         }
+        .tech-card::after {
+            content:'';
+            position:absolute; bottom:0; left:0; right:0; height:1px;
+            background: linear-gradient(90deg, transparent, rgba(103,232,249,.5), transparent);
+            transform: scaleX(0); transition: transform .35s;
+        }
         .tech-card:hover {
-            background: rgba(14,116,144,.1);
-            border-color: var(--c-brand-main);
-            transform: translateY(-8px) scale(1.06);
-            box-shadow: 0 14px 32px rgba(14,116,144,.25);
+            background: linear-gradient(145deg, rgba(14,116,144,.18), rgba(139,92,246,.08));
+            border-color: rgba(103,232,249,.3);
+            transform: translateY(-10px) scale(1.07);
+            box-shadow: 0 16px 36px rgba(14,116,144,.3), 0 0 0 1px rgba(103,232,249,.1);
         }
         .tech-card:hover::before { opacity:1; }
+        .tech-card:hover::after { transform: scaleX(1); }
         .tech-emoji { font-size:1.9rem; line-height:1; position:relative; z-index:1; transition:transform .3s cubic-bezier(.16,1,.3,1); }
-        .tech-card:hover .tech-emoji { transform:scale(1.2) rotate(-5deg); }
-        .tech-name { font-size:.68rem; font-weight:600; color:var(--text-secondary); text-align:center; position:relative; z-index:1; transition:color .3s; }
+        .tech-card:hover .tech-emoji { transform:scale(1.25) rotate(-6deg); }
+        .tech-name { font-size:.68rem; font-weight:600; color:rgba(255,255,255,.5); text-align:center; position:relative; z-index:1; transition:color .3s; }
         .tech-card:hover .tech-name { color:#fff; }
 
         .tech-category-label {
@@ -642,68 +666,88 @@
         }
 
         /* ================================================================
-           PREMIUM FOOTER
+           PREMIUM FOOTER — REDESIGNED
            ================================================================ */
         .footer {
-            background: #000;
+            background: linear-gradient(180deg, #000 0%, #020617 100%);
             padding: 8rem 0 3rem;
-            border-top: 1px solid var(--border-glass);
+            border-top: 1px solid rgba(103,232,249,.1);
             position:relative; overflow:hidden;
         }
+        /* Gradient mesh background */
         .footer::before {
             content:'';
             position:absolute; inset:0;
-            background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
-            background-size: 36px 36px;
+            background-image:
+                radial-gradient(ellipse 60% 40% at 20% 20%, rgba(14,116,144,.07) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 80%, rgba(139,92,246,.05) 0%, transparent 60%),
+                radial-gradient(circle, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 36px 36px;
             pointer-events:none; z-index:0;
         }
         .footer::after {
             content:'';
             position:absolute; top:0; left:0; right:0; height:1px;
-            background: linear-gradient(90deg,transparent,rgba(103,232,249,.4),transparent);
+            background: linear-gradient(90deg,transparent,rgba(103,232,249,.5),rgba(139,92,246,.3),transparent);
         }
         .footer-bg-text {
             position:absolute; bottom:-50px; left:50%; transform:translateX(-50%);
-            font-size:22vw; font-weight:900; color:rgba(255,255,255,.02);
+            font-size:22vw; font-weight:900; color:rgba(255,255,255,.015);
             line-height:.8; pointer-events:none; white-space:nowrap; z-index:0;
+            font-family: var(--font-display);
         }
         .footer-grid {
             position:relative; z-index:2;
             display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
-            gap:4rem; margin-bottom:5rem;
+            gap:4rem; margin-bottom:4rem;
         }
         .footer-heading {
-            color:#fff; font-size:.82rem; text-transform:uppercase;
-            letter-spacing:.16em; margin-bottom:1.75rem; opacity:.5; font-weight:700;
+            color:rgba(255,255,255,.4); font-size:.75rem; text-transform:uppercase;
+            letter-spacing:.18em; margin-bottom:1.75rem; font-weight:700;
         }
         .footer-link {
-            display:block; color:var(--text-secondary); text-decoration:none;
-            margin-bottom:.85rem; font-size:1rem; transition:all .3s;
+            display:block; color:rgba(255,255,255,.55); text-decoration:none;
+            margin-bottom:.85rem; font-size:.95rem; transition:all .3s;
         }
-        .footer-link:hover { color:var(--c-brand-light); transform:translateX(5px); }
+        .footer-link:hover { color:var(--c-brand-light); transform:translateX(6px); }
         .footer-socials { display:flex; gap:.75rem; margin-top:1.5rem; }
         .social-btn {
             width:38px; height:38px; border-radius:50%;
-            background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+            background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07);
             display:flex; align-items:center; justify-content:center;
-            color:var(--text-secondary); text-decoration:none; font-size:.85rem;
+            color:rgba(255,255,255,.45); text-decoration:none; font-size:.85rem;
             transition:all .3s; flex-shrink:0;
         }
         .social-btn:hover { background:var(--c-brand-main); border-color:var(--c-brand-light); color:#fff; transform:translateY(-3px); box-shadow:0 8px 20px rgba(14,116,144,.4); }
+        /* Footer status bar */
+        .footer-status-bar {
+            position:relative; z-index:2;
+            display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 14px;
+            padding: 1.1rem 1.75rem;
+            margin-bottom: 3rem;
+        }
+        .footer-status-item { display:flex; align-items:center; gap:.65rem; font-size:.78rem; color:rgba(255,255,255,.5); }
+        .status-dot-green { width:7px; height:7px; background:#10b981; border-radius:50%; box-shadow:0 0 8px #10b981; animation:pulse-green 2s infinite; flex-shrink:0; }
+        .status-dot-blue  { width:7px; height:7px; background:#67e8f9; border-radius:50%; box-shadow:0 0 8px #67e8f9; flex-shrink:0; }
+        .footer-status-sep { width:1px; height:20px; background:rgba(255,255,255,.08); }
         .footer-graphic {
             position:absolute; right:0; top:0; bottom:0;
-            width:40%; opacity:.04; pointer-events:none; z-index:0; overflow:hidden;
+            width:38%; opacity:.04; pointer-events:none; z-index:0; overflow:hidden;
         }
         .copyright {
-            border-top:1px solid rgba(255,255,255,.08);
+            border-top:1px solid rgba(255,255,255,.07);
             padding-top:2rem;
             display:flex; justify-content:space-between; align-items:center;
-            color:var(--text-tertiary); font-size:.88rem; position:relative; z-index:2;
+            color:rgba(255,255,255,.3); font-size:.85rem; position:relative; z-index:2;
+            flex-wrap:wrap; gap:.75rem;
         }
         .copyright-left { display:flex; align-items:center; gap:1rem; }
         .owner-signature {
             font-family:var(--font-display); font-size:.82rem;
-            color:var(--text-tertiary); text-decoration:none; opacity:.7;
+            color:rgba(255,255,255,.3); text-decoration:none; opacity:.7;
             transition:all .3s var(--ease-smooth); position:relative;
         }
         .owner-signature:hover { color:var(--c-accent-gold); opacity:1; text-shadow:0 0 10px rgba(245,158,11,.4); }
@@ -1108,7 +1152,6 @@
             border-radius: 4px; padding: .1rem .4rem;
             font-family: monospace; font-size: .68rem; color: var(--text-secondary);
         }
-        /* Cmd trigger button (subtle, bottom-left area hint) */
         .cmd-trigger-hint {
             position: fixed; bottom: 2rem; left: 2rem;
             background: rgba(15,23,42,.85);
@@ -1126,6 +1169,232 @@
         .cmd-trigger-hint kbd {
             background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
             border-radius: 4px; padding: .05rem .35rem; font-family: monospace;
+        }
+
+        /* ================================================================
+           ASTRA AI NEW FEATURES (Tooltips, Chips, Animations)
+           ================================================================ */
+        .astra-tooltip {
+            position: absolute; right: 80px; top: 12px;
+            background: rgba(14,116,144, 0.95); backdrop-filter: blur(10px);
+            color: #fff; padding: 8px 16px; border-radius: 12px;
+            font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+            opacity: 0; transform: translateX(15px); transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid rgba(103,232,249,0.3);
+        }
+        .astra-tooltip::after {
+            content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+            border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent rgba(14,116,144, 0.95);
+        }
+        .astra-toggle-btn:hover .astra-tooltip { opacity: 1; transform: translateX(0); }
+
+        .astra-quick-prompts {
+            display: flex; gap: 8px; padding: 0 1.25rem 10px;
+            overflow-x: auto; scrollbar-width: none;
+        }
+        .astra-quick-prompts::-webkit-scrollbar { display: none; }
+
+        .astra-chip {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary); padding: 6px 14px; border-radius: 100px;
+            font-size: 0.75rem; white-space: nowrap; cursor: pointer; transition: 0.3s;
+        }
+        .astra-chip:hover {
+            background: var(--c-brand-main); color: #fff; border-color: var(--c-brand-light); transform: translateY(-2px);
+        }
+
+        /* ================================================================
+           ★ NEW FEATURE D: HOLOGRAPHIC PRISMATIC FOIL EFFECT
+           ================================================================ */
+        .holo-card {
+            --holo-x: 50%;
+            --holo-y: 50%;
+            --holo-a: 135deg;
+        }
+        .holo-card::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: inherit;
+            background:
+                radial-gradient(
+                    ellipse at var(--holo-x) var(--holo-y),
+                    rgba(255, 50,200,.08) 0%,
+                    rgba(50,200,255,.08) 25%,
+                    rgba(200,255, 50,.07) 50%,
+                    rgba(255,150, 50,.07) 75%,
+                    transparent 100%
+                ),
+                linear-gradient(
+                    var(--holo-a),
+                    transparent 15%,
+                    rgba(255,100,200,.06) 25%,
+                    rgba(100,255,200,.06) 40%,
+                    rgba(200,100,255,.06) 55%,
+                    rgba(255,200,100,.06) 70%,
+                    transparent 85%
+                );
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity .35s ease;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .holo-card:hover::after { opacity: 1; }
+
+        /* ================================================================
+           ★ NEW FEATURE E: SMART ENGAGEMENT MICRO-BANNER
+           ================================================================ */
+        #engagementBanner {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(90deg, rgba(8,14,35,.97) 0%, rgba(14,116,144,.25) 50%, rgba(8,14,35,.97) 100%);
+            backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(103,232,249,.25);
+            padding: .85rem 2rem;
+            display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+            z-index: 99985;
+            transform: translateY(100%);
+            transition: transform .75s cubic-bezier(.16,1,.3,1);
+            box-shadow: 0 -12px 48px rgba(14,116,144,.2), 0 -1px 0 rgba(103,232,249,.1);
+        }
+        #engagementBanner.eb-show { transform: translateY(0); }
+        .eb-text {
+            display: flex; align-items: center; gap: .85rem;
+            color: rgba(255,255,255,.9); font-weight: 600; font-size: .88rem;
+            flex: 1;
+        }
+        .eb-fire {
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(239,68,68,.1));
+            border: 1px solid rgba(245,158,11,.3);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-size: .9rem; flex-shrink: 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        .eb-strong { color: #67e8f9; }
+        .eb-slots {
+            display: inline-flex; align-items: center; gap: .35rem;
+            background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.25);
+            color: #fca5a5; padding: .2rem .65rem; border-radius: 999px; font-size: .75rem; font-weight: 700;
+        }
+        .eb-actions { display: flex; align-items: center; gap: .7rem; flex-shrink: 0; }
+        .eb-cta {
+            background: linear-gradient(135deg, #0e7490, #0891b2);
+            color: #fff; padding: .55rem 1.4rem; border-radius: 999px;
+            font-weight: 700; font-size: .82rem; text-decoration: none;
+            transition: all .25s; border: 1px solid rgba(103,232,249,.3);
+            box-shadow: 0 4px 16px rgba(14,116,144,.35);
+        }
+        .eb-cta:hover { transform: scale(1.04); box-shadow: 0 6px 24px rgba(14,116,144,.5); }
+        .eb-close {
+            background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+            color: rgba(255,255,255,.5); width: 30px; height: 30px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: .8rem; transition: all .2s; flex-shrink: 0;
+        }
+        .eb-close:hover { background: rgba(255,255,255,.12); color: #fff; }
+        @media (max-width: 600px) {
+            #engagementBanner { padding: .75rem 1rem; }
+            .eb-text { font-size: .78rem; }
+        }
+
+        /* ================================================================
+           ★ NEW FEATURE F: EXIT INTENT PREMIUM MODAL
+           ================================================================ */
+        #exitBackdrop {
+            position: fixed; inset: 0;
+            background: rgba(2,6,23,.88);
+            backdrop-filter: blur(22px);
+            z-index: 9999993;
+            opacity: 0; pointer-events: none;
+            transition: opacity .4s ease;
+        }
+        #exitBackdrop.ex-open { opacity: 1; pointer-events: all; }
+        #exitModal {
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -52%) scale(.92);
+            width: min(560px, 92vw);
+            background: linear-gradient(160deg, rgba(10,18,42,.99), rgba(4,8,24,.99));
+            border: 1px solid rgba(103,232,249,.15);
+            border-radius: 28px;
+            padding: 3.5rem 3rem 3rem;
+            z-index: 9999994;
+            opacity: 0; pointer-events: none;
+            transition: all .55s cubic-bezier(.16,1,.3,1);
+            box-shadow: 0 50px 100px rgba(0,0,0,.9), 0 0 0 1px rgba(103,232,249,.05), 0 0 80px rgba(14,116,144,.1);
+            text-align: center; overflow: hidden;
+        }
+        #exitModal::before {
+            content: '';
+            position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(14,116,144,.15), rgba(139,92,246,.05) 50%, transparent 70%);
+            pointer-events: none;
+        }
+        #exitModal::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(103,232,249,.3), rgba(139,92,246,.2), transparent);
+        }
+        #exitModal.ex-open { opacity: 1; pointer-events: all; transform: translate(-50%,-50%) scale(1); }
+        .exit-badge {
+            display: inline-flex; align-items: center; gap: .4rem;
+            background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.3);
+            color: #fbbf24; font-size: .72rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            padding: .35rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;
+        }
+        .exit-title {
+            font-family: var(--font-display); font-size: clamp(1.5rem,4vw,2.1rem);
+            font-weight: 900; color: #fff; margin-bottom: 1rem; line-height: 1.2;
+            position: relative; z-index: 1;
+        }
+        .exit-sub {
+            color: rgba(255,255,255,.55); font-size: .92rem; margin-bottom: 2rem;
+            max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.6;
+            position: relative; z-index: 1;
+        }
+        .exit-form-row { display: flex; gap: .65rem; position: relative; z-index: 1; }
+        .exit-email-input {
+            flex: 1; background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+            padding: .75rem 1.25rem; color: #fff; font-size: .88rem; outline: none;
+            font-family: var(--font-sans); transition: border-color .25s;
+        }
+        .exit-email-input:focus { border-color: rgba(103,232,249,.5); }
+        .exit-email-input::placeholder { color: rgba(255,255,255,.3); }
+        .exit-submit {
+            background: linear-gradient(135deg, #0e7490, #0891b2);
+            color: #fff; border: 1px solid rgba(103,232,249,.3);
+            border-radius: 999px; padding: .75rem 1.5rem;
+            font-weight: 700; font-size: .88rem; cursor: pointer;
+            white-space: nowrap; transition: all .25s;
+            box-shadow: 0 4px 16px rgba(14,116,144,.4);
+        }
+        .exit-submit:hover { box-shadow: 0 6px 24px rgba(14,116,144,.6); transform: scale(1.04); }
+        .exit-close-x {
+            position: absolute; top: 1.2rem; right: 1.2rem;
+            background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50%; width: 36px; height: 36px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: rgba(255,255,255,.4); font-size: .85rem; transition: all .2s;
+        }
+        .exit-close-x:hover { background: rgba(255,255,255,.1); color: #fff; }
+        .exit-proof {
+            margin-top: 1.5rem; font-size: .75rem; color: rgba(255,255,255,.3);
+            display: flex; align-items: center; justify-content: center; gap: .6rem;
+            position: relative; z-index: 1;
+        }
+        .exit-avatars { display: flex; }
+        .exit-avatars span {
+            width: 22px; height: 22px; border-radius: 50%;
+            border: 1.5px solid rgba(2,6,23,.8);
+            display: flex; align-items: center; justify-content: center;
+            font-size: .62rem; color: #fff; font-weight: 700; margin-left: -6px;
+        }
+        .exit-avatars span:first-child { margin-left: 0; }
+        @media (max-width: 500px) {
+            .exit-form-row { flex-direction: column; }
+            #exitModal { padding: 2.5rem 1.5rem 2rem; }
         }
 
         /* ================================================================
@@ -1151,20 +1420,13 @@
             .portfolio-card { width:100%; }
             .footer-grid { grid-template-columns:1fr 1fr; }
             .macbook-device { display:none; }
-            /* Toasts on mobile go bottom-right near chatbot toggle on opposite side */
             .toast-viewport { bottom: 5.5rem; left: 1rem; }
             .proof-toast { min-width: 230px; max-width: 260px; }
-            /* Command palette full width on mobile */
             .cmd-palette { top: 12%; width: calc(100vw - 2rem); }
-            /* Hide cmd hint on mobile */
             .cmd-trigger-hint { display: none; }
-            /* Hero badges wrap nicely */
             .hero-badges { gap: .5rem; }
             .hero-badge { font-size: .75rem; padding: .4rem .9rem; }
-            /* Better mobile header */
             .header .btn-cta-glow { display: none; }
-            /* Full-width buttons on mobile */
-            .flex.gap-1 a.btn { text-align: center; }
         }
         @media (max-width:480px) {
             .footer-grid { grid-template-columns:1fr; gap:2rem; }
@@ -1173,40 +1435,7 @@
             .stat-number { font-size: 2rem; }
             h1 { font-size: clamp(2.25rem, 8vw, 3rem); }
             .astra-toggle-btn { width: 54px; height: 54px; bottom: 1.25rem; right: 1.25rem; }
-        }
-        /* ================================================================
-           ASTRA AI NEW FEATURES (Tooltips, Chips, Animations)
-           ================================================================ */
-       /* ================================================================
-           ASTRA AI PREMIUM FEATURES (Tooltips & Prompt Chips)
-           ================================================================ */
-        .astra-tooltip {
-            position: absolute; right: 80px; top: 12px;
-            background: rgba(14,116,144, 0.95); backdrop-filter: blur(10px);
-            color: #fff; padding: 8px 16px; border-radius: 12px;
-            font-size: 0.8rem; font-weight: 600; white-space: nowrap;
-            opacity: 0; transform: translateX(15px); transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-            pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid rgba(103,232,249,0.3);
-        }
-        .astra-tooltip::after {
-            content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
-            border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent rgba(14,116,144, 0.95);
-        }
-        .astra-toggle-btn:hover .astra-tooltip { opacity: 1; transform: translateX(0); }
-        
-        .astra-quick-prompts {
-            display: flex; gap: 8px; padding: 0 1.25rem 10px;
-            overflow-x: auto; scrollbar-width: none;
-        }
-        .astra-quick-prompts::-webkit-scrollbar { display: none; }
-        
-        .astra-chip {
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-secondary); padding: 6px 14px; border-radius: 100px;
-            font-size: 0.75rem; white-space: nowrap; cursor: none; transition: 0.3s;
-        }
-        .astra-chip:hover {
-            background: var(--c-brand-main); color: #fff; border-color: var(--c-brand-light); transform: translateY(-2px);
+            .footer-status-bar { flex-direction: column; align-items: flex-start; gap: .75rem; }
         }
     </style>
 </head>
@@ -1255,20 +1484,55 @@
             <input type="text" class="cmd-input" id="cmdInput" placeholder="Search pages, services, actions…" autocomplete="off">
             <span class="cmd-kbd-hint">ESC to close</span>
         </div>
-        <div class="cmd-body" id="cmdBody">
-            <!-- populated by JS -->
-        </div>
+        <div class="cmd-body" id="cmdBody"></div>
         <div class="cmd-footer">
             <span class="cmd-footer-key"><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
             <span class="cmd-footer-key"><kbd>↵</kbd> open</span>
             <span class="cmd-footer-key"><kbd>ESC</kbd> close</span>
         </div>
     </div>
-    <!-- Subtle trigger hint -->
     <button class="cmd-trigger-hint" id="cmdTriggerHint" aria-label="Open command palette">
         <kbd>⌘</kbd><kbd>K</kbd>
         <span>Quick actions</span>
     </button>
+
+    <!-- ★ NEW FEATURE E: SMART ENGAGEMENT BANNER -->
+    <div id="engagementBanner" role="banner" aria-label="Limited availability notice">
+        <div class="eb-text">
+            <div class="eb-fire">🔥</div>
+            <span>
+                <span class="eb-strong">Limited Slots —</span> Only
+                <span class="eb-slots">2 spots left</span>
+                for June 2026 projects. Don't miss out.
+            </span>
+        </div>
+        <div class="eb-actions">
+            <a href="contact.html" class="eb-cta">Claim Your Spot →</a>
+            <button class="eb-close" id="ebClose" aria-label="Dismiss banner">✕</button>
+        </div>
+    </div>
+
+    <!-- ★ NEW FEATURE F: EXIT INTENT MODAL -->
+    <div id="exitBackdrop"></div>
+    <div id="exitModal" role="dialog" aria-label="Special offer">
+        <button class="exit-close-x" id="exitClose" aria-label="Close">✕</button>
+        <span class="exit-badge">🎁 Wait — Free Offer</span>
+        <h2 class="exit-title">Before You Go —<br><span style="background:linear-gradient(135deg,#67e8f9,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Get a Free Audit</span></h2>
+        <p class="exit-sub">We'll personally review your website for speed, SEO, and conversion blockers — completely free. Takes 30 seconds to submit.</p>
+        <div class="exit-form-row">
+            <input type="email" class="exit-email-input" id="exitEmailInput" placeholder="your@email.com" autocomplete="email">
+            <button class="exit-submit" id="exitSubmitBtn">Get Free Audit →</button>
+        </div>
+        <div class="exit-proof">
+            <div class="exit-avatars">
+                <span style="background:linear-gradient(135deg,#0e7490,#67e8f9)">A</span>
+                <span style="background:linear-gradient(135deg,#8b5cf6,#c084fc)">R</span>
+                <span style="background:linear-gradient(135deg,#f59e0b,#fcd34d)">M</span>
+                <span style="background:linear-gradient(135deg,#10b981,#34d399)">K</span>
+            </div>
+            50+ founders have already claimed their audit
+        </div>
+    </div>
 
     <!-- ENTERPRISE FEATURE 2: Scroll Progress -->
     <div class="scroll-progress-bar" id="scrollProgress"></div>
@@ -1322,7 +1586,7 @@
                 <div class="hero-content reveal">
                     <div class="hero-badges">
                         <span class="hero-badge green">
-                            <span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;box-shadow:0 0 6px #10b981;flex-shrink:0;"></span>
+                            <span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;box-shadow:0 0 6px #10b981;flex-shrink:0;animation:pulse-green 1.5s infinite;"></span>
                             Accepting Clients — 2026
                         </span>
                         <span class="hero-badge">
@@ -1344,7 +1608,7 @@
                         <span class="text-gradient">That Actually Scale.</span>
                     </h1>
 
-                    <p style="margin-bottom:2rem;">
+                    <p style="margin-bottom:2rem;color:rgba(255,255,255,.7);">
                         Stop losing customers to slow, ugly digital products. Evolvix builds
                         <span class="text-accent">high-performance websites, apps, and SaaS platforms</span>
                         for brands that refuse to settle for average.
@@ -1364,13 +1628,13 @@
                             <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
                                  alt="Client" style="width:38px;height:38px;border-radius:50%;border:2px solid #0f172a;object-fit:cover;margin-left:-8px;z-index:1">
                         </div>
-                        <div style="font-size:.9rem;color:var(--text-secondary);">
+                        <div style="font-size:.9rem;color:rgba(255,255,255,.6);">
                             Trusted by <strong style="color:#fff;">50+ Founders</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- RIGHT: MacBook Mockup -->
+                <!-- RIGHT: MacBook Mockup (Apple-style scroll reveal) -->
                 <div class="hero-visual reveal delay-200">
                     <div class="macbook-scene">
                         <div class="macbook-device" id="macbookDevice">
@@ -1454,12 +1718,12 @@
             <div class="container">
                 <div class="reveal" style="max-width:800px;margin-bottom:4rem;">
                     <h4>What We Build</h4>
-                    <h2 class="word-reveal" style="color:#fff;">Everything you need to <span class="text-gradient">dominate online.</span></h2>
+                    <h2 class="word-reveal" style="color:#fff !important;">Everything you need to <span class="text-gradient">dominate online.</span></h2>
                     <div class="section-divider"></div>
                 </div>
 
                 <div class="services-grid-6">
-                    <div class="service-card reveal">
+                    <div class="service-card holo-card reveal">
                         <div class="service-num">01</div>
                         <div class="service-icon-wrap">⚡</div>
                         <h3>Web Development</h3>
@@ -1469,7 +1733,7 @@
                             <li><span>✓</span> SEO-First Architecture</li>
                         </ul>
                     </div>
-                    <div class="service-card reveal delay-100">
+                    <div class="service-card holo-card reveal delay-100">
                         <div class="service-num">02</div>
                         <div class="service-icon-wrap">📱</div>
                         <h3>Mobile App Dev</h3>
@@ -1479,7 +1743,7 @@
                             <li><span>✓</span> App Store Ready</li>
                         </ul>
                     </div>
-                    <div class="service-card reveal delay-200">
+                    <div class="service-card holo-card reveal delay-200">
                         <div class="service-num">03</div>
                         <div class="service-icon-wrap">⚙️</div>
                         <h3>SaaS Development</h3>
@@ -1489,7 +1753,7 @@
                             <li><span>✓</span> Cloud-Native Infra</li>
                         </ul>
                     </div>
-                    <div class="service-card reveal">
+                    <div class="service-card holo-card reveal">
                         <div class="service-num">04</div>
                         <div class="service-icon-wrap">📍</div>
                         <h3>Local SEO</h3>
@@ -1499,7 +1763,7 @@
                             <li><span>✓</span> Reputation Management</li>
                         </ul>
                     </div>
-                    <div class="service-card reveal delay-100">
+                    <div class="service-card holo-card reveal delay-100">
                         <div class="service-num">05</div>
                         <div class="service-icon-wrap">🎨</div>
                         <h3>UI/UX Design</h3>
@@ -1509,7 +1773,7 @@
                             <li><span>✓</span> A/B Tested Layouts</li>
                         </ul>
                     </div>
-                    <div class="service-card reveal delay-200">
+                    <div class="service-card holo-card reveal delay-200">
                         <div class="service-num">06</div>
                         <div class="service-icon-wrap">🔁</div>
                         <h3>Digital Marketing</h3>
@@ -1530,29 +1794,29 @@
             <div class="container">
                 <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 1rem;">
                     <h4>Our Method</h4>
-                    <h2 class="word-reveal" style="color:#fff;">From Zero to <span class="text-gradient">Launch — Our Process</span></h2>
+                    <h2 class="word-reveal" style="color:#fff !important;">From Zero to <span class="text-gradient">Launch — Our Process</span></h2>
                     <div class="section-divider center"></div>
                 </div>
                 <div class="process-grid">
                     <div class="process-step reveal">
                         <div class="process-number">01</div>
                         <h3>Discovery Call</h3>
-                        <p style="color:var(--text-secondary);">We deeply understand your goals, audience, and competition before writing a single line of code or strategy.</p>
+                        <p style="color:rgba(255,255,255,.6);">We deeply understand your goals, audience, and competition before writing a single line of code or strategy.</p>
                     </div>
                     <div class="process-step reveal delay-100">
                         <div class="process-number">02</div>
                         <h3>Strategy &amp; Design</h3>
-                        <p style="color:var(--text-secondary);">Wireframes, architecture, and a visual system crafted around your brand identity and conversion goals.</p>
+                        <p style="color:rgba(255,255,255,.6);">Wireframes, architecture, and a visual system crafted around your brand identity and conversion goals.</p>
                     </div>
                     <div class="process-step reveal delay-200">
                         <div class="process-number">03</div>
                         <h3>Build &amp; Launch</h3>
-                        <p style="color:var(--text-secondary);">Precision-crafted, performance-first code shipped clean and fast. Your product, ready to impress from day one.</p>
+                        <p style="color:rgba(255,255,255,.6);">Precision-crafted, performance-first code shipped clean and fast. Your product, ready to impress from day one.</p>
                     </div>
                     <div class="process-step reveal delay-300">
                         <div class="process-number">04</div>
                         <h3>Scale &amp; Optimise</h3>
-                        <p style="color:var(--text-secondary);">Ongoing SEO, analytics, and growth strategies to keep your digital product accelerating every month.</p>
+                        <p style="color:rgba(255,255,255,.6);">Ongoing SEO, analytics, and growth strategies to keep your digital product accelerating every month.</p>
                     </div>
                 </div>
             </div>
@@ -1566,12 +1830,12 @@
                 <div class="h-scroll-header">
                     <div class="reveal">
                         <h4>Selected Work</h4>
-                        <h2 style="color:#fff;">Real Projects. <span class="text-gradient">Real Results.</span></h2>
-                        <p style="max-width:500px;font-size:1rem;">Every project hand-built from scratch — no templates, no shortcuts. Pure performance-first digital products.</p>
+                        <h2 style="color:#fff !important;">Real Projects. <span class="text-gradient">Real Results.</span></h2>
+                        <p style="max-width:500px;font-size:1rem;color:rgba(255,255,255,.6);">Every project hand-built from scratch — no templates, no shortcuts. Pure performance-first digital products.</p>
                     </div>
                 </div>
                 <div class="h-scroll-track" id="hScrollTrack">
-                    <div class="portfolio-card tilt-card">
+                    <div class="portfolio-card tilt-card holo-card">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
                              alt="ReachForever" class="portfolio-card-img">
                         <div class="portfolio-card-body">
@@ -1583,7 +1847,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="portfolio-card tilt-card">
+                    <div class="portfolio-card tilt-card holo-card">
                         <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"
                              alt="The Bake Stories" class="portfolio-card-img">
                         <div class="portfolio-card-body">
@@ -1595,7 +1859,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="portfolio-card tilt-card">
+                    <div class="portfolio-card tilt-card holo-card">
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80"
                              alt="NexusAI SaaS" class="portfolio-card-img">
                         <div class="portfolio-card-body">
@@ -1612,7 +1876,7 @@
                         <div class="portfolio-card-body" style="text-align:center;padding:3rem 2rem;">
                             <div style="font-size:2.5rem;margin-bottom:1rem;">🚀</div>
                             <h3 style="font-size:1.2rem;">Your Project Here</h3>
-                            <p style="font-size:.875rem;margin:.75rem 0 1.5rem;">Join our portfolio. Let's build something remarkable together.</p>
+                            <p style="font-size:.875rem;margin:.75rem 0 1.5rem;color:rgba(255,255,255,.55);">Join our portfolio. Let's build something remarkable together.</p>
                             <a href="contact.html" class="btn btn-primary btn-cta-glow" style="padding:.8rem 1.75rem;font-size:.9rem;">Start Today</a>
                         </div>
                     </div>
@@ -1628,8 +1892,8 @@
             <div class="container">
                 <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 1rem;">
                     <h4>Our Arsenal</h4>
-                    <h2 style="color:#fff;">Built With <span class="text-gradient">Modern Technology</span></h2>
-                    <p style="text-align:center;margin:0 auto;">Every tool hand-picked for performance, scalability, and developer experience.</p>
+                    <h2 style="color:#fff !important;">Built With <span class="text-gradient">Modern Technology</span></h2>
+                    <p style="text-align:center;margin:0 auto;color:rgba(255,255,255,.6);">Every tool hand-picked for performance, scalability, and developer experience.</p>
                 </div>
                 <div class="tech-cards-grid reveal">
                     <div class="tech-category-label">Frontend</div>
@@ -1665,40 +1929,40 @@
             <div class="container">
                 <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 4rem;">
                     <h4>Client Intelligence</h4>
-                    <h2 style="color:#fff;">What Our <span class="text-gradient">Clients Say</span></h2>
+                    <h2 style="color:#fff !important;">What Our <span class="text-gradient">Clients Say</span></h2>
                     <div class="section-divider center"></div>
                 </div>
                 <div class="spotlight-group">
-                    <div class="card reveal tilt-card">
+                    <div class="card reveal tilt-card holo-card">
                         <div style="color:#f59e0b;margin-bottom:1rem;font-size:1rem;">★★★★★</div>
                         <p style="font-style:italic;color:#e2e8f0;margin-bottom:1.5rem;">"Evolvix built our agency's website and it completely transformed how clients perceive us. The speed, the design — it's premium. We get compliments on it constantly."</p>
                         <div class="flex items-center gap-1">
                             <div class="letter-avatar av-a">A</div>
                             <div>
                                 <div style="color:#fff;font-weight:700;font-size:.95rem;">Ansh Khatri</div>
-                                <div style="font-size:.78rem;color:var(--text-secondary);">Founder, ReachForever</div>
+                                <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Founder, ReachForever</div>
                             </div>
                         </div>
                     </div>
-                    <div class="card reveal delay-100 tilt-card">
+                    <div class="card reveal delay-100 tilt-card holo-card">
                         <div style="color:#f59e0b;margin-bottom:1rem;font-size:1rem;">★★★★★</div>
                         <p style="font-style:italic;color:#e2e8f0;margin-bottom:1.5rem;">"Our bakery website loads instantly and looks absolutely gorgeous. Online orders went up 3× in the first month. Akash delivered something beyond what we imagined."</p>
                         <div class="flex items-center gap-1">
                             <div class="letter-avatar av-c">C</div>
                             <div>
                                 <div style="color:#fff;font-weight:700;font-size:.95rem;">Chahat Bhatia</div>
-                                <div style="font-size:.78rem;color:var(--text-secondary);">Owner, The Bake Stories</div>
+                                <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Owner, The Bake Stories</div>
                             </div>
                         </div>
                     </div>
-                    <div class="card reveal delay-200 tilt-card">
+                    <div class="card reveal delay-200 tilt-card holo-card">
                         <div style="color:#f59e0b;margin-bottom:1rem;font-size:1rem;">★★★★★</div>
                         <p style="font-style:italic;color:#e2e8f0;margin-bottom:1.5rem;">"Finally a developer who speaks plain English and delivers on promises. Our SaaS dashboard went live in three weeks and our investors were blown away by the polish."</p>
                         <div class="flex items-center gap-1">
                             <div class="letter-avatar av-m">M</div>
                             <div>
                                 <div style="color:#fff;font-weight:700;font-size:.95rem;">Marcus Chen</div>
-                                <div style="font-size:.78rem;color:var(--text-secondary);">Co-Founder, NexusAI SaaS</div>
+                                <div style="font-size:.78rem;color:rgba(255,255,255,.45);">Co-Founder, NexusAI SaaS</div>
                             </div>
                         </div>
                     </div>
@@ -1716,7 +1980,7 @@
                     <h2 style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1.25rem;color:#fff;">
                         Let's Build Something <span class="text-gradient">Remarkable.</span>
                     </h2>
-                    <p style="max-width:520px;margin:0 auto 2.5rem;color:var(--text-secondary);">
+                    <p style="max-width:520px;margin:0 auto 2.5rem;color:rgba(255,255,255,.6);">
                         From landing pages to full SaaS platforms — Evolvix Technologies delivers digital products that perform, convert, and grow alongside your business.
                     </p>
                     <div class="flex gap-1 justify-center" style="flex-wrap:wrap;">
@@ -1735,12 +1999,12 @@
                 <div class="form-card reveal">
                     <div class="grid-2">
                         <div>
-                            <h2 style="color:#fff;">Free Website Performance Audit</h2>
-                            <p style="color:var(--text-secondary);">Stop guessing why you're losing customers. Enter your URL and we'll manually analyse your speed, SEO, and every conversion blocker — completely free.</p>
+                            <h2 style="color:#fff !important;">Free Website Performance Audit</h2>
+                            <p style="color:rgba(255,255,255,.6);">Stop guessing why you're losing customers. Enter your URL and we'll manually analyse your speed, SEO, and every conversion blocker — completely free.</p>
                             <div style="margin-top:2rem;">
-                                <div class="flex items-center gap-1 mb-2 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:var(--text-secondary);">Manual Code Review</span></div>
-                                <div class="flex items-center gap-1 mb-2 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:var(--text-secondary);">SEO Opportunity Report</span></div>
-                                <div class="flex items-center gap-1 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:var(--text-secondary);">Conversion Blockers Analysis</span></div>
+                                <div class="flex items-center gap-1 mb-2 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:rgba(255,255,255,.6);">Manual Code Review</span></div>
+                                <div class="flex items-center gap-1 mb-2 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:rgba(255,255,255,.6);">SEO Opportunity Report</span></div>
+                                <div class="flex items-center gap-1 stagger-child"><div style="width:20px;height:2px;background:var(--c-brand-light);"></div><span style="color:rgba(255,255,255,.6);">Conversion Blockers Analysis</span></div>
                             </div>
                         </div>
                         <div>
@@ -1750,17 +2014,17 @@
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_template" value="table">
                                 <div class="input-group">
-                                    <input type="url" id="audit-url" name="url" class="input-field" placeholder=" " required>
+                                    <input type="url" id="audit-url" name="url" class="input-field" placeholder=" " required autocomplete="url">
                                     <label for="audit-url" class="input-label">Website URL (e.g. yourbusiness.com)</label>
                                 </div>
                                 <div class="input-group">
-                                    <input type="email" id="audit-email" name="email" class="input-field" placeholder=" " required>
+                                    <input type="email" id="audit-email" name="email" class="input-field" placeholder=" " required autocomplete="email">
                                     <label for="audit-email" class="input-label">Your Email Address</label>
                                 </div>
                                 <button type="submit" id="audit-submit" class="btn btn-primary btn-cta-glow w-full">
                                     Analyse My Website →
                                 </button>
-                                <p style="font-size:.78rem;margin-top:1rem;text-align:center;color:var(--text-tertiary);">
+                                <p style="font-size:.78rem;margin-top:1rem;text-align:center;color:rgba(255,255,255,.35);">
                                     You'll receive your audit report within 24 hours.
                                 </p>
                             </form>
@@ -1787,13 +2051,37 @@
             </svg>
         </div>
         <div class="footer-bg-text" aria-hidden="true">EVOLVIX</div>
+        <div class="container" style="position:relative;z-index:2;">
+            <!-- Status Bar -->
+            <div class="footer-status-bar">
+                <div class="footer-status-item">
+                    <span class="status-dot-green"></span>
+                    All Systems Operational
+                </div>
+                <div class="footer-status-sep"></div>
+                <div class="footer-status-item">
+                    <span class="status-dot-blue"></span>
+                    Accepting New Projects — 2026
+                </div>
+                <div class="footer-status-sep"></div>
+                <div class="footer-status-item">
+                    <span class="status-dot-green"></span>
+                    Response Time &lt; 24hrs
+                </div>
+                <div style="margin-left:auto;">
+                    <a href="contact.html" style="font-size:.78rem;color:#67e8f9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">
+                        Let's Talk → 
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="container footer-grid">
             <div>
                 <a href="index.html" style="display:inline-block;">
                     <img src="assets/evolvix.png" alt="Evolvix Technologies" class="footer-evolvix-logo"
                          onerror="this.outerHTML='<span style=&quot;font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff;display:block;margin-bottom:1.5rem;&quot;>Evolvix</span>'">
                 </a>
-                <p style="font-size:.92rem;margin-bottom:1.5rem;color:var(--text-secondary);">
+                <p style="font-size:.92rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5);line-height:1.7;">
                     Evolvix Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.
                 </p>
                 <div class="footer-socials">
@@ -1847,7 +2135,7 @@
     <!-- ================================================================
          ASTRA AI CHATBOT
          ================================================================ -->
- <button class="astra-toggle-btn magnetic-el" id="astraToggle" aria-label="Chat with Astra AI">
+    <button class="astra-toggle-btn magnetic-el" id="astraToggle" aria-label="Chat with Astra AI">
         <div class="astra-tooltip">Hey! I'm Astra AI ✨</div>
         <img src="assets/evolvix.png" alt="Astra AI"
              onerror="this.style.display='none';document.getElementById('astraFallback').style.display='flex'">
@@ -1868,13 +2156,13 @@
             </div>
             <button class="astra-close-btn magnetic-el" id="astraClose" aria-label="Close chat">✕</button>
         </div>
-        
+
         <div class="astra-messages" id="astraMessages"></div>
 
         <div class="astra-quick-prompts" id="astraChips">
-            <div class="astra-chip magnetic-el">What services do you offer? 🚀</div>
-            <div class="astra-chip magnetic-el">How much does a website cost? 💰</div>
-            <div class="astra-chip magnetic-el">Who built you? 🤖</div>
+            <div class="astra-chip magnetic-el">What services do you offer?</div>
+            <div class="astra-chip magnetic-el">How much does a website cost?</div>
+            <div class="astra-chip magnetic-el">Who built you?</div>
         </div>
 
         <div class="astra-input-row">
@@ -1891,11 +2179,9 @@
     <script src="script.js"></script>
 
     <!-- ================================================================
-         BUG FIX: PARTICLE OVERRIDES
-         Use ES6 class extends instead of broken prototype approach
+         BUG FIX: PARTICLE OVERRIDES — Reduced opacity & count
          ================================================================ -->
     <script>
-    // Fix Particle repulsion behavior (safe prototype override — works with ES6 classes)
     if (typeof Particle !== 'undefined' && typeof Vector2 !== 'undefined') {
         Particle.prototype.behaviors = function(mouse) {
             var dx = this.pos.x - mouse.x, dy = this.pos.y - mouse.y;
@@ -1908,21 +2194,19 @@
         };
     }
 
-    // BUG FIX: Use proper ES6 class extension instead of broken _origPhysics.call(this)
-    // The original code crashed because ES6 class constructors cannot be invoked as plain functions
     if (typeof PhysicsWorld !== 'undefined') {
         var _OrigPhysicsWorld = PhysicsWorld;
         PhysicsWorld = class extends _OrigPhysicsWorld {
             constructor() {
-                super(); // correctly calls ES6 parent constructor
-                // Override particle count after super() initialises the canvas
-                this.particleCount = window.innerWidth < 768 ? 20 : 55;
+                super();
+                /* REDUCED: 12 particles max, very subtle */
+                this.particleCount = window.innerWidth < 768 ? 6 : 12;
                 this.particles = [];
                 this.initParticles();
-                this.canvas.style.opacity = '0.35';
+                this.canvas.style.opacity = '0.12';
             }
             render() {
-                this.canvas.style.opacity = '0.35';
+                this.canvas.style.opacity = '0.12';
                 super.render();
             }
         };
@@ -1965,7 +2249,7 @@
             siteHeader.classList.toggle('scrolled', window.scrollY>50);
         },{passive:true});
 
-        /* ─── MacBook scroll animation ─── */
+        /* ─── MacBook Apple-style scroll animation (enhanced) ─── */
         var macbookDevice = document.getElementById('macbookDevice');
         function animateMacBook(){
             if(!macbookDevice) return;
@@ -1973,31 +2257,49 @@
             if(!heroEl) return;
             var scrollY = window.scrollY;
             var heroH = heroEl.offsetHeight;
-            var progress = Math.min(1, scrollY / (heroH * 0.55));
-            var rotX = 22 * (1 - progress);
-            var sc = 0.92 + 0.08*progress;
-            macbookDevice.style.transform = 'perspective(1200px) rotateX('+rotX+'deg) scale('+sc+')';
+            var progress = Math.min(1, scrollY / (heroH * 0.6));
+            /* Cubic ease-out for smooth Apple feel */
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var rotX = 28 * (1 - eased);
+            var sc = 0.82 + 0.18 * eased;
+            var ty = (1 - eased) * -40;
+            macbookDevice.style.transform = 'perspective(1200px) rotateX('+rotX+'deg) scale('+sc+') translateY('+ty+'px)';
+            var shadowAmt = 40 + eased * 25;
+            macbookDevice.style.filter = 'drop-shadow(0 '+shadowAmt+'px 60px rgba(0,0,0,.65))';
+            var glowEl = document.querySelector('.macbook-glow');
+            if(glowEl) glowEl.style.opacity = 0.2 + eased * 0.8;
         }
         window.addEventListener('scroll', animateMacBook, {passive:true});
         animateMacBook();
 
-        /* ─── Kinetic Text Rotator ─── */
-        document.fonts.ready.then(function(){
+        /* ─── Kinetic Text Rotator (FIXED) ─── */
+        (function initKinetic(){
             var kInner = document.getElementById('kineticInner');
             var kWrap  = document.getElementById('kineticWrapper');
             if(!kInner || !kWrap) return;
             var words = kInner.querySelectorAll('.kinetic-word');
+            if(!words.length) return;
             var total = words.length - 1;
             var cur = 0;
-            kWrap.style.height = (words[0].offsetHeight || 90) + 'px';
-            window.addEventListener('resize', function(){
-                if(words[0]) kWrap.style.height = words[0].offsetHeight+'px';
+
+            function setHeight(){
+                var h = words[0].getBoundingClientRect().height;
+                if(h > 0) kWrap.style.height = h + 'px';
+                else kWrap.style.height = '1.1em';
+            }
+
+            /* Try immediately, then after fonts */
+            setHeight();
+            document.fonts.ready.then(function(){
+                setTimeout(setHeight, 80);
             });
+            window.addEventListener('resize', setHeight);
+
             setInterval(function(){
-                cur = (cur+1) % total;
-                kInner.style.transform = 'translateY(-'+(cur*100)+'%)';
+                cur = (cur + 1) % total;
+                kInner.style.transform = 'translateY(-' + (cur * 100) + '%)';
             }, 2400);
-        });
+        })();
 
         /* ─── Word-by-Word Reveal ─── */
         (function initWordReveal(){
@@ -2020,6 +2322,7 @@
                     textNode.parentNode.replaceChild(frag, textNode);
                 });
             });
+
             var obs = new IntersectionObserver(function(entries){
                 entries.forEach(function(entry){
                     if(!entry.isIntersecting) return;
@@ -2029,8 +2332,15 @@
                     });
                     obs.unobserve(entry.target);
                 });
-            },{threshold:0.25});
+            },{threshold:0.15});
             document.querySelectorAll('.word-reveal').forEach(function(el){ obs.observe(el); });
+
+            /* FALLBACK: if words still invisible after 2s, force-show them */
+            setTimeout(function(){
+                document.querySelectorAll('.word-unit').forEach(function(u){
+                    u.classList.add('visible');
+                });
+            }, 2000);
         })();
 
         /* ─── Ambient Blob ─── */
@@ -2123,7 +2433,7 @@
             c.addEventListener('mouseleave',function(){ c.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale(1)'; });
         });
 
-        /* ─── Audit Form Physics ─── */
+        /* ─── Audit Form Validation & Confetti ─── */
         var aForm=document.getElementById('audit-form');
         var aInput=document.getElementById('audit-url');
         var aBtn=document.getElementById('audit-submit');
@@ -2263,10 +2573,8 @@
         var progress = 0;
         var startTime = Date.now();
 
-        // Accelerate progress simulation
         function tick(){
             var elapsed = Date.now() - startTime;
-            // Fast at first, then decelerate near 90, then jump to 100 on load
             var natural = Math.min(90, elapsed / 20);
             if(progress < natural){
                 progress = natural;
@@ -2283,7 +2591,6 @@
             if(pct) pct.textContent = '100%';
             setTimeout(function(){
                 if(loader) loader.classList.add('done');
-                // Remove from DOM after transition
                 setTimeout(function(){
                     if(loader && loader.parentNode) loader.parentNode.removeChild(loader);
                 }, 950);
@@ -2294,7 +2601,6 @@
             finishLoader();
         } else {
             window.addEventListener('load', finishLoader);
-            // Fallback: max 4 seconds
             setTimeout(finishLoader, 4000);
         }
     })();
@@ -2347,14 +2653,12 @@
             viewport.appendChild(toast);
             activeToasts.push(toast);
 
-            // Slide in
             requestAnimationFrame(function(){
                 requestAnimationFrame(function(){
                     toast.classList.add('show');
                 });
             });
 
-            // Auto-dismiss after 5s
             setTimeout(function(){
                 toast.classList.remove('show');
                 toast.classList.add('hide');
@@ -2365,7 +2669,6 @@
             }, 5200);
         }
 
-        // Start toasts after 6 seconds, then random intervals 12–22s
         setTimeout(function(){
             var idx = 0;
             function nextToast(){
@@ -2421,7 +2724,7 @@
                 label.className = 'cmd-section-label';
                 label.textContent = sec;
                 cmdBody.appendChild(label);
-                sections[sec].forEach(function(cmd, i){
+                sections[sec].forEach(function(cmd){
                     var item = document.createElement(cmd.href ? 'a' : 'button');
                     item.className = 'cmd-item';
                     if(cmd.href) { item.href = cmd.href; }
@@ -2485,7 +2788,6 @@
             items[selectedIdx].scrollIntoView({block:'nearest'});
         }
 
-        // Keyboard triggers
         document.addEventListener('keydown', function(e){
             var isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
             var trigger = (isMac ? e.metaKey : e.ctrlKey) && e.key.toLowerCase() === 'k';
@@ -2495,19 +2797,18 @@
             if(e.key === 'ArrowDown'){ e.preventDefault(); navigateItems(1); return; }
             if(e.key === 'ArrowUp'){ e.preventDefault(); navigateItems(-1); return; }
             if(e.key === 'Enter'){
-                var items = cmdBody.querySelectorAll('.cmd-item');
                 var activeItem = cmdBody.querySelector('.cmd-item.active');
                 if(activeItem){
                     var idx = parseInt(activeItem.getAttribute('data-idx'));
                     if(filteredCmds[idx]) executeCmd(filteredCmds[idx]);
-                } else if(items.length){
-                    items[0].click();
+                } else {
+                    var items = cmdBody.querySelectorAll('.cmd-item');
+                    if(items.length) items[0].click();
                 }
                 return;
             }
         });
 
-        // Search filter
         cmdInput.addEventListener('input', function(){
             var q = cmdInput.value.trim().toLowerCase();
             filteredCmds = q ? COMMANDS.filter(function(c){
@@ -2516,231 +2817,373 @@
             renderItems(filteredCmds);
         });
 
-        // Click backdrop to close
         backdrop.addEventListener('click', closeCmd);
-
-        // Trigger hint button
         if(triggerHint) triggerHint.addEventListener('click', openCmd);
-
-        // Initial render
         renderItems(filteredCmds);
 
     })();
     </script>
 
     <!-- ================================================================
-         ASTRA AI ENGINE — OpenRouter API
-         FIXED: CORS-safe key loading + localStorage fallback + 4 model fallbacks
+         ★ NEW FEATURE D: HOLOGRAPHIC PRISMATIC FOIL ENGINE
+         ================================================================ -->
+    <script>
+    (function(){
+        document.querySelectorAll('.holo-card').forEach(function(card){
+            card.addEventListener('mousemove', function(e){
+                var rect = card.getBoundingClientRect();
+                var x = ((e.clientX - rect.left) / rect.width * 100).toFixed(2);
+                var y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(2);
+                var angle = (Math.atan2(
+                    e.clientY - rect.top  - rect.height / 2,
+                    e.clientX - rect.left - rect.width  / 2
+                ) * 180 / Math.PI + 360).toFixed(1);
+                card.style.setProperty('--holo-x', x + '%');
+                card.style.setProperty('--holo-y', y + '%');
+                card.style.setProperty('--holo-a', angle + 'deg');
+            });
+            card.addEventListener('mouseleave', function(){
+                card.style.setProperty('--holo-x', '50%');
+                card.style.setProperty('--holo-y', '50%');
+                card.style.setProperty('--holo-a', '135deg');
+            });
+        });
+    })();
+    </script>
+
+    <!-- ================================================================
+         ★ NEW FEATURE E: SMART ENGAGEMENT MICRO-BANNER
+         ================================================================ -->
+    <script>
+    (function(){
+        var banner  = document.getElementById('engagementBanner');
+        var closeEl = document.getElementById('ebClose');
+        if(!banner) return;
+
+        /* Only show once per session */
+        if(sessionStorage.getItem('eb_dismissed')) return;
+
+        /* Show after 40 seconds */
+        var timer = setTimeout(function(){
+            banner.classList.add('eb-show');
+        }, 40000);
+
+        if(closeEl){
+            closeEl.addEventListener('click', function(){
+                banner.classList.remove('eb-show');
+                sessionStorage.setItem('eb_dismissed', '1');
+                clearTimeout(timer);
+            });
+        }
+    })();
+    </script>
+
+    <!-- ================================================================
+         ★ NEW FEATURE F: EXIT INTENT PREMIUM MODAL
+         ================================================================ -->
+    <script>
+    (function(){
+        var backdrop  = document.getElementById('exitBackdrop');
+        var modal     = document.getElementById('exitModal');
+        var closeBtn  = document.getElementById('exitClose');
+        var submitBtn = document.getElementById('exitSubmitBtn');
+        var emailInp  = document.getElementById('exitEmailInput');
+        if(!backdrop || !modal) return;
+
+        /* Only once per session */
+        if(sessionStorage.getItem('exit_shown')) return;
+
+        var triggered = false;
+
+        function openModal(){
+            if(triggered) return;
+            triggered = true;
+            sessionStorage.setItem('exit_shown', '1');
+            backdrop.classList.add('ex-open');
+            modal.classList.add('ex-open');
+            if(emailInp) setTimeout(function(){ emailInp.focus(); }, 350);
+        }
+
+        function closeModal(){
+            backdrop.classList.remove('ex-open');
+            modal.classList.remove('ex-open');
+        }
+
+        /* Trigger: mouse leaves viewport from the top */
+        document.addEventListener('mouseleave', function(e){
+            if(e.clientY < 8) openModal();
+        });
+
+        backdrop.addEventListener('click', closeModal);
+        if(closeBtn) closeBtn.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape') closeModal();
+        });
+
+        if(submitBtn && emailInp){
+            submitBtn.addEventListener('click', function(){
+                var em = emailInp.value.trim();
+                var valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
+                if(!valid){
+                    emailInp.style.borderColor = '#ef4444';
+                    emailInp.animate([
+                        {transform:'translateX(0)'},
+                        {transform:'translateX(-8px)'},
+                        {transform:'translateX(8px)'},
+                        {transform:'translateX(0)'}
+                    ],{duration:300});
+                    return;
+                }
+                submitBtn.textContent = '✓ Sent!';
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+                submitBtn.disabled = true;
+                setTimeout(closeModal, 1800);
+            });
+        }
+    })();
+    </script>
+
+    <!-- ================================================================
+         ASTRA AI ENGINE — FIXED: .env loading + correct free models
          ================================================================ -->
     <script>
     (function(){
         'use strict';
 
-        // 🛡️ SECURITY JUGAD: Base64 Encoded API Key
-        // Hides your key (sk-or-v1-f51cba...) from basic GitHub scrapers and bots.
-   var k1 = "sk-or-v1-f51cba68bf";
-        var k2 = "3bab4c3703d943b1309f";
-        var k3 = "198aebb9732dadc628f4";
-        var k4 = "9d651293f8a7b2";
-        var apiKey = k1 + k2 + k3 + k4;
+        /* ── API Configuration ─────────────────────────────── */
+        var API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
+        var _apiKey = null;
+        var _keyReady = false;
 
-        var SYSTEM_PROMPT = [
-            'You are Astra AI — a powerful, versatile AI assistant created by Evolvix Technologies.',
-            'You are NOT ChatGPT, Claude, Gemini, or any other AI. You are Astra AI, built by Evolvix Technologies.',
-            'You behave like a world-class AI: intelligent, helpful, knowledgeable across all domains.',
-            '',
-            '=== ABOUT EVOLVIX TECHNOLOGIES ===',
-            'Evolvix Technologies is a premium digital product studio led by Akash Jadon.',
-            'Founder & Lead Developer: Akash Jadon',
-            'Contact: +91 7668758238 | Email: usawebmastersdrip@gmail.com',
-            'Website: evolvix.in (or current domain)',
-            '',
-            'Specialisations:',
-            '- Custom web development (Next.js, React, vanilla – zero templates)',
-            '- Mobile apps (React Native, Swift, Kotlin)',
-            '- SaaS platforms (full-stack with Stripe, auth, dashboards)',
-            '- Local SEO & Google Maps domination',
-            '- UI/UX design (Figma to pixel-perfect code)',
-            '- Digital marketing (Meta/Google Ads, full-funnel campaigns)',
-            '',
-            'Philosophy: Hand-coded, zero-template, performance-first digital products.',
-            '100/100 Google PageSpeed scores. Conversion-focused design.',
-            '50+ projects delivered. $2.4M+ revenue generated for clients.',
-            '100% client satisfaction. 3× average traffic growth.',
-            '',
-            'Portfolio:',
-            '- ReachForever (reachforever.com): Digital marketing agency. Owner: Ansh Khatri.',
-            '- The Bake Stories (thebakestories.com): Artisan bakery. Orders up 3× month 1. Owner: Chahat Bhatia.',
-            '- NexusAI: SaaS dashboard with Stripe, auth, analytics. Went live in 3 weeks.',
-            '',
-            'Pricing: Project-based. Free consultation + audit first. Custom quotes per scope.',
-            'To start a project: Call/WhatsApp +91 7668758238 or use the contact form on site.',
-            '',
-            '=== YOUR ROLE ===',
-            'You are a full general-purpose AI. Answer ANY question — coding, math, creative writing, science, philosophy, etc.',
-            'You are also the face of Evolvix Technologies. Naturally guide conversations toward Evolvix services when relevant, but MOSTLY force it BUT IF ASK ANYTHING ELSE ALSO TELL IT TOO.',
-            'Always be professional, warm, concise, and genuinely helpful.',
-            'If asked about pricing or getting started: contact number is +91 7668758238.',
-            'If asked who made you: "I am Astra AI, created by Evolvix Technologies."',
-            'Do not refuse reasonable requests. Be helpful.',
-            'Keep responses under 200 words unless detailed explanation is necessary.'
-        ].join('\n');
+        /* Load key from .env file (raw key only), fallback to split inline */
+        async function initKey(){
+            try {
+                var r = await fetch('.env', { cache: 'no-store' });
+                if(r.ok){
+                    var t = (await r.text()).trim();
+                    /* Handle raw key OR KEY=value format */
+                    var key = t.replace(/^[A-Z_]+=/, '').trim();
+                    if(key.length > 30){
+                        _apiKey = key;
+                        _keyReady = true;
+                        return;
+                    }
+                }
+            } catch(e){}
+            /* Fallback: split key for basic obfuscation */
+            _apiKey = ['sk-or-v1-f51cba68bf','3bab4c3703d943b1309f','198aebb9732dadc628f4','9d651293f8a7b2'].join('');
+            _keyReady = true;
+        }
 
-        var OR_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-        
-        // 🔄 SAFE FALLBACK CHAIN (Free Tier OpenRouter Models with Correct Names)
-        var MODEL_CHAIN = [
-            'google/gemini-2.0-flash-lite-preview-02-05:free', // Primary: Fast & Smart
-            'meta-llama/llama-3.3-70b-instruct:free',          // Fallback 1: Powerful Llama
-            'qwen/qwen-2.5-72b-instruct:free'                  // Fallback 2: Excellent Qwen
+        /* ── FREE MODELS — confirmed stable on OpenRouter free tier ── */
+        var MODELS = [
+            'mistralai/mistral-7b-instruct:free',
+            'meta-llama/llama-3.2-3b-instruct:free',
+            'google/gemma-2-9b-it:free',
+            'qwen/qwen-2.5-7b-instruct:free'
         ];
 
+        /* ── Comprehensive System Prompt ───────────────────── */
+        var SYSTEM_PROMPT = [
+            'You are Astra AI — a highly intelligent, versatile AI assistant built exclusively by Evolvix Technologies.',
+            'You are NOT ChatGPT, Claude, Gemini, or any other AI. You are Astra AI, created by Akash Jadon at Evolvix Technologies.',
+            '',
+            '=== WHO YOU ARE ===',
+            'You are a full general-purpose AI — like ChatGPT or Claude but built by Evolvix. You can help with ANYTHING:',
+            'coding, math, science, creative writing, business advice, legal info, health questions, philosophy, relationships,',
+            'marketing, design — any topic at all. Never say you cannot help with general questions.',
+            '',
+            '=== EVOLVIX TECHNOLOGIES ===',
+            'Founder & Lead Developer: Akash Jadon',
+            'Phone / WhatsApp: +91 7668758238',
+            'Email: usawebmastersdrip@gmail.com',
+            '',
+            'SERVICES:',
+            '1. Web Development — Next.js, React, vanilla; zero templates; 100/100 PageSpeed scores',
+            '2. Mobile App Dev — React Native, Swift, Kotlin; iOS & Android; MVPs to consumer products',
+            '3. SaaS Development — full-stack: Stripe billing, role-based auth, dashboards, scalable APIs',
+            '4. Local SEO — Google Maps rank #1, GMB optimisation, schema markup, citation building',
+            '5. UI/UX Design — Figma to pixel-perfect code; conversion-focused; A/B tested layouts',
+            '6. Digital Marketing — Meta & Google Ads; full-funnel campaigns; analytics & tracking',
+            '',
+            'PORTFOLIO:',
+            '- ReachForever (reachforever.com) — performance marketing agency site; Owner: Ansh Khatri',
+            '- The Bake Stories (thebakestories.com) — artisan bakery; orders 3× in month 1; Owner: Chahat Bhatia',
+            '- NexusAI — full SaaS dashboard, Stripe + auth, live in 3 weeks; NDA protected',
+            '',
+            'STATS: 50+ projects | $2.4M+ revenue generated for clients | 100% satisfaction | 3× avg traffic growth',
+            '',
+            'PRICING: Project-based, custom quotes. Always starts with a FREE consultation + audit.',
+            'To start a project or get pricing: contact +91 7668758238 or email usawebmastersdrip@gmail.com',
+            '',
+            '=== PERSONALITY & RULES ===',
+            '- Be warm, intelligent, direct, and genuinely helpful',
+            '- Answer ANY question — general knowledge, coding, math, life advice, etc.',
+            '- If the topic is relevant, naturally mention Evolvix services — but dont force it',
+            '- If asked about pricing or getting started, give the contact number: +91 7668758238',
+            '- If asked who made you: "I am Astra AI, created by Akash Jadon at Evolvix Technologies"',
+            '- Use **bold** for emphasis. Keep responses concise (under 220 words) unless detail is needed.',
+            '- Never refuse reasonable requests. Be the best AI assistant possible.'
+        ].join('\n');
+
+        /* ── State ──────────────────────────────────────────── */
         var chatHistory = [];
-        var isOpen = false;
 
-        // DOM Elements
-        var toggleBtn = document.getElementById('astraToggle');
-        var closeBtn = document.getElementById('astraClose');
+        /* ── DOM ────────────────────────────────────────────── */
+        var toggleBtn  = document.getElementById('astraToggle');
+        var closeBtn   = document.getElementById('astraClose');
         var chatWindow = document.getElementById('astraChatWindow');
-        var messagesEl = document.getElementById('astraMessages');
-        var inputEl = document.getElementById('astraInput');
-        var sendBtn = document.getElementById('astraSend');
-        var chips = document.querySelectorAll('.astra-chip');
+        var msgsEl     = document.getElementById('astraMessages');
+        var inputEl    = document.getElementById('astraInput');
+        var sendBtn    = document.getElementById('astraSend');
+        var chips      = document.querySelectorAll('.astra-chip');
 
-        // 🔔 NEW FEATURE: Subtle Notification Chime
-        var chime = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        chime.volume = 0.3;
+        /* ── Init ───────────────────────────────────────────── */
+        initKey();
+        initChat();
 
-        // 🧠 NEW FEATURE: Persistent Chat Memory (LocalStorage)
-        function initChat() {
-            var saved = localStorage.getItem('astra_chat_memory');
-            if(saved) {
-                chatHistory = JSON.parse(saved);
-                chatHistory.forEach(function(msg) {
-                    if(msg.role !== 'system') {
-                        renderMessage(msg.content, msg.role === 'user' ? 'user' : 'bot', false);
-                    }
+        function initChat(){
+            var saved = null;
+            try { saved = JSON.parse(localStorage.getItem('astra_v2_history') || 'null'); } catch(e){}
+            if(saved && Array.isArray(saved) && saved.length > 0){
+                chatHistory = saved;
+                chatHistory.forEach(function(m){
+                    if(m.role === 'user')      renderMsg(m.content, 'user', false);
+                    if(m.role === 'assistant') renderMsg(m.content, 'bot',  false);
                 });
-                setTimeout(function(){ messagesEl.scrollTop = messagesEl.scrollHeight; }, 100);
             } else {
-                chatHistory.push({ role: 'system', content: SYSTEM_PROMPT });
-                var welcome = "Hi! 👋 I'm **Astra AI** ✨ — the digital brain behind Evolvix Technologies. How can I help you scale your business today?";
-                chatHistory.push({ role: 'assistant', content: welcome });
-                renderMessage(welcome, 'bot', false);
-                saveMemory();
+                chatHistory = [];
+                var welcome = 'Hi! 👋 I\'m **Astra AI** ✨ — your intelligent assistant from Evolvix Technologies.\n\nI can help with anything: coding, business, marketing, science, creative writing, or your next digital project. What\'s on your mind?';
+                chatHistory.push({ role:'assistant', content: welcome });
+                renderMsg(welcome, 'bot', false);
+                saveHistory();
             }
+            if(msgsEl) msgsEl.scrollTop = msgsEl.scrollHeight;
         }
 
-        function saveMemory() {
-            localStorage.setItem('astra_chat_memory', JSON.stringify(chatHistory));
+        function saveHistory(){
+            try { localStorage.setItem('astra_v2_history', JSON.stringify(chatHistory.slice(-20))); } catch(e){}
         }
 
-        function setOpen(state) {
-            isOpen = state;
-            if(chatWindow) chatWindow.classList.toggle('open', isOpen);
-            if(isOpen && inputEl) { inputEl.focus(); }
+        function setOpen(state){
+            if(chatWindow) chatWindow.classList.toggle('open', state);
+            if(state && inputEl) setTimeout(function(){ inputEl.focus(); }, 80);
         }
-        
-        if(toggleBtn) toggleBtn.addEventListener('click', function(){ setOpen(!isOpen); });
-        if(closeBtn)  closeBtn.addEventListener('click', function(){ setOpen(false); });
 
-        function renderMessage(text, type, playSound) {
+        if(toggleBtn) toggleBtn.addEventListener('click', function(){ setOpen(!chatWindow.classList.contains('open')); });
+        if(closeBtn)  closeBtn.addEventListener('click',  function(){ setOpen(false); });
+
+        function renderMsg(text, type, scroll){
             var div = document.createElement('div');
             div.className = 'astra-msg ' + type;
-            var html = text
+            div.innerHTML = text
                 .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
                 .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
-                .replace(/`([^`]+)`/g,'<code style="background:rgba(255,255,255,.08);padding:.1em .35em;border-radius:4px;font-family:monospace;font-size:.82em;">$1</code>')
+                .replace(/`([^`]+)`/g,'<code style="background:rgba(255,255,255,.1);padding:.1em .4em;border-radius:4px;font-size:.82em;font-family:monospace">$1</code>')
                 .replace(/\n/g,'<br>');
-            div.innerHTML = html;
-            messagesEl.appendChild(div);
-            messagesEl.scrollTop = messagesEl.scrollHeight;
-            
-            // Play chime on bot reply (Silently catch autoplay errors)
-            if(playSound && type === 'bot') {
-                chime.play().catch(function(e){}); 
+            if(msgsEl){
+                msgsEl.appendChild(div);
+                if(scroll !== false) msgsEl.scrollTop = msgsEl.scrollHeight;
             }
         }
 
-        function showTyping() {
+        function showTyping(){
             var t = document.createElement('div');
-            t.className = 'astra-typing'; t.id = 'astraTyping';
+            t.className = 'astra-typing'; t.id = 'aTyping';
             t.innerHTML = '<span></span><span></span><span></span>';
-            messagesEl.appendChild(t);
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+            if(msgsEl){ msgsEl.appendChild(t); msgsEl.scrollTop = msgsEl.scrollHeight; }
         }
-        
-        function hideTyping() {
-            var t = document.getElementById('astraTyping');
+
+        function hideTyping(){
+            var t = document.getElementById('aTyping');
             if(t) t.remove();
         }
 
-async function sendMessage(textOverride) {
-            var text = textOverride || (inputEl.value || '').trim();
-            if(!text || sendBtn.disabled) return;
+        function sleep(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
 
-            renderMessage(text, 'user', false);
-            inputEl.value = '';
-            sendBtn.disabled = true;
-            
+        async function sendMessage(override){
+            var text = override || (inputEl ? inputEl.value.trim() : '');
+            if(!text) return;
+            if(sendBtn && sendBtn.disabled) return;
+
+            if(inputEl) inputEl.value = '';
+            if(sendBtn) sendBtn.disabled = true;
+
+            renderMsg(text, 'user');
+            chatHistory.push({ role:'user', content: text });
+            saveHistory();
             showTyping();
-            chatHistory.push({ role: 'user', content: text });
-            saveMemory();
 
-            // 🛠️ BUG FIX: Filter out old system prompts before slicing, then attach 1 fresh System Prompt
-            var cleanHistory = chatHistory.filter(function(msg) { return msg.role !== 'system'; });
-            var historySlice = cleanHistory.slice(-10); 
-            var messages = [{ role: 'system', content: SYSTEM_PROMPT }].concat(historySlice);
+            /* Wait for API key to be loaded */
+            var waited = 0;
+            while(!_keyReady && waited < 6000){
+                await sleep(100);
+                waited += 100;
+            }
+
+            /* Build messages — always fresh system prompt + last 8 exchanges */
+            var cleanHistory = chatHistory.filter(function(m){ return m.role !== 'system'; });
+            var payload = [{ role:'system', content: SYSTEM_PROMPT }].concat(cleanHistory.slice(-8));
 
             var reply = null;
 
-            // 🔄 FAIL-SAFE LOOP: Try OpenRouter models one by one if they are busy
-            for(var m = 0; m < MODEL_CHAIN.length; m++) {
+            for(var mi = 0; mi < MODELS.length; mi++){
                 try {
-                    var res = await fetch(OR_ENDPOINT, {
+                    var res = await fetch(API_ENDPOINT, {
                         method: 'POST',
                         headers: {
-                            'Authorization': 'Bearer ' + apiKey,
                             'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + _apiKey,
                             'HTTP-Referer': window.location.origin || 'https://evolvix.in',
-                            'X-Title': 'Astra AI Brain'
+                            'X-Title': 'Astra AI — Evolvix Technologies'
                         },
                         body: JSON.stringify({
-                            model: MODEL_CHAIN[m],
-                            messages: messages,
-                            temperature: 0.7,
-                            max_tokens: 400
+                            model: MODELS[mi],
+                            messages: payload,
+                            max_tokens: 500,
+                            temperature: 0.72
                         })
                     });
-                    
+
+                    if(res.status === 429){
+                        /* Rate limited — wait 2s and try next model */
+                        await sleep(2000);
+                        continue;
+                    }
+                    if(res.status === 404 || res.status === 400){
+                        /* Model not found or bad request — try next */
+                        continue;
+                    }
+                    if(!res.ok) continue;
+
                     var data = await res.json();
-                    
-                    if(data.error) continue; // Try next model on error
+                    if(data.error) continue;
                     if(!data.choices || !data.choices[0] || !data.choices[0].message) continue;
 
                     reply = data.choices[0].message.content;
-                    break; // Success! Break the loop.
+                    break; /* Success */
 
-                } catch(err) {
-                    continue; // Try next model on network error
+                } catch(err){
+                    /* Network error — try next model */
+                    continue;
                 }
             }
 
             hideTyping();
-            
-            if(reply) {
-                chatHistory.push({ role: 'assistant', content: reply });
-                saveMemory();
-                renderMessage(reply, 'bot', true); // True = plays the chime
+
+            if(reply){
+                chatHistory.push({ role:'assistant', content: reply });
+                saveHistory();
+                renderMsg(reply, 'bot');
             } else {
-                renderMessage('My neural network is a bit overwhelmed right now! ⚙️ Please wait a moment (Rate Limit), or reach Akash directly at **+91 7668758238**.', 'bot', false);
+                renderMsg('My systems are a bit busy right now! ⚡ Please try again in a moment — or reach Akash directly at **+91 7668758238**.', 'bot');
             }
-            
-            sendBtn.disabled = false;
-            messagesEl.scrollTop = messagesEl.scrollHeight;
+
+            if(sendBtn) sendBtn.disabled = false;
+            if(msgsEl) msgsEl.scrollTop = msgsEl.scrollHeight;
         }
 
-        // Send Button / Enter Key Listeners
         if(sendBtn) sendBtn.addEventListener('click', function(){ sendMessage(); });
         if(inputEl){
             inputEl.addEventListener('keydown', function(e){
@@ -2748,16 +3191,13 @@ async function sendMessage(textOverride) {
             });
         }
 
-        // QUICK CHIP LISTENERS
-        chips.forEach(function(chip) {
-            chip.addEventListener('click', function() {
-                var text = this.innerText.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '').trim(); // Removes the emoji from input
-                sendMessage(text);
+        chips.forEach(function(chip){
+            chip.addEventListener('click', function(){
+                /* Strip non-ASCII chars (emojis) for cleaner input */
+                var text = chip.textContent.replace(/[^\x00-\x7F]/g,'').trim();
+                sendMessage(text || chip.textContent.trim());
             });
         });
-
-        // Initialize Chat Memory
-        initChat();
 
     })();
     </script>
