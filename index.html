@@ -2675,7 +2675,7 @@
             if(t) t.remove();
         }
 
-        async function sendMessage(textOverride) {
+async function sendMessage(textOverride) {
             var text = textOverride || (inputEl.value || '').trim();
             if(!text || sendBtn.disabled) return;
 
@@ -2687,8 +2687,9 @@
             chatHistory.push({ role: 'user', content: text });
             saveMemory();
 
-            // Send only the last 10 messages to keep the payload fast and within limits
-            var historySlice = chatHistory.slice(-10); 
+            // 🛠️ BUG FIX: Filter out old system prompts before slicing, then attach 1 fresh System Prompt
+            var cleanHistory = chatHistory.filter(function(msg) { return msg.role !== 'system'; });
+            var historySlice = cleanHistory.slice(-10); 
             var messages = [{ role: 'system', content: SYSTEM_PROMPT }].concat(historySlice);
 
             var reply = null;
@@ -2732,7 +2733,7 @@
                 saveMemory();
                 renderMessage(reply, 'bot', true); // True = plays the chime
             } else {
-                renderMessage('My neural network is a bit overwhelmed right now! ⚙️ Please try again in a moment, or reach Akash directly at **+91 7668758238**.', 'bot', false);
+                renderMessage('My neural network is a bit overwhelmed right now! ⚙️ Please wait a moment (Rate Limit), or reach Akash directly at **+91 7668758238**.', 'bot', false);
             }
             
             sendBtn.disabled = false;
