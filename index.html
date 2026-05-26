@@ -21,7 +21,7 @@
       "name": "Evolvix Technologies",
       "description": "High-performance websites, mobile apps, and SaaS platforms.",
       "url": "https://evolvix.in",
-      "logo": "https://evolvix.in/assets/evolvix.png",
+      "logo": "https://evolvix.in/assets/evolvix.webp",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Global",
@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <!-- Lenis removed for PageSpeed -->
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -888,7 +888,10 @@
             flex:1; overflow-y:auto; padding:1.25rem;
             display:flex; flex-direction:column; gap:.875rem;
             scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.08) transparent;
-            overscroll-behavior: contain;
+            overscroll-behavior: none;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+            isolation: isolate;
         }
         .astra-messages::-webkit-scrollbar { width:4px; }
         .astra-messages::-webkit-scrollbar-thumb { background:rgba(255,255,255,.08); border-radius:4px; }
@@ -1586,7 +1589,7 @@
     <header class="header" id="siteHeader">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/evolvix.png" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
+                <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
                 <svg class="logo-fallback-svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -1658,14 +1661,12 @@
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No credit card required. 100% Free Audit.
                     </div>
 
-                    <div style="margin-top:3rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-                        <div style="display:flex;">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-                                 alt="Client" style="width:38px;height:38px;border-radius:50%;border:2px solid #0f172a;object-fit:cover;margin-left:-8px;z-index:3">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-                                 alt="Client" style="width:38px;height:38px;border-radius:50%;border:2px solid #0f172a;object-fit:cover;margin-left:-8px;z-index:2">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
-                                 alt="Client" style="width:38px;height:38px;border-radius:50%;border:2px solid #0f172a;object-fit:cover;margin-left:-8px;z-index:1">
+                    <div style="margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+                        <div style="display:flex;gap:4px;">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(103,232,249,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="700" font-family="var(--font-display)">R</text></svg>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(139,92,246,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#8b5cf6" font-size="12" font-weight="700" font-family="var(--font-display)">B</text></svg>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(16,185,129,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#10b981" font-size="12" font-weight="700" font-family="var(--font-display)">N</text></svg>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(251,191,36,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700" font-family="var(--font-display)">S</text></svg>
                         </div>
                         <div style="font-size:.9rem;color:rgba(255,255,255,.6);">
                             Trusted by <strong style="color:#fff;">50+ Founders</strong>
@@ -1680,8 +1681,8 @@
                             <div class="macbook-lid">
                                 <div class="macbook-screen-bezel">
                                     <div class="macbook-notch-top"></div>
-                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=85"
-                                         alt="Evolvix Dashboard" class="macbook-display" fetchpriority="high" width="800" height="500">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=75"
+                                         alt="Evolvix Technologies - Premium SaaS Dashboard" class="macbook-display" fetchpriority="high" width="800" height="500" loading="eager">
                                     <div class="screen-overlay">
                                         <div class="screen-stat-card ssc-1">
                                             <span class="ssc-dot green"></span>
@@ -1875,8 +1876,8 @@
                 </div>
                 <div class="h-scroll-track" id="hScrollTrack">
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"
-                             alt="ReachForever" class="portfolio-card-img">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=70"
+                             alt="ReachForever Digital Marketing Agency Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Digital Marketing Agency</span>
                             <h3>ReachForever</h3>
@@ -1887,8 +1888,8 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80"
-                             alt="The Bake Stories" class="portfolio-card-img">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=70"
+                             alt="The Bake Stories Artisan Bakery Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Food &amp; Hospitality</span>
                             <h3>The Bake Stories</h3>
@@ -1899,8 +1900,8 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80"
-                             alt="NexusAI SaaS" class="portfolio-card-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=70"
+                             alt="NexusAI SaaS Platform Dashboard" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">SaaS Platform</span>
                             <h3>NexusAI</h3>
@@ -2117,7 +2118,7 @@
         <div class="container footer-grid">
             <div>
                 <a href="index.html" style="display:inline-block;">
-                    <img src="assets/evolvix.png" alt="Evolvix Technologies" class="footer-evolvix-logo" loading="lazy" width="140" height="60"
+                    <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="footer-evolvix-logo" loading="lazy" width="140" height="60"
                          onerror="this.outerHTML='<span style=&quot;font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff;display:block;margin-bottom:1.5rem;&quot;>Evolvix</span>'">
                 </a>
                 <p style="font-size:.92rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5);line-height:1.7;">
@@ -2176,7 +2177,7 @@
          ================================================================ -->
     <button class="astra-toggle-btn magnetic-el" id="astraToggle" aria-label="Chat with Astra AI">
         <div class="astra-tooltip">Hey! I'm Astra AI ✨</div>
-        <img src="assets/evolvix.png" alt="Astra AI" width="34" height="34" loading="lazy"
+        <img src="assets/evolvix.webp" alt="Astra AI" width="34" height="34" loading="lazy"
              onerror="this.style.display='none';document.getElementById('astraFallback').style.display='flex'">
         <span id="astraFallback" class="astra-icon-fallback" style="display:none;">✦</span>
     </button>
@@ -2184,7 +2185,7 @@
     <div class="astra-chat-window" id="astraChatWindow" role="dialog" aria-label="Astra AI Chat">
         <div class="astra-chat-header">
             <div class="astra-avatar-ring">
-                <img src="assets/evolvix.png" alt="Astra" width="40" height="40" loading="lazy"
+                <img src="assets/evolvix.webp" alt="Astra" width="40" height="40" loading="lazy"
                      onerror="this.outerHTML='<span style=\'font-size:1.3rem;color:#fff;\'>✦</span>'">
             </div>
             <div class="astra-header-info">
@@ -2217,34 +2218,7 @@
          ================================================================ -->
     <script src="script.js"></script>
 
-    <!-- ================================================================
-         BUG FIX: PARTICLE OVERRIDES — Reduced opacity & count
-         ================================================================ -->
-    <script>
-    if (typeof Particle !== 'undefined' && typeof Vector2 !== 'undefined') {
-        Particle.prototype.behaviors = function(mouse) {
-            // Mouse tracking disabled for minimal distraction
-        };
-    }
-
-    if (typeof PhysicsWorld !== 'undefined') {
-        var _OrigPhysicsWorld = PhysicsWorld;
-        PhysicsWorld = class extends _OrigPhysicsWorld {
-            constructor() {
-                super();
-                /* REDUCED: 4 particles max, extreme subtle */
-                this.particleCount = window.innerWidth < 768 ? 2 : 4;
-                this.particles = [];
-                this.initParticles();
-                this.canvas.style.opacity = '0.04';
-            }
-            render() {
-                this.canvas.style.opacity = '0.04';
-                super.render();
-            }
-        };
-    }
-    </script>
+    <!-- Particle overrides removed for performance -->
 
     <!-- ================================================================
          MAIN FEATURES SCRIPT
@@ -2254,27 +2228,13 @@
     (function(){
         'use strict';
 
-        /* ─── Lenis Smooth Scroll ─── */
-        var lenis;
-        if (typeof Lenis !== 'undefined') {
-            lenis = new Lenis({
-                duration: 1.3,
-                easing: function(t){ return Math.min(1,1.001-Math.pow(2,-10*t)); },
-                smoothTouch: false
-            });
-            (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(0);
-            lenis.on('scroll', function(e){
-                var bar = document.getElementById('scrollProgress');
-                if(bar) bar.style.width = ((e.scroll/e.limit)*100)+'%';
-            });
-        } else {
-            window.addEventListener('scroll', function(){
-                var bar = document.getElementById('scrollProgress');
-                if(!bar) return;
-                var max = document.body.scrollHeight - window.innerHeight;
-                if(max>0) bar.style.width=((window.scrollY/max)*100)+'%';
-            },{passive:true});
-        }
+        /* ─── Native Scroll Progress ─── */
+        window.addEventListener('scroll', function(){
+            var bar = document.getElementById('scrollProgress');
+            if(!bar) return;
+            var max = document.body.scrollHeight - window.innerHeight;
+            if(max>0) bar.style.width=((window.scrollY/max)*100)+'%';
+        },{passive:true});
 
         /* ─── Header scroll state ─── */
         var siteHeader = document.getElementById('siteHeader');
@@ -2572,8 +2532,7 @@
                 btn.addEventListener('click',function(){
                     var target=document.getElementById(s.id);
                     if(!target) return;
-                    if(typeof lenis !== 'undefined' && lenis) lenis.scrollTo(target,{offset:-80});
-                    else target.scrollIntoView({behavior:'smooth'});
+                    target.scrollIntoView({behavior:'smooth'});
                 });
                 sidebar.appendChild(btn);
             });
@@ -2944,15 +2903,16 @@
             modal.classList.remove('ex-open');
         }
 
-        /* Trigger: Desktop Mouseleave + Mobile scroll velocity */
-        document.addEventListener('mouseleave', function(e){
-            if(e.clientY < 8) openModal();
+        /* Trigger: Back button press (History API) */
+        history.pushState({exitPopup: true}, '', location.href);
+        window.addEventListener('popstate', function(e){
+            openModal();
+            history.pushState({exitPopup: true}, '', location.href);
         });
-        var lastScrollY = window.scrollY;
-        window.addEventListener('scroll', function() {
-            if(lastScrollY - window.scrollY > 150) openModal(); // Rapid scroll up
-            lastScrollY = window.scrollY;
-        }, {passive:true});
+        /* Desktop: Mouse leaves top of viewport */
+        document.addEventListener('mouseleave', function(e){
+            if(e.clientY < 5) openModal();
+        });
 
         backdrop.addEventListener('click', closeModal);
         if(closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -3396,16 +3356,20 @@
         }
 
         /* --- 2. Scroll-Spy Minimap --- */
-        var sections = document.querySelectorAll('section[id], header[id], footer[id]');
         var minimap = document.getElementById('minimap');
         var dots = [];
+        if(minimap) minimap.innerHTML = ''; /* Clear any duplicates */
         
-        var majorIds = ['hero', 'services', 'work', 'pricing', 'studio', 'contact', 'footer'];
-        sections.forEach(function(sec) {
-            if(sec.offsetHeight < 100 || !majorIds.includes(sec.id)) return;
+        var majorIds = ['hero', 'services', 'work', 'pricing', 'contact'];
+        var seen = {};
+        majorIds.forEach(function(id) {
+            if(seen[id]) return;
+            var sec = document.getElementById(id);
+            if(!sec || sec.offsetHeight < 50) return;
+            seen[id] = true;
             var dot = document.createElement('div');
             dot.className = 'minimap-dot';
-            dot.setAttribute('data-tooltip', sec.id.charAt(0).toUpperCase() + sec.id.slice(1));
+            dot.setAttribute('data-tooltip', id.charAt(0).toUpperCase() + id.slice(1));
             dot.addEventListener('click', function() { sec.scrollIntoView({behavior: 'smooth'}); });
             if(minimap) minimap.appendChild(dot);
             dots.push({ el: dot, sec: sec });
