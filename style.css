@@ -102,7 +102,6 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
-    height: 100%;
 }
 
 body {
@@ -357,7 +356,11 @@ p {
     backdrop-filter: blur(10px);
     /* JS will rotate this */
     transform-style: preserve-3d;
-    transition: transform 0.1s linear; 
+    transition: transform 0.1s linear;
+}
+
+@keyframes pulse-cta {
+    to { box-shadow: 0 0 0 15px rgba(103, 232, 249, 0); }
 }
 
 /* Floating Elements */
@@ -398,7 +401,9 @@ p {
     border-radius: var(--radius-full);
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.1s linear; /* Fast for physics */
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+    box-shadow: 0 0 0 0 rgba(103, 232, 249, 0);
+    animation: pulse-cta 2s infinite cubic-bezier(0.66, 0, 0, 1);
     overflow: hidden;
     z-index: 1;
 }

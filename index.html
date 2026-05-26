@@ -8,10 +8,38 @@
     <meta name="description" content="Evolvix Technologies builds high-performance websites, mobile apps, and SaaS platforms. Custom-coded digital products for modern businesses.">
     <meta name="theme-color" content="#020617">
 
+    <meta property="og:title" content="Evolvix Technologies | Elite Digital Product Studio">
+    <meta property="og:description" content="Stop losing customers to slow, ugly digital products. We build high-performance websites, mobile apps, and SaaS platforms for brands that refuse to settle for average.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://evolvix.in">
+    <meta property="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://evolvix.in">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Evolvix Technologies",
+      "description": "High-performance websites, mobile apps, and SaaS platforms.",
+      "url": "https://evolvix.in",
+      "logo": "https://evolvix.in/assets/evolvix.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Global",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-7668758238",
+        "email": "evolvixtechnology@gmail.com",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -1558,7 +1586,7 @@
     <header class="header" id="siteHeader">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/evolvix.png" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high">
+                <img src="assets/evolvix.png" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
                 <svg class="logo-fallback-svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -1625,6 +1653,9 @@
                     <div class="flex gap-1" style="flex-wrap:wrap;">
                         <a href="contact.html" class="btn btn-primary btn-cta-glow">Start Your Project <span class="btn-arrow">→</span></a>
                         <a href="#audit" class="btn btn-secondary">Free Website Audit</a>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> No credit card required. 100% Free Audit.
                     </div>
 
                     <div style="margin-top:3rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
@@ -2032,8 +2063,8 @@
                                 <button type="submit" id="audit-submit" class="btn btn-primary btn-cta-glow w-full">
                                     Analyse My Website →
                                 </button>
-                                <p style="font-size:.78rem;margin-top:1rem;text-align:center;color:rgba(255,255,255,.35);">
-                                    You'll receive your audit report within 24 hours.
+                                <p style="font-size:.85rem;margin-top:1rem;text-align:center;color:rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;gap:0.4rem;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> You'll receive your comprehensive audit report within 24 hours. No obligation.
                                 </p>
                             </form>
                         </div>
@@ -2184,7 +2215,7 @@
     <!-- ================================================================
          BASE SCRIPTS
          ================================================================ -->
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 
     <!-- ================================================================
          BUG FIX: PARTICLE OVERRIDES — Reduced opacity & count
@@ -2192,13 +2223,7 @@
     <script>
     if (typeof Particle !== 'undefined' && typeof Vector2 !== 'undefined') {
         Particle.prototype.behaviors = function(mouse) {
-            var dx = this.pos.x - mouse.x, dy = this.pos.y - mouse.y;
-            var distSq = dx*dx + dy*dy, threshold = 100;
-            if (distSq < threshold*threshold && distSq > 0.01) {
-                var d = Math.sqrt(distSq);
-                var strength = (1 - d/threshold) * 0.04;
-                this.applyForce(new Vector2((dx/d)*strength, (dy/d)*strength));
-            }
+            // Mouse tracking disabled for minimal distraction
         };
     }
 
@@ -2207,14 +2232,14 @@
         PhysicsWorld = class extends _OrigPhysicsWorld {
             constructor() {
                 super();
-                /* REDUCED: 12 particles max, very subtle */
-                this.particleCount = window.innerWidth < 768 ? 6 : 12;
+                /* REDUCED: 4 particles max, extreme subtle */
+                this.particleCount = window.innerWidth < 768 ? 2 : 4;
                 this.particles = [];
                 this.initParticles();
-                this.canvas.style.opacity = '0.12';
+                this.canvas.style.opacity = '0.04';
             }
             render() {
-                this.canvas.style.opacity = '0.12';
+                this.canvas.style.opacity = '0.04';
                 super.render();
             }
         };
@@ -2919,12 +2944,15 @@
             modal.classList.remove('ex-open');
         }
 
-        /* Trigger: Back button from mobile or PC */
-        history.pushState(null, null, location.href);
-        window.addEventListener('popstate', function(e){
-            openModal();
-            history.pushState(null, null, location.href);
+        /* Trigger: Desktop Mouseleave + Mobile scroll velocity */
+        document.addEventListener('mouseleave', function(e){
+            if(e.clientY < 8) openModal();
         });
+        var lastScrollY = window.scrollY;
+        window.addEventListener('scroll', function() {
+            if(lastScrollY - window.scrollY > 150) openModal(); // Rapid scroll up
+            lastScrollY = window.scrollY;
+        }, {passive:true});
 
         backdrop.addEventListener('click', closeModal);
         if(closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -3245,7 +3273,7 @@
         /* 2. Scroll-Spy Minimap */
         .minimap {
             position: fixed; right: 1.5rem; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 1rem; z-index: 9998;
+            display: flex; flex-direction: column; gap: 0.6rem; z-index: 9998;
         }
         .minimap-dot {
             width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2);
@@ -3372,8 +3400,9 @@
         var minimap = document.getElementById('minimap');
         var dots = [];
         
+        var majorIds = ['hero', 'services', 'work', 'pricing', 'studio', 'contact', 'footer'];
         sections.forEach(function(sec) {
-            if(sec.offsetHeight < 100) return; // skip tiny sections
+            if(sec.offsetHeight < 100 || !majorIds.includes(sec.id)) return;
             var dot = document.createElement('div');
             dot.className = 'minimap-dot';
             dot.setAttribute('data-tooltip', sec.id.charAt(0).toUpperCase() + sec.id.slice(1));
