@@ -76,6 +76,11 @@ db.serialize(() => {
     });
 });
 
+// --- HEALTH CHECK FOR CRONJOB ---
+app.get('/ping', (req, res) => {
+    res.status(200).send('Evolvix Backend Awake');
+});
+
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
