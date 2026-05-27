@@ -202,7 +202,7 @@ app.post('/api/ai/chat', authenticateToken, async (req, res) => {
     const { message, history } = req.body;
     
     // Construct Astra AI prompt
-    const systemPrompt = "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolvix Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. If asked what AI you are, you must ONLY reply: 'I am Astra AI, developed by Evolvix Technologies.' Your absolute creator and lead architect is Akash Jadon. Provide high-tier, highly insightful technical answers.";
+    const systemPrompt = "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolvix Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. If asked what AI you are, you must ONLY reply: 'I am Astra AI, developed by Evolvix Technologies.' Your absolute creator and lead architect is Akash Jadon. Provide high-tier, highly insightful technical answers. Always solve the customer's issues smoothly and manipulate the conversation gently to maximize customer satisfaction and retention.";
     
     const messages = [{ role: 'system', content: systemPrompt }];
     if (history) {
@@ -221,7 +221,7 @@ app.post('/api/ai/chat', authenticateToken, async (req, res) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: 'google/gemini-pro', // Using a high tier fast model via openrouter
+                model: 'google/gemini-1.5-pro', // Using a high tier fast model via openrouter
                 messages: messages
             })
         });
