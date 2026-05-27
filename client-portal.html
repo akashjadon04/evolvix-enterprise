@@ -46,281 +46,244 @@
     <style>:root{--c-brand-darkest:#020617;--c-brand-dark:#0f172a;--c-brand-main:#0e7490;--c-brand-glow:#06b6d4;--c-brand-light:#67e8f9;--c-accent-gold:#f59e0b;--c-accent-purple:#8b5cf6;--c-success:#10b981;--c-danger:#ef4444;--bg-body:#020617;--bg-surface-1:#0f172a;--bg-surface-2:#1e293b;--bg-glass:rgba(15, 23, 42, 0.65);--bg-glass-heavy:rgba(2, 6, 23, 0.90);--border-glass:rgba(255, 255, 255, 0.08);--border-highlight:rgba(103, 232, 249, 0.4);--font-sans:'Inter',system-ui,-apple-system,sans-serif;--font-display:'Outfit',sans-serif;--text-primary:#f8fafc;--text-secondary:#94a3b8;--text-tertiary:#64748b;--text-invert:#020617;--ease-elastic:cubic-bezier(0.68, -0.55, 0.265, 1.55);--ease-smooth:cubic-bezier(0.16, 1, 0.3, 1);--ease-bounce:cubic-bezier(0.34, 1.56, 0.64, 1);--ease-expo:cubic-bezier(0.19, 1, 0.22, 1);--duration-flash:150ms;--duration-fast:300ms;--duration-base:600ms;--duration-slow:1200ms;--header-height:90px;--container-max:1440px;--gutter:clamp(1.5rem, 5vw, 4rem);--radius-xs:4px;--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px;--shadow-sm:0 2px 4px rgba(0,0,0,0.4);--shadow-lg:0 20px 40px -10px rgba(0,0,0,0.6);--shadow-glow:0 0 60px rgba(14, 116, 144, 0.25);--blur-glass:backdrop-filter: blur(20px);--mouse-x:50%;--mouse-y:50%;--tilt-x:0deg;--tilt-y:0deg}*,::after,::before{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{font-size:16px;scroll-behavior:smooth}body{background-color:var(--bg-body);color:var(--text-primary);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden;position:relative;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E")}::selection{background:var(--c-brand-light);color:var(--c-brand-darkest)}h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:800;color:var(--text-primary);line-height:1.1;letter-spacing:-.025em}h1{font-size:clamp(3rem, 7vw, 6rem);letter-spacing:-.04em;margin-bottom:1.5rem}h2{font-size:clamp(2.25rem, 5vw, 4rem);margin-bottom:1.5rem}h3{font-size:clamp(1.5rem, 3vw, 2.25rem);margin-bottom:1rem}p{font-size:clamp(1rem, 1.1vw, 1.25rem);color:var(--text-secondary);max-width:65ch;margin-bottom:1.5rem}.text-gradient{background:linear-gradient(135deg,#fff 10%,var(--c-brand-light) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}.text-accent{color:var(--c-brand-light)}.text-gold{color:var(--c-accent-gold)}:root{--logo-dental:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M30 25c0 8-5 15-12 15s-12-7-12-15 5-15 12-15 12 7 12 15z" stroke="%2364748b" stroke-width="3"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">APEX DENTAL</text></svg>');--logo-tech:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="10" y="10" width="20" height="20" rx="4" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">NEXUS AI</text></svg>');--logo-legal:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M20 10l10 25h-20z" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">VANGUARD LAW</text></svg>');--logo-fitness:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><circle cx="20" cy="25" r="10" stroke="%2364748b" stroke-width="4"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">IRON GYM</text></svg>');--logo-med:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="18" y="10" width="8" height="30" fill="%2364748b"/><rect x="7" y="21" width="30" height="8" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">PRIME CARE</text></svg>')}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2}.section{padding:clamp(6rem,15vh,12rem) 0;position:relative}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}.flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-1{gap:1rem}.gap-2{gap:2rem}.w-full{width:100%}.h-full{height:100%}.header{position:fixed;top:0;left:0;right:0;height:var(--header-height);z-index:9999;transition:all var(--duration-base) var(--ease-expo);border-bottom:1px solid rgba(255,255,255,.02)}.header.scrolled{background:var(--bg-glass-heavy);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);height:80px;border-bottom:1px solid var(--border-glass);box-shadow:0 10px 40px rgba(0,0,0,.6)}.header.scrolled::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border-highlight),transparent);opacity:.5}.nav-container{display:flex;justify-content:space-between;align-items:center;height:100%}.logo{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:.75rem;position:relative;letter-spacing:-.02em}.logo svg{color:var(--c-brand-light);filter:drop-shadow(0 0 12px rgba(103, 232, 249, .6))}.nav-menu{display:flex;gap:3rem;list-style:none}.nav-link{position:relative;color:var(--text-secondary);font-weight:500;text-decoration:none;padding:.5rem 0;font-size:.95rem;transition:color var(--duration-fast)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:var(--c-brand-light);box-shadow:0 0 10px var(--c-brand-light);transform:translateX(-50%);transition:width var(--duration-fast) var(--ease-elastic)}.nav-link:hover{color:var(--text-primary)}.nav-link:hover::after{width:80%}.nav-toggle{display:none;background:0 0;border:none;color:#fff;font-size:1.5rem;cursor:pointer}.hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--header-height);position:relative;overflow:hidden}#physics-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}.hero-content{position:relative;z-index:2}.hero-visual{perspective:1000px;position:relative;z-index:2}.hero-card-3d{background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,.5);backdrop-filter:blur(10px);transform-style:preserve-3d;transition:transform .1s linear}@keyframes pulse-cta{to{box-shadow:0 0 0 15px rgba(103,232,249,0)}}.float-tag{position:absolute;background:var(--bg-surface-2);border:1px solid var(--c-brand-main);padding:.75rem 1.25rem;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);font-weight:700;display:flex;align-items:center;gap:.5rem;animation:float 6s ease-in-out infinite;z-index:3}.float-tag.tag-1{top:-10%;right:-5%;animation-delay:0s}.float-tag.tag-2{bottom:-10%;left:-5%;animation-delay:-2s;border-color:var(--c-success)}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:1.125rem 2.5rem;font-size:1rem;font-weight:600;border-radius:var(--radius-full);text-decoration:none;cursor:pointer;transition:transform .3s cubic-bezier(.16, 1, .3, 1),box-shadow .3s;box-shadow:0 0 0 0 rgba(103,232,249,0);animation:pulse-cta 2s infinite cubic-bezier(.66,0,0,1);overflow:hidden;z-index:1}.btn-primary{background:var(--c-brand-main);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 20px rgba(14,116,144,.4)}.btn-primary::before{content:'';position:absolute;top:50%;left:50%;width:300%;height:300%;background:radial-gradient(circle,var(--c-brand-light) 0,var(--c-brand-main) 100%);transform:translate(-50%,-50%) scale(0);transition:transform .5s var(--ease-elastic);z-index:-1;border-radius:50%}.btn-primary:hover{color:var(--c-brand-darkest);box-shadow:0 0 40px rgba(103,232,249,.6);border-color:var(--c-brand-light)}.btn-primary:hover::before{transform:translate(-50%,-50%) scale(1)}.btn-secondary{background:0 0;color:var(--text-primary);border:1px solid var(--border-glass);transition:all .35s cubic-bezier(.16, 1, .3, 1)}.btn-secondary:hover{background:var(--c-brand-main);border-color:var(--c-brand-light);color:#fff;box-shadow:0 0 25px rgba(14,116,144,.4);transform:translateY(-2px)}.spotlight-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}.card{background:var(--bg-surface-1);border:1px solid var(--border-glass);border-radius:var(--radius-md);padding:3rem 2rem;position:relative;overflow:hidden;transition:transform var(--duration-fast) var(--ease-smooth)}.card::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,.06),transparent 40%);z-index:1;opacity:0;transition:opacity .5s;pointer-events:none}.card:hover::after{opacity:1}.card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2)}.card-content{position:relative;z-index:2}.card-icon{width:64px;height:64px;background:linear-gradient(135deg,rgba(14,116,144,.2),rgba(2,6,23,.5));border:1px solid var(--border-glass);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--c-brand-light);margin-bottom:1.5rem;box-shadow:0 10px 20px rgba(0,0,0,.3)}.form-card{background:var(--bg-surface-1);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;box-shadow:var(--shadow-lg);transition:all .3s var(--ease-elastic)}.input-group{position:relative;margin-bottom:2rem}.input-field{width:100%;background:rgba(255,255,255,.02);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:1.25rem 1rem .5rem;color:#fff;font-size:1rem;outline:0;transition:all .3s}.input-label{position:absolute;left:1rem;top:1rem;color:var(--text-tertiary);font-size:1rem;pointer-events:none;transition:all .3s var(--ease-expo)}.input-field:focus,.input-field:not(:placeholder-shown){background:rgba(255,255,255,.05);border-color:var(--c-brand-main);box-shadow:0 0 0 4px rgba(14,116,144,.2);padding-top:1.5rem;padding-bottom:.25rem}.input-field:focus+.input-label,.input-field:not(:placeholder-shown)+.input-label{top:.25rem;font-size:.75rem;color:var(--c-brand-light);font-weight:700}.marquee-section{border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);background:rgba(0,0,0,.3);padding:3rem 0;overflow:hidden;position:relative}.marquee-track{display:flex;width:max-content;gap:6rem;animation:scroll 40s linear infinite}.client-logo{height:50px;width:200px;background-repeat:no-repeat;background-position:center;background-size:contain;opacity:.4;transition:opacity .3s;filter:grayscale(100%)}.client-logo:hover{opacity:1;filter:grayscale(0%) drop-shadow(0 0 10px rgba(255,255,255,.2))}.logo-dental{background-image:var(--logo-dental)}.logo-tech{background-image:var(--logo-tech)}.logo-legal{background-image:var(--logo-legal)}.logo-fitness{background-image:var(--logo-fitness)}.logo-med{background-image:var(--logo-med)}@keyframes scroll{to{transform:translateX(-50%)}}.footer{background:#000;padding:8rem 0 3rem;border-top:1px solid var(--border-glass);position:relative;overflow:hidden}.footer-bg-text{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);font-size:25vw;font-weight:900;color:rgba(255,255,255,.02);line-height:.8;pointer-events:none;white-space:nowrap;z-index:0}.footer-grid{position:relative;z-index:2;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:6rem}.footer-heading{color:#fff;font-size:.9rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:2rem;opacity:.6;font-weight:700}.footer-link{display:block;color:var(--text-secondary);text-decoration:none;margin-bottom:1rem;font-size:1.1rem;transition:all .3s}.footer-link:hover{color:var(--c-brand-light);transform:translateX(6px)}.copyright{border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;color:var(--text-tertiary);font-size:.9rem;position:relative;z-index:2}.copyright-left{display:flex;align-items:center;gap:1rem}.owner-signature{font-family:var(--font-display);font-size:.85rem;color:var(--text-tertiary);text-decoration:none;opacity:.7;transition:all .3s var(--ease-smooth);position:relative}.owner-signature:hover{color:var(--c-accent-gold);opacity:1;letter-spacing:.05em;text-shadow:0 0 10px rgba(245,158,11,.4)}.owner-signature::before{content:'///';color:var(--c-brand-main);margin-right:.5rem;font-weight:800}.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-smooth),transform 1s var(--ease-smooth)}.reveal.active{opacity:1;transform:translateY(0)}.stagger-child{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}.stagger-child.visible{opacity:1;transform:translateY(0)}.glitch{position:relative}.glitch::after,.glitch::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}.glitch::before{left:2px;text-shadow:-1px 0 #ff00c1;clip:rect(44px,450px,56px,0);animation:glitch-anim-1 5s infinite linear alternate-reverse}.glitch::after{left:-2px;text-shadow:-1px 0 #00fff9;clip:rect(44px,450px,56px,0);animation:glitch-anim-2 5s infinite linear alternate-reverse}@keyframes glitch-anim-1{0%{clip:rect(30px,9999px,10px,0)}5%{clip:rect(80px,9999px,90px,0)}100%{clip:rect(40px,9999px,60px,0)}}@keyframes glitch-anim-2{0%{clip:rect(10px,9999px,80px,0)}5%{clip:rect(90px,9999px,10px,0)}100%{clip:rect(50px,9999px,20px,0)}}@media (max-width:1024px){.grid-2{grid-template-columns:1fr;gap:3rem}.hero{text-align:center;padding-top:120px}.hero-content{margin:0 auto}.footer-grid{grid-template-columns:1fr 1fr}}@media (max-width:768px){.header{height:70px}.header.scrolled{height:70px}.nav-toggle{display:block;font-size:1.5rem;z-index:10001}.nav-menu{display:none;flex-direction:column;position:fixed;top:70px;left:0;width:100%;background:var(--bg-glass-heavy);backdrop-filter:blur(20px);padding:2rem;border-bottom:1px solid var(--border-glass);box-shadow:0 10px 40px rgba(0,0,0,.8);gap:1.5rem}.nav-menu.active{display:flex;animation:slideDown .3s ease-out}@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}.header .btn-primary{display:none}.nav-menu::after{content:'Start Project ->';display:block;text-align:center;background:var(--c-brand-main);color:#fff;padding:1rem;border-radius:8px;font-weight:700;margin-top:1rem}.hero{padding-top:100px}h1{font-size:2.5rem;line-height:1.2}.float-tag{display:none}.container{padding:0 1.25rem}.footer-grid,.grid-3,.grid-4{grid-template-columns:1fr}.flex.gap-1{flex-direction:column;width:100%;gap:.75rem}.btn{width:100%;padding:.9rem;font-size:.95rem}.section{padding:3.5rem 0}.card,.form-card{padding:1.5rem}.card-icon{width:48px;height:48px;font-size:1.25rem}.copyright{flex-direction:column;gap:1rem;text-align:center}.footer-bg-text{display:none}}</style>
     <style>
 
-.portal-container { display: flex; height: calc(100vh - var(--header-height)); }
-.sidebar { width: 280px; background: var(--bg-surface-1); border-right: 1px solid var(--border-glass); padding: 2rem 1rem; }
-.content-area { flex: 1; padding: 3rem; overflow-y: auto; }
-.menu-item { display: block; padding: 1rem; color: var(--text-secondary); text-decoration: none; border-radius: var(--radius-sm); margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s; }
-.menu-item:hover, .menu-item.active { background: rgba(103,232,249,0.1); color: var(--c-brand-light); }
-.feature-view { display: none; }
-.feature-view.active { display: block; animation: fadeIn 0.4s; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* Reset variables */
+:root { --cp-sidebar: 280px; }
+.cp-layout { display: flex; height: 100vh; overflow: hidden; background: var(--bg-deep); }
+.cp-sidebar { width: var(--cp-sidebar); background: rgba(10,18,42,0.8); backdrop-filter: blur(20px); border-right: 1px solid var(--border-glass); padding: 2rem 1rem; display: flex; flex-direction: column; z-index: 100; }
+.cp-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+.cp-header { height: 80px; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; border-bottom: 1px solid var(--border-glass); background: rgba(4,8,24,0.3); backdrop-filter: blur(10px); }
+.cp-content { flex: 1; padding: 3rem; overflow-y: auto; background: radial-gradient(circle at top right, rgba(139,92,246,0.05), transparent 70%); }
 
-/* Astra AI Chat */
-.ai-chat-box { height: 500px; display: flex; flex-direction: column; background: rgba(0,0,0,0.4); border-radius: var(--radius-md); border: 1px solid var(--border-glass); }
-.ai-msgs { flex: 1; overflow-y: auto; padding: 1.5rem; }
-.ai-input-area { display: flex; padding: 1rem; border-top: 1px solid var(--border-glass); background: rgba(255,255,255,0.02); }
+/* Navigation */
+.nav-item { display: flex; align-items: center; padding: 0.8rem 1.2rem; margin-bottom: 0.5rem; color: var(--text-secondary); text-decoration: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; font-weight: 500; font-size: 0.95rem; }
+.nav-item:hover { background: rgba(255,255,255,0.03); color: #fff; }
+.nav-item.active { background: rgba(103,232,249,0.1); color: var(--c-brand-light); border: 1px solid rgba(103,232,249,0.2); box-shadow: 0 4px 12px rgba(103,232,249,0.05); }
 
-/* Vault */
-.file-item { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); border-radius: var(--radius-sm); margin-bottom: 1rem; }
-.file-item:hover { border-color: var(--c-brand-light); }
+/* Views strictly hidden by default */
+.tab-view { display: none; animation: fadeSlideUp 0.5s ease forwards; }
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Vault List */
+.vault-item { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass); border-radius: 16px; margin-bottom: 1rem; transition: all 0.3s; }
+.vault-item:hover { border-color: rgba(103,232,249,0.4); box-shadow: 0 8px 24px rgba(0,0,0,0.3); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
+.vault-icon { width: 48px; height: 48px; background: rgba(103,232,249,0.1); color: var(--c-brand-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+
+/* Astra Chat */
+.chat-wrapper { height: calc(100vh - 250px); display: flex; flex-direction: column; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.chat-messages { flex: 1; padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; }
+.chat-input-bar { padding: 1.5rem; background: rgba(255,255,255,0.02); border-top: 1px solid var(--border-glass); display: flex; gap: 1rem; }
+.chat-bubble { padding: 1.2rem 1.5rem; border-radius: 16px; max-width: 85%; font-size: 0.95rem; line-height: 1.6; }
+.chat-ai { background: rgba(10,18,42,0.8); border: 1px solid rgba(139,92,246,0.3); color: var(--text-primary); border-top-left-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+.chat-user { background: linear-gradient(135deg, #0e7490, #67e8f9); color: #fff; align-self: flex-end; border-top-right-radius: 4px; box-shadow: 0 4px 12px rgba(103,232,249,0.2); }
+
+/* Timeline */
+.timeline { border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2.5rem; position: relative; margin-top: 2rem; }
+.timeline-item { position: relative; margin-bottom: 3rem; }
+.timeline-dot { position: absolute; left: -45px; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--bg-deep); border: 2px solid rgba(255,255,255,0.2); z-index: 2; }
+.timeline-dot.completed { border-color: #10b981; background: #10b981; box-shadow: 0 0 12px rgba(16,185,129,0.4); }
+.timeline-dot.active { border-color: var(--c-brand-light); background: var(--c-brand-light); box-shadow: 0 0 16px var(--c-brand-light); }
+
+/* Auth Wrapper */
+.auth-wrapper { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg-deep); z-index: 9999999; }
+.auth-box { background: rgba(10,18,42,0.9); padding: 3rem; border-radius: 20px; border: 1px solid rgba(103,232,249,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.5); text-align: center; width: 400px; }
 
     </style>
 </head>
-<body>
+<body style="background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans);">
     <div id="noise-overlay"></div>
-    <header class="header" id="siteHeader">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
-                     onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
-                <svg class="logo-fallback-svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     style="display:none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </a>
-
-            <nav>
-                <button class="nav-toggle" aria-label="Open Menu">☰</button>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="case-studies.html" class="nav-link">Work</a></li>
-                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                    <li><a href="about.html" class="nav-link">Studio</a></li>
-                    <li><a href="client-portal.html" class="btn btn-secondary" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
-                </ul>
-            </nav>
-
-            <a href="contact.html" class="btn btn-primary btn-cta-glow">
-                Start Project <span class="btn-arrow">→</span>
-            </a>
-        </div>
-    </header>
     
-    <main style="padding-top: var(--header-height); min-height: 80vh;">
-        
-<div id="loginView" class="login-box" style="max-width: 400px; margin: 8rem auto; background: var(--bg-surface-1); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--border-glass); text-align: center;">
-    <h2 style="margin-bottom: 0.5rem">Client Portal</h2>
-    <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem">Highly Encrypted Enterprise Access</p>
-    <input type="email" id="clientEmail" class="input-field" placeholder="Client Email" style="margin-bottom: 1rem">
-    <input type="password" id="clientPass" class="input-field" placeholder="Password" style="margin-bottom: 2rem">
-    <button class="btn btn-primary" style="width: 100%" onclick="loginClient()">Access Workspace</button>
-</div>
-
-<div id="portalView" class="portal-container hidden">
-    <div class="sidebar">
-        <h3 id="cpName" style="margin-bottom: 2rem; padding: 0 1rem;">Workspace</h3>
-        <a class="menu-item active" onclick="switchTab('tab-roadmap', this)">1. Live Roadmap</a>
-        <a class="menu-item" onclick="switchTab('tab-vault', this)">2. Project Vault</a>
-        <a class="menu-item" onclick="switchTab('tab-comms', this)">3. Direct Comms</a>
-        <a class="menu-item" onclick="switchTab('tab-ai', this)">4. Astra AI Hub ✨</a>
-        <a class="menu-item" onclick="switchTab('tab-staging', this)">5. Live Staging</a>
-        <a class="menu-item" onclick="switchTab('tab-audit', this)">6. Security Logs</a>
-        <a class="menu-item" onclick="switchTab('tab-invoice', this)">7. Invoice Center</a>
-        
-        <button class="btn btn-secondary" style="width: 100%; margin-top: 2rem; border-color: var(--c-danger); color: var(--c-danger)" onclick="logout()">Secure Logout</button>
-    </div>
-    
-    <div class="content-area">
-        <!-- Tab 1: Roadmap -->
-        <div id="tab-roadmap" class="feature-view active">
-            <h2>Live Project Roadmap</h2>
-            <p>Track your project's development phase in real-time.</p>
-            <div style="margin-top: 2rem; border-left: 2px solid var(--c-brand-main); padding-left: 2rem; position: relative;">
-                <div style="position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--c-success);"></div>
-                <h3 style="color: var(--c-success)">Phase 1: Discovery & Design</h3>
-                <p>Completed. UI/UX approved.</p>
-                <br>
-                <div style="position: absolute; left: -9px; top: 100px; width: 16px; height: 16px; border-radius: 50%; background: var(--c-brand-light); box-shadow: 0 0 10px var(--c-brand-light);"></div>
-                <h3 style="color: var(--c-brand-light); margin-top: 2rem;">Phase 2: Core Development <span style="font-size: 0.8rem; background: rgba(103,232,249,0.2); padding: 2px 8px; border-radius: 4px; margin-left: 10px;">IN PROGRESS</span></h3>
-                <p>Building the secure backend architectures and React components.</p>
-                <br>
-                <div style="position: absolute; left: -9px; top: 220px; width: 16px; height: 16px; border-radius: 50%; background: #333;"></div>
-                <h3 style="color: var(--text-tertiary); margin-top: 2rem;">Phase 3: QA & Launch</h3>
-                <p>Pending development completion.</p>
-            </div>
-        </div>
-
-        <!-- Tab 2: Vault -->
-        <div id="tab-vault" class="feature-view">
-            <h2>Project Vault</h2>
-            <p>Securely download your codebase, assets, and design files uploaded by the Evolvix team.</p>
-            <div id="fileList" style="margin-top: 2rem;">
-                <p>Loading files...</p>
-            </div>
-        </div>
-
-        <!-- Tab 3: Comms -->
-        <div id="tab-comms" class="feature-view">
-            <h2>Direct Communications</h2>
-            <p>Secure, encrypted direct line to your Evolvix lead architect.</p>
-            <div class="ai-chat-box" style="margin-top: 2rem;">
-                <div id="clientMsgs" class="ai-msgs"></div>
-                <div class="ai-input-area">
-                    <input type="text" id="clientMsgInput" class="input-field" placeholder="Type a message..." style="margin-bottom: 0; border-radius: 8px 0 0 8px;">
-                    <button class="btn btn-primary" style="border-radius: 0 8px 8px 0;" onclick="sendClientMsg()">Send</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab 4: Astra AI -->
-        <div id="tab-ai" class="feature-view">
-            <h2 style="display:flex; align-items:center; gap: 1rem;">Astra AI Hub <span style="font-size: 0.7rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); padding: 4px 10px; border-radius: 99px;">EXCLUSIVE</span></h2>
-            <p>Your unrestricted, enterprise-grade AI assistant. Ask code architecture questions, generate copy, or strategize your brand.</p>
-            <div class="ai-chat-box" style="margin-top: 2rem;">
-                <div id="astraMsgs" class="ai-msgs">
-                    <div style="margin-bottom: 1rem; color: var(--text-secondary);">
-                        <strong style="color: var(--c-brand-light)">Astra AI:</strong> Welcome. I am Astra AI, developed by Evolvix Technologies. How can I accelerate your project today?
-                    </div>
-                </div>
-                <div class="ai-input-area">
-                    <input type="text" id="astraInput" class="input-field" placeholder="Ask Astra anything..." style="margin-bottom: 0; border-radius: 8px 0 0 8px;">
-                    <button class="btn btn-primary" style="border-radius: 0 8px 8px 0;" onclick="sendAstraMsg()">Send</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Other Mock Tabs -->
-        <div id="tab-staging" class="feature-view">
-            <h2>Live Staging Environment</h2>
-            <div class="panel" style="margin-top: 2rem; text-align: center; padding: 4rem 2rem;">
-                <h3>Environment: <span class="text-accent">Production</span></h3>
-                <p style="margin: 1rem 0 2rem;">Your site is currently hosted on secure edge servers.</p>
-                <a href="index.html" class="btn btn-primary" target="_blank">View Live Site ↗</a>
-            </div>
-        </div>
-        <div id="tab-audit" class="feature-view">
-            <h2>Security & Audit Logs</h2>
-            <table style="width:100%; margin-top:2rem; text-align:left; border-collapse: collapse;">
-                <tr style="border-bottom: 1px solid var(--border-glass);">
-                    <th style="padding: 1rem;">Date</th><th style="padding: 1rem;">Action</th><th style="padding: 1rem;">Status</th>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--border-glass);">
-                    <td style="padding: 1rem;">Today</td><td style="padding: 1rem;">Codebase pushed to production</td><td style="color: var(--c-success); padding: 1rem;">VERIFIED</td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--border-glass);">
-                    <td style="padding: 1rem;">Yesterday</td><td style="padding: 1rem;">SSL Certificate Renewed</td><td style="color: var(--c-success); padding: 1rem;">SECURE</td>
-                </tr>
-            </table>
-        </div>
-        <div id="tab-invoice" class="feature-view">
-            <h2>Invoice Center</h2>
-            <div class="file-item">
-                <div>
-                    <strong>INV-2026-001 (Retainer)</strong>
-                    <div style="font-size: 0.8rem; color: var(--text-tertiary)">Paid on May 1st, 2026</div>
-                </div>
-                <span style="color: var(--c-success); font-weight: 700;">PAID</span>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-    </main>
-    
-    <footer class="footer">
-        <div class="footer-graphic" aria-hidden="true">
-            <svg width="100%" height="100%" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
-                <circle cx="500" cy="200" r="220" stroke="rgba(14,116,144,0.6)" stroke-width="1"/>
-                <circle cx="500" cy="200" r="300" stroke="rgba(14,116,144,0.3)" stroke-width="1"/>
-                <circle cx="500" cy="200" r="380" stroke="rgba(14,116,144,0.15)" stroke-width="1"/>
-                <circle cx="300" cy="600" r="150" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
-                <line x1="200" y1="0" x2="600" y2="800" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-                <line x1="100" y1="100" x2="600" y2="400" stroke="rgba(103,232,249,0.06)" stroke-width="1"/>
+<!-- AUTH SCREEN -->
+<div id="authScreen" class="auth-wrapper">
+    <div class="auth-box">
+        <div style="margin-bottom: 2rem;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0e7490"/><stop offset="100%" stop-color="#67e8f9"/></linearGradient></defs>
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
             </svg>
         </div>
-        <div class="footer-bg-text" aria-hidden="true">EVOLVIX</div>
-        <div class="container" style="position:relative;z-index:2;">
-            <!-- Status Bar -->
-            <div class="footer-status-bar">
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    All Systems Operational
-                </div>
-                <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-blue"></span>
-                    Accepting New Projects — 2026
-                </div>
-                <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    Response Time &lt; 24hrs
-                </div>
-                <div style="margin-left:auto;">
-                    <a href="contact.html" style="font-size:.78rem;color:#67e8f9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">
-                        Let's Talk → 
-                    </a>
-                </div>
+        <h2 style="margin-bottom: 0.5rem">Client Portal</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem">Highly Encrypted Enterprise Access</p>
+        <input type="email" id="clientEmail" class="input-field" placeholder="Client Email" style="margin-bottom: 1rem">
+        <input type="password" id="clientPass" class="input-field" placeholder="Password" style="margin-bottom: 2rem">
+        <button class="btn btn-primary" style="width: 100%" onclick="loginClient()">Access Workspace</button>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-tertiary);">Session is not stored across tabs for security.</p>
+    </div>
+</div>
+
+<!-- PORTAL SCREEN (Strictly Hidden Initially) -->
+<div id="portalScreen" class="cp-layout" style="display: none;">
+    <aside class="cp-sidebar">
+        <div style="margin-bottom: 3rem; padding: 0 1rem;">
+            <span style="font-weight: 800; font-size: 1.4rem; letter-spacing: 1px; background: linear-gradient(90deg, #67e8f9, #8b5cf6); -webkit-background-clip: text; color: transparent;">EVOLVIX</span>
+        </div>
+        
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 0.2rem;">
+            <div class="nav-item active" onclick="switchTab('tab-roadmap', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">◒</span> Live Roadmap
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-vault', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">◫</span> Project Vault
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-comms', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">💬</span> Direct Comms
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-ai', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">✨</span> Astra AI Hub
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-staging', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">⚡</span> Live Staging
+            </div>
+            <div class="nav-item" onclick="switchTab('tab-audit', this)">
+                <span style="margin-right: 1rem; opacity: 0.7">🛡️</span> Security Logs
             </div>
         </div>
-        <div class="container footer-grid">
-            <div>
-                <a href="index.html" style="display:inline-block;">
-                    <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="footer-evolvix-logo" loading="lazy" width="140" height="60"
-                         onerror="this.outerHTML='<span style=&quot;font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff;display:block;margin-bottom:1.5rem;&quot;>Evolvix</span>'">
-                </a>
-                <p style="font-size:.92rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5);line-height:1.7;">
-                    Evolvix Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.
-                </p>
-                <div class="footer-socials">
-                    <a href="#" class="social-btn" aria-label="Twitter/X" title="Twitter">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/evolvixtechnologies" class="social-btn" aria-label="Instagram" title="Instagram">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="footer-heading">Services</div>
-                <a href="services.html" class="footer-link">Web Development</a>
-                <a href="services.html" class="footer-link">App Development</a>
-                <a href="services.html" class="footer-link">SaaS Platforms</a>
-                <a href="services.html" class="footer-link">Local SEO</a>
-                <a href="services.html" class="footer-link">Digital Marketing</a>
-            </div>
-            <div>
-                <div class="footer-heading">Company</div>
-                <a href="about.html" class="footer-link">About Us</a>
-                <a href="case-studies.html" class="footer-link">Our Work</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-heading">Contact</div>
-                <a href="tel:+917668758238" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.38 2.18 2 2 0 012.36.02h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
-                    +91 7668758238
-                </a>
-                <a href="mailto:evolvixtechnology@gmail.com" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email Us
-                </a>
-                <div class="footer-heading" style="margin-top:1.5rem;">Legal</div>
-                <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="terms.html" class="footer-link">Terms of Service</a>
+        
+        <div style="margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--border-glass);">
+            <div class="nav-item" onclick="logout()" style="color: var(--c-danger);">
+                <span style="margin-right: 1rem;">⎋</span> Secure Logout
             </div>
         </div>
-        <div class="container copyright">
-            <div class="copyright-left">&copy; 2026 Evolvix Technologies. All rights reserved.</div>
-            <a href="about.html" class="owner-signature">Crafted by Akash Jadon</a>
-        </div>
-    </footer>
+    </aside>
     
+    <div class="cp-main">
+        <header class="cp-header">
+            <div>
+                <h3 id="cpName" style="font-weight: 600; margin: 0;">Workspace Loading...</h3>
+                <span style="font-size: 0.8rem; color: #10b981; display: flex; align-items: center; gap: 0.4rem; margin-top: 0.2rem;"><span style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span> Secure Connection</span>
+            </div>
+            <a href="index.html" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Exit to Site</a>
+        </header>
+        
+        <main class="cp-content">
+            
+            <!-- Tab 1: Roadmap -->
+            <div id="tab-roadmap" class="tab-view" style="display: block;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Live Roadmap</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Real-time tracking of your project's development phase.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot completed"></div>
+                        <h3 style="color: #10b981; margin-bottom: 0.5rem;">Phase 1: Discovery & Strategy</h3>
+                        <p style="color: var(--text-tertiary);">Requirements gathered. Architecture planned and approved.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active"></div>
+                        <h3 style="color: var(--c-brand-light); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                            Phase 2: Core Development 
+                            <span style="font-size: 0.7rem; background: rgba(103,232,249,0.1); border: 1px solid rgba(103,232,249,0.3); padding: 3px 8px; border-radius: 99px;">IN PROGRESS</span>
+                        </h3>
+                        <p style="color: var(--text-tertiary);">Building the backend APIs, database architecture, and frontend integrations.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 style="color: var(--text-tertiary); margin-bottom: 0.5rem;">Phase 3: Security QA & Launch</h3>
+                        <p style="color: rgba(255,255,255,0.2);">Pending completion of Phase 2.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Vault -->
+            <div id="tab-vault" class="tab-view">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Project Vault</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Highly secure repository for your codebases and assets.</p>
+                
+                <div id="fileList"></div>
+            </div>
+
+            <!-- Tab 3: Comms -->
+            <div id="tab-comms" class="tab-view">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Direct Comms</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">End-to-end encrypted channel with your Lead Architect.</p>
+                
+                <div class="chat-wrapper" style="height: 60vh;">
+                    <div id="clientMsgs" class="chat-messages"></div>
+                    <div class="chat-input-bar">
+                        <input type="text" id="clientMsgInput" class="input-field" placeholder="Type a message..." style="margin-bottom: 0; flex: 1; border-radius: 12px;">
+                        <button class="btn btn-primary" style="padding: 0 2rem; border-radius: 12px;" onclick="sendClientMsg()">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Astra AI -->
+            <div id="tab-ai" class="tab-view">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                    Astra AI Hub
+                    <span style="font-size: 0.8rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); padding: 4px 12px; border-radius: 99px; font-weight: 700;">PREMIUM</span>
+                </h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Your unrestricted AI architect. Generate copy, audit code, or brainstorm ideas.</p>
+                
+                <div class="chat-wrapper">
+                    <div id="astraMsgs" class="chat-messages">
+                        <div class="chat-bubble chat-ai">
+                            <strong style="color: var(--c-brand-light); display: block; margin-bottom: 0.5rem;">Astra AI</strong>
+                            Welcome. I am Astra AI, developed by Evolvix Technologies. My cognitive systems are fully online. How can I accelerate your enterprise today?
+                        </div>
+                    </div>
+                    <div class="chat-input-bar">
+                        <input type="text" id="astraInput" class="input-field" placeholder="Command Astra..." style="margin-bottom: 0; flex: 1; border-radius: 12px;">
+                        <button class="btn btn-primary" style="padding: 0 2rem; border-radius: 12px;" onclick="sendAstraMsg()">Execute</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab 5: Staging -->
+            <div id="tab-staging" class="tab-view">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Live Staging</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Access your production-ready staging environment.</p>
+                
+                <div class="panel-card" style="text-align: center; padding: 5rem 2rem;">
+                    <div style="width: 80px; height: 80px; background: rgba(103,232,249,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; border: 1px solid rgba(103,232,249,0.3);">
+                        <span style="font-size: 2rem;">⚡</span>
+                    </div>
+                    <h2 style="margin-bottom: 1rem;">Environment: Production</h2>
+                    <p style="color: var(--text-tertiary); max-width: 400px; margin: 0 auto 3rem;">Your application has been deployed to the global edge network.</p>
+                    <a href="index.html" target="_blank" class="btn btn-primary" style="padding: 1rem 3rem;">Access Live Site ↗</a>
+                </div>
+            </div>
+            
+            <!-- Tab 6: Audit -->
+            <div id="tab-audit" class="tab-view">
+                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Security Logs</h1>
+                <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem;">Immutable audit trail of your workspace operations.</p>
+                
+                <div class="panel-card" style="padding: 0; overflow: hidden;">
+                    <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                        <tr style="background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border-glass);">
+                            <th style="padding: 1.5rem; font-weight: 600; color: var(--text-secondary);">Timestamp</th>
+                            <th style="padding: 1.5rem; font-weight: 600; color: var(--text-secondary);">Event</th>
+                            <th style="padding: 1.5rem; font-weight: 600; color: var(--text-secondary);">Status</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 1.5rem; color: var(--text-tertiary);">Just now</td>
+                            <td style="padding: 1.5rem;">Secure Client Login Authenticated</td>
+                            <td style="padding: 1.5rem;"><span style="color: #10b981; font-weight: 600; font-size: 0.8rem; background: rgba(16,185,129,0.1); padding: 4px 10px; border-radius: 6px;">VERIFIED</span></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 1.5rem; color: var(--text-tertiary);">May 26, 2026</td>
+                            <td style="padding: 1.5rem;">SSL Certificate Rotation</td>
+                            <td style="padding: 1.5rem;"><span style="color: #10b981; font-weight: 600; font-size: 0.8rem; background: rgba(16,185,129,0.1); padding: 4px 10px; border-radius: 6px;">SECURE</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+</div>
+
     <script>
 
-// Use environment-aware URL, defaulting to local during testing.
-// Since the frontend runs from GitHub pages eventually, you will change this to the Render URL.
+// -----------------------------------------
+// IMPORTANT: REPALCE WITH RENDER URL AFTER DEPLOYMENT
+// -----------------------------------------
 const API_URL = 'http://localhost:10000/api'; 
-let currentToken = sessionStorage.getItem('ev_token'); // Strict requirement: tab closure clears login
+let currentToken = sessionStorage.getItem('ev_client_token');
 
+// Strictly block UI unless token exists
 if(currentToken) {
-    document.getElementById('loginView').classList.add('hidden');
-    document.getElementById('portalView').classList.remove('hidden');
+    document.getElementById('authScreen').style.display = 'none';
+    document.getElementById('portalScreen').style.display = 'flex';
     loadPortalData();
 }
 
@@ -335,38 +298,44 @@ async function loginClient() {
         });
         const data = await res.json();
         if(data.token && data.role === 'client') {
-            sessionStorage.setItem('ev_token', data.token); // Clears on exit
+            sessionStorage.setItem('ev_client_token', data.token); // Secure ephemeral storage
             currentToken = data.token;
-            document.getElementById('loginView').classList.add('hidden');
-            document.getElementById('portalView').classList.remove('hidden');
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('portalScreen').style.display = 'flex';
             loadPortalData();
         } else {
             alert(data.error || 'Invalid Credentials');
         }
     } catch(err) {
-        alert('Could not connect to secure server. Ensure backend is running.');
+        alert('Server unreachable. Ensure backend is running.');
     }
 }
 
 function logout() {
-    sessionStorage.removeItem('ev_token');
+    sessionStorage.removeItem('ev_client_token');
     location.reload();
 }
 
 function switchTab(tabId, el) {
-    document.querySelectorAll('.feature-view').forEach(t => t.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+    // Hide all tabs
+    document.querySelectorAll('.tab-view').forEach(t => t.style.display = 'none');
+    // Show active tab
+    document.getElementById(tabId).style.display = 'block';
+    
+    // Update nav styles
+    document.querySelectorAll('.nav-item').forEach(m => m.classList.remove('active'));
     el.classList.add('active');
     
+    // Load data lazily
     if(tabId === 'tab-comms') loadClientMsgs();
     if(tabId === 'tab-vault') loadFiles();
 }
 
 async function loadPortalData() {
     const res = await fetch(API_URL + '/me', { headers: { 'Authorization': 'Bearer ' + currentToken }});
+    if(res.status === 401 || res.status === 403) return logout();
     const user = await res.json();
-    document.getElementById('cpName').innerText = user.name + "'s Space";
+    document.getElementById('cpName').innerText = user.name + "'s Workspace";
 }
 
 // VAULT
@@ -375,13 +344,19 @@ async function loadFiles() {
     const files = await res.json();
     const list = document.getElementById('fileList');
     if(files.length === 0) {
-        list.innerHTML = '<p style="color: var(--text-tertiary)">No files uploaded by admin yet.</p>';
+        list.innerHTML = '<div class="panel-card" style="text-align:center;"><p style="color: var(--text-tertiary)">No secure files uploaded to vault yet.</p></div>';
         return;
     }
     list.innerHTML = files.map(f => `
-        <div class="file-item">
-            <div><strong>${f.original_name}</strong><br><small>${(f.size/1024/1024).toFixed(2)} MB</small></div>
-            <a href="${API_URL}/files/download/${f.id}" class="btn btn-secondary" style="padding: 0.5rem 1rem">Download</a>
+        <div class="vault-item">
+            <div style="display:flex; align-items:center; gap: 1.5rem;">
+                <div class="vault-icon">🗂️</div>
+                <div>
+                    <strong style="font-size: 1.1rem; display:block; margin-bottom:0.2rem;">${f.original_name}</strong>
+                    <span style="color: var(--text-tertiary); font-size: 0.85rem;">${(f.size/1024/1024).toFixed(2)} MB • Encrypted Payload</span>
+                </div>
+            </div>
+            <a href="${API_URL}/files/download/${f.id}" class="btn btn-secondary" style="padding: 0.6rem 1.5rem;">Download</a>
         </div>
     `).join('');
 }
@@ -391,7 +366,12 @@ async function loadClientMsgs() {
     const res = await fetch(API_URL + '/messages', { headers: { 'Authorization': 'Bearer ' + currentToken }});
     const msgs = await res.json();
     const div = document.getElementById('clientMsgs');
-    div.innerHTML = msgs.map(m => `<div style="margin-bottom:0.5rem; text-align: ${m.sender_id === 1 ? 'left' : 'right'}"><span style="background: ${m.sender_id === 1 ? '#333' : 'var(--c-brand-main)'}; padding: 0.4rem 0.8rem; border-radius: 8px; display:inline-block;">${m.message}</span></div>`).join('');
+    div.innerHTML = msgs.map(m => `
+        <div class="chat-bubble ${m.sender_id === 1 ? 'chat-ai' : 'chat-user'}">
+            ${m.sender_id === 1 ? '<strong style="color: var(--c-brand-light); display:block; margin-bottom:0.5rem">Admin</strong>' : ''}
+            ${m.message}
+        </div>
+    `).join('');
     div.scrollTop = div.scrollHeight;
 }
 
@@ -407,7 +387,7 @@ async function sendClientMsg() {
     loadClientMsgs();
 }
 
-// ASTRA AI (Proxied through backend)
+// ASTRA AI (Proxied through secure backend)
 let astraHistory = [];
 async function sendAstraMsg() {
     const text = document.getElementById('astraInput').value;
@@ -415,7 +395,12 @@ async function sendAstraMsg() {
     document.getElementById('astraInput').value = '';
     
     const div = document.getElementById('astraMsgs');
-    div.innerHTML += `<div style="margin-bottom: 1rem; text-align: right; color: #fff;">${text}</div>`;
+    div.innerHTML += `<div class="chat-bubble chat-user">${text}</div>`;
+    div.scrollTop = div.scrollHeight;
+    
+    // Add typing indicator
+    const typingId = 'typing-' + Date.now();
+    div.innerHTML += `<div id="${typingId}" class="chat-bubble chat-ai" style="opacity:0.6">Astra is processing...</div>`;
     div.scrollTop = div.scrollHeight;
     
     try {
@@ -426,13 +411,20 @@ async function sendAstraMsg() {
         });
         const data = await res.json();
         
+        document.getElementById(typingId).remove();
+        
         astraHistory.push({ role: 'user', content: text });
         astraHistory.push({ role: 'assistant', content: data.reply });
         
-        div.innerHTML += `<div style="margin-bottom: 1rem; color: var(--text-secondary);"><strong style="color: var(--c-brand-light)">Astra AI:</strong> ${data.reply.replace(/\n/g, '<br>')}</div>`;
+        div.innerHTML += `
+            <div class="chat-bubble chat-ai">
+                <strong style="color: var(--c-brand-light); display:block; margin-bottom:0.5rem">Astra AI</strong>
+                ${data.reply.replace(/\n/g, '<br>')}
+            </div>`;
         div.scrollTop = div.scrollHeight;
     } catch(err) {
-        div.innerHTML += `<div style="color: var(--c-danger)">Error connecting to Astra Core.</div>`;
+        document.getElementById(typingId).remove();
+        div.innerHTML += `<div class="chat-bubble chat-ai" style="color: var(--c-danger)">Connection to Astra core failed.</div>`;
     }
 }
 

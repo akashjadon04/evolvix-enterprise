@@ -46,232 +46,172 @@
     <style>:root{--c-brand-darkest:#020617;--c-brand-dark:#0f172a;--c-brand-main:#0e7490;--c-brand-glow:#06b6d4;--c-brand-light:#67e8f9;--c-accent-gold:#f59e0b;--c-accent-purple:#8b5cf6;--c-success:#10b981;--c-danger:#ef4444;--bg-body:#020617;--bg-surface-1:#0f172a;--bg-surface-2:#1e293b;--bg-glass:rgba(15, 23, 42, 0.65);--bg-glass-heavy:rgba(2, 6, 23, 0.90);--border-glass:rgba(255, 255, 255, 0.08);--border-highlight:rgba(103, 232, 249, 0.4);--font-sans:'Inter',system-ui,-apple-system,sans-serif;--font-display:'Outfit',sans-serif;--text-primary:#f8fafc;--text-secondary:#94a3b8;--text-tertiary:#64748b;--text-invert:#020617;--ease-elastic:cubic-bezier(0.68, -0.55, 0.265, 1.55);--ease-smooth:cubic-bezier(0.16, 1, 0.3, 1);--ease-bounce:cubic-bezier(0.34, 1.56, 0.64, 1);--ease-expo:cubic-bezier(0.19, 1, 0.22, 1);--duration-flash:150ms;--duration-fast:300ms;--duration-base:600ms;--duration-slow:1200ms;--header-height:90px;--container-max:1440px;--gutter:clamp(1.5rem, 5vw, 4rem);--radius-xs:4px;--radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-full:9999px;--shadow-sm:0 2px 4px rgba(0,0,0,0.4);--shadow-lg:0 20px 40px -10px rgba(0,0,0,0.6);--shadow-glow:0 0 60px rgba(14, 116, 144, 0.25);--blur-glass:backdrop-filter: blur(20px);--mouse-x:50%;--mouse-y:50%;--tilt-x:0deg;--tilt-y:0deg}*,::after,::before{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{font-size:16px;scroll-behavior:smooth}body{background-color:var(--bg-body);color:var(--text-primary);font-family:var(--font-sans);line-height:1.6;overflow-x:hidden;position:relative;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E")}::selection{background:var(--c-brand-light);color:var(--c-brand-darkest)}h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:800;color:var(--text-primary);line-height:1.1;letter-spacing:-.025em}h1{font-size:clamp(3rem, 7vw, 6rem);letter-spacing:-.04em;margin-bottom:1.5rem}h2{font-size:clamp(2.25rem, 5vw, 4rem);margin-bottom:1.5rem}h3{font-size:clamp(1.5rem, 3vw, 2.25rem);margin-bottom:1rem}p{font-size:clamp(1rem, 1.1vw, 1.25rem);color:var(--text-secondary);max-width:65ch;margin-bottom:1.5rem}.text-gradient{background:linear-gradient(135deg,#fff 10%,var(--c-brand-light) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}.text-accent{color:var(--c-brand-light)}.text-gold{color:var(--c-accent-gold)}:root{--logo-dental:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M30 25c0 8-5 15-12 15s-12-7-12-15 5-15 12-15 12 7 12 15z" stroke="%2364748b" stroke-width="3"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">APEX DENTAL</text></svg>');--logo-tech:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="10" y="10" width="20" height="20" rx="4" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">NEXUS AI</text></svg>');--logo-legal:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><path d="M20 10l10 25h-20z" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">VANGUARD LAW</text></svg>');--logo-fitness:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><circle cx="20" cy="25" r="10" stroke="%2364748b" stroke-width="4"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">IRON GYM</text></svg>');--logo-med:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none"><rect x="18" y="10" width="8" height="30" fill="%2364748b"/><rect x="7" y="21" width="30" height="8" fill="%2364748b"/><text x="45" y="32" font-family="sans-serif" font-weight="bold" font-size="20" fill="%2364748b">PRIME CARE</text></svg>')}.container{width:100%;max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:2}.section{padding:clamp(6rem,15vh,12rem) 0;position:relative}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}.flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-1{gap:1rem}.gap-2{gap:2rem}.w-full{width:100%}.h-full{height:100%}.header{position:fixed;top:0;left:0;right:0;height:var(--header-height);z-index:9999;transition:all var(--duration-base) var(--ease-expo);border-bottom:1px solid rgba(255,255,255,.02)}.header.scrolled{background:var(--bg-glass-heavy);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);height:80px;border-bottom:1px solid var(--border-glass);box-shadow:0 10px 40px rgba(0,0,0,.6)}.header.scrolled::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border-highlight),transparent);opacity:.5}.nav-container{display:flex;justify-content:space-between;align-items:center;height:100%}.logo{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--text-primary);text-decoration:none;display:flex;align-items:center;gap:.75rem;position:relative;letter-spacing:-.02em}.logo svg{color:var(--c-brand-light);filter:drop-shadow(0 0 12px rgba(103, 232, 249, .6))}.nav-menu{display:flex;gap:3rem;list-style:none}.nav-link{position:relative;color:var(--text-secondary);font-weight:500;text-decoration:none;padding:.5rem 0;font-size:.95rem;transition:color var(--duration-fast)}.nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:var(--c-brand-light);box-shadow:0 0 10px var(--c-brand-light);transform:translateX(-50%);transition:width var(--duration-fast) var(--ease-elastic)}.nav-link:hover{color:var(--text-primary)}.nav-link:hover::after{width:80%}.nav-toggle{display:none;background:0 0;border:none;color:#fff;font-size:1.5rem;cursor:pointer}.hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--header-height);position:relative;overflow:hidden}#physics-bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}.hero-content{position:relative;z-index:2}.hero-visual{perspective:1000px;position:relative;z-index:2}.hero-card-3d{background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;box-shadow:0 20px 50px rgba(0,0,0,.5);backdrop-filter:blur(10px);transform-style:preserve-3d;transition:transform .1s linear}@keyframes pulse-cta{to{box-shadow:0 0 0 15px rgba(103,232,249,0)}}.float-tag{position:absolute;background:var(--bg-surface-2);border:1px solid var(--c-brand-main);padding:.75rem 1.25rem;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);font-weight:700;display:flex;align-items:center;gap:.5rem;animation:float 6s ease-in-out infinite;z-index:3}.float-tag.tag-1{top:-10%;right:-5%;animation-delay:0s}.float-tag.tag-2{bottom:-10%;left:-5%;animation-delay:-2s;border-color:var(--c-success)}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:1.125rem 2.5rem;font-size:1rem;font-weight:600;border-radius:var(--radius-full);text-decoration:none;cursor:pointer;transition:transform .3s cubic-bezier(.16, 1, .3, 1),box-shadow .3s;box-shadow:0 0 0 0 rgba(103,232,249,0);animation:pulse-cta 2s infinite cubic-bezier(.66,0,0,1);overflow:hidden;z-index:1}.btn-primary{background:var(--c-brand-main);color:#fff;border:1px solid rgba(255,255,255,.1);box-shadow:0 0 20px rgba(14,116,144,.4)}.btn-primary::before{content:'';position:absolute;top:50%;left:50%;width:300%;height:300%;background:radial-gradient(circle,var(--c-brand-light) 0,var(--c-brand-main) 100%);transform:translate(-50%,-50%) scale(0);transition:transform .5s var(--ease-elastic);z-index:-1;border-radius:50%}.btn-primary:hover{color:var(--c-brand-darkest);box-shadow:0 0 40px rgba(103,232,249,.6);border-color:var(--c-brand-light)}.btn-primary:hover::before{transform:translate(-50%,-50%) scale(1)}.btn-secondary{background:0 0;color:var(--text-primary);border:1px solid var(--border-glass);transition:all .35s cubic-bezier(.16, 1, .3, 1)}.btn-secondary:hover{background:var(--c-brand-main);border-color:var(--c-brand-light);color:#fff;box-shadow:0 0 25px rgba(14,116,144,.4);transform:translateY(-2px)}.spotlight-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}.card{background:var(--bg-surface-1);border:1px solid var(--border-glass);border-radius:var(--radius-md);padding:3rem 2rem;position:relative;overflow:hidden;transition:transform var(--duration-fast) var(--ease-smooth)}.card::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,.06),transparent 40%);z-index:1;opacity:0;transition:opacity .5s;pointer-events:none}.card:hover::after{opacity:1}.card:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.2)}.card-content{position:relative;z-index:2}.card-icon{width:64px;height:64px;background:linear-gradient(135deg,rgba(14,116,144,.2),rgba(2,6,23,.5));border:1px solid var(--border-glass);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--c-brand-light);margin-bottom:1.5rem;box-shadow:0 10px 20px rgba(0,0,0,.3)}.form-card{background:var(--bg-surface-1);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;box-shadow:var(--shadow-lg);transition:all .3s var(--ease-elastic)}.input-group{position:relative;margin-bottom:2rem}.input-field{width:100%;background:rgba(255,255,255,.02);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:1.25rem 1rem .5rem;color:#fff;font-size:1rem;outline:0;transition:all .3s}.input-label{position:absolute;left:1rem;top:1rem;color:var(--text-tertiary);font-size:1rem;pointer-events:none;transition:all .3s var(--ease-expo)}.input-field:focus,.input-field:not(:placeholder-shown){background:rgba(255,255,255,.05);border-color:var(--c-brand-main);box-shadow:0 0 0 4px rgba(14,116,144,.2);padding-top:1.5rem;padding-bottom:.25rem}.input-field:focus+.input-label,.input-field:not(:placeholder-shown)+.input-label{top:.25rem;font-size:.75rem;color:var(--c-brand-light);font-weight:700}.marquee-section{border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);background:rgba(0,0,0,.3);padding:3rem 0;overflow:hidden;position:relative}.marquee-track{display:flex;width:max-content;gap:6rem;animation:scroll 40s linear infinite}.client-logo{height:50px;width:200px;background-repeat:no-repeat;background-position:center;background-size:contain;opacity:.4;transition:opacity .3s;filter:grayscale(100%)}.client-logo:hover{opacity:1;filter:grayscale(0%) drop-shadow(0 0 10px rgba(255,255,255,.2))}.logo-dental{background-image:var(--logo-dental)}.logo-tech{background-image:var(--logo-tech)}.logo-legal{background-image:var(--logo-legal)}.logo-fitness{background-image:var(--logo-fitness)}.logo-med{background-image:var(--logo-med)}@keyframes scroll{to{transform:translateX(-50%)}}.footer{background:#000;padding:8rem 0 3rem;border-top:1px solid var(--border-glass);position:relative;overflow:hidden}.footer-bg-text{position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);font-size:25vw;font-weight:900;color:rgba(255,255,255,.02);line-height:.8;pointer-events:none;white-space:nowrap;z-index:0}.footer-grid{position:relative;z-index:2;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:6rem}.footer-heading{color:#fff;font-size:.9rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:2rem;opacity:.6;font-weight:700}.footer-link{display:block;color:var(--text-secondary);text-decoration:none;margin-bottom:1rem;font-size:1.1rem;transition:all .3s}.footer-link:hover{color:var(--c-brand-light);transform:translateX(6px)}.copyright{border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;color:var(--text-tertiary);font-size:.9rem;position:relative;z-index:2}.copyright-left{display:flex;align-items:center;gap:1rem}.owner-signature{font-family:var(--font-display);font-size:.85rem;color:var(--text-tertiary);text-decoration:none;opacity:.7;transition:all .3s var(--ease-smooth);position:relative}.owner-signature:hover{color:var(--c-accent-gold);opacity:1;letter-spacing:.05em;text-shadow:0 0 10px rgba(245,158,11,.4)}.owner-signature::before{content:'///';color:var(--c-brand-main);margin-right:.5rem;font-weight:800}.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-smooth),transform 1s var(--ease-smooth)}.reveal.active{opacity:1;transform:translateY(0)}.stagger-child{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}.stagger-child.visible{opacity:1;transform:translateY(0)}.glitch{position:relative}.glitch::after,.glitch::before{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}.glitch::before{left:2px;text-shadow:-1px 0 #ff00c1;clip:rect(44px,450px,56px,0);animation:glitch-anim-1 5s infinite linear alternate-reverse}.glitch::after{left:-2px;text-shadow:-1px 0 #00fff9;clip:rect(44px,450px,56px,0);animation:glitch-anim-2 5s infinite linear alternate-reverse}@keyframes glitch-anim-1{0%{clip:rect(30px,9999px,10px,0)}5%{clip:rect(80px,9999px,90px,0)}100%{clip:rect(40px,9999px,60px,0)}}@keyframes glitch-anim-2{0%{clip:rect(10px,9999px,80px,0)}5%{clip:rect(90px,9999px,10px,0)}100%{clip:rect(50px,9999px,20px,0)}}@media (max-width:1024px){.grid-2{grid-template-columns:1fr;gap:3rem}.hero{text-align:center;padding-top:120px}.hero-content{margin:0 auto}.footer-grid{grid-template-columns:1fr 1fr}}@media (max-width:768px){.header{height:70px}.header.scrolled{height:70px}.nav-toggle{display:block;font-size:1.5rem;z-index:10001}.nav-menu{display:none;flex-direction:column;position:fixed;top:70px;left:0;width:100%;background:var(--bg-glass-heavy);backdrop-filter:blur(20px);padding:2rem;border-bottom:1px solid var(--border-glass);box-shadow:0 10px 40px rgba(0,0,0,.8);gap:1.5rem}.nav-menu.active{display:flex;animation:slideDown .3s ease-out}@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}.header .btn-primary{display:none}.nav-menu::after{content:'Start Project ->';display:block;text-align:center;background:var(--c-brand-main);color:#fff;padding:1rem;border-radius:8px;font-weight:700;margin-top:1rem}.hero{padding-top:100px}h1{font-size:2.5rem;line-height:1.2}.float-tag{display:none}.container{padding:0 1.25rem}.footer-grid,.grid-3,.grid-4{grid-template-columns:1fr}.flex.gap-1{flex-direction:column;width:100%;gap:.75rem}.btn{width:100%;padding:.9rem;font-size:.95rem}.section{padding:3.5rem 0}.card,.form-card{padding:1.5rem}.card-icon{width:48px;height:48px;font-size:1.25rem}.copyright{flex-direction:column;gap:1rem;text-align:center}.footer-bg-text{display:none}}</style>
     <style>
 
-.dash-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
-.login-box { max-width: 400px; margin: 8rem auto; background: var(--bg-surface-1); padding: 3rem; border-radius: var(--radius-lg); border: 1px solid var(--border-glass); text-align: center; }
-.dash-grid { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; margin-top: 2rem; }
-.panel { background: var(--bg-surface-1); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 2rem; }
-.client-list { list-style: none; margin-top: 1rem; }
-.client-item { padding: 1rem; border-bottom: 1px solid var(--border-glass); cursor: pointer; transition: background 0.3s; }
-.client-item:hover { background: rgba(255,255,255,0.05); }
-.hidden { display: none !important; }
+/* Reset some base variables for dashboard */
+:root { --dash-nav-h: 70px; }
+.admin-layout { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+.admin-header { height: var(--dash-nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background: rgba(10,18,42,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-glass); z-index: 100; }
+.admin-main { display: flex; flex: 1; overflow: hidden; }
+.admin-sidebar { width: 300px; background: rgba(4,8,24,0.5); border-right: 1px solid var(--border-glass); padding: 2rem; overflow-y: auto; }
+.admin-content { flex: 1; padding: 3rem; overflow-y: auto; background: radial-gradient(circle at top left, rgba(14,116,144,0.05), transparent 60%); }
+
+/* Dashboard specifics */
+.auth-wrapper { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg-deep); z-index: 9999999; }
+.auth-box { background: rgba(10,18,42,0.9); padding: 3rem; border-radius: 20px; border: 1px solid rgba(103,232,249,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.5); text-align: center; width: 400px; }
+.panel-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-glass); border-radius: 16px; padding: 2rem; margin-bottom: 2rem; }
+.client-li { padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+.client-li:hover { background: rgba(255,255,255,0.05); }
+.client-li.active { background: rgba(103,232,249,0.1); border-color: rgba(103,232,249,0.3); }
+
+/* Messages */
+.msg-container { display: flex; flex-direction: column; gap: 1rem; max-height: 400px; overflow-y: auto; padding-right: 1rem; }
+.msg-bubble { padding: 1rem 1.5rem; border-radius: 20px; max-width: 80%; line-height: 1.5; font-size: 0.95rem; }
+.msg-mine { background: linear-gradient(135deg, #0e7490, #67e8f9); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.msg-theirs { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); align-self: flex-start; border-bottom-left-radius: 4px; }
 
     </style>
 </head>
-<body>
+<body style="background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans);">
     <div id="noise-overlay"></div>
-    <header class="header" id="siteHeader">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
-                     onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
-                <svg class="logo-fallback-svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                     style="display:none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </a>
+    
+<!-- AUTH SCREEN -->
+<div id="authScreen" class="auth-wrapper">
+    <div class="auth-box">
+        <h2 style="margin-bottom: 0.5rem">Admin Portal</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Authorized Personnel Only</p>
+        <input type="email" id="adminEmail" class="input-field" placeholder="Owner Email" style="margin-bottom: 1rem">
+        <input type="password" id="adminPass" class="input-field" placeholder="Password" style="margin-bottom: 2rem">
+        <button class="btn btn-primary" style="width: 100%" onclick="loginAdmin()">Secure Login</button>
+    </div>
+</div>
 
-            <nav>
-                <button class="nav-toggle" aria-label="Open Menu">☰</button>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="case-studies.html" class="nav-link">Work</a></li>
-                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                    <li><a href="about.html" class="nav-link">Studio</a></li>
-                    <li><a href="client-portal.html" class="btn btn-secondary" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
-                </ul>
-            </nav>
-
-            <a href="contact.html" class="btn btn-primary btn-cta-glow">
-                Start Project <span class="btn-arrow">→</span>
-            </a>
-        </div>
+<!-- DASHBOARD SCREEN (Strictly Hidden Initially) -->
+<div id="dashboardScreen" class="admin-layout" style="display: none;">
+    <header class="admin-header">
+        <div style="font-weight: 700; font-size: 1.2rem; letter-spacing: 1px;">EVOLVIX<span style="color:var(--c-brand-light)">ADMIN</span></div>
+        <button class="btn btn-secondary" onclick="logout()" style="padding: 0.4rem 1rem; font-size: 0.8rem; border-color: var(--c-danger); color: var(--c-danger);">Logout</button>
     </header>
     
-    <main style="padding-top: var(--header-height); min-height: 80vh;">
+    <div class="admin-main">
+        <aside class="admin-sidebar">
+            <h3 style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-tertiary); text-transform: uppercase;">Clients</h3>
+            <button class="btn btn-primary" style="width: 100%; margin-bottom: 2rem; padding: 0.5rem;" onclick="document.getElementById('newClientModal').style.display='flex'">+ Add Client</button>
+            <div id="clientList"></div>
+        </aside>
         
-<div id="loginView" class="login-box">
-    <h2 style="margin-bottom: 1.5rem">Master Admin</h2>
-    <input type="email" id="adminEmail" class="input-field" placeholder="Owner Email" style="margin-bottom: 1rem">
-    <input type="password" id="adminPass" class="input-field" placeholder="Password" style="margin-bottom: 2rem">
-    <button class="btn btn-primary" style="width: 100%" onclick="loginAdmin()">Login</button>
-</div>
-
-<div id="dashboardView" class="dash-container hidden">
-    <h1>Evolvix Command Center</h1>
-    <div class="dash-grid">
-        <div class="panel">
-            <h3>Clients</h3>
-            <button class="btn btn-secondary" style="width:100%; margin-top:1rem; padding: 0.5rem" onclick="document.getElementById('newClientModal').classList.remove('hidden')">+ New Client</button>
-            <ul id="clientList" class="client-list"></ul>
-        </div>
-        <div class="panel" id="clientDetailPanel" style="display:none;">
-            <h2 id="cdName">Client Name</h2>
-            <p id="cdEmail" style="color: var(--c-brand-light)">email@domain.com</p>
-            <hr style="border-color: var(--border-glass); margin: 2rem 0;">
-            
-            <h3>Upload Codebase / File</h3>
-            <div style="display:flex; gap: 1rem; margin-top: 1rem;">
-                <input type="file" id="fileUpload" class="input-field" style="padding: 0.5rem;">
-                <button class="btn btn-primary" onclick="uploadFile()">Upload</button>
+        <main class="admin-content" id="clientDetailPanel" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                <div>
+                    <h1 id="cdName" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Client Name</h1>
+                    <p id="cdEmail" style="color: var(--text-secondary);">email@domain.com</p>
+                </div>
+                <div style="background: rgba(16,185,129,0.1); color: #10b981; padding: 0.4rem 1rem; border-radius: 99px; border: 1px solid rgba(16,185,129,0.3); font-weight: 700; font-size: 0.8rem;">ACTIVE</div>
             </div>
             
-            <h3 style="margin-top: 3rem;">Direct Messages</h3>
-            <div id="adminMsgs" style="height: 300px; overflow-y: auto; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1rem; margin: 1rem 0;"></div>
-            <div style="display:flex; gap: 1rem;">
-                <input type="text" id="adminMsgInput" class="input-field" placeholder="Message to client...">
-                <button class="btn btn-secondary" onclick="sendAdminMsg()">Send</button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <!-- Vault Upload -->
+                <div class="panel-card">
+                    <h3 style="margin-bottom: 1rem;">Vault Upload</h3>
+                    <p style="color: var(--text-tertiary); font-size: 0.9rem; margin-bottom: 1.5rem;">Securely transfer codebases, env files, or assets to this client.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="file" id="fileUpload" class="input-field" style="padding: 0.5rem; flex: 1;">
+                        <button class="btn btn-secondary" onclick="uploadFile()">Upload</button>
+                    </div>
+                </div>
+                
+                <!-- Direct Comms -->
+                <div class="panel-card" style="display: flex; flex-direction: column;">
+                    <h3 style="margin-bottom: 1rem;">Direct Comms</h3>
+                    <div id="adminMsgs" class="msg-container" style="flex: 1; border: 1px solid var(--border-glass); border-radius: 12px; padding: 1rem; background: rgba(0,0,0,0.2);"></div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <input type="text" id="adminMsgInput" class="input-field" placeholder="Type a message..." style="margin-bottom: 0;">
+                        <button class="btn btn-primary" onclick="sendAdminMsg()">Send</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </main>
+        <main class="admin-content" id="emptyPanel" style="display: flex; align-items: center; justify-content: center;">
+            <p style="color: var(--text-tertiary);">Select a client to view details</p>
+        </main>
     </div>
 </div>
 
-<div id="newClientModal" class="hidden" style="position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:999999; display:flex; align-items:center; justify-content:center;">
-    <div class="panel" style="width: 400px; position:relative;">
-        <button style="position:absolute; right:1rem; top:1rem; background:none; border:none; color:#fff; cursor:pointer;" onclick="document.getElementById('newClientModal').classList.add('hidden')">✕</button>
-        <h3>Create New Client</h3>
-        <input type="text" id="ncName" class="input-field" placeholder="Company / Client Name" style="margin-top:1.5rem; margin-bottom:1rem">
-        <input type="email" id="ncEmail" class="input-field" placeholder="Client Email" style="margin-bottom:1rem">
-        <input type="text" id="ncPass" class="input-field" placeholder="Secure Password" style="margin-bottom:2rem">
-        <button class="btn btn-primary" style="width:100%" onclick="createClient()">Create & Save</button>
+<!-- Modal -->
+<div id="newClientModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index: 99999; align-items: center; justify-content: center;">
+    <div class="auth-box" style="position: relative;">
+        <button style="position: absolute; right: 1.5rem; top: 1.5rem; background: none; border: none; color: var(--text-tertiary); cursor: pointer; font-size: 1.2rem;" onclick="document.getElementById('newClientModal').style.display='none'">✕</button>
+        <h3 style="margin-bottom: 2rem;">Create New Client</h3>
+        <input type="text" id="ncName" class="input-field" placeholder="Client Name" style="margin-bottom: 1rem">
+        <input type="email" id="ncEmail" class="input-field" placeholder="Client Email" style="margin-bottom: 1rem">
+        <input type="text" id="ncPass" class="input-field" placeholder="Secure Password" style="margin-bottom: 2rem">
+        <button class="btn btn-primary" style="width: 100%" onclick="createClient()">Generate Credentials</button>
     </div>
 </div>
 
-    </main>
-    
-    <footer class="footer">
-        <div class="footer-graphic" aria-hidden="true">
-            <svg width="100%" height="100%" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
-                <circle cx="500" cy="200" r="220" stroke="rgba(14,116,144,0.6)" stroke-width="1"/>
-                <circle cx="500" cy="200" r="300" stroke="rgba(14,116,144,0.3)" stroke-width="1"/>
-                <circle cx="500" cy="200" r="380" stroke="rgba(14,116,144,0.15)" stroke-width="1"/>
-                <circle cx="300" cy="600" r="150" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
-                <line x1="200" y1="0" x2="600" y2="800" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-                <line x1="100" y1="100" x2="600" y2="400" stroke="rgba(103,232,249,0.06)" stroke-width="1"/>
-            </svg>
-        </div>
-        <div class="footer-bg-text" aria-hidden="true">EVOLVIX</div>
-        <div class="container" style="position:relative;z-index:2;">
-            <!-- Status Bar -->
-            <div class="footer-status-bar">
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    All Systems Operational
-                </div>
-                <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-blue"></span>
-                    Accepting New Projects — 2026
-                </div>
-                <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    Response Time &lt; 24hrs
-                </div>
-                <div style="margin-left:auto;">
-                    <a href="contact.html" style="font-size:.78rem;color:#67e8f9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">
-                        Let's Talk → 
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="container footer-grid">
-            <div>
-                <a href="index.html" style="display:inline-block;">
-                    <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="footer-evolvix-logo" loading="lazy" width="140" height="60"
-                         onerror="this.outerHTML='<span style=&quot;font-family:var(--font-display);font-size:1.6rem;font-weight:900;color:#fff;display:block;margin-bottom:1.5rem;&quot;>Evolvix</span>'">
-                </a>
-                <p style="font-size:.92rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5);line-height:1.7;">
-                    Evolvix Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.
-                </p>
-                <div class="footer-socials">
-                    <a href="#" class="social-btn" aria-label="Twitter/X" title="Twitter">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/evolvixtechnologies" class="social-btn" aria-label="Instagram" title="Instagram">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="footer-heading">Services</div>
-                <a href="services.html" class="footer-link">Web Development</a>
-                <a href="services.html" class="footer-link">App Development</a>
-                <a href="services.html" class="footer-link">SaaS Platforms</a>
-                <a href="services.html" class="footer-link">Local SEO</a>
-                <a href="services.html" class="footer-link">Digital Marketing</a>
-            </div>
-            <div>
-                <div class="footer-heading">Company</div>
-                <a href="about.html" class="footer-link">About Us</a>
-                <a href="case-studies.html" class="footer-link">Our Work</a>
-                <a href="pricing.html" class="footer-link">Pricing</a>
-                <a href="contact.html" class="footer-link">Contact</a>
-            </div>
-            <div>
-                <div class="footer-heading">Contact</div>
-                <a href="tel:+917668758238" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.38 2.18 2 2 0 012.36.02h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
-                    +91 7668758238
-                </a>
-                <a href="mailto:evolvixtechnology@gmail.com" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email Us
-                </a>
-                <div class="footer-heading" style="margin-top:1.5rem;">Legal</div>
-                <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                <a href="terms.html" class="footer-link">Terms of Service</a>
-            </div>
-        </div>
-        <div class="container copyright">
-            <div class="copyright-left">&copy; 2026 Evolvix Technologies. All rights reserved.</div>
-            <a href="about.html" class="owner-signature">Crafted by Akash Jadon</a>
-        </div>
-    </footer>
-    
     <script>
 
+// The base API URL will be updated to Render URL after deployment
 const API_URL = 'http://localhost:10000/api';
-let currentToken = '';
+let currentToken = sessionStorage.getItem('ev_admin_token');
 let selectedClientId = null;
+
+if(currentToken) {
+    document.getElementById('authScreen').style.display = 'none';
+    document.getElementById('dashboardScreen').style.display = 'flex';
+    loadClients();
+}
 
 async function loginAdmin() {
     const email = document.getElementById('adminEmail').value;
     const password = document.getElementById('adminPass').value;
-    const res = await fetch(API_URL + '/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    });
-    const data = await res.json();
-    if(data.token && data.role === 'admin') {
-        currentToken = data.token;
-        document.getElementById('loginView').classList.add('hidden');
-        document.getElementById('dashboardView').classList.remove('hidden');
-        loadClients();
-    } else {
-        alert('Invalid Admin Credentials');
+    try {
+        const res = await fetch(API_URL + '/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if(data.token && data.role === 'admin') {
+            sessionStorage.setItem('ev_admin_token', data.token);
+            currentToken = data.token;
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('dashboardScreen').style.display = 'flex';
+            loadClients();
+        } else {
+            alert('Invalid Admin Credentials');
+        }
+    } catch(e) {
+        alert('Server unreachable. Ensure backend is running.');
     }
+}
+
+function logout() {
+    sessionStorage.removeItem('ev_admin_token');
+    location.reload();
 }
 
 async function loadClients() {
     const res = await fetch(API_URL + '/admin/clients', { headers: { 'Authorization': 'Bearer ' + currentToken }});
+    if(res.status === 403 || res.status === 401) return logout();
     const clients = await res.json();
+    
     const list = document.getElementById('clientList');
     list.innerHTML = '';
     clients.forEach(c => {
-        const li = document.createElement('li');
-        li.className = 'client-item';
-        li.innerHTML = `<strong>${c.name}</strong><br><small>${c.email}</small>`;
-        li.onclick = () => selectClient(c);
-        list.appendChild(li);
+        const div = document.createElement('div');
+        div.className = 'client-li';
+        div.innerHTML = `<strong style="display:block; margin-bottom:0.2rem">${c.name}</strong><span style="font-size:0.8rem; color:var(--text-tertiary)">${c.email}</span>`;
+        div.onclick = () => {
+            document.querySelectorAll('.client-li').forEach(el => el.classList.remove('active'));
+            div.classList.add('active');
+            selectClient(c);
+        };
+        list.appendChild(div);
     });
 }
 
 function selectClient(c) {
     selectedClientId = c.id;
+    document.getElementById('emptyPanel').style.display = 'none';
     document.getElementById('clientDetailPanel').style.display = 'block';
     document.getElementById('cdName').innerText = c.name;
     document.getElementById('cdEmail').innerText = c.email;
@@ -288,9 +228,13 @@ async function createClient() {
         body: JSON.stringify({ name, email, password })
     });
     if(res.ok) {
-        document.getElementById('newClientModal').classList.add('hidden');
+        document.getElementById('newClientModal').style.display = 'none';
+        document.getElementById('ncName').value = '';
+        document.getElementById('ncEmail').value = '';
+        document.getElementById('ncPass').value = '';
         loadClients();
-        alert('Client Created!');
+    } else {
+        alert("Failed to create client.");
     }
 }
 
@@ -306,7 +250,12 @@ async function uploadFile() {
         headers: { 'Authorization': 'Bearer ' + currentToken },
         body: fd
     });
-    if(res.ok) alert('File uploaded securely to client vault.');
+    if(res.ok) {
+        alert('Secure File Uploaded');
+        document.getElementById('fileUpload').value = '';
+    } else {
+        alert("Upload failed.");
+    }
 }
 
 async function loadAdminMsgs() {
@@ -314,7 +263,11 @@ async function loadAdminMsgs() {
     const res = await fetch(API_URL + '/messages?client_id=' + selectedClientId, { headers: { 'Authorization': 'Bearer ' + currentToken }});
     const msgs = await res.json();
     const div = document.getElementById('adminMsgs');
-    div.innerHTML = msgs.map(m => `<div style="margin-bottom:0.5rem; text-align: ${m.sender_id === 1 ? 'right' : 'left'}"><span style="background: ${m.sender_id === 1 ? 'var(--c-brand-main)' : '#333'}; padding: 0.4rem 0.8rem; border-radius: 8px; display:inline-block;">${m.message}</span></div>`).join('');
+    div.innerHTML = msgs.map(m => `
+        <div class="msg-bubble ${m.sender_id === 1 ? 'msg-mine' : 'msg-theirs'}">
+            ${m.message}
+        </div>
+    `).join('');
     div.scrollTop = div.scrollHeight;
 }
 
