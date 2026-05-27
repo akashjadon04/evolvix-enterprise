@@ -92,25 +92,17 @@ class Particle {
         ctx.fill();
     }
 
-    // Interactive Repulsion from Mouse
+    // Gentle Repulsion from Mouse (dead zone prevents corner-flying)
     behaviors(mouse) {
-        let arrive = this.arrive(mouse);
-        arrive.mult(-5); // Repel
-        this.applyForce(arrive);
-    }
-
-    arrive(target) {
-        let desired = Vector2.sub(target, this.pos);
+        let desired = Vector2.sub(this.pos, mouse);
         let d = desired.mag();
-        let speed = this.maxSpeed;
-        if (d < 100) {
-            speed = MathUtils.map(d, 0, 100, 0, this.maxSpeed);
-        }
+        // Dead zone: ignore mouse if farther than 120px
+        if (d > 120 || d < 1) return;
+        // Gentle push: strength fades with distance
+        let strength = MathUtils.map(d, 0, 120, 0.015, 0);
         desired.normalize();
-        desired.mult(speed);
-        let steer = Vector2.sub(desired, this.vel);
-        steer.limit(this.maxForce);
-        return steer;
+        desired.mult(strength);
+        this.applyForce(desired);
     }
 }
 
@@ -131,8 +123,8 @@ class PhysicsWorld {
         this.particles = [];
         this.mouse = new Vector2(-100, -100);
         
-        // UPDATED: Increased particle count for PC to 130 for "Perfect" look
-        this.particleCount = window.innerWidth < 768 ? 40 : 130;
+        // Optimized: fewer particles for smooth performance
+        this.particleCount = window.innerWidth < 768 ? 12 : 35;
 
         this.resize();
         this.initParticles();
@@ -171,9 +163,9 @@ class PhysicsWorld {
             for (let j = i; j < this.particles.length; j++) {
                 let p2 = this.particles[j];
                 let d = MathUtils.dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
-                if (d < 150) {
+                if (d < 120) {
                     this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(14, 116, 144, ${1 - d/150})`;
+                    this.ctx.strokeStyle = `rgba(14, 116, 144, ${(1 - d/120) * 0.6})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.moveTo(p1.pos.x, p1.pos.y);
                     this.ctx.lineTo(p2.pos.x, p2.pos.y);

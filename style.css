@@ -442,10 +442,14 @@ p {
     background: transparent;
     color: var(--text-primary);
     border: 1px solid var(--border-glass);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-secondary:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: var(--c-brand-main);
+    background: var(--c-brand-main);
+    border-color: var(--c-brand-light);
+    color: #fff;
+    box-shadow: 0 0 25px rgba(14, 116, 144, 0.4);
+    transform: translateY(-2px);
 }
 
 /* =========================================

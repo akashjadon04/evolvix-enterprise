@@ -38,7 +38,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <!-- Lenis removed for PageSpeed -->
     <link rel="stylesheet" href="style.css">
 
@@ -220,11 +220,14 @@
         .float-tag.tag-1 { top: auto; right: auto; animation-delay: 0s; }
         .float-tag.tag-2 { bottom: auto; left: auto; animation-delay:-2s; border-color:var(--c-success) !important; }
         .hero-badges {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
             display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.75rem;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+            z-index: 10;
         }
         .hero-badge {
             display: inline-flex;
@@ -254,11 +257,11 @@
         .macbook-device {
             width: 100%;
             max-width: 560px;
-            transform: perspective(1200px) rotateX(28deg) scale(0.82);
+            transform: perspective(1200px) rotateX(0deg) scale(1);
             transform-origin: center bottom;
             will-change: transform;
             filter: drop-shadow(0 40px 60px rgba(0,0,0,.65));
-            transition: transform .12s linear, filter .12s linear;
+            transition: transform .4s ease-out, filter .4s ease-out;
         }
         .macbook-lid {
             background: linear-gradient(180deg,#c8c8c8 0%,#9a9a9a 100%);
@@ -1618,7 +1621,7 @@
         <!-- ================================================================
              HERO
              ================================================================ -->
-        <section class="hero" id="hero">
+        <section class="hero" id="hero" style="position:relative;">
             <div class="container grid-2">
 
                 <!-- LEFT: Content -->
@@ -1662,11 +1665,11 @@
                     </div>
 
                     <div style="margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-                        <div style="display:flex;gap:4px;">
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(103,232,249,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#67e8f9" font-size="12" font-weight="700" font-family="var(--font-display)">R</text></svg>
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(139,92,246,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#8b5cf6" font-size="12" font-weight="700" font-family="var(--font-display)">B</text></svg>
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(16,185,129,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#10b981" font-size="12" font-weight="700" font-family="var(--font-display)">N</text></svg>
-                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="15" stroke="rgba(251,191,36,.4)" stroke-width="1"/><text x="16" y="20" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700" font-family="var(--font-display)">S</text></svg>
+                        <div style="display:flex;">
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="margin-right:-10px;z-index:4;"><circle cx="17" cy="17" r="16" fill="#0f172a" stroke="rgba(103,232,249,.5)" stroke-width="1.5"/><text x="17" y="22" text-anchor="middle" fill="#67e8f9" font-size="13" font-weight="700">R</text></svg>
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="margin-right:-10px;z-index:3;"><circle cx="17" cy="17" r="16" fill="#0f172a" stroke="rgba(139,92,246,.5)" stroke-width="1.5"/><text x="17" y="22" text-anchor="middle" fill="#8b5cf6" font-size="13" font-weight="700">B</text></svg>
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="margin-right:-10px;z-index:2;"><circle cx="17" cy="17" r="16" fill="#0f172a" stroke="rgba(16,185,129,.5)" stroke-width="1.5"/><text x="17" y="22" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700">N</text></svg>
+                            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" style="z-index:1;"><circle cx="17" cy="17" r="16" fill="#0f172a" stroke="rgba(251,191,36,.5)" stroke-width="1.5"/><text x="17" y="22" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">S</text></svg>
                         </div>
                         <div style="font-size:.9rem;color:rgba(255,255,255,.6);">
                             Trusted by <strong style="color:#fff;">50+ Founders</strong>
@@ -1681,8 +1684,8 @@
                             <div class="macbook-lid">
                                 <div class="macbook-screen-bezel">
                                     <div class="macbook-notch-top"></div>
-                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=75"
-                                         alt="Evolvix Technologies - Premium SaaS Dashboard" class="macbook-display" fetchpriority="high" width="800" height="500" loading="eager">
+                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=75"
+                                         alt="Evolvix Technologies - Premium SaaS Dashboard" class="macbook-display" width="800" height="500" loading="lazy">
                                     <div class="screen-overlay">
                                         <div class="screen-stat-card ssc-1">
                                             <span class="ssc-dot green"></span>
@@ -2216,7 +2219,7 @@
     <!-- ================================================================
          BASE SCRIPTS
          ================================================================ -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 
     <!-- Particle overrides removed for performance -->
 
@@ -2243,7 +2246,7 @@
             siteHeader.classList.toggle('scrolled', window.scrollY>50);
         },{passive:true});
 
-        /* ─── MacBook Apple-style scroll animation (enhanced) ─── */
+        /* ─── MacBook Apple-style scroll animation ─── */
         var macbookDevice = document.getElementById('macbookDevice');
         function animateMacBook(){
             if(!macbookDevice) return;
@@ -2251,17 +2254,14 @@
             if(!heroEl) return;
             var scrollY = window.scrollY;
             var heroH = heroEl.offsetHeight;
-            var progress = Math.min(1, scrollY / (heroH * 0.6));
-            /* Cubic ease-out for smooth Apple feel */
+            var progress = Math.min(1, scrollY / (heroH * 0.5));
             var eased = 1 - Math.pow(1 - progress, 3);
-            var rotX = 28 * (1 - eased);
-            var sc = 0.82 + 0.18 * eased;
-            var ty = (1 - eased) * -40;
-            macbookDevice.style.transform = 'perspective(1200px) rotateX('+rotX+'deg) scale('+sc+') translateY('+ty+'px)';
-            var shadowAmt = 40 + eased * 25;
-            macbookDevice.style.filter = 'drop-shadow(0 '+shadowAmt+'px 60px rgba(0,0,0,.65))';
+            /* Starts upright (0deg), tilts back to 15deg on scroll */
+            var rotX = eased * 15;
+            var sc = 1 - eased * 0.1;
+            macbookDevice.style.transform = 'perspective(1200px) rotateX('+rotX+'deg) scale('+sc+')';
             var glowEl = document.querySelector('.macbook-glow');
-            if(glowEl) glowEl.style.opacity = 0.2 + eased * 0.8;
+            if(glowEl) glowEl.style.opacity = 1 - eased * 0.6;
         }
         window.addEventListener('scroll', animateMacBook, {passive:true});
         animateMacBook();
@@ -2510,47 +2510,7 @@
             });
         })();
 
-        /* ─── Sidebar Section Dots ─── */
-        (function(){
-            if(window.innerWidth<=1024) return;
-            var sections=[
-                {id:'services',label:'Services'},
-                {id:'process',label:'Process'},
-                {id:'work',label:'Work'},
-                {id:'tech',label:'Tech'},
-                {id:'testimonials',label:'Reviews'},
-                {id:'audit',label:'Free Audit'}
-            ];
-            var sidebar=document.createElement('nav');
-            sidebar.className='sidebar-nav';
-            sidebar.setAttribute('aria-label','Page sections');
-            sections.forEach(function(s){
-                var btn=document.createElement('button');
-                btn.className='sidebar-dot';
-                btn.setAttribute('data-section',s.label);
-                btn.setAttribute('aria-label','Go to '+s.label);
-                btn.addEventListener('click',function(){
-                    var target=document.getElementById(s.id);
-                    if(!target) return;
-                    target.scrollIntoView({behavior:'smooth'});
-                });
-                sidebar.appendChild(btn);
-            });
-            document.body.appendChild(sidebar);
-            var sEls=sections.map(function(s){return document.getElementById(s.id);}).filter(Boolean);
-            var dots=sidebar.querySelectorAll('.sidebar-dot');
-            var activeIdx=-1;
-            var sObs=new IntersectionObserver(function(entries){
-                entries.forEach(function(entry){
-                    if(!entry.isIntersecting) return;
-                    var idx=sEls.indexOf(entry.target);
-                    if(idx<0||idx===activeIdx) return;
-                    activeIdx=idx;
-                    dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
-                });
-            },{threshold:0.4});
-            sEls.forEach(function(el){sObs.observe(el);});
-        })();
+        /* Sidebar Section Dots REMOVED — using Minimap instead */
 
     })();
         });
@@ -2903,8 +2863,14 @@
             modal.classList.remove('ex-open');
         }
 
-        /* Trigger: Back button press (History API) */
-        history.pushState({exitPopup: true}, '', location.href);
+        /* Trigger: Back button (pushState fires after user interaction) */
+        var hasPushedState = false;
+        document.addEventListener('click', function() {
+            if(!hasPushedState) {
+                history.pushState({exitPopup: true}, '', location.href);
+                hasPushedState = true;
+            }
+        }, {once: false});
         window.addEventListener('popstate', function(e){
             openModal();
             history.pushState({exitPopup: true}, '', location.href);
@@ -3391,26 +3357,30 @@
         var spTitle = document.getElementById('spTitle');
         var spDesc = document.getElementById('spDesc');
         
-        var spData = [
-            { t: 'Someone just booked an audit', d: 'From New York, USA · Just now' },
-            { t: 'New SaaS project inquiry', d: 'From London, UK · 2 mins ago' },
-            { t: 'Astra AI answered a query', d: 'From Sydney, AU · Just now' },
-            { t: 'Someone just booked an audit', d: 'From Toronto, CA · 5 mins ago' }
-        ];
+        var bizNames = ['Zenith Labs','Apex Digital','Nova Studios','Pulse Media','Orbit Systems','Stellar Co','Nimbus Tech','Forge AI','Prism Creative','Summit SaaS','Vertex Solutions','Cobalt HQ','Quantum Works','Aether Digital','Stratos Agency'];
+        var cities = ['New York, USA','London, UK','Sydney, AU','Toronto, CA','Berlin, DE','Mumbai, IN','Dubai, AE','Singapore, SG','Tokyo, JP','Paris, FR','Stockholm, SE','Cape Town, ZA'];
+        var actions = ['just booked a Free Audit','inquired about a SaaS build','started a new project','requested a strategy call','signed up for a consultation'];
+        var usedIdx = [];
 
         function triggerSocialProof() {
-            var rand = spData[Math.floor(Math.random() * spData.length)];
-            if(spTitle) spTitle.textContent = rand.t;
-            if(spDesc) spDesc.textContent = rand.d;
+            var bi, tries = 0;
+            do { bi = Math.floor(Math.random() * bizNames.length); tries++; } while(usedIdx.indexOf(bi) !== -1 && tries < 20);
+            usedIdx.push(bi); if(usedIdx.length > bizNames.length - 2) usedIdx = [];
+            var biz = bizNames[bi];
+            var city = cities[Math.floor(Math.random() * cities.length)];
+            var action = actions[Math.floor(Math.random() * actions.length)];
+            var mins = Math.floor(Math.random() * 8) + 1;
+            if(spTitle) spTitle.textContent = biz + ' ' + action;
+            if(spDesc) spDesc.textContent = 'From ' + city + ' \u00b7 ' + mins + ' min ago';
             if(spToast) spToast.classList.add('show');
             setTimeout(function() { if(spToast) spToast.classList.remove('show'); }, 5000);
         }
         
-        // Randomly show toast every 30-45 seconds
+        // Show toast every 25-40 seconds, first after 10s
         setTimeout(function loop() {
             triggerSocialProof();
-            setTimeout(loop, Math.random() * 15000 + 30000);
-        }, 12000); // first one after 12s
+            setTimeout(loop, Math.random() * 15000 + 25000);
+        }, 10000);
     });
     </script>
 </body>
