@@ -38,7 +38,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
     <!-- Lenis removed for PageSpeed -->
     <link rel="stylesheet" href="style.css">
 
@@ -1626,15 +1626,7 @@
 
                 <!-- LEFT: Content -->
                 <div class="hero-content reveal">
-                    <div class="hero-badges">
-                        <span class="hero-badge green">
-                            <span style="width:7px;height:7px;border-radius:50%;background:#10b981;display:inline-block;box-shadow:0 0 6px #10b981;flex-shrink:0;animation:pulse-green 1.5s infinite;"></span>
-                            Accepting Clients — 2026
-                        </span>
-                        <span class="hero-badge">
-                            ⚡ 100/100 PageSpeed
-                        </span>
-                    </div>
+                    <!-- Hero badges removed per user request -->
 
                     <h1>
                         We Build<br>
@@ -3016,7 +3008,7 @@
             
             if(msgsEl){
                 msgsEl.appendChild(div);
-                msgsEl.scrollTop = msgsEl.scrollHeight;
+                setTimeout(function(){ msgsEl.scrollTop = msgsEl.scrollHeight; }, 0);
             }
             
             if(playSound !== false && type === 'bot') {
@@ -3232,8 +3224,9 @@
         
         @media (max-width: 768px) {
             .minimap { display: none; }
-            .social-proof-toast { left: 1rem; right: 1rem; bottom: -120px; }
-            .social-proof-toast.show { bottom: 1rem; }
+            /* Hide Social Proof Toast on Mobile */
+            .social-proof-toast { display: none !important; }
+            .social-proof-toast.show { display: none !important; }
             .cmd-palette-backdrop { padding-top: 5vh; }
         }
     </style>
