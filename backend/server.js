@@ -45,8 +45,19 @@ db.serialize(() => {
         password TEXT NOT NULL,
         name TEXT,
         project_status TEXT,
+        billing_status TEXT DEFAULT 'Unpaid',
+        contract_status TEXT DEFAULT 'Pending',
+        performance_score TEXT DEFAULT '100',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
+    
+    // Auto-migrate old users if needed (SQLite doesn't support IF NOT EXISTS for columns, so we try adding them)
+    try {
+        db.run("ALTER TABLE users ADD COLUMN billing_status TEXT DEFAULT 'Unpaid'", (err) => {});
+        db.run("ALTER TABLE users ADD COLUMN contract_status TEXT DEFAULT 'Pending'", (err) => {});
+        db.run("ALTER TABLE users ADD COLUMN performance_score TEXT DEFAULT '100'", (err) => {});
+    } catch(e) {}
+
 
     db.run(`CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -84,7 +95,7 @@ app.get('/ping', (req, res) => {
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
+    const token = (authHeader && authHeader.split(' ')[1]) || req.query.token;
     if (!token) return res.sendStatus(401);
     jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) return res.sendStatus(403);
@@ -116,7 +127,7 @@ app.post('/api/login', (req, res) => {
 });
 
 app.get('/api/me', authenticateToken, (req, res) => {
-    db.get("SELECT id, role, email, name, project_status, created_at FROM users WHERE id = ?", [req.user.id], (err, user) => {
+    db.get("SELECT id, role, email, name, project_status, billing_status, contract_status, performance_score, created_at FROM users WHERE id = ?", [req.user.id], (err, user) => {
         if (err || !user) return res.status(404).json({ error: 'User not found' });
         res.json(user);
     });
@@ -124,7 +135,7 @@ app.get('/api/me', authenticateToken, (req, res) => {
 
 // --- ADMIN ROUTES ---
 app.get('/api/admin/clients', authenticateToken, isAdmin, (req, res) => {
-    db.all("SELECT id, email, name, project_status, created_at FROM users WHERE role = 'client'", [], (err, rows) => {
+    db.all("SELECT id, email, name, project_status, billing_status, contract_status, performance_score, created_at FROM users WHERE role = 'client'", [], (err, rows) => {
         res.json(rows || []);
     });
 });
@@ -140,6 +151,16 @@ app.post('/api/admin/clients', authenticateToken, isAdmin, (req, res) => {
     });
 });
 
+
+app.put('/api/admin/clients/:id', authenticateToken, isAdmin, (req, res) => {
+    const { project_status, billing_status, contract_status, performance_score } = req.body;
+    db.run("UPDATE users SET project_status = ?, billing_status = ?, contract_status = ?, performance_score = ? WHERE id = ?", 
+    [project_status, billing_status, contract_status, performance_score, req.params.id], function(err) {
+        if (err) return res.status(400).json({ error: err.message });
+        res.json({ success: true });
+    });
+});
+
 // --- MESSAGING ROUTES ---
 app.get('/api/messages', authenticateToken, (req, res) => {
     const clientId = req.user.role === 'admin' ? req.query.client_id : req.user.id;
@@ -152,6 +173,20 @@ app.get('/api/messages', authenticateToken, (req, res) => {
 
 app.post('/api/messages', authenticateToken, (req, res) => {
     const { receiver_id, message } = req.body;
+    
+    if (receiver_id === 'admin') {
+        // Find admin user dynamically
+        db.get("SELECT id FROM users WHERE role = 'admin' LIMIT 1", [], (err, admin) => {
+            if (!admin) return res.status(500).json({ error: 'No admin found' });
+            db.run("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)", 
+            [req.user.id, admin.id, message], function(err) {
+                if (err) return res.status(400).json({ error: err.message });
+                res.json({ success: true, message: 'Sent' });
+            });
+        });
+        return;
+    }
+
     db.run("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)", 
     [req.user.id, receiver_id, message], function(err) {
         if (err) return res.status(400).json({ error: err.message });
