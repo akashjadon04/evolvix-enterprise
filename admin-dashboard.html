@@ -7,88 +7,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --bg-base: #000000;
-            --bg-surface: #0a0a0a;
-            --border-glow: #262626;
-            --text-primary: #ededed;
-            --text-secondary: #a1a1aa;
-            --accent: #06b6d4;
-            --accent-glow: 0 0 20px rgba(6, 182, 212, 0.4);
+            --bg-base: #020617;
+            --bg-surface: #0f172a;
+            --border-glow: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-dark: #0284c7;
+            --accent-glow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg-base); color: var(--text-primary); overflow: hidden; }
         
-        .btn {
-            background: #fff; color: #000; border: none; padding: 0.6rem 1.2rem; 
-            border-radius: 6px; font-weight: 500; cursor: pointer; transition: all 0.2s; 
-            font-size: 0.9rem;
-        }
-        .btn:hover { background: #e5e5e5; transform: scale(0.98); }
-        .btn-outline {
-            background: transparent; border: 1px solid var(--border-glow); color: var(--text-primary);
-        }
-        .btn-outline:hover { background: #171717; }
-        
-        .input-field {
-            width: 100%; background: #000; border: 1px solid var(--border-glow);
-            color: #fff; padding: 0.6rem 1rem; border-radius: 6px; margin-bottom: 1rem; 
-            outline: none; transition: 0.2s; font-size: 0.9rem;
-        }
-        .input-field:focus { border-color: #525252; }
-        
-        select.input-field { appearance: none; background: #0a0a0a; cursor: pointer; }
-
         /* Layout */
-        .auth-overlay {
-            position: fixed; inset: 0; background: var(--bg-base); z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .auth-card {
-            background: var(--bg-surface); border: 1px solid var(--border-glow);
-            padding: 2.5rem; border-radius: 12px; width: 400px; text-align: center;
-        }
-        
         .layout { display: flex; height: 100vh; display: none; }
-        .sidebar {
-            width: 280px; background: var(--bg-surface); border-right: 1px solid var(--border-glow); 
-            display: flex; flex-direction: column;
-        }
+        .sidebar { width: 280px; background: var(--bg-surface); border-right: 1px solid var(--border-glow); display: flex; flex-direction: column; }
         .sidebar-header { padding: 1.5rem; border-bottom: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: space-between; }
         .client-list { flex: 1; overflow-y: auto; padding: 1rem; }
-        .client-item {
-            padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;
-            border: 1px solid transparent; transition: 0.2s; display: flex; flex-direction: column; gap: 0.2rem;
-        }
-        .client-item:hover { background: #171717; }
-        .client-item.active { background: #171717; border-color: #262626; }
+        .client-item { padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer; border: 1px solid transparent; transition: 0.2s; }
+        .client-item:hover { background: #1e293b; }
+        .client-item.active { background: #1e293b; border-color: var(--accent); box-shadow: var(--accent-glow); }
         
-        .main-content { flex: 1; padding: 2rem; overflow-y: auto; position: relative; background: #000; }
-        .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; border-bottom: 1px solid var(--border-glow); padding-bottom: 2rem; }
+        .main-content { flex: 1; padding: 2rem; overflow-y: auto; background: var(--bg-base); }
         
+        .glass-panel { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid var(--border-glow); border-radius: 12px; padding: 1.5rem; }
+        
+        /* Inputs & Buttons */
+        .btn { background: var(--accent); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .btn:hover { background: var(--accent-dark); box-shadow: var(--accent-glow); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-glow); color: var(--text-primary); }
+        .btn-outline:hover { background: #1e293b; border-color: var(--accent); }
+        
+        .input-field { width: 100%; background: #020617; border: 1px solid var(--border-glow); color: #fff; padding: 0.6rem 1rem; border-radius: 6px; margin-bottom: 1rem; outline: none; }
+        .input-field:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+        
+        /* Grid */
         .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
         
-        .glass-panel {
-            background: var(--bg-surface); border: 1px solid var(--border-glow);
-            border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column;
-        }
-
-        /* Chat */
-        .chat-box { flex: 1; min-height: 250px; max-height: 300px; overflow-y: auto; padding-right: 0.5rem; margin-bottom: 1rem; display: flex; flex-direction: column; gap: 1rem; }
-        .chat-bubble { padding: 0.8rem 1rem; border-radius: 8px; max-width: 85%; font-size: 0.9rem; line-height: 1.5; }
-        .chat-mine { background: #262626; color: #fff; align-self: flex-end; }
-        .chat-theirs { background: #171717; border: 1px solid var(--border-glow); align-self: flex-start; }
-        
-        /* Modal */
-        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 999; }
+        /* Auth Screen */
+        .auth-overlay { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        .auth-card { background: var(--bg-surface); border: 1px solid var(--border-glow); padding: 3rem; border-radius: 12px; width: 400px; text-align: center; box-shadow: var(--accent-glow); }
     </style>
 </head>
 <body>
-
     <div id="authScreen" class="auth-overlay">
         <div class="auth-card">
-            <h1 style="margin-bottom: 0.5rem; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px;">EVOLVIX ADMIN</h1>
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent);">Evolvix Command</h2>
             <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">Level 5 Clearance Required</p>
             <form onsubmit="event.preventDefault(); login();">
                 <input type="email" id="aEmail" class="input-field" placeholder="Owner Email" required>
@@ -102,7 +69,7 @@
     <div id="dashScreen" class="layout">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2 style="font-size: 1rem; font-weight: 600;">Command Center</h2>
+                <h2 style="font-size: 1rem; font-weight: 600; color:var(--accent);">Command Center</h2>
                 <button class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="document.getElementById('modal').style.display='flex'">+ Add</button>
             </div>
             <div class="client-list" id="cList"></div>
@@ -112,55 +79,52 @@
         </aside>
         
         <main class="main-content">
-            <div id="emptyState" style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.9rem;">
-                Select a client from the sidebar.
+            <div id="emptyState" style="height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                Select a client to manage their enterprise environment.
             </div>
             
             <div id="clientDetails" style="display: none;">
-                <div class="header">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem;">
                     <div>
-                        <h1 id="cdName" style="font-size: 2rem; font-weight: 700; margin-bottom: 0.3rem; letter-spacing: -0.5px;">Client</h1>
-                        <p id="cdEmail" style="color: var(--text-secondary); font-size: 0.9rem;">email</p>
+                        <h1 id="cdName" style="font-size: 2rem; font-weight: 700;">Client Name</h1>
+                        <p id="cdEmail" style="color: var(--text-secondary);">email</p>
                     </div>
-                    <button class="btn btn-outline" onclick="saveSettings()" id="saveBtn">Save Settings</button>
+                    <button class="btn" onclick="saveSettings()" id="saveBtn">Save Status</button>
                 </div>
                 
                 <div class="grid-layout">
                     <!-- Column 1 -->
                     <div style="display:flex; flex-direction:column; gap:1.5rem;">
                         <div class="glass-panel">
-                            <h3 style="margin-bottom: 1rem; font-size: 1rem;">Project Configuration</h3>
-                            <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Project Phase</label>
+                            <h3 style="margin-bottom: 1rem; font-size: 1rem; color:var(--accent);">Global Status Controls</h3>
+                            <label style="font-size: 0.8rem; color: var(--text-secondary);">Project Phase</label>
                             <select id="pStatus" class="input-field">
                                 <option value="Phase 1: Architecture & Design">Phase 1: Architecture & Design</option>
                                 <option value="Phase 2: Core Engineering">Phase 2: Core Engineering</option>
                                 <option value="Phase 3: QA & Security Audit">Phase 3: QA & Security Audit</option>
                                 <option value="Phase 4: Production Launch">Phase 4: Production Launch</option>
                             </select>
-                            
-                            <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Billing Status</label>
-                            <select id="bStatus" class="input-field">
-                                <option value="Paid">Paid</option>
-                                <option value="Unpaid">Unpaid</option>
-                                <option value="Overdue">Overdue</option>
-                            </select>
-                            
-                            <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Contract Status</label>
-                            <select id="cStatus" class="input-field">
-                                <option value="Signed">Signed</option>
-                                <option value="Pending">Pending</option>
-                            </select>
-                            
-                            <label style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.3rem;">Performance Score (0-100)</label>
+                            <label style="font-size: 0.8rem; color: var(--text-secondary);">Lighthouse Score Target</label>
                             <input type="number" id="pScore" class="input-field" min="0" max="100" value="100">
+                        </div>
+
+                        <div class="glass-panel">
+                            <h3 style="margin-bottom: 1rem; font-size: 1rem; color:var(--accent);">Generate Contract (MSA)</h3>
+                            <form onsubmit="event.preventDefault(); generateContract();">
+                                <input type="text" id="cBusiness" class="input-field" placeholder="Client Business Name" required>
+                                <input type="text" id="cService" class="input-field" placeholder="Service Provided" required>
+                                <textarea id="cTerms" class="input-field" placeholder="Custom Terms (JSON or Text)" rows="3" required></textarea>
+                                <button type="submit" class="btn" style="width:100%" id="genCBtn">Generate & Send Contract</button>
+                            </form>
                         </div>
                         
                         <div class="glass-panel">
-                            <h3 style="margin-bottom: 1rem; font-size: 1rem;">Direct Comms (Live)</h3>
-                            <div id="chatBox" class="chat-box"></div>
-                            <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); send();">
-                                <input type="text" id="mInput" class="input-field" style="margin: 0;" placeholder="Message client..." autocomplete="off">
-                                <button type="submit" class="btn">Send</button>
+                            <h3 style="margin-bottom: 1rem; font-size: 1rem; color:var(--accent);">Generate Invoice</h3>
+                            <form onsubmit="event.preventDefault(); generateInvoice();">
+                                <input type="text" id="iBusiness" class="input-field" placeholder="Client Business Name" required>
+                                <input type="text" id="iService" class="input-field" placeholder="Service Name (e.g., Enterprise Web App)" required>
+                                <input type="number" id="iTotal" class="input-field" placeholder="Total Amount (USD)" required>
+                                <button type="submit" class="btn" style="width:100%" id="genIBtn">Generate AI Invoice</button>
                             </form>
                         </div>
                     </div>
@@ -168,11 +132,20 @@
                     <!-- Column 2 -->
                     <div style="display:flex; flex-direction:column; gap:1.5rem;">
                         <div class="glass-panel">
-                            <h3 style="margin-bottom: 1rem; font-size: 1rem;">Vault File Management</h3>
-                            <div id="vaultList" style="margin-bottom: 1rem; display:flex; flex-direction:column; gap:0.5rem;"></div>
-                            <form style="display: flex; gap: 0.5rem; margin-top: auto;" onsubmit="event.preventDefault(); upload();">
+                            <h3 style="margin-bottom: 1rem; font-size: 1rem; color:var(--accent);">Project Vault Management</h3>
+                            <div id="vaultList" style="margin-bottom: 1rem; display:flex; flex-direction:column; gap:0.5rem; max-height:200px; overflow-y:auto;"></div>
+                            <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); upload();">
                                 <input type="file" id="fUpload" class="input-field" style="margin: 0;" required>
                                 <button type="submit" class="btn" id="uploadBtn">Upload</button>
+                            </form>
+                        </div>
+
+                        <div class="glass-panel" style="flex:1; display:flex; flex-direction:column;">
+                            <h3 style="margin-bottom: 1rem; font-size: 1rem; color:var(--accent);">Direct Comms (Live)</h3>
+                            <div id="chatBox" style="flex:1; min-height: 250px; overflow-y:auto; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.5rem; padding-right:0.5rem;"></div>
+                            <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault(); send();">
+                                <input type="text" id="mInput" class="input-field" style="margin: 0;" placeholder="Message client..." autocomplete="off">
+                                <button type="submit" class="btn">Send</button>
                             </form>
                         </div>
                     </div>
@@ -181,10 +154,11 @@
         </main>
     </div>
 
-    <div id="modal" class="modal">
+    <!-- Modal for New Client -->
+    <div id="modal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 999;">
         <div class="auth-card" style="position: relative;">
             <button style="position: absolute; right: 1rem; top: 1rem; background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.2rem;" onclick="document.getElementById('modal').style.display='none'">✕</button>
-            <h2 style="margin-bottom: 1.5rem; font-size: 1.2rem;">New Client</h2>
+            <h2 style="margin-bottom: 1.5rem; font-size: 1.2rem; color:var(--accent);">New Client</h2>
             <form onsubmit="event.preventDefault(); createC();">
                 <input type="text" id="ncName" class="input-field" placeholder="Client Name" required>
                 <input type="email" id="ncEmail" class="input-field" placeholder="Client Email" required>
@@ -199,23 +173,13 @@
         let tok = sessionStorage.getItem('ev_adm_tok');
         let sel = null;
         let pollInt = null;
-        let adminId = null; // Store dynamically
+        let adminId = null;
 
         function escapeHTML(str) {
             return document.createElement('div').appendChild(document.createTextNode(str)).parentNode.innerHTML;
         }
 
         if(tok) { document.getElementById('authScreen').style.display='none'; document.getElementById('dashScreen').style.display='flex'; init(); }
-
-        async function init() {
-            try {
-                const res = await fetch(API+'/me', { headers: { 'Authorization': 'Bearer '+tok } });
-                if(res.status===401||res.status===403) return logout();
-                const u = await res.json();
-                adminId = u.id;
-                loadC();
-            } catch(e) { logout(); }
-        }
 
         async function login() {
             const btn = document.getElementById('loginBtn'); btn.innerText = 'Verifying...'; btn.disabled = true;
@@ -226,17 +190,22 @@
                     tok = data.token; sessionStorage.setItem('ev_adm_tok', tok);
                     document.getElementById('authScreen').style.display='none'; document.getElementById('dashScreen').style.display='flex'; init();
                 } else {
-                    document.getElementById('loginErr').innerText = data.error || 'Access Denied';
-                    document.getElementById('loginErr').style.display = 'block';
+                    document.getElementById('loginErr').innerText = data.error || 'Access Denied'; document.getElementById('loginErr').style.display = 'block';
                 }
-            } catch(e) {
-                document.getElementById('loginErr').innerText = 'Network error.';
-                document.getElementById('loginErr').style.display = 'block';
-            }
+            } catch(e) { document.getElementById('loginErr').innerText = 'Network error.'; document.getElementById('loginErr').style.display = 'block'; }
             btn.innerText = 'Authenticate'; btn.disabled = false;
         }
 
         function logout() { sessionStorage.removeItem('ev_adm_tok'); location.reload(); }
+
+        async function init() {
+            try {
+                const res = await fetch(API+'/me', { headers: { 'Authorization': 'Bearer '+tok } });
+                if(res.status===401||res.status===403) return logout();
+                const u = await res.json(); adminId = u.id;
+                loadC();
+            } catch(e) { logout(); }
+        }
 
         async function loadC() {
             try {
@@ -247,55 +216,39 @@
                 clients.forEach(c => {
                     const d = document.createElement('div'); d.className = 'client-item';
                     if(c.id === sel) d.classList.add('active');
-                    d.innerHTML = `<strong style="font-size:0.9rem;">${escapeHTML(c.name)}</strong><span style="font-size:0.75rem; color:var(--text-secondary)">${escapeHTML(c.email)}</span>`;
+                    d.innerHTML = `<strong style="font-size:0.9rem;">${escapeHTML(c.name)}</strong><br><span style="font-size:0.75rem; color:var(--text-secondary)">${escapeHTML(c.email)}</span>`;
                     d.onclick = () => {
                         document.querySelectorAll('.client-item').forEach(el=>el.classList.remove('active'));
                         d.classList.add('active'); sel = c.id;
-                        document.getElementById('emptyState').style.display='none';
-                        document.getElementById('clientDetails').style.display='block';
-                        document.getElementById('cdName').innerText = c.name; 
-                        document.getElementById('cdEmail').innerText = c.email;
-                        
-                        // Populate settings
+                        document.getElementById('emptyState').style.display='none'; document.getElementById('clientDetails').style.display='block';
+                        document.getElementById('cdName').innerText = c.name; document.getElementById('cdEmail').innerText = c.email;
                         document.getElementById('pStatus').value = c.project_status || "Phase 1: Architecture & Design";
-                        document.getElementById('bStatus').value = c.billing_status || "Unpaid";
-                        document.getElementById('cStatus').value = c.contract_status || "Pending";
                         document.getElementById('pScore').value = c.performance_score || "100";
-
                         loadM(); loadV();
                         if(pollInt) clearInterval(pollInt); pollInt = setInterval(()=>{loadM(); loadV();}, 3000);
                     };
                     list.appendChild(d);
                 });
-            } catch(e) { console.error(e); }
+            } catch(e) {}
         }
 
         async function createC() {
             const btn = document.getElementById('createBtn'); btn.disabled=true; btn.innerText='Creating...';
             try {
                 const res = await fetch(API+'/admin/clients', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ name: document.getElementById('ncName').value, email: document.getElementById('ncEmail').value, password: document.getElementById('ncPass').value }) });
-                if(res.ok) { 
-                    document.getElementById('modal').style.display='none'; 
-                    document.getElementById('ncName').value=''; document.getElementById('ncEmail').value=''; document.getElementById('ncPass').value='';
-                    loadC(); 
-                } else alert('Failed to create client.');
-            } catch(e) { alert('Network error'); }
+                if(res.ok) { document.getElementById('modal').style.display='none'; document.getElementById('ncName').value=''; document.getElementById('ncEmail').value=''; document.getElementById('ncPass').value=''; loadC(); }
+            } catch(e) {}
             btn.disabled=false; btn.innerText='Generate Keys';
         }
 
         async function saveSettings() {
             const btn = document.getElementById('saveBtn'); btn.innerText='Saving...';
             try {
-                const body = {
-                    project_status: document.getElementById('pStatus').value,
-                    billing_status: document.getElementById('bStatus').value,
-                    contract_status: document.getElementById('cStatus').value,
-                    performance_score: document.getElementById('pScore').value
-                };
+                const body = { project_status: document.getElementById('pStatus').value, performance_score: document.getElementById('pScore').value };
                 const res = await fetch(API+'/admin/clients/'+sel, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify(body) });
                 if(res.ok) loadC();
             } catch(e) {}
-            setTimeout(()=>btn.innerText='Save Settings', 1000);
+            setTimeout(()=>btn.innerText='Save Status', 1000);
         }
 
         async function upload() {
@@ -315,11 +268,10 @@
                 const res = await fetch(API+'/files?client_id='+sel, { headers: { 'Authorization': 'Bearer '+tok } });
                 const files = await res.json();
                 const l = document.getElementById('vaultList');
-                if(!files.length) { l.innerHTML = '<div style="color:var(--text-secondary); font-size:0.8rem;">No files uploaded.</div>'; return; }
+                if(!files.length) { l.innerHTML = '<div style="color:var(--text-secondary); font-size:0.8rem;">No files.</div>'; return; }
                 l.innerHTML = files.map(f => `
-                    <div style="background:#171717; padding:0.5rem 1rem; border-radius:6px; display:flex; justify-content:space-between; font-size:0.85rem; border:1px solid #262626;">
-                        <span>${escapeHTML(f.original_name)}</span>
-                        <span style="color:var(--text-secondary)">${(f.size/1024/1024).toFixed(2)} MB</span>
+                    <div style="background:#1e293b; padding:0.5rem; border-radius:4px; font-size:0.8rem; border:1px solid var(--border-glow); display:flex; justify-content:space-between;">
+                        <span>${escapeHTML(f.original_name)}</span><span style="color:var(--accent)">${(f.size/1024/1024).toFixed(2)}MB</span>
                     </div>
                 `).join('');
             } catch(e) {}
@@ -332,7 +284,7 @@
                 const msgs = await res.json();
                 const b = document.getElementById('chatBox');
                 const atBottom = b.scrollHeight - b.scrollTop <= b.clientHeight + 50;
-                b.innerHTML = msgs.map(m => `<div class="chat-bubble ${m.sender_id===adminId?'chat-mine':'chat-theirs'}">${escapeHTML(m.message)}</div>`).join('');
+                b.innerHTML = msgs.map(m => `<div style="padding:0.6rem; border-radius:6px; max-width:85%; font-size:0.85rem; ${m.sender_id===adminId?'background:#38bdf8; color:#000; align-self:flex-end;':'background:#1e293b; border:1px solid #334155; align-self:flex-start;'}">${escapeHTML(m.message)}</div>`).join('');
                 if(atBottom) b.scrollTop = b.scrollHeight;
             } catch(e) {}
         }
@@ -344,6 +296,45 @@
                 await fetch(API+'/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ receiver_id: sel, message: t }) });
                 loadM();
             } catch(e) {}
+        }
+
+        async function generateContract() {
+            const btn = document.getElementById('genCBtn'); btn.disabled=true; btn.innerText='Generating...';
+            try {
+                const body = {
+                    client_id: sel,
+                    business_name: document.getElementById('cBusiness').value,
+                    service_name: document.getElementById('cService').value,
+                    terms_json: document.getElementById('cTerms').value
+                };
+                await fetch(API+'/admin/contracts', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify(body) });
+                document.getElementById('cBusiness').value=''; document.getElementById('cService').value=''; document.getElementById('cTerms').value='';
+                alert('Contract Generated and sent to client vault.');
+            } catch(e) {}
+            btn.disabled=false; btn.innerText='Generate & Send Contract';
+        }
+
+        async function generateInvoice() {
+            const btn = document.getElementById('genIBtn'); btn.disabled=true; btn.innerText='Generating...';
+            try {
+                const total = parseFloat(document.getElementById('iTotal').value);
+                const bdown = {
+                    "Architecture & Strategy": (total * 0.25).toFixed(2),
+                    "Core Engineering": (total * 0.50).toFixed(2),
+                    "QA & Deployment": (total * 0.25).toFixed(2)
+                };
+                const body = {
+                    client_id: sel,
+                    business_name: document.getElementById('iBusiness').value,
+                    service_name: document.getElementById('iService').value,
+                    total_amount: total,
+                    breakdown_json: JSON.stringify(bdown)
+                };
+                await fetch(API+'/admin/invoices', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify(body) });
+                document.getElementById('iBusiness').value=''; document.getElementById('iService').value=''; document.getElementById('iTotal').value='';
+                alert('Invoice Generated and sent to client vault.');
+            } catch(e) {}
+            btn.disabled=false; btn.innerText='Generate AI Invoice';
         }
     </script>
 </body>

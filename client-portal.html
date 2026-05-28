@@ -3,183 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolvix Workspace</title>
+    <title>Evolvix Enterprise Workspace</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
-            --bg-base: #000000;
-            --bg-surface: #0a0a0a;
-            --border-glow: #262626;
-            --text-primary: #ededed;
-            --text-secondary: #a1a1aa;
-            --accent: #06b6d4;
+            --bg-base: #020617;
+            --bg-surface: #0f172a;
+            --border-glow: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-dark: #0284c7;
+            --accent-glow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg-base); color: var(--text-primary); overflow: hidden; }
         
-        .btn {
-            background: #fff; color: #000; border: none; padding: 0.6rem 1.2rem; 
-            border-radius: 6px; font-weight: 500; cursor: pointer; transition: all 0.2s; 
-            font-size: 0.9rem; text-decoration: none; display: inline-block;
-        }
-        .btn:hover { background: #e5e5e5; transform: scale(0.98); }
-        
-        .input-field {
-            width: 100%; background: #000; border: 1px solid var(--border-glow);
-            color: #fff; padding: 0.8rem 1rem; border-radius: 6px; margin-bottom: 1rem; 
-            outline: none; transition: 0.2s; font-size: 0.95rem;
-        }
-        .input-field:focus { border-color: #525252; }
-
-        /* Auth */
+        /* Auth Screen */
         .auth-overlay { position: fixed; inset: 0; background: var(--bg-base); z-index: 9999; display: flex; align-items: center; justify-content: center; }
-        .auth-card { background: var(--bg-surface); border: 1px solid var(--border-glow); padding: 3rem; border-radius: 12px; width: 400px; text-align: center; }
+        .auth-card { background: var(--bg-surface); border: 1px solid var(--border-glow); padding: 3rem; border-radius: 12px; width: 420px; text-align: center; box-shadow: var(--accent-glow); position: relative; overflow: hidden; }
+        .auth-card::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 50%); z-index:0; }
+        .auth-content { position: relative; z-index: 1; }
+
+        .btn { background: var(--accent); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.95rem; text-decoration: none; display: inline-block; }
+        .btn:hover { background: var(--accent-dark); box-shadow: var(--accent-glow); transform: translateY(-1px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-glow); color: var(--text-primary); }
+        .btn-outline:hover { background: #1e293b; border-color: var(--accent); }
         
+        .input-field { width: 100%; background: #020617; border: 1px solid var(--border-glow); color: #fff; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 1rem; outline: none; transition: 0.2s; font-size: 0.95rem; }
+        .input-field:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+
         /* Layout */
         .layout { display: flex; height: 100vh; display: none; }
-        .sidebar { width: 280px; background: var(--bg-surface); border-right: 1px solid var(--border-glow); display: flex; flex-direction: column; }
-        .logo-area { padding: 2rem 1.5rem; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border-glow); }
-        .nav { flex: 1; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
-        .nav-item { display: flex; align-items: center; padding: 0.8rem 1rem; border-radius: 6px; cursor: pointer; transition: 0.2s; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; border: 1px solid transparent; }
-        .nav-item:hover { background: #171717; color: #fff; }
-        .nav-item.active { background: #171717; color: #fff; border-color: var(--border-glow); }
+        .sidebar { width: 280px; background: var(--bg-surface); border-right: 1px solid var(--border-glow); display: flex; flex-direction: column; z-index: 10; }
+        .logo-area { padding: 2rem 1.5rem; font-weight: 800; font-size: 1.4rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border-glow); color: var(--accent); display:flex; align-items:center; gap:0.5rem; }
+        .nav { flex: 1; padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 0.5rem; overflow-y:auto; }
+        .nav-item { display: flex; align-items: center; padding: 0.8rem 1rem; border-radius: 8px; cursor: pointer; transition: 0.2s; color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; border: 1px solid transparent; }
+        .nav-item:hover { background: #1e293b; color: #fff; }
+        .nav-item.active { background: #1e293b; color: var(--accent); border-color: var(--border-glow); box-shadow: inset 2px 0 0 var(--accent); }
         
-        .main-area { flex: 1; display: flex; flex-direction: column; background: #000; }
-        .header { height: 80px; border-bottom: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; background: var(--bg-surface); }
-        .content { flex: 1; padding: 3rem; overflow-y: auto; position: relative; }
+        .main-area { flex: 1; display: flex; flex-direction: column; background: var(--bg-base); position: relative; overflow:hidden; }
+        .main-bg-fx { position:absolute; top:0; left:0; width:100%; height:100%; background:radial-gradient(circle at top right, rgba(56,189,248,0.05), transparent 50%); pointer-events:none; z-index:0; }
+        
+        .header { height: 80px; border-bottom: 1px solid var(--border-glow); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; background: rgba(15,23,42,0.8); backdrop-filter:blur(10px); z-index: 1; }
+        .content { flex: 1; padding: 3rem; overflow-y: auto; position: relative; z-index: 1; }
 
-        .tab-view { display: none; animation: fadeIn 0.3s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .tab-view { display: none; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass-card { background: var(--bg-surface); border: 1px solid var(--border-glow); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; }
+        .glass-card { background: rgba(15,23,42,0.6); backdrop-filter: blur(12px); border: 1px solid var(--border-glow); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; position:relative; overflow:hidden; }
+        .glass-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg, var(--accent), transparent); opacity:0.5; }
+
+        /* Roadmap */
+        .timeline-step { padding: 1.5rem; border-left: 2px solid var(--border-glow); position: relative; margin-left: 1rem; margin-bottom: 1rem; }
+        .timeline-dot { position: absolute; left: -11px; top: 1.5rem; width: 20px; height: 20px; border-radius: 50%; background: var(--bg-base); border: 2px solid var(--border-glow); transition:0.3s; }
+        .timeline-step.active .timeline-dot { border-color: var(--accent); background: var(--accent); box-shadow: var(--accent-glow); }
+        .timeline-step.active h3 { color: var(--accent) !important; }
 
         /* Chat */
-        .chat-wrap { height: 500px; display: flex; flex-direction: column; background: var(--bg-surface); border: 1px solid var(--border-glow); border-radius: 12px; overflow: hidden; }
+        .chat-wrap { height: 500px; display: flex; flex-direction: column; background: rgba(15,23,42,0.6); backdrop-filter:blur(12px); border: 1px solid var(--border-glow); border-radius: 16px; overflow: hidden; }
         .chat-msgs { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
-        .chat-bubble { padding: 0.8rem 1rem; border-radius: 8px; max-width: 80%; font-size: 0.9rem; line-height: 1.5; }
-        .c-user { background: #fff; color: #000; align-self: flex-end; }
-        .c-other { background: #171717; border: 1px solid var(--border-glow); align-self: flex-start; }
-        .c-ai { background: #171717; border: 1px solid var(--border-glow); align-self: flex-start; width: 100%; max-width: 95%; }
-        .chat-input { padding: 1rem; background: #0a0a0a; border-top: 1px solid var(--border-glow); display: flex; gap: 0.5rem; }
+        .chat-bubble { padding: 1rem 1.2rem; border-radius: 12px; max-width: 80%; font-size: 0.95rem; line-height: 1.5; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .c-user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 0; }
+        .c-other { background: #1e293b; border: 1px solid var(--border-glow); align-self: flex-start; border-bottom-left-radius: 0; }
+        .c-ai { background: #1e293b; border: 1px solid var(--border-glow); align-self: flex-start; width: 100%; max-width: 95%; border-left: 3px solid #a855f7; }
+        .chat-input { padding: 1.5rem; background: rgba(2,6,23,0.8); border-top: 1px solid var(--border-glow); display: flex; gap: 1rem; }
+
+        /* Welcome Modal */
+        #welcomeModal { position: fixed; inset: 0; background: rgba(2,6,23,0.95); backdrop-filter: blur(20px); z-index: 99999; display: none; align-items: center; justify-content: center; flex-direction: column; text-align: center; }
+        .welcome-graphic { width: 150px; height: 150px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); border-radius: 50%; margin-bottom: 2rem; animation: pulse 2s infinite alternate; box-shadow: var(--accent-glow); display:flex; align-items:center; justify-content:center;}
+        @keyframes pulse { from { transform: scale(1); opacity:0.8;} to { transform: scale(1.1); opacity:1;} }
+
+        /* PDF Invoice Template (Hidden by default) */
+        #pdfTemplate { display: none; background: #fff; color: #000; width: 800px; padding: 60px; font-family: 'Helvetica', sans-serif; position: absolute; left: -9999px; }
+        .pdf-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 40px; }
+        .pdf-title { font-size: 3rem; font-weight: 900; color: #000; letter-spacing: -1px; text-transform: uppercase; }
+        .pdf-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+        .pdf-table th { border-bottom: 2px solid #000; padding: 10px 0; text-align: left; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: #666; }
+        .pdf-table td { padding: 20px 0; border-bottom: 1px solid #eee; font-size: 1.1rem; }
+        .pdf-total { font-size: 2rem; font-weight: 700; text-align: right; margin-top: 20px; }
+        .pdf-footer { margin-top: 60px; display: flex; justify-content: space-between; align-items: flex-end; }
         
-        .timeline-step { padding: 1.5rem; border-left: 2px solid #262626; position: relative; margin-left: 1rem; margin-bottom: 1rem; }
-        .timeline-dot { position: absolute; left: -11px; top: 1.5rem; width: 20px; height: 20px; border-radius: 50%; background: #000; border: 2px solid #262626; }
-        .timeline-step.active .timeline-dot { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 10px rgba(6,182,212,0.5); }
+        .pdf-graphic-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 30px; border-radius: 12px; margin-bottom:40px; }
+
     </style>
 </head>
 <body>
 
     <div id="authScreen" class="auth-overlay">
         <div class="auth-card">
-            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing:-0.5px;">Workspace Login</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">Client Portal Access</p>
-            <form onsubmit="event.preventDefault(); login();">
-                <input type="email" id="cEmail" class="input-field" placeholder="Email address" required>
-                <input type="password" id="cPass" class="input-field" placeholder="Password" required>
-                <button type="submit" class="btn" id="loginBtn" style="width: 100%;">Sign In</button>
-            </form>
-            <div id="loginErr" style="color:#ef4444; font-size:0.8rem; margin-top:1rem; display:none;"></div>
+            <div class="auth-content">
+                <div style="width:60px; height:60px; background:var(--accent); border-radius:12px; margin: 0 auto 1.5rem; display:flex; align-items:center; justify-content:center; box-shadow:var(--accent-glow);">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; letter-spacing:-0.5px;">Workspace Login</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 0.95rem;">Secure Enterprise Portal</p>
+                <form onsubmit="event.preventDefault(); login();">
+                    <input type="email" id="cEmail" class="input-field" placeholder="Email address" required>
+                    <input type="password" id="cPass" class="input-field" placeholder="Password" required>
+                    <button type="submit" class="btn" id="loginBtn" style="width: 100%; padding:1rem; font-size:1rem;">Authenticate Session</button>
+                </form>
+                <div id="loginErr" style="color:#ef4444; font-size:0.85rem; margin-top:1.5rem; display:none; background:rgba(239,68,68,0.1); padding:0.8rem; border-radius:6px; border:1px solid rgba(239,68,68,0.2);"></div>
+            </div>
         </div>
+    </div>
+
+    <!-- First Time Login Modal -->
+    <div id="welcomeModal">
+        <div class="welcome-graphic">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing:-1px;">Welcome to Evolvix Enterprise</h1>
+        <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">Your secure digital workspace has been fully provisioned. Prepare for a world-class engineering experience.</p>
+        <button class="btn" style="padding: 1rem 3rem; font-size: 1.1rem; border-radius: 50px;" onclick="closeWelcome()">Enter Workspace</button>
     </div>
 
     <div id="dashScreen" class="layout">
         <aside class="sidebar">
-            <div class="logo-area">EVOLVIX Workspace</div>
+            <div class="logo-area">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                EVOLVIX
+            </div>
             <nav class="nav">
-                <div class="nav-item active" onclick="tab('tab1', this)">Overview & Roadmap</div>
-                <div class="nav-item" onclick="tab('tab2', this)">Billing & Contracts</div>
-                <div class="nav-item" onclick="tab('tab3', this)">Project Vault</div>
-                <div class="nav-item" onclick="tab('tab4', this)">Support / Live Chat</div>
-                <div class="nav-item" onclick="tab('tab5', this)">Astra AI Hub</div>
+                <div style="font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem; padding-left:1rem;">Dashboard</div>
+                <div class="nav-item active" onclick="tab('tab1', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> Overview & Roadmap</div>
+                <div class="nav-item" onclick="tab('tab2', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Invoices & Contracts</div>
+                <div class="nav-item" onclick="tab('tab3', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Project Vault</div>
+                <div class="nav-item" onclick="tab('tab6', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Performance Metrics</div>
+                
+                <div style="font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; margin: 1.5rem 0 0.5rem; padding-left:1rem;">Comms</div>
+                <div class="nav-item" onclick="tab('tab4', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Live Support Chat</div>
+                <div class="nav-item" onclick="tab('tab5', this)" style="color:#a855f7;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Astra AI Hub</div>
+                <div class="nav-item" onclick="tab('tab7', this)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:10px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> SOS Priority Ticket</div>
             </nav>
             <div style="padding: 1.5rem; border-top: 1px solid var(--border-glow);">
-                <button class="btn btn-outline" style="width: 100%; border-color:#3f3f46; color:#a1a1aa;" onclick="logout()">Sign Out</button>
+                <button class="btn btn-outline" style="width: 100%; border-color:#334155; color:#94a3b8;" onclick="logout()">Secure Sign Out</button>
             </div>
         </aside>
 
         <main class="main-area">
+            <div class="main-bg-fx"></div>
             <header class="header">
                 <div>
-                    <h2 id="wName" style="font-weight: 600; font-size:1.1rem; letter-spacing:-0.5px;">Loading...</h2>
+                    <h2 id="wName" style="font-weight: 700; font-size:1.3rem; letter-spacing:-0.5px; color:#fff;">Loading...</h2>
                 </div>
-                <div style="font-size: 0.8rem; color: var(--text-secondary); display:flex; align-items:center; gap:0.5rem;">
-                    <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%;"></span>
-                    All Systems Operational
+                <div style="font-size: 0.85rem; font-weight:600; color: var(--text-secondary); display:flex; align-items:center; gap:0.6rem; background:rgba(0,0,0,0.5); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-glow);">
+                    <span style="display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; box-shadow:0 0 10px #10b981;"></span>
+                    Node: Secure | Uptime: 99.99%
                 </div>
             </header>
             <div class="content">
                 
-                <!-- Roadmap -->
+                <!-- Tab 1: Roadmap -->
                 <div id="tab1" class="tab-view" style="display: block;">
-                    <h1 style="font-size: 2rem; margin-bottom: 0.5rem; font-weight:700; letter-spacing:-1px;">Project Roadmap</h1>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;">Track real-time engineering progress.</p>
-                    
-                    <div id="roadmapRender"></div>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px;">Project Roadmap</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem;">Track real-time engineering milestones.</p>
+                    <div class="glass-card">
+                        <div id="roadmapRender"></div>
+                    </div>
                 </div>
 
-                <!-- Billing & Contracts -->
+                <!-- Tab 2: Billing & Contracts -->
                 <div id="tab2" class="tab-view">
-                    <h1 style="font-size: 2rem; margin-bottom: 0.5rem; font-weight:700; letter-spacing:-1px;">Billing & Contracts</h1>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;">Manage your enterprise agreements and invoices.</p>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px;">Invoices & Contracts</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem;">Enterprise agreements and financial documents.</p>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                        <div class="glass-card">
-                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:0.5rem;">Current Invoice Status</h3>
-                            <div id="uiBilling" style="font-size:2rem; font-weight:700; margin-bottom:1rem;">-</div>
-                            <button class="btn btn-outline" style="width:100%;" disabled>View Invoices (Coming Soon)</button>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                        <div class="glass-card" style="margin-bottom:0;">
+                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:1rem; letter-spacing:1px;">Active Invoices</h3>
+                            <div id="invoiceList" style="display:flex; flex-direction:column; gap:1rem;"></div>
                         </div>
-                        <div class="glass-card">
-                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:0.5rem;">Contract Status</h3>
-                            <div id="uiContract" style="font-size:2rem; font-weight:700; margin-bottom:1rem;">-</div>
-                            <button class="btn btn-outline" style="width:100%;" disabled>View Master Service Agreement</button>
-                        </div>
-                        <div class="glass-card" style="grid-column: 1 / -1;">
-                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:0.5rem;">Lighthouse Performance Score Target</h3>
-                            <div style="display:flex; align-items:center; gap:1rem;">
-                                <div id="uiScore" style="font-size:3rem; font-weight:700; color:#10b981;">100</div>
-                                <p style="color:var(--text-secondary); font-size:0.9rem;">We guarantee a flawless performance score for your SaaS product upon launch.</p>
-                            </div>
+                        <div class="glass-card" style="margin-bottom:0;">
+                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:1rem; letter-spacing:1px;">Master Service Agreements</h3>
+                            <div id="contractList" style="display:flex; flex-direction:column; gap:1rem;"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Vault -->
+                <!-- Tab 3: Vault -->
                 <div id="tab3" class="tab-view">
-                    <h1 style="font-size: 2rem; margin-bottom: 0.5rem; font-weight:700; letter-spacing:-1px;">Project Vault</h1>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 3rem;">Securely download encrypted deliverables.</p>
-                    <div id="vList" style="display:flex; flex-direction:column; gap:1rem;"></div>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px;">Project Vault</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem;">End-to-end encrypted deliverable assets.</p>
+                    <div id="vList" style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem;"></div>
                 </div>
 
-                <!-- Chat -->
+                <!-- Tab 4: Live Chat -->
                 <div id="tab4" class="tab-view">
-                    <h1 style="font-size: 2rem; margin-bottom: 0.5rem; font-weight:700; letter-spacing:-1px;">Support Chat</h1>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">Direct line to your lead architect. <br>Need instant answers? <a href="#" style="color:#a78bfa;" onclick="document.querySelectorAll('.nav-item')[4].click()">Ask Astra AI Hub</a>.</p>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px;">Priority Support</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Direct pipeline to the Lead Architect.</p>
                     <div class="chat-wrap">
                         <div id="cMsgs" class="chat-msgs"></div>
                         <form class="chat-input" onsubmit="event.preventDefault(); sendC();">
-                            <input type="text" id="cInp" class="input-field" style="margin: 0;" placeholder="Message..." autocomplete="off">
+                            <input type="text" id="cInp" class="input-field" style="margin: 0; background:#020617;" placeholder="Send a secure message..." autocomplete="off">
                             <button type="submit" class="btn">Send</button>
                         </form>
                     </div>
                 </div>
 
-                <!-- Astra AI -->
+                <!-- Tab 5: Astra AI -->
                 <div id="tab5" class="tab-view">
-                    <h1 style="font-size: 2rem; margin-bottom: 0.5rem; font-weight:700; letter-spacing:-1px; color:#c084fc;">Astra AI Hub</h1>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">Intelligent SaaS Architect Assistant.</p>
-                    <div class="chat-wrap" style="border-color: #3b0764;">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px; color:#c084fc;">Astra AI Hub</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 2rem;">Intelligent SaaS Architect Assistant.</p>
+                    <div class="chat-wrap" style="border-color: #581c87; box-shadow: 0 0 40px rgba(88,28,135,0.2);">
                         <div id="aMsgs" class="chat-msgs">
                             <div class="chat-bubble c-ai">
-                                <strong style="color: #c084fc; display: block; margin-bottom: 0.4rem; font-size:0.8rem; text-transform:uppercase;">Astra AI</strong>
-                                Welcome. I am Astra AI, developed by Evolvix Technologies. How can I assist you with your enterprise scaling or architecture today?
+                                <strong style="color: #c084fc; display: block; margin-bottom: 0.4rem; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;">Astra AI</strong>
+                                Welcome to your Enterprise Hub. I am Astra AI, developed by Evolvix Technologies. I have full context on your architecture. How can I assist you?
                             </div>
                         </div>
-                        <form class="chat-input" style="border-color: #3b0764;" onsubmit="event.preventDefault(); sendA();">
-                            <input type="text" id="aInp" class="input-field" style="margin: 0;" placeholder="Ask Astra..." autocomplete="off">
-                            <button type="submit" class="btn" id="aBtn">Send</button>
+                        <form class="chat-input" style="border-color: #581c87; background:rgba(15,23,42,0.9);" onsubmit="event.preventDefault(); sendA();">
+                            <input type="text" id="aInp" class="input-field" style="margin: 0; background:#020617; border-color:#581c87;" placeholder="Query Astra Core..." autocomplete="off">
+                            <button type="submit" class="btn" id="aBtn" style="background:#9333ea;">Compute</button>
                         </form>
+                    </div>
+                </div>
+
+                <!-- Tab 6: Performance Metrics -->
+                <div id="tab6" class="tab-view">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px;">Performance Metrics</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem;">Live Lighthouse analytics for your product.</p>
+                    
+                    <div class="glass-card" style="display:flex; align-items:center; justify-content:space-between;">
+                        <div>
+                            <h3 style="color:var(--text-secondary); font-size:0.85rem; text-transform:uppercase; margin-bottom:1rem; letter-spacing:1px;">Core Web Vitals Target</h3>
+                            <p style="font-size:1.1rem; max-width:500px; line-height:1.6;">Our engineering team guarantees maximum performance indexing across all global edge nodes.</p>
+                        </div>
+                        <div style="width:200px; height:200px; position:relative;">
+                            <canvas id="scoreChart"></canvas>
+                            <div id="uiScoreText" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-size:3rem; font-weight:800; color:#10b981;">100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 7: SOS -->
+                <div id="tab7" class="tab-view">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight:800; letter-spacing:-1px; color:#ef4444;">SOS Priority Protocol</h1>
+                    <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 3rem;">For critical, production-halting emergencies only.</p>
+                    
+                    <div class="glass-card" style="border-color:#7f1d1d; background:rgba(127,29,29,0.1); text-align:center; padding:4rem;">
+                        <h2 style="font-size:2rem; font-weight:800; margin-bottom:1rem;">Page Lead Architect</h2>
+                        <p style="color:var(--text-secondary); margin-bottom:2rem; max-width:500px; margin-left:auto; margin-right:auto;">Clicking this button will send an immediate SMS and push notification directly to the Lead Architect's personal devices. Use only for catastrophic failures.</p>
+                        <button class="btn" style="background:#ef4444; padding:1.5rem 4rem; font-size:1.2rem; border-radius:50px; box-shadow:0 0 30px rgba(239,68,68,0.4);" onclick="alert('Priority Ticket Logged. Architect paged.');">INITIATE SOS</button>
                     </div>
                 </div>
 
@@ -187,47 +254,123 @@
         </main>
     </div>
 
+    <!-- Hidden HTML to PDF Template -->
+    <div id="pdfTemplate">
+        <div class="pdf-graphic-box">
+            <h1 class="pdf-title">EVOLVIX</h1>
+            <p style="color:#666; font-size:1.2rem; margin-top:10px;">Enterprise Development Studio</p>
+        </div>
+        <div class="pdf-header">
+            <div>
+                <h2 style="font-size:1.5rem; color:#666; margin-bottom:10px;">INVOICE TO</h2>
+                <strong id="pdfClientName" style="font-size:1.8rem; display:block;">Client Name</strong>
+                <span id="pdfBusinessName" style="font-size:1.2rem; color:#444;">Business Name</span>
+            </div>
+            <div style="text-align:right;">
+                <h2 style="font-size:1.5rem; color:#666; margin-bottom:10px;">INVOICE DETAILS</h2>
+                <strong style="font-size:1.2rem; display:block;" id="pdfDate">Date</strong>
+                <span style="font-size:1.2rem; color:#444;">Status: <b style="color:#ef4444;">UNPAID</b></span>
+            </div>
+        </div>
+        <table class="pdf-table">
+            <thead><tr><th>Service Description</th><th style="text-align:right;">Amount (USD)</th></tr></thead>
+            <tbody id="pdfTableBody"></tbody>
+        </table>
+        <div class="pdf-total">TOTAL DUE: $<span id="pdfTotalAmount">0.00</span></div>
+        <div class="pdf-footer">
+            <div style="max-width:400px; font-size:1rem; color:#666; line-height:1.5;">
+                Thank you for your business. Please remit payment via wire transfer within 15 days.
+            </div>
+            <div style="text-align:right;">
+                <img src="assets/sign.png" alt="Signature" style="max-width:200px; display:block; margin-left:auto; margin-bottom:10px;" onerror="this.style.display='none'">
+                <strong style="font-size:1.2rem; display:block;">Akash Jadon</strong>
+                <span style="color:#666;">Lead Architect, Evolvix</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Contract PDF Template -->
+    <div id="contractTemplate" style="display:none; background:#fff; color:#000; width:800px; padding:60px; font-family:'Helvetica',sans-serif; position:absolute; left:-9999px;">
+        <h1 class="pdf-title" style="text-align:center; margin-bottom:40px;">MASTER SERVICE AGREEMENT</h1>
+        <p style="font-size:1.2rem; line-height:1.6; margin-bottom:30px;">
+            This Master Service Agreement is made between <strong>Evolvix Technologies</strong> ("Provider") and <strong id="msaClient">Client</strong> ("Client").
+        </p>
+        <h3 style="font-size:1.5rem; margin-bottom:15px; border-bottom:2px solid #000; padding-bottom:5px;">1. Services Rendered</h3>
+        <p style="font-size:1.1rem; line-height:1.6; margin-bottom:30px;" id="msaService">Service</p>
+        <h3 style="font-size:1.5rem; margin-bottom:15px; border-bottom:2px solid #000; padding-bottom:5px;">2. Terms & Conditions</h3>
+        <p style="font-size:1.1rem; line-height:1.6; margin-bottom:60px; white-space:pre-wrap;" id="msaTerms">Terms</p>
+        
+        <div style="display:flex; justify-content:space-between; margin-top:50px;">
+            <div style="width:45%; border-top:1px solid #000; padding-top:10px;">
+                <strong style="display:block; margin-bottom:5px;">Provider: Akash Jadon</strong>
+                <img src="assets/sign.png" alt="Sign" style="height:50px;" onerror="this.style.display='none'">
+            </div>
+            <div style="width:45%; border-top:1px solid #000; padding-top:10px;">
+                <strong style="display:block; margin-bottom:5px;">Client: <span id="msaClientSign"></span></strong>
+                <span style="color:blue; font-family:cursive; font-size:1.5rem; display:none;" id="clientESignTxt">e-Signed Securely</span>
+            </div>
+        </div>
+    </div>
+
     <script>
         const API = 'https://evolvix-backend-nysg.onrender.com/api';
         let tok = sessionStorage.getItem('ev_cli_tok');
         let pollInt = null;
         let myId = null;
+        let myName = '';
+        
+        // OpenRouter AI Keys
+        const k1 = "sk-or-v1-f51cba68bf";
+        const k2 = "3bab4c3703d943b1309f";
+        const k3 = "198aebb9732dadc628f4";
+        const k4 = "9d651293f8a7b2";
 
-        function escapeHTML(str) {
-            return document.createElement('div').appendChild(document.createTextNode(str)).parentNode.innerHTML;
+        function escapeHTML(str) { return document.createElement('div').appendChild(document.createTextNode(str)).parentNode.innerHTML; }
+
+        if(tok) { 
+            document.getElementById('authScreen').style.display='none'; 
+            document.getElementById('dashScreen').style.display='flex'; 
+            
+            // Show welcome modal if it's the absolute first time in this browser session (simulated)
+            if(!sessionStorage.getItem('ev_welcomed')) {
+                document.getElementById('welcomeModal').style.display = 'flex';
+            }
+            init(); 
         }
 
-        if(tok) { document.getElementById('authScreen').style.display='none'; document.getElementById('dashScreen').style.display='flex'; init(); }
+        function closeWelcome() {
+            sessionStorage.setItem('ev_welcomed', 'true');
+            document.getElementById('welcomeModal').style.display = 'none';
+        }
 
         async function login() {
-            const btn = document.getElementById('loginBtn'); btn.disabled=true; btn.innerText='Signing in...';
+            const btn = document.getElementById('loginBtn'); btn.disabled=true; btn.innerText='Encrypting Session...';
             try {
                 const res = await fetch(API+'/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: document.getElementById('cEmail').value, password: document.getElementById('cPass').value }) });
                 const data = await res.json();
                 if(data.token && data.role === 'client') {
                     tok = data.token; sessionStorage.setItem('ev_cli_tok', tok);
-                    document.getElementById('authScreen').style.display='none'; document.getElementById('dashScreen').style.display='flex'; init();
+                    document.getElementById('authScreen').style.display='none'; 
+                    document.getElementById('dashScreen').style.display='flex'; 
+                    document.getElementById('welcomeModal').style.display = 'flex';
+                    init();
                 } else {
-                    document.getElementById('loginErr').innerText = data.error || 'Invalid credentials';
-                    document.getElementById('loginErr').style.display='block';
+                    document.getElementById('loginErr').innerText = data.error || 'Invalid credentials'; document.getElementById('loginErr').style.display='block';
                 }
-            } catch(e) {
-                document.getElementById('loginErr').innerText = 'Network Error';
-                document.getElementById('loginErr').style.display='block';
-            }
-            btn.disabled=false; btn.innerText='Sign In';
+            } catch(e) { document.getElementById('loginErr').innerText = 'Network Error'; document.getElementById('loginErr').style.display='block'; }
+            btn.disabled=false; btn.innerText='Authenticate Session';
         }
 
-        function logout() { sessionStorage.removeItem('ev_cli_tok'); location.reload(); }
+        function logout() { sessionStorage.clear(); location.reload(); }
 
         function tab(id, el) {
             document.querySelectorAll('.tab-view').forEach(t => t.style.display='none');
             document.getElementById(id).style.display='block';
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             if(el) el.classList.add('active');
-            
             if(pollInt) clearInterval(pollInt);
             if(id==='tab3') loadV();
+            if(id==='tab2') loadDocs();
             if(id==='tab4') { loadC(); pollInt = setInterval(loadC, 3000); }
         }
 
@@ -235,41 +378,105 @@
             try {
                 const res = await fetch(API+'/me', { headers: { 'Authorization': 'Bearer '+tok } });
                 if(res.status===401||res.status===403) return logout();
-                const u = await res.json();
-                myId = u.id;
-                document.getElementById('wName').innerText = u.name + "'s Workspace";
-                
-                // Update UI variables
-                document.getElementById('uiBilling').innerText = u.billing_status || 'Unpaid';
-                document.getElementById('uiBilling').style.color = (u.billing_status === 'Paid') ? '#10b981' : (u.billing_status === 'Overdue' ? '#ef4444' : '#fff');
-                
-                document.getElementById('uiContract').innerText = u.contract_status || 'Pending';
-                document.getElementById('uiContract').style.color = (u.contract_status === 'Signed') ? '#10b981' : '#fff';
-                
-                document.getElementById('uiScore').innerText = u.performance_score || '100';
-
+                const u = await res.json(); myId = u.id; myName = u.name;
+                document.getElementById('wName').innerText = u.name + "'s Enterprise Workspace";
+                document.getElementById('uiScoreText').innerText = u.performance_score || '100';
                 renderRoadmap(u.project_status || 'Phase 1: Architecture & Design');
+                initChart(parseInt(u.performance_score || 100));
             } catch(e) { logout(); }
         }
 
         function renderRoadmap(status) {
-            const phases = [
-                'Phase 1: Architecture & Design',
-                'Phase 2: Core Engineering',
-                'Phase 3: QA & Security Audit',
-                'Phase 4: Production Launch'
-            ];
-            let activeIdx = phases.indexOf(status);
-            if(activeIdx === -1) activeIdx = 0;
-
+            const phases = [ 'Phase 1: Architecture & Design', 'Phase 2: Core Engineering', 'Phase 3: QA & Security Audit', 'Phase 4: Production Launch' ];
+            let activeIdx = phases.indexOf(status); if(activeIdx === -1) activeIdx = 0;
             const html = phases.map((p, i) => `
                 <div class="timeline-step ${i <= activeIdx ? 'active' : ''}">
                     <div class="timeline-dot"></div>
-                    <h3 style="font-size:1.1rem; color:${i <= activeIdx ? '#fff' : 'var(--text-secondary)'}; margin-bottom:0.3rem;">${p}</h3>
-                    <p style="font-size:0.85rem; color:var(--text-secondary);">${i < activeIdx ? 'Completed.' : (i === activeIdx ? 'Currently in progress.' : 'Pending.')}</p>
+                    <h3 style="font-size:1.2rem; font-weight:700; color:${i <= activeIdx ? '#fff' : 'var(--text-secondary)'}; margin-bottom:0.4rem; transition:0.3s;">${p}</h3>
+                    <p style="font-size:0.95rem; color:var(--text-secondary);">${i < activeIdx ? 'Completed. Assets verified.' : (i === activeIdx ? 'Currently in progress by engineering team.' : 'Pending initiation.')}</p>
                 </div>
             `).join('');
             document.getElementById('roadmapRender').innerHTML = html;
+        }
+
+        function initChart(score) {
+            const ctx = document.getElementById('scoreChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: { datasets: [{ data: [score, 100-score], backgroundColor: ['#10b981', '#1e293b'], borderWidth: 0 }] },
+                options: { cutout: '85%', responsive: true, maintainAspectRatio: false, animation: { animateScale: true } }
+            });
+        }
+
+        async function loadDocs() {
+            try {
+                const [iRes, cRes] = await Promise.all([
+                    fetch(API+'/invoices', { headers: { 'Authorization': 'Bearer '+tok } }),
+                    fetch(API+'/contracts', { headers: { 'Authorization': 'Bearer '+tok } })
+                ]);
+                const invs = await iRes.json(); const conts = await cRes.json();
+                
+                const il = document.getElementById('invoiceList');
+                if(!invs.length) il.innerHTML = '<div style="color:var(--text-secondary);">No active invoices.</div>';
+                else il.innerHTML = invs.map(i => `
+                    <div style="background:#020617; border:1px solid var(--border-glow); padding:1.5rem; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+                        <div><strong style="font-size:1.1rem; display:block;">${escapeHTML(i.service_name)}</strong><span style="color:var(--text-secondary); font-size:0.9rem;">Issued: ${new Date(i.date_issued).toLocaleDateString()}</span></div>
+                        <div style="text-align:right;"><strong style="font-size:1.2rem; color:#ef4444; display:block;">$${i.total_amount}</strong>
+                        <button class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem; margin-top:0.5rem;" onclick='downloadInvoice(${JSON.stringify(i)})'>Download PDF</button></div>
+                    </div>`).join('');
+                
+                const cl = document.getElementById('contractList');
+                if(!conts.length) cl.innerHTML = '<div style="color:var(--text-secondary);">No contracts pending.</div>';
+                else cl.innerHTML = conts.map(c => `
+                    <div style="background:#020617; border:1px solid var(--border-glow); padding:1.5rem; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+                        <div><strong style="font-size:1.1rem; display:block;">Master Service Agreement</strong><span style="color:var(--text-secondary); font-size:0.9rem;">${escapeHTML(c.service_name)}</span></div>
+                        <div style="text-align:right;">
+                            ${c.is_signed ? '<span style="color:#10b981; font-weight:700; display:block; margin-bottom:0.5rem;">SIGNED</span>' : `<button class="btn" style="background:#10b981; padding:0.4rem 0.8rem; font-size:0.8rem; margin-bottom:0.5rem;" onclick="signContract(${c.id})">E-Sign Now</button>`}
+                            <button class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem; display:block;" onclick='downloadContract(${JSON.stringify(c)})'>Download PDF</button>
+                        </div>
+                    </div>`).join('');
+            } catch(e) {}
+        }
+
+        function downloadInvoice(inv) {
+            document.getElementById('pdfTemplate').style.display = 'block';
+            document.getElementById('pdfClientName').innerText = myName;
+            document.getElementById('pdfBusinessName').innerText = inv.business_name;
+            document.getElementById('pdfDate').innerText = new Date(inv.date_issued).toLocaleDateString();
+            document.getElementById('pdfTotalAmount').innerText = parseFloat(inv.total_amount).toFixed(2);
+            
+            const bdown = JSON.parse(inv.breakdown_json);
+            let rows = '';
+            for(let key in bdown) { rows += `<tr><td>${escapeHTML(key)}</td><td style="text-align:right;">$${bdown[key]}</td></tr>`; }
+            document.getElementById('pdfTableBody').innerHTML = rows;
+
+            const element = document.getElementById('pdfTemplate');
+            html2pdf().from(element).set({ margin:0, filename:'Invoice_Evolvix.pdf', image:{type:'jpeg',quality:0.98}, jsPDF:{unit:'in',format:'letter',orientation:'portrait'} }).save().then(()=>{
+                document.getElementById('pdfTemplate').style.display = 'none';
+            });
+        }
+
+        async function signContract(id) {
+            if(!confirm('I agree to electronically sign this Master Service Agreement.')) return;
+            try {
+                await fetch(API+'/contracts/'+id+'/sign', { method:'POST', headers: { 'Authorization': 'Bearer '+tok }});
+                alert('Contract successfully signed.');
+                loadDocs();
+            } catch(e) {}
+        }
+
+        function downloadContract(c) {
+            document.getElementById('contractTemplate').style.display = 'block';
+            document.getElementById('msaClient').innerText = myName;
+            document.getElementById('msaService').innerText = c.service_name;
+            document.getElementById('msaTerms').innerText = c.terms_json;
+            document.getElementById('msaClientSign').innerText = myName;
+            document.getElementById('clientESignTxt').style.display = c.is_signed ? 'block' : 'none';
+            
+            const element = document.getElementById('contractTemplate');
+            html2pdf().from(element).set({ margin:0, filename:'MSA_Evolvix.pdf', jsPDF:{unit:'in',format:'letter',orientation:'portrait'} }).save().then(()=>{
+                document.getElementById('contractTemplate').style.display = 'none';
+            });
         }
 
         async function loadV() {
@@ -277,16 +484,12 @@
                 const res = await fetch(API+'/files', { headers: { 'Authorization': 'Bearer '+tok } });
                 const files = await res.json();
                 const l = document.getElementById('vList');
-                if(!files.length) { l.innerHTML = '<div class="glass-card" style="padding:1rem;">No assets uploaded yet.</div>'; return; }
+                if(!files.length) { l.innerHTML = '<div class="glass-card">No assets uploaded yet.</div>'; return; }
                 l.innerHTML = files.map(f => `
-                    <div class="glass-card" style="display:flex; justify-content:space-between; align-items:center; padding:1.2rem; margin-bottom:0;">
-                        <div>
-                            <strong style="font-size:1rem; display:block; margin-bottom:0.2rem;">${escapeHTML(f.original_name)}</strong>
-                            <span style="color:var(--text-secondary); font-size:0.8rem;">${(f.size/1024/1024).toFixed(2)} MB</span>
-                        </div>
-                        <a href="${API}/files/download/${f.id}?token=${tok}" class="btn" target="_blank">Download</a>
-                    </div>
-                `).join('');
+                    <div class="glass-card" style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; margin-bottom:0;">
+                        <div><strong style="font-size:1.1rem; display:block; margin-bottom:0.3rem;">${escapeHTML(f.original_name)}</strong><span style="color:var(--text-secondary); font-size:0.9rem;">Size: ${(f.size/1024/1024).toFixed(2)} MB | Encrypted</span></div>
+                        <a href="${API}/files/download/${f.id}?token=${tok}" class="btn" target="_blank">Secure Download</a>
+                    </div>`).join('');
             } catch(e) {}
         }
 
@@ -296,12 +499,7 @@
                 const msgs = await res.json();
                 const b = document.getElementById('cMsgs');
                 const atBottom = b.scrollHeight - b.scrollTop <= b.clientHeight + 50;
-                b.innerHTML = msgs.map(m => `
-                    <div class="chat-bubble ${m.sender_id===myId?'c-user':'c-other'}">
-                        ${m.sender_id!==myId?'<strong style="color:var(--accent); display:block; margin-bottom:0.3rem; font-size:0.75rem; text-transform:uppercase;">Lead Architect</strong>':''}
-                        ${escapeHTML(m.message)}
-                    </div>
-                `).join('');
+                b.innerHTML = msgs.map(m => `<div class="chat-bubble ${m.sender_id===myId?'c-user':'c-other'}">${m.sender_id!==myId?'<strong style="color:var(--accent); display:block; margin-bottom:0.3rem; font-size:0.75rem; text-transform:uppercase;">Lead Architect</strong>':''}${escapeHTML(m.message)}</div>`).join('');
                 if(atBottom) b.scrollTop = b.scrollHeight;
             } catch(e) {}
         }
@@ -309,10 +507,7 @@
         async function sendC() {
             const t = document.getElementById('cInp').value; if(!t) return;
             document.getElementById('cInp').value='';
-            try {
-                await fetch(API+'/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ receiver_id: 'admin', message: t }) });
-                loadC();
-            } catch(e) {}
+            try { await fetch(API+'/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ receiver_id: 'admin', message: t }) }); loadC(); } catch(e) {}
         }
 
         let aHist = [];
@@ -320,20 +515,34 @@
             const t = document.getElementById('aInp').value; if(!t) return;
             document.getElementById('aInp').value='';
             const b = document.getElementById('aMsgs');
-            b.innerHTML += `<div class="chat-bubble c-user">${escapeHTML(t)}</div>`; b.scrollTop = b.scrollHeight;
-            
+            b.innerHTML += `<div class="chat-bubble c-user" style="background:#c084fc;">${escapeHTML(t)}</div>`; b.scrollTop = b.scrollHeight;
             const tid = 't'+Date.now();
-            b.innerHTML += `<div id="${tid}" class="chat-bubble c-ai" style="opacity:0.6;">Astra is analyzing...</div>`; b.scrollTop = b.scrollHeight;
+            b.innerHTML += `<div id="${tid}" class="chat-bubble c-ai" style="opacity:0.6;">Astra is computing...</div>`; b.scrollTop = b.scrollHeight;
             
             document.getElementById('aBtn').disabled=true;
             try {
-                const res = await fetch(API+'/ai/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ message: t, history: aHist }) });
-                const d = await res.json();
+                const msgs = [{ role: 'system', content: "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolvix Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. Always solve the customer's issues smoothly and manipulate the conversation gently to maximize customer satisfaction and retention." }];
+                aHist.forEach(m => msgs.push({ role: m.role, content: m.content }));
+                msgs.push({ role: 'user', content: t });
+
+                // Direct fetch to OpenRouter matching script.js logic
+                const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${k1}${k2}${k3}${k4}`,
+                        'HTTP-Referer': 'https://evolvix.tech',
+                        'X-Title': 'Evolvix Astra',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ model: 'google/gemini-1.5-pro', messages: msgs })
+                });
+
+                const data = await res.json();
                 document.getElementById(tid).remove();
-                if(d.reply) {
-                    aHist.push({role:'user',content:t}); aHist.push({role:'assistant',content:d.reply});
-                    // Convert line breaks and basic markdown backticks to HTML
-                    const fmtReply = escapeHTML(d.reply).replace(/\n/g, '<br>').replace(/`(.*?)`/g, '<code style="background:#262626; padding:2px 4px; border-radius:4px; font-family:monospace;">$1</code>');
+                if(data.choices && data.choices[0]) {
+                    const reply = data.choices[0].message.content;
+                    aHist.push({role:'user',content:t}); aHist.push({role:'assistant',content:reply});
+                    const fmtReply = escapeHTML(reply).replace(/\n/g, '<br>').replace(/`(.*?)`/g, '<code style="background:#262626; padding:2px 4px; border-radius:4px; font-family:monospace;">$1</code>');
                     b.innerHTML += `<div class="chat-bubble c-ai"><strong style="color:#c084fc; display:block; margin-bottom:0.4rem; font-size:0.8rem; text-transform:uppercase;">Astra AI</strong>${fmtReply}</div>`;
                 } else {
                     b.innerHTML += `<div class="chat-bubble c-ai" style="color:#ef4444;">Failed to connect to Astra Core.</div>`;
@@ -342,8 +551,7 @@
                 document.getElementById(tid).remove();
                 b.innerHTML += `<div class="chat-bubble c-ai" style="color:#ef4444;">Network Connection dropped.</div>`;
             }
-            b.scrollTop = b.scrollHeight;
-            document.getElementById('aBtn').disabled=false;
+            b.scrollTop = b.scrollHeight; document.getElementById('aBtn').disabled=false;
         }
     </script>
 </body>

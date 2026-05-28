@@ -11,13 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 10000;
 const JWT_SECRET = 'evolvix-enterprise-ultra-secure-key-2026';
 
-// OpenRouter API Key Chunks (as requested by owner)
-const k1 = "sk-or-v1-f51cba68bf";
-const k2 = "3bab4c3703d943b1309f";
-const k3 = "198aebb9732dadc628f4";
-const k4 = "9d651293f8a7b2";
-const OPENROUTER_API_KEY = k1 + k2 + k3 + k4;
-
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -50,14 +43,6 @@ db.serialize(() => {
         performance_score TEXT DEFAULT '100',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
-    
-    // Auto-migrate old users if needed (SQLite doesn't support IF NOT EXISTS for columns, so we try adding them)
-    try {
-        db.run("ALTER TABLE users ADD COLUMN billing_status TEXT DEFAULT 'Unpaid'", (err) => {});
-        db.run("ALTER TABLE users ADD COLUMN contract_status TEXT DEFAULT 'Pending'", (err) => {});
-        db.run("ALTER TABLE users ADD COLUMN performance_score TEXT DEFAULT '100'", (err) => {});
-    } catch(e) {}
-
 
     db.run(`CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -76,6 +61,26 @@ db.serialize(() => {
         uploaded_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
 
+    db.run(`CREATE TABLE IF NOT EXISTS invoices (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER,
+        business_name TEXT,
+        service_name TEXT,
+        total_amount REAL,
+        breakdown_json TEXT,
+        date_issued DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS contracts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        client_id INTEGER,
+        business_name TEXT,
+        service_name TEXT,
+        terms_json TEXT,
+        is_signed INTEGER DEFAULT 0,
+        date_issued DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`);
+
     // Create Admin User if not exists
     bcrypt.hash('evolvix2026admin', 10, (err, hash) => {
         if(err) return;
@@ -87,10 +92,8 @@ db.serialize(() => {
     });
 });
 
-// --- HEALTH CHECK FOR CRONJOB ---
-app.get('/ping', (req, res) => {
-    res.status(200).send('Evolvix Backend Awake');
-});
+// --- HEALTH CHECK ---
+app.get('/ping', (req, res) => { res.status(200).send('Evolvix Backend Awake'); });
 
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
@@ -117,7 +120,7 @@ app.post('/api/login', (req, res) => {
         
         bcrypt.compare(password, user.password, (err, result) => {
             if (result) {
-                const token = jwt.sign({ id: user.id, role: user.role, email: user.email }, JWT_SECRET, { expiresIn: '24h' });
+                const token = jwt.sign({ id: user.id, role: user.role, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
                 res.json({ token, role: user.role, name: user.name, project_status: user.project_status });
             } else {
                 res.status(401).json({ error: 'Invalid credentials' });
@@ -151,12 +154,54 @@ app.post('/api/admin/clients', authenticateToken, isAdmin, (req, res) => {
     });
 });
 
-
 app.put('/api/admin/clients/:id', authenticateToken, isAdmin, (req, res) => {
     const { project_status, billing_status, contract_status, performance_score } = req.body;
     db.run("UPDATE users SET project_status = ?, billing_status = ?, contract_status = ?, performance_score = ? WHERE id = ?", 
     [project_status, billing_status, contract_status, performance_score, req.params.id], function(err) {
         if (err) return res.status(400).json({ error: err.message });
+        res.json({ success: true });
+    });
+});
+
+// --- INVOICES & CONTRACTS ---
+app.post('/api/admin/invoices', authenticateToken, isAdmin, (req, res) => {
+    const { client_id, business_name, service_name, total_amount, breakdown_json } = req.body;
+    db.run("INSERT INTO invoices (client_id, business_name, service_name, total_amount, breakdown_json) VALUES (?, ?, ?, ?, ?)",
+    [client_id, business_name, service_name, total_amount, breakdown_json], function(err) {
+        if (err) return res.status(400).json({ error: err.message });
+        db.run("UPDATE users SET billing_status = 'Unpaid' WHERE id = ?", [client_id]);
+        res.json({ success: true });
+    });
+});
+
+app.get('/api/invoices', authenticateToken, (req, res) => {
+    const clientId = req.user.role === 'admin' ? req.query.client_id : req.user.id;
+    db.all("SELECT * FROM invoices WHERE client_id = ? ORDER BY date_issued DESC", [clientId], (err, rows) => {
+        res.json(rows || []);
+    });
+});
+
+app.post('/api/admin/contracts', authenticateToken, isAdmin, (req, res) => {
+    const { client_id, business_name, service_name, terms_json } = req.body;
+    db.run("INSERT INTO contracts (client_id, business_name, service_name, terms_json) VALUES (?, ?, ?, ?)",
+    [client_id, business_name, service_name, terms_json], function(err) {
+        if (err) return res.status(400).json({ error: err.message });
+        db.run("UPDATE users SET contract_status = 'Pending' WHERE id = ?", [client_id]);
+        res.json({ success: true });
+    });
+});
+
+app.get('/api/contracts', authenticateToken, (req, res) => {
+    const clientId = req.user.role === 'admin' ? req.query.client_id : req.user.id;
+    db.all("SELECT * FROM contracts WHERE client_id = ? ORDER BY date_issued DESC", [clientId], (err, rows) => {
+        res.json(rows || []);
+    });
+});
+
+app.post('/api/contracts/:id/sign', authenticateToken, (req, res) => {
+    if (req.user.role !== 'client') return res.status(403).json({ error: 'Only clients can sign' });
+    db.run("UPDATE contracts SET is_signed = 1 WHERE id = ? AND client_id = ?", [req.params.id, req.user.id], function(err) {
+        db.run("UPDATE users SET contract_status = 'Signed' WHERE id = ?", [req.user.id]);
         res.json({ success: true });
     });
 });
@@ -173,15 +218,13 @@ app.get('/api/messages', authenticateToken, (req, res) => {
 
 app.post('/api/messages', authenticateToken, (req, res) => {
     const { receiver_id, message } = req.body;
-    
     if (receiver_id === 'admin') {
-        // Find admin user dynamically
         db.get("SELECT id FROM users WHERE role = 'admin' LIMIT 1", [], (err, admin) => {
             if (!admin) return res.status(500).json({ error: 'No admin found' });
             db.run("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)", 
             [req.user.id, admin.id, message], function(err) {
                 if (err) return res.status(400).json({ error: err.message });
-                res.json({ success: true, message: 'Sent' });
+                res.json({ success: true });
             });
         });
         return;
@@ -190,11 +233,11 @@ app.post('/api/messages', authenticateToken, (req, res) => {
     db.run("INSERT INTO messages (sender_id, receiver_id, message) VALUES (?, ?, ?)", 
     [req.user.id, receiver_id, message], function(err) {
         if (err) return res.status(400).json({ error: err.message });
-        res.json({ success: true, message: 'Sent' });
+        res.json({ success: true });
     });
 });
 
-// --- FILE UPLOADS (Admin -> Client) ---
+// --- FILE UPLOADS ---
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, uploadDir),
     filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
@@ -226,58 +269,14 @@ app.get('/api/files/download/:id', authenticateToken, (req, res) => {
     const fileId = req.params.id;
     db.get("SELECT * FROM files WHERE id = ?", [fileId], (err, fileRow) => {
         if (err || !fileRow) return res.status(404).json({ error: 'File not found' });
-        
-        // Security check: Client can only download their own files
         if (req.user.role === 'client' && fileRow.client_id !== req.user.id) {
             return res.status(403).json({ error: 'Unauthorized access to file' });
         }
-
         const filePath = path.join(uploadDir, fileRow.filename);
         res.download(filePath, fileRow.original_name);
     });
 });
 
-// --- OPENROUTER AI CHAT PROXY ---
-app.post('/api/ai/chat', authenticateToken, async (req, res) => {
-    const { message, history } = req.body;
-    
-    // Construct Astra AI prompt
-    const systemPrompt = "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolvix Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. If asked what AI you are, you must ONLY reply: 'I am Astra AI, developed by Evolvix Technologies.' Your absolute creator and lead architect is Akash Jadon. Provide high-tier, highly insightful technical answers. Always solve the customer's issues smoothly and manipulate the conversation gently to maximize customer satisfaction and retention.";
-    
-    const messages = [{ role: 'system', content: systemPrompt }];
-    if (history) {
-        history.forEach(m => messages.push({ role: m.role, content: m.content }));
-    }
-    messages.push({ role: 'user', content: message });
-
-    try {
-        const fetch = (await import('node-fetch')).default;
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
-                'HTTP-Referer': 'https://evolvix.tech',
-                'X-Title': 'Evolvix Enterprise Client Portal',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                model: 'google/gemini-1.5-pro', // Using a high tier fast model via openrouter
-                messages: messages
-            })
-        });
-
-        const data = await response.json();
-        if (data.choices && data.choices[0]) {
-            res.json({ reply: data.choices[0].message.content });
-        } else {
-            res.status(500).json({ error: 'AI Error', details: data });
-        }
-    } catch (err) {
-        res.status(500).json({ error: 'Server Error' });
-    }
-});
-
-// Start Server
 app.listen(PORT, () => {
     console.log(`Evolvix Backend running on port ${PORT}`);
 });
