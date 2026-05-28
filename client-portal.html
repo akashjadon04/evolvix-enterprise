@@ -384,7 +384,7 @@
                 document.getElementById('uiScoreText').innerText = u.performance_score || '100';
                 renderRoadmap(u.project_status || 'Phase 1: Architecture & Design');
                 initChart(parseInt(u.performance_score || 100));
-            } catch(e) { logout(); }
+            } catch(e) { console.error('Init Error:', e); logout(); }
         }
 
         function renderRoadmap(status) {
@@ -401,12 +401,14 @@
         }
 
         function initChart(score) {
-            const ctx = document.getElementById('scoreChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: { datasets: [{ data: [score, 100-score], backgroundColor: ['#10b981', '#1e293b'], borderWidth: 0 }] },
-                options: { cutout: '85%', responsive: true, maintainAspectRatio: false, animation: { animateScale: true } }
-            });
+            try {
+                const ctx = document.getElementById('scoreChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: { datasets: [{ data: [score, 100-score], backgroundColor: ['#10b981', '#1e293b'], borderWidth: 0 }] },
+                    options: { cutout: '85%', responsive: true, maintainAspectRatio: false, animation: { animateScale: true } }
+                });
+            } catch(err) { console.error('Chart Error:', err); }
         }
 
         async function loadDocs() {

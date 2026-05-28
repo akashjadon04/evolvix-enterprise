@@ -237,6 +237,7 @@
             try {
                 const res = await fetch(API+'/admin/clients', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer '+tok }, body: JSON.stringify({ name: document.getElementById('ncName').value, email: document.getElementById('ncEmail').value, password: document.getElementById('ncPass').value }) });
                 if(res.ok) { document.getElementById('modal').style.display='none'; document.getElementById('ncName').value=''; document.getElementById('ncEmail').value=''; document.getElementById('ncPass').value=''; loadC(); }
+                else { const errData = await res.json(); alert('Error: ' + errData.error); }
             } catch(e) {}
             btn.disabled=false; btn.innerText='Generate Keys';
         }
