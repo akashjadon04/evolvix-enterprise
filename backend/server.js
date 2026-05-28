@@ -44,6 +44,11 @@ db.serialize(() => {
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
 
+    // Auto-migrate old users table (Adding missing columns)
+    db.run("ALTER TABLE users ADD COLUMN billing_status TEXT DEFAULT 'Unpaid'", (err) => {});
+    db.run("ALTER TABLE users ADD COLUMN contract_status TEXT DEFAULT 'Pending'", (err) => {});
+    db.run("ALTER TABLE users ADD COLUMN performance_score TEXT DEFAULT '100'", (err) => {});
+
     db.run(`CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         sender_id INTEGER,
