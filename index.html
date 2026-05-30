@@ -664,6 +664,7 @@
              ================================================================ -->
         
         
+        
         <section class="section" id="audit" style="position: relative; z-index: 10; overflow: hidden; padding: 100px 0;">
             <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1200px; height: 100%; pointer-events: none; z-index: -1;">
                 <div style="position: absolute; top: -10%; right: 10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -674,7 +675,7 @@
                 <div class="form-card reveal" style="max-width:850px; margin:0 auto; padding:60px; background:rgba(15,23,42,0.7); backdrop-filter:blur(20px); border:1px solid rgba(56,189,248,0.2); border-radius:24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
                     <div style="text-align:center; margin-bottom:40px;">
                         <span style="background:linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); color:#38bdf8; padding:8px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing: 2px; text-transform: uppercase;">Evolvix Core Intelligence</span>
-                        <h2 style="color:#fff !important; font-size:3rem; font-weight: 800; letter-spacing: -1px; margin-top:25px; line-height: 1.2;">Uncover Your Growth Bottlenecks</h2>
+                        <h2 style="color:#fff !important; font-size:3rem; font-weight: 800; letter-spacing: -1px; margin-top:25px; line-height: 1.2;">Enterprise Growth Audit</h2>
                     </div>
 
         <style>
@@ -702,67 +703,108 @@
         .qbtn-title { font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:4px; letter-spacing: 0.3px; }
         .qbtn-sub { font-size:0.85rem; color:#94a3b8; }
         @keyframes spinPulse { 0% {transform:rotate(0deg); border-top-color:#38bdf8;} 50% {border-top-color:#818cf8;} 100% {transform:rotate(360deg); border-top-color:#38bdf8;} }
+        
+        .audit-input {
+            background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:18px; border-radius:14px; font-size:1rem; outline:none; width: 100%; margin-bottom: 16px;
+        }
+        .audit-input:focus { border-color:#38bdf8; }
         </style>
         
+        <!-- LAYER 1: IDENTITY -->
         <div id="qstep-1" class="qstep">
-            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What best describes your business?</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-                <button class="qbtn" onclick="window.auditEngine.select('btype', 'SaaS', this)">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">Where should we send your Enterprise Report?</h3>
+            <form onsubmit="event.preventDefault(); window.auditEngine.next(1);" style="max-width: 500px; margin: 0 auto;">
+                <input type="text" id="a-name" class="audit-input" placeholder="Your Name / Company Name" required>
+                <input type="email" id="a-email" class="audit-input" placeholder="Your Work Email" required>
+                <input type="tel" id="a-phone" class="audit-input" placeholder="WhatsApp / Phone Number" required>
+                <button type="submit" class="btn-cta-glow" style="width:100%;justify-content:center;margin-top:10px;">Next: Business Profile →</button>
+            </form>
+        </div>
+
+        <!-- LAYER 2: BUSINESS CORE -->
+        <div id="qstep-2" class="qstep" style="display:none;">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What best describes your architecture?</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'SaaS / Tech', this, 2)">
                     <div class="qbtn-icon">⚡</div>
                     <div><div class="qbtn-title">SaaS / Tech Product</div><div class="qbtn-sub">Software, apps, digital tools</div></div>
                 </button>
-                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Agency', this)">
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Agency / B2B', this, 2)">
                     <div class="qbtn-icon">🎯</div>
                     <div><div class="qbtn-title">Agency / B2B Services</div><div class="qbtn-sub">Consulting, freelancing, B2B</div></div>
                 </button>
-                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Ecommerce', this)">
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Ecommerce', this, 2)">
                     <div class="qbtn-icon">🛍️</div>
-                    <div><div class="qbtn-title">E-commerce / D2C Brand</div><div class="qbtn-sub">Physical or digital products</div></div>
+                    <div><div class="qbtn-title">E-commerce / D2C</div><div class="qbtn-sub">Physical or digital products</div></div>
                 </button>
-                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Local', this)">
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Local Business', this, 2)">
                     <div class="qbtn-icon">📍</div>
-                    <div><div class="qbtn-title">Local / Service Business</div><div class="qbtn-sub">Restaurant, clinic, salon, etc.</div></div>
+                    <div><div class="qbtn-title">Local / Service</div><div class="qbtn-sub">Restaurant, clinic, salon, etc.</div></div>
                 </button>
+            </div>
+            
+            <h3 style="color:#fff;font-size:1.2rem;margin-bottom:15px;text-align:center;">Current Monthly Revenue (MRR/Gross)</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:600px;margin:0 auto;">
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '< $10k/mo', this, 2, true)">$0 - $10k</button>
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$10k-$50k/mo', this, 2, true)">$10k - $50k</button>
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$50k+/mo', this, 2, true)">$50k+</button>
             </div>
         </div>
         
-        <div id="qstep-2" class="qstep" style="display:none;">
-            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your biggest current bottleneck?</h3>
-            <div style="display:grid;grid-template-columns:1fr;gap:16px;">
-                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Traffic', this)">
-                    <div class="qbtn-icon">📉</div>
-                    <div><div class="qbtn-title">Not enough traffic or leads</div><div class="qbtn-sub">Struggling to get visibility online</div></div>
-                </button>
-                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Conversion', this)">
-                    <div class="qbtn-icon">💔</div>
-                    <div><div class="qbtn-title">Traffic isn't converting</div><div class="qbtn-sub">People visit but don't buy or contact</div></div>
-                </button>
-                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Systems', this)">
-                    <div class="qbtn-icon">⚙️</div>
-                    <div><div class="qbtn-title">Operations & systems are a mess</div><div class="qbtn-sub">Need better tech, CRM, or automation</div></div>
-                </button>
-            </div>
-        </div>
-        
+        <!-- LAYER 3: BOTTLENECKS -->
         <div id="qstep-3" class="qstep" style="display:none;">
-            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">Generate Your Business Audit</h3>
-            <form id="audit-form-v5" onsubmit="event.preventDefault(); window.auditEngine.calculate();" style="display:flex;flex-direction:column;gap:16px;max-width:400px;margin:0 auto;">
-                <input id="audit-email-v5" type="email" placeholder="Enter your best email" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:18px;border-radius:14px;font-size:1rem;outline:none;" onfocus="this.style.borderColor='#38bdf8'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
-                <button type="submit" class="btn-cta-glow" style="width:100%;justify-content:center;">Run Diagnostic & Get Results →</button>
-            </form>
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your primary bottleneck?</h3>
+            <div style="display:grid;grid-template-columns:1fr;gap:16px;">
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Traffic & Leads', this, 3, true)">
+                    <div class="qbtn-icon">📉</div>
+                    <div><div class="qbtn-title">Acquisition (Traffic & Leads)</div><div class="qbtn-sub">Not enough qualified people finding us</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Conversion & UX', this, 3, true)">
+                    <div class="qbtn-icon">💔</div>
+                    <div><div class="qbtn-title">Conversion (UI/UX & Sales)</div><div class="qbtn-sub">People visit but don't convert into paying customers</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Systems & Tech', this, 3, true)">
+                    <div class="qbtn-icon">⚙️</div>
+                    <div><div class="qbtn-title">Operations (Systems & Tech)</div><div class="qbtn-sub">Outdated tech, manual tasks, messy CRM</div></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- LAYER 4: GOALS -->
+        <div id="qstep-4" class="qstep" style="display:none;">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your target for the next 6 months?</h3>
+            <div style="display:grid;grid-template-columns:1fr;gap:16px;">
+                <button class="qbtn" onclick="window.auditEngine.select('goal', 'Double Revenue', this, 4)">
+                    <div class="qbtn-icon">📈</div>
+                    <div><div class="qbtn-title">Aggressive Growth</div><div class="qbtn-sub">Double our revenue / 2x our traffic</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('goal', 'Automation & Scale', this, 4)">
+                    <div class="qbtn-icon">🤖</div>
+                    <div><div class="qbtn-title">Automate & Scale</div><div class="qbtn-sub">Reduce manual work, build custom software/apps</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('goal', 'Brand Authority', this, 4)">
+                    <div class="qbtn-icon">💎</div>
+                    <div><div class="qbtn-title">Rebrand & Authority</div><div class="qbtn-sub">Look like a $100M enterprise, charge higher prices</div></div>
+                </button>
+            </div>
+            <div style="text-align:center; margin-top:30px;">
+                <button onclick="window.auditEngine.calculate()" class="btn-cta-glow" style="width:100%;max-width:500px;justify-content:center;">Generate Enterprise Report →</button>
+            </div>
         </div>
         
-        <div id="qstep-4" class="qstep" style="display:none;text-align:center;padding:40px 0;">
+        <!-- LAYER 5: COMPUTING -->
+        <div id="qstep-5" class="qstep" style="display:none;text-align:center;padding:40px 0;">
             <div style="margin:0 auto 30px;width:80px;height:80px;border:4px solid rgba(56,189,248,0.1);border-top-color:#38bdf8;border-radius:50%;animation:spinPulse 1.2s linear infinite;"></div>
             <h3 style="color:#fff;">Evolvix Core Computing Algorithm...</h3>
-            <p style="color:#64748b;margin-top:10px;">Analyzing growth multipliers</p>
+            <p style="color:#64748b;margin-top:10px;">Analyzing growth multipliers and formulating strategy</p>
         </div>
         
-        <div id="qstep-5" class="qstep" style="display:none;">
-            <div id="audit-results-v5"></div>
+        <!-- LAYER 6: RESULTS -->
+        <div id="qstep-6" class="qstep" style="display:none;">
+            <div id="audit-results-final"></div>
             
             <div style="text-align:center; margin-top:30px;">
-                <button onclick="window.auditEngine.downloadPDF()" class="btn-cta-glow" style="background-image:linear-gradient(45deg, #22c55e 0%, #16a34a 50%, #22c55e 100%);">📥 Download Enterprise Strategy PDF</button>
+                <button onclick="window.auditEngine.downloadPDF()" class="btn-cta-glow" style="background-image:linear-gradient(45deg, #22c55e 0%, #16a34a 50%, #22c55e 100%);">📥 Download Executive Brief PDF</button>
             </div>
         </div>
 
@@ -772,7 +814,7 @@
         <div id="hidden-pdf-template" style="display:none; padding:40px; background:#fff; color:#0f172a; font-family:'Outfit',sans-serif; width:800px;">
             <div style="border-bottom:4px solid #38bdf8; padding-bottom:20px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center;">
                 <h1 style="margin:0; font-size:32px; color:#0f172a;">Evolvix Technologies</h1>
-                <span style="font-weight:700; color:#64748b; font-size:14px;">ENTERPRISE STRATEGY AUDIT</span>
+                <span style="font-weight:700; color:#64748b; font-size:14px;">EXECUTIVE STRATEGY BRIEF</span>
             </div>
             
             <div style="display:flex; justify-content:space-between; margin-bottom:40px;">
@@ -789,7 +831,7 @@
             <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Primary Bottleneck Analysis</h2>
             <p style="font-size:18px; line-height:1.6; color:#334155; margin-bottom:40px;" id="pdf-analysis"></p>
             
-            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Action Plan & Solution</h2>
+            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Custom Evolvix Action Plan</h2>
             <div style="background:#e0f2fe; border-left:4px solid #38bdf8; padding:20px; margin-bottom:40px;">
                 <h3 style="margin:0 0 10px; color:#0284c7;" id="pdf-sol">SEO</h3>
                 <p style="margin:0; color:#0c4a6e; font-size:16px;" id="pdf-roi">ROI: 3x Traffic</p>
@@ -811,32 +853,84 @@
     <script id="audit-engine">
     window.auditEngine = {
         answers: {},
-        select: function(key, val, btn) {
+        next: function(currentStep) {
+            if(currentStep === 1) {
+                this.answers.name = document.getElementById('a-name').value;
+                this.answers.email = document.getElementById('a-email').value;
+                this.answers.phone = document.getElementById('a-phone').value;
+                if(!this.answers.name || !this.answers.email || !this.answers.phone) return;
+            }
+            document.getElementById('qstep-'+currentStep).style.display = 'none';
+            document.getElementById('qstep-'+(currentStep+1)).style.display = 'block';
+        },
+        select: function(key, val, btn, currentStep, autoNext = false) {
             this.answers[key] = val;
             var siblings = btn.parentElement.querySelectorAll('.qbtn');
-            siblings.forEach(function(b){ b.classList.remove('selected'); b.style.pointerEvents='none'; });
+            siblings.forEach(function(b){ b.classList.remove('selected'); });
             btn.classList.add('selected');
             
-            var step = key === 'btype' ? 1 : 2;
-            setTimeout(function(){
-                document.getElementById('qstep-'+step).style.display = 'none';
-                document.getElementById('qstep-'+(step+1)).style.display = 'block';
-            }, 300);
+            if(autoNext) {
+                var _this = this;
+                setTimeout(function(){
+                    document.getElementById('qstep-'+currentStep).style.display = 'none';
+                    document.getElementById('qstep-'+(currentStep+1)).style.display = 'block';
+                }, 300);
+            }
         },
         calculate: function() {
-            var email = document.getElementById('audit-email-v5').value;
-            if(!email) return;
-            document.getElementById('qstep-3').style.display = 'none';
-            document.getElementById('qstep-4').style.display = 'block';
+            if(!this.answers.goal || !this.answers.btype || !this.answers.prob) return;
             
+            document.getElementById('qstep-4').style.display = 'none';
+            document.getElementById('qstep-5').style.display = 'block';
+            
+            // 1. Submit via hidden FormSubmit iframe
+            try {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                form.target = 'hidden_iframe';
+                
+                var data = {
+                    _subject: 'Enterprise Audit Lead: ' + this.answers.name,
+                    _captcha: 'false',
+                    Name: this.answers.name,
+                    Email: this.answers.email,
+                    Phone: this.answers.phone,
+                    BusinessType: this.answers.btype,
+                    Revenue: this.answers.rev,
+                    Bottleneck: this.answers.prob,
+                    TargetGoal: this.answers.goal
+                };
+                
+                for (var k in data) {
+                    var inp = document.createElement('input');
+                    inp.type = 'hidden';
+                    inp.name = k;
+                    inp.value = data[k];
+                    form.appendChild(inp);
+                }
+                document.body.appendChild(form);
+                form.submit();
+            } catch(e) {}
+            
+            // 2. Dynamic Health Score Algorithm
             var _this = this;
             setTimeout(function(){
-                document.getElementById('qstep-4').style.display = 'none';
-                document.getElementById('qstep-5').style.display = 'block';
+                document.getElementById('qstep-5').style.display = 'none';
+                document.getElementById('qstep-6').style.display = 'block';
                 
-                var score = _this.answers.prob === 'Traffic' ? 45 : (_this.answers.prob === 'Conversion' ? 60 : 75);
-                var sol = _this.answers.prob === 'Traffic' ? 'SEO & Organic Growth Engine' : (_this.answers.prob === 'Conversion' ? 'Premium Web Design & CRO' : 'Custom SaaS / Automation Platform');
-                var roi = _this.answers.prob === 'Traffic' ? '3x Traffic Growth' : (_this.answers.prob === 'Conversion' ? '+150% Conversion Rate' : '-40% Operational Time');
+                // Algorithm
+                var score = Math.floor(Math.random() * 20) + 40; // 40-60
+                if(_this.answers.rev === '$50k+/mo') score += 20;
+                if(_this.answers.prob === 'Systems & Tech') score -= 10;
+                
+                var sol = _this.answers.prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : 
+                         (_this.answers.prob === 'Conversion & UX' ? 'Premium Web Design & Conversion Rate Optimization' : 
+                         'Custom SaaS & Workflow Automation Platform');
+                         
+                var roi = _this.answers.goal === 'Double Revenue' ? '2x Revenue in 6 Months' :
+                         (_this.answers.goal === 'Automation & Scale' ? 'Save 40+ Hours/Week & Scale Infinitely' :
+                         'Dominant Market Positioning & Premium Pricing Power');
                 
                 var html = '<div style="background:rgba(15,23,42,0.7);backdrop-filter:blur(15px);border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:30px;">';
                 html += '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:20px;margin-bottom:20px;">';
@@ -845,33 +939,38 @@
                 html += '</div>';
                 
                 html += '<h4 style="color:#fff;margin:0 0 10px;font-size:1.2rem;">Diagnosis:</h4>';
-                html += '<p style="color:#cbd5e1;margin:0 0 20px;">Your ' + _this.answers.btype + ' business is currently bottlenecked by <strong>' + _this.answers.prob.toLowerCase() + '</strong> issues. This indicates a critical failure point in your scaling architecture.</p>';
+                html += '<p style="color:#cbd5e1;margin:0 0 20px;">Your <strong>' + _this.answers.btype + '</strong> is severely restricted by <strong>' + _this.answers.prob + '</strong>. This is preventing you from reaching your goal of <strong>' + _this.answers.goal + '</strong>.</p>';
                 
                 html += '<div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);padding:20px;border-radius:12px;margin-bottom:25px;">';
-                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Recommended Action Plan</h4>';
+                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Evolvix Action Plan</h4>';
                 html += '<ul style="color:#f1f5f9;margin:0;padding-left:20px;line-height:1.6;">';
-                html += '<li>Implement a <strong>' + sol + '</strong></li>';
-                html += '<li>Fix core UI/UX and system architectures</li>';
-                html += '<li>Expected Impact: <span style="color:#22c55e;font-weight:bold;">' + roi + '</span></li>';
+                html += '<li>Deploy a <strong>' + sol + '</strong></li>';
+                html += '<li>Eliminate tech debt and restructure digital touchpoints</li>';
+                html += '<li>Expected Outcome: <span style="color:#22c55e;font-weight:bold;">' + roi + '</span></li>';
                 html += '</ul></div>';
                 
                 html += '<div style="text-align:center;"><a href="contact.html" class="btn-cta-glow" style="width:100%;justify-content:center;">Book Strategy Call to Execute Plan →</a></div>';
                 html += '</div>';
                 
-                document.getElementById('audit-results-v5').innerHTML = html;
+                document.getElementById('audit-results-final').innerHTML = html;
                 
                 // Set PDF template data
-                document.getElementById('pdf-btype').innerText = _this.answers.btype + ' Industry';
-                document.getElementById('pdf-score').innerText = score + '/100 (Critical)';
-                document.getElementById('pdf-analysis').innerText = 'Based on our proprietary diagnostic algorithm, your primary bottleneck is ' + _this.answers.prob + '. This is restricting your revenue flow and capping your operational scale.';
+                document.getElementById('pdf-btype').innerText = _this.answers.btype;
+                var sColor = score < 50 ? '#ef4444' : (score < 75 ? '#f59e0b' : '#22c55e');
+                var sText = score < 50 ? ' (Critical)' : (score < 75 ? ' (Warning)' : ' (Healthy)');
+                var elScore = document.getElementById('pdf-score');
+                elScore.innerText = score + '/100' + sText;
+                elScore.style.color = sColor;
+                
+                document.getElementById('pdf-analysis').innerHTML = 'Based on our diagnostic algorithm, your primary bottleneck is <strong>' + _this.answers.prob + '</strong>. This is the exact reason why you have not achieved <strong>' + _this.answers.goal + '</strong>.<br><br>The architectural solution requires immediate pivot in your digital strategy.';
                 document.getElementById('pdf-sol').innerText = 'Recommendation: ' + sol;
                 document.getElementById('pdf-roi').innerText = 'Expected Outcome: ' + roi;
                 
-            }, 5000); // 5 second delay to build curiosity
+            }, 5000);
         },
         downloadPDF: function() {
             var el = document.getElementById('hidden-pdf-template');
-            el.style.display = 'block'; // unhide temporarily
+            el.style.display = 'block'; 
             var opt = {
               margin:       0.5,
               filename:     'Evolvix_Strategy_Audit.pdf',
@@ -1691,30 +1790,20 @@
                 btn.disabled = true;
 
                 var formData = new FormData(exitForm);
-                fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    btn.textContent = '✓ Sent!';
-                    btn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
-                    
-                    // Show Thank You Popup
-                    var ty = document.createElement('div');
-                    ty.innerHTML = '<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#10b981;color:#fff;padding:2rem;border-radius:12px;font-weight:700;z-index:99999999;box-shadow:0 10px 40px rgba(0,0,0,0.5);text-align:center;font-family:var(--font-sans);">Thank you!<br><span style="font-size:0.9rem;font-weight:400;opacity:0.9">We will be contacting you shortly.</span></div>';
-                    document.body.appendChild(ty);
-                    
-                    setTimeout(function(){
-                        closeModal();
-                        setTimeout(() => ty.remove(), 500);
-                    }, 4000);
-                })
-                .catch(error => {
-                    btn.textContent = 'Error. Try Again.';
-                    btn.disabled = false;
-                    setTimeout(() => btn.textContent = originalText, 3000);
-                });
+                
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+        form.target = 'hidden_iframe';
+        form.innerHTML = '<input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
+        document.body.appendChild(form);
+        form.submit();
+        
+        setTimeout(() => { 
+            btn.textContent = 'Sent! Check Email.';
+            setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2000);
+        }, 1000);
+
             });
         }
     })();
@@ -2318,7 +2407,8 @@
             let exitTriggered = false;
             
             function triggerExitIntent() {
-                if (!exitTriggered) {
+                if (!exitTriggered && !sessionStorage.getItem('playbookShown')) {
+                    sessionStorage.setItem('playbookShown', 'true');
                     exitTriggered = true;
                     document.getElementById('playbookModal').style.display = 'flex';
                 }
@@ -2341,7 +2431,8 @@
         
         window.addEventListener('popstate', function(event) {
             const pm = document.getElementById('playbookModal');
-            if(pm && pm.style.display !== 'flex') {
+            if(pm && pm.style.display !== 'flex' && !sessionStorage.getItem('playbookShown')) {
+                sessionStorage.setItem('playbookShown', 'true');
                 pm.style.display = 'flex';
                 // Push state back so they don't actually leave if they dismiss it
                 window.history.pushState({page: 1}, "Evolvix", "");
@@ -2358,23 +2449,24 @@
         btn.textContent = 'Sending...';
         btn.style.pointerEvents = 'none';
         
-        fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({
-                _subject: 'Playbook Download Request',
-                Email: email
-            })
-        }).then(res => {
+        
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+        form.target = 'hidden_iframe';
+        form.innerHTML = '<input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
+        document.body.appendChild(form);
+        form.submit();
+        
+        setTimeout(() => { 
             btn.textContent = 'Sent! Check Email.';
             setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2000);
-        }).catch(e => {
-            btn.textContent = 'Error. Try again.';
-            btn.style.pointerEvents = 'all';
-        });
+        }, 1000);
+
     }
     </script>
     
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </body>
     
 </html>
