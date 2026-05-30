@@ -242,6 +242,7 @@
                         .qbtn-icon { font-size:1.8rem; flex-shrink:0; width:48px; height: 48px; background: rgba(255,255,255,0.03); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05); }
                         .qbtn-title { font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:4px; letter-spacing: 0.3px; }
                         .qbtn-sub { font-size:0.85rem; color:#94a3b8; }
+                        @keyframes spinPulse { 0% {transform:rotate(0deg); border-top-color:#38bdf8;} 50% {border-top-color:#818cf8;} 100% {transform:rotate(360deg); border-top-color:#38bdf8;} }
                         </style>
 
                         <!-- STEP 1: Service Type -->
@@ -304,6 +305,13 @@
                                 <button type="submit" class="btn-cta-glow" style="grid-column:1/-1;width:100%;justify-content:center;">Calculate Investment →</button>
                             </form>
                         </div>
+                        
+                        <!-- STEP LOADING -->
+                        <div class="qstep" id="est-step-load" style="display:none;text-align:center;padding:60px 0;">
+                            <div style="margin:0 auto 30px;width:80px;height:80px;border:4px solid rgba(56,189,248,0.1);border-top-color:#38bdf8;border-radius:50%;animation:spinPulse 1.2s linear infinite;"></div>
+                            <h3 style="color:#fff;font-size:1.8rem;font-weight:800;">Generating Custom Proposal...</h3>
+                            <p style="color:#64748b;margin-top:10px;">Estimating resource allocation and timelines</p>
+                        </div>
 
                         <!-- STEP 5: Results -->
                         <div class="qstep" id="est-step-5" style="display:none;">
@@ -335,11 +343,14 @@
                 if(!name || !email) return;
                 
                 document.getElementById('est-step-4').style.display='none';
+                document.getElementById('est-step-load').style.display='block';
                 
-                var base = 20000; var max = 35000; var title = "High-Performance Website";
-                if(this.answers.service === 'saas') { base = 60000; max = 150000; title = "Custom SaaS Platform"; }
-                if(this.answers.service === 'ecom') { base = 45000; max = 80000; title = "E-Commerce Solution"; }
-                if(this.answers.service === 'seo') { base = 15000; max = 30000; title = "Growth & SEO Campaign (Monthly)"; }
+                // 30% Lower base pricing 
+                // Old base=20000 -> New base=14000
+                var base = 14000; var max = 24500; var title = "High-Performance Website";
+                if(this.answers.service === 'saas') { base = 42000; max = 105000; title = "Custom SaaS Platform"; }
+                if(this.answers.service === 'ecom') { base = 31500; max = 56000; title = "E-Commerce Solution"; }
+                if(this.answers.service === 'seo') { base = 10500; max = 21000; title = "Growth & SEO Campaign (Monthly)"; }
                 
                 if(this.answers.scale === 'growth') { base *= 1.5; max *= 1.5; }
                 if(this.answers.scale === 'enterprise') { base *= 2.5; max *= 3.0; }
@@ -350,13 +361,17 @@
                 if(this.answers.service === 'seo') str += ' / mo';
                 
                 var html = '<div style="text-align:center;">';
+                html += '<div style="font-size:0.85rem;color:#38bdf8;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:10px;">ESTIMATE GENERATED</div>';
                 html += '<h2 style="color:#fff;font-size:2.5rem;font-weight:900;margin-bottom:8px;">' + str + '</h2>';
                 html += '<p style="color:#94a3b8;font-size:1.1rem;margin-bottom:30px;">For: ' + title + '</p>';
                 html += '<a href="contact.html" class="btn-cta-glow" style="font-size:1.1rem;">Book Strategy Call to Finalize Scope →</a>';
                 html += '</div>';
                 
-                document.getElementById('est-step-5').style.display='block';
-                document.getElementById('est-results').innerHTML = html;
+                setTimeout(function(){
+                    document.getElementById('est-step-load').style.display='none';
+                    document.getElementById('est-step-5').style.display='block';
+                    document.getElementById('est-results').innerHTML = html;
+                }, 5000); // 5 seconds curiosity delay
             }
         };
         </script>

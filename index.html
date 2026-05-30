@@ -661,89 +661,218 @@
             <div class="container">
                 <div class="form-card reveal" style="max-width:850px; margin:0 auto; padding:60px; background:rgba(15,23,42,0.7); backdrop-filter:blur(20px); border:1px solid rgba(56,189,248,0.2); border-radius:24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
                     <div style="text-align:center; margin-bottom:40px;">
-                        <span style="background:linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); color:#38bdf8; padding:8px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing: 2px; text-transform: uppercase;">Astra AI Business Audit</span>
+                        <span style="background:linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); color:#38bdf8; padding:8px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing: 2px; text-transform: uppercase;">Evolvix Core Intelligence</span>
                         <h2 style="color:#fff !important; font-size:3rem; font-weight: 800; letter-spacing: -1px; margin-top:25px; line-height: 1.2;">Uncover Your Growth Bottlenecks</h2>
-                        <p style="color:var(--text-secondary); font-size: 1.1rem; margin-top: 15px; max-width: 600px; margin-left: auto; margin-right: auto;">Answer 3 rapid questions and our AI will generate a highly personalized, 5-page enterprise scaling roadmap tailored to your specific infrastructure.</p>
                     </div>
-                    
-                    <div id="audit-wizard" style="position: relative; min-height: 300px;">
-                        
-                        <!-- Step 1 -->
-                        <div class="audit-step" id="step-1" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 1; position: absolute; width: 100%;">
-                            <h3 style="color:#fff; margin-bottom:25px; font-size:1.4rem; font-weight: 600;">1. What is the primary architecture of your business?</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                <button class="wiz-btn premium-btn" onclick="nextStep(1, 'btype', 'SaaS / Tech')">SaaS / Technology</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(1, 'btype', 'Agency / B2B Services')">Agency / B2B Services</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(1, 'btype', 'E-commerce / D2C')">E-commerce / D2C</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(1, 'btype', 'Local / Enterprise Service')">Local / Enterprise Service</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Step 2 -->
-                        <div class="audit-step" id="step-2" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; position: absolute; width: 100%; transform: translateX(20px);">
-                            <h3 style="color:#fff; margin-bottom:25px; font-size:1.4rem; font-weight: 600;">2. What is your current Monthly Recurring Revenue (MRR)?</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                <button class="wiz-btn premium-btn" onclick="nextStep(2, 'rev', 'Under $10k')">Seed (Under $10k)</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(2, 'rev', '$10k - $50k')">Growth ($10k - $50k)</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(2, 'rev', '$50k - $100k')">Scale ($50k - $100k)</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(2, 'rev', '$100k+')">Enterprise ($100k+)</button>
-                            </div>
-                        </div>
 
-                        <!-- Step 3 -->
-                        <div class="audit-step" id="step-3" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; position: absolute; width: 100%; transform: translateX(20px);">
-                            <h3 style="color:#fff; margin-bottom:25px; font-size:1.4rem; font-weight: 600;">3. What is the #1 friction point preventing scale?</h3>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                                <button class="wiz-btn premium-btn" onclick="nextStep(3, 'neck', 'Lead Generation Pipeline')">Lead Generation Pipeline</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(3, 'neck', 'Low Conversion Rate')">Low UI/UX Conversion Rate</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(3, 'neck', 'Legacy Technology')">Legacy Technology Infrastructure</button>
-                                <button class="wiz-btn premium-btn" onclick="nextStep(3, 'neck', 'Manual Operations')">Manual Operational Workflows</button>
-                            </div>
-                        </div>
+        <style>
+        .qstep { animation: qFadeIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        @keyframes qFadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        
+        .qbtn { 
+            display:flex; align-items:center; gap:18px; 
+            background:rgba(15, 23, 42, 0.4); border:1px solid rgba(56,189,248,0.15); 
+            color:#f8fafc; border-radius:16px; padding:20px; cursor:pointer; 
+            transition:all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); text-align:left; width:100%;
+            position: relative; overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        .qbtn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg); transition: 0.5s;
+        }
+        .qbtn:hover::before { left: 150%; }
+        .qbtn:hover { background:rgba(56,189,248,0.08); border-color:rgba(56,189,248,0.5); transform:translateY(-4px); box-shadow:0 12px 30px -10px rgba(56,189,248,0.3); }
+        .qbtn.selected { background:rgba(56,189,248,0.15); border-color:#38bdf8; box-shadow:0 0 0 1px #38bdf8 inset, 0 10px 30px -10px rgba(56,189,248,0.4); }
+        
+        .qbtn-icon { font-size:1.8rem; flex-shrink:0; width:48px; height: 48px; background: rgba(255,255,255,0.03); border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05); }
+        .qbtn-title { font-size:1.05rem; font-weight:700; color:#fff; margin-bottom:4px; letter-spacing: 0.3px; }
+        .qbtn-sub { font-size:0.85rem; color:#94a3b8; }
+        @keyframes spinPulse { 0% {transform:rotate(0deg); border-top-color:#38bdf8;} 50% {border-top-color:#818cf8;} 100% {transform:rotate(360deg); border-top-color:#38bdf8;} }
+        </style>
+        
+        <div id="qstep-1" class="qstep">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What best describes your business?</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'SaaS', this)">
+                    <div class="qbtn-icon">⚡</div>
+                    <div><div class="qbtn-title">SaaS / Tech Product</div><div class="qbtn-sub">Software, apps, digital tools</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Agency', this)">
+                    <div class="qbtn-icon">🎯</div>
+                    <div><div class="qbtn-title">Agency / B2B Services</div><div class="qbtn-sub">Consulting, freelancing, B2B</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Ecommerce', this)">
+                    <div class="qbtn-icon">🛍️</div>
+                    <div><div class="qbtn-title">E-commerce / D2C Brand</div><div class="qbtn-sub">Physical or digital products</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('btype', 'Local', this)">
+                    <div class="qbtn-icon">📍</div>
+                    <div><div class="qbtn-title">Local / Service Business</div><div class="qbtn-sub">Restaurant, clinic, salon, etc.</div></div>
+                </button>
+            </div>
+        </div>
+        
+        <div id="qstep-2" class="qstep" style="display:none;">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your biggest current bottleneck?</h3>
+            <div style="display:grid;grid-template-columns:1fr;gap:16px;">
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Traffic', this)">
+                    <div class="qbtn-icon">📉</div>
+                    <div><div class="qbtn-title">Not enough traffic or leads</div><div class="qbtn-sub">Struggling to get visibility online</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Conversion', this)">
+                    <div class="qbtn-icon">💔</div>
+                    <div><div class="qbtn-title">Traffic isn't converting</div><div class="qbtn-sub">People visit but don't buy or contact</div></div>
+                </button>
+                <button class="qbtn" onclick="window.auditEngine.select('prob', 'Systems', this)">
+                    <div class="qbtn-icon">⚙️</div>
+                    <div><div class="qbtn-title">Operations & systems are a mess</div><div class="qbtn-sub">Need better tech, CRM, or automation</div></div>
+                </button>
+            </div>
+        </div>
+        
+        <div id="qstep-3" class="qstep" style="display:none;">
+            <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">Generate Your Business Audit</h3>
+            <form id="audit-form-v5" onsubmit="event.preventDefault(); window.auditEngine.calculate();" style="display:flex;flex-direction:column;gap:16px;max-width:400px;margin:0 auto;">
+                <input id="audit-email-v5" type="email" placeholder="Enter your best email" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:18px;border-radius:14px;font-size:1rem;outline:none;" onfocus="this.style.borderColor='#38bdf8'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+                <button type="submit" class="btn-cta-glow" style="width:100%;justify-content:center;">Run Diagnostic & Get Results →</button>
+            </form>
+        </div>
+        
+        <div id="qstep-4" class="qstep" style="display:none;text-align:center;padding:40px 0;">
+            <div style="margin:0 auto 30px;width:80px;height:80px;border:4px solid rgba(56,189,248,0.1);border-top-color:#38bdf8;border-radius:50%;animation:spinPulse 1.2s linear infinite;"></div>
+            <h3 style="color:#fff;">Evolvix Core Computing Algorithm...</h3>
+            <p style="color:#64748b;margin-top:10px;">Analyzing growth multipliers</p>
+        </div>
+        
+        <div id="qstep-5" class="qstep" style="display:none;">
+            <div id="audit-results-v5"></div>
+            
+            <div style="text-align:center; margin-top:30px;">
+                <button onclick="window.auditEngine.downloadPDF()" class="btn-cta-glow" style="background-image:linear-gradient(45deg, #22c55e 0%, #16a34a 50%, #22c55e 100%);">📥 Download Enterprise Strategy PDF</button>
+            </div>
+        </div>
 
-                        <!-- Step 4: Capture -->
-                        <div class="audit-step" id="step-4" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; position: absolute; width: 100%; transform: translateX(20px);">
-                            <h3 style="color:#fff; margin-bottom:25px; font-size:1.4rem; font-weight: 600;">4. Initializing AI Engine. Where should we send the secure report?</h3>
-                            <form onsubmit="event.preventDefault(); submitAudit();">
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-                                    <input type="text" id="lead-name" class="input-field" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);" placeholder="Full Name" required>
-                                    <input type="email" id="lead-email" class="input-field" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);" placeholder="Work Email" required>
-                                </div>
-                                <input type="tel" id="lead-phone" class="input-field" style="margin-bottom:25px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);" placeholder="Phone / WhatsApp (For urgent enterprise outreach)" required>
-                                <button type="submit" id="audit-submit-btn" class="btn btn-primary btn-cta-glow w-full" style="font-size: 1.1rem; padding: 18px;">Compile Enterprise Roadmap &rarr;</button>
-                                <p style="text-align: center; color: #64748b; font-size: 0.8rem; margin-top: 15px;">Secure 256-bit encryption. No spam, ever.</p>
-                            </form>
-                        </div>
-                        
-                        <!-- Step 5: Loading / Success -->
-                        <div class="audit-step" id="step-5" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; pointer-events: none; position: absolute; width: 100%; transform: translateX(20px); text-align:center;">
-                            <div id="audit-loading">
-                                <div style="position: relative; width: 80px; height: 80px; margin: 0 auto 30px;">
-                                    <div style="position: absolute; inset: 0; border:4px solid rgba(56,189,248,0.2); border-radius:50%;"></div>
-                                    <div style="position: absolute; inset: 0; border:4px solid transparent; border-top-color:#38bdf8; border-radius:50%; animation:spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;"></div>
-                                    <div style="position: absolute; inset: 15px; background: rgba(56,189,248,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: monospace; color: #38bdf8; font-size: 0.8rem;">AI</div>
-                                </div>
-                                <h3 style="color:#fff; font-size:1.8rem; font-weight: 700; margin-bottom: 10px;">Astra AI is computing...</h3>
-                                <div style="display: flex; flex-direction: column; gap: 8px; max-width: 300px; margin: 0 auto; text-align: left;">
-                                    <div class="ai-check-item" style="color: #64748b; font-size: 0.9rem; display: flex; align-items: center; gap: 10px;"><span style="color: #22c55e;">✓</span> Analyzing architecture constraints...</div>
-                                    <div class="ai-check-item" style="color: #64748b; font-size: 0.9rem; display: flex; align-items: center; gap: 10px;"><span style="color: #22c55e;">✓</span> Cross-referencing 2026 growth data...</div>
-                                    <div class="ai-check-item" style="color: #64748b; font-size: 0.9rem; display: flex; align-items: center; gap: 10px;"><span style="color: #38bdf8; animation: pulse 1.5s infinite;">●</span> Compiling strategic recommendations...</div>
-                                </div>
-                            </div>
-                            
-                            <div id="audit-success" style="display:none; padding: 20px 0;">
-                                <div style="width: 80px; height: 80px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px;">
-                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                </div>
-                                <h3 style="color:#fff; font-size:2rem; font-weight: 800; margin-bottom:15px;">Roadmap Compiled Successfully</h3>
-                                <p style="color:var(--text-secondary); margin-bottom:30px; font-size: 1.1rem; max-width: 500px; margin-left: auto; margin-right: auto;">Your highly confidential enterprise strategy has been securely sent to your email. We have also initiated an encrypted download to your device.</p>
-                                <button class="btn btn-primary btn-cta-glow" style="padding: 15px 30px; font-size: 1.1rem;" onclick="window.open('https://wa.me/917668758238?text=Hi+Akash,+I+just+generated+the+AI+Growth+Strategy.+Let%27s+talk+implementation.', '_blank')">Discuss Strategy on WhatsApp &rarr;</button>
-                            </div>
-                        </div>
-                    </div>
+        </div></div></section>
+        
+        <!-- HIDDEN PDF TEMPLATE -->
+        <div id="hidden-pdf-template" style="display:none; padding:40px; background:#fff; color:#0f172a; font-family:'Outfit',sans-serif; width:800px;">
+            <div style="border-bottom:4px solid #38bdf8; padding-bottom:20px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center;">
+                <h1 style="margin:0; font-size:32px; color:#0f172a;">Evolvix Technologies</h1>
+                <span style="font-weight:700; color:#64748b; font-size:14px;">ENTERPRISE STRATEGY AUDIT</span>
+            </div>
+            
+            <div style="display:flex; justify-content:space-between; margin-bottom:40px;">
+                <div style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid #e2e8f0; width:48%;">
+                    <p style="margin:0 0 5px; color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase;">Business Profile</p>
+                    <h3 style="margin:0; font-size:24px;" id="pdf-btype">SaaS</h3>
+                </div>
+                <div style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid #e2e8f0; width:48%;">
+                    <p style="margin:0 0 5px; color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase;">Health Score</p>
+                    <h3 style="margin:0; font-size:24px; color:#ef4444;" id="pdf-score">45/100</h3>
                 </div>
             </div>
-        </section>
+            
+            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Primary Bottleneck Analysis</h2>
+            <p style="font-size:18px; line-height:1.6; color:#334155; margin-bottom:40px;" id="pdf-analysis"></p>
+            
+            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Action Plan & Solution</h2>
+            <div style="background:#e0f2fe; border-left:4px solid #38bdf8; padding:20px; margin-bottom:40px;">
+                <h3 style="margin:0 0 10px; color:#0284c7;" id="pdf-sol">SEO</h3>
+                <p style="margin:0; color:#0c4a6e; font-size:16px;" id="pdf-roi">ROI: 3x Traffic</p>
+            </div>
+            
+            <div style="margin-top:60px; padding-top:20px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Akash Signature">
+                    <p style="margin:5px 0 0; font-weight:700;">Akash Jadon</p>
+                    <p style="margin:0; font-size:12px; color:#64748b;">CEO, Evolvix Technologies</p>
+                </div>
+                <div style="text-align:right;">
+                    <p style="margin:0; font-weight:700; color:#38bdf8;">evolvixtechnology@gmail.com</p>
+                    <p style="margin:0; font-size:14px; color:#64748b;">+91 7668758238</p>
+                </div>
+            </div>
+        </div>
+
+    <script id="audit-engine">
+    window.auditEngine = {
+        answers: {},
+        select: function(key, val, btn) {
+            this.answers[key] = val;
+            var siblings = btn.parentElement.querySelectorAll('.qbtn');
+            siblings.forEach(function(b){ b.classList.remove('selected'); b.style.pointerEvents='none'; });
+            btn.classList.add('selected');
+            
+            var step = key === 'btype' ? 1 : 2;
+            setTimeout(function(){
+                document.getElementById('qstep-'+step).style.display = 'none';
+                document.getElementById('qstep-'+(step+1)).style.display = 'block';
+            }, 300);
+        },
+        calculate: function() {
+            var email = document.getElementById('audit-email-v5').value;
+            if(!email) return;
+            document.getElementById('qstep-3').style.display = 'none';
+            document.getElementById('qstep-4').style.display = 'block';
+            
+            var _this = this;
+            setTimeout(function(){
+                document.getElementById('qstep-4').style.display = 'none';
+                document.getElementById('qstep-5').style.display = 'block';
+                
+                var score = _this.answers.prob === 'Traffic' ? 45 : (_this.answers.prob === 'Conversion' ? 60 : 75);
+                var sol = _this.answers.prob === 'Traffic' ? 'SEO & Organic Growth Engine' : (_this.answers.prob === 'Conversion' ? 'Premium Web Design & CRO' : 'Custom SaaS / Automation Platform');
+                var roi = _this.answers.prob === 'Traffic' ? '3x Traffic Growth' : (_this.answers.prob === 'Conversion' ? '+150% Conversion Rate' : '-40% Operational Time');
+                
+                var html = '<div style="background:rgba(15,23,42,0.7);backdrop-filter:blur(15px);border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:30px;">';
+                html += '<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:20px;margin-bottom:20px;">';
+                html += '<div><h4 style="color:#94a3b8;font-size:0.9rem;margin:0 0 5px;">BUSINESS HEALTH SCORE</h4>';
+                html += '<h2 style="color:#38bdf8;font-size:3rem;margin:0;font-weight:900;">' + score + '<span style="font-size:1.5rem;color:#64748b;">/100</span></h2></div>';
+                html += '</div>';
+                
+                html += '<h4 style="color:#fff;margin:0 0 10px;font-size:1.2rem;">Diagnosis:</h4>';
+                html += '<p style="color:#cbd5e1;margin:0 0 20px;">Your ' + _this.answers.btype + ' business is currently bottlenecked by <strong>' + _this.answers.prob.toLowerCase() + '</strong> issues. This indicates a critical failure point in your scaling architecture.</p>';
+                
+                html += '<div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);padding:20px;border-radius:12px;margin-bottom:25px;">';
+                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Recommended Action Plan</h4>';
+                html += '<ul style="color:#f1f5f9;margin:0;padding-left:20px;line-height:1.6;">';
+                html += '<li>Implement a <strong>' + sol + '</strong></li>';
+                html += '<li>Fix core UI/UX and system architectures</li>';
+                html += '<li>Expected Impact: <span style="color:#22c55e;font-weight:bold;">' + roi + '</span></li>';
+                html += '</ul></div>';
+                
+                html += '<div style="text-align:center;"><a href="contact.html" class="btn-cta-glow" style="width:100%;justify-content:center;">Book Strategy Call to Execute Plan →</a></div>';
+                html += '</div>';
+                
+                document.getElementById('audit-results-v5').innerHTML = html;
+                
+                // Set PDF template data
+                document.getElementById('pdf-btype').innerText = _this.answers.btype + ' Industry';
+                document.getElementById('pdf-score').innerText = score + '/100 (Critical)';
+                document.getElementById('pdf-analysis').innerText = 'Based on our proprietary diagnostic algorithm, your primary bottleneck is ' + _this.answers.prob + '. This is restricting your revenue flow and capping your operational scale.';
+                document.getElementById('pdf-sol').innerText = 'Recommendation: ' + sol;
+                document.getElementById('pdf-roi').innerText = 'Expected Outcome: ' + roi;
+                
+            }, 5000); // 5 second delay to build curiosity
+        },
+        downloadPDF: function() {
+            var el = document.getElementById('hidden-pdf-template');
+            el.style.display = 'block'; // unhide temporarily
+            var opt = {
+              margin:       0.5,
+              filename:     'Evolvix_Strategy_Audit.pdf',
+              image:        { type: 'jpeg', quality: 0.98 },
+              html2canvas:  { scale: 2, useCORS: true },
+              jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(el).save().then(function(){
+                el.style.display = 'none';
+            });
+        }
+    };
+    </script>
 
 
 
@@ -1125,22 +1254,7 @@
             aInput.addEventListener('blur',function(){aForm.style.transform='scale(1)';aForm.style.boxShadow='';});
         }
 
-        /* ─── Premium Magnetic Cursor ─── */
-        (function(){
-            if(!window.matchMedia('(pointer:fine)').matches) return;
-            var dot=document.getElementById('cursorDot');
-            var ring=document.getElementById('cursorRing');
-            if(!dot||!ring) return;
-            var mX=-100,mY=-100,rX=-100,rY=-100;
-            document.addEventListener('mousemove',function(e){
-                mX=e.clientX; mY=e.clientY;
-                dot.style.transform='translate('+mX+'px,'+mY+'px) translate(-50%,-50%)';
-            });
-            (function animRing(){
-                rX+=(mX-rX)*0.11; rY+=(mY-rY)*0.11;
-                ring.style.transform='translate('+rX+'px,'+rY+'px) translate(-50%,-50%)';
-                requestAnimationFrame(animRing);
-            })();
+        
             document.addEventListener('mouseleave',function(){ document.body.classList.add('cursor-hidden'); });
             document.addEventListener('mouseenter',function(){ document.body.classList.remove('cursor-hidden'); });
             var hoverEls=document.querySelectorAll('a,button,.btn,.portfolio-card,.card,.service-card,.tech-card,.stat-block');
