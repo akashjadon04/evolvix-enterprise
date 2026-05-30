@@ -48,7 +48,7 @@
     
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
     <style>
         .audit-step { transition: opacity 0.3s ease; }
         .wiz-btn { display:block; width:100%; text-align:left; padding:15px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:8px; cursor:pointer; font-weight:500; transition:all 0.2s; }
@@ -309,7 +309,7 @@
                             <div class="macbook-lid">
                                 <div class="macbook-screen-bezel">
                                     <div class="macbook-notch-top"></div>
-                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=75"
+                                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=75" loading="lazy" alt="Evolvix Portfolio Project"
                                          alt="Evolvix Technologies - Premium SaaS Dashboard" class="macbook-display" width="800" height="500" loading="lazy">
                                     <div class="screen-overlay">
                                         <div class="screen-stat-card ssc-1">
@@ -504,7 +504,7 @@
                 </div>
                 <div class="h-scroll-track" id="hScrollTrack">
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=70"
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project"
                              alt="ReachForever Digital Marketing Agency Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Digital Marketing Agency</span>
@@ -516,7 +516,7 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=70"
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project"
                              alt="The Bake Stories Artisan Bakery Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Food &amp; Hospitality</span>
@@ -528,7 +528,7 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=70"
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project"
                              alt="NexusAI SaaS Platform Dashboard" class="portfolio-card-img" loading="lazy" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">SaaS Platform</span>
@@ -810,42 +810,63 @@
 
         </div></div></section>
         
+        
         <!-- HIDDEN PDF TEMPLATE -->
-        <div id="hidden-pdf-template" style="display:none; padding:40px; background:#fff; color:#0f172a; font-family:'Outfit',sans-serif; width:800px;">
-            <div style="border-bottom:4px solid #38bdf8; padding-bottom:20px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center;">
-                <h1 style="margin:0; font-size:32px; color:#0f172a;">Evolvix Technologies</h1>
-                <span style="font-weight:700; color:#64748b; font-size:14px;">EXECUTIVE STRATEGY BRIEF</span>
-            </div>
+        <div id="hidden-pdf-template" style="position: absolute; left: -9999px; top: -9999px; padding: 50px; background: #ffffff; color: #0f172a; font-family: 'Outfit', sans-serif; width: 850px; box-sizing: border-box; overflow: hidden;">
+            <!-- Decorative Header Gradient -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 100%);"></div>
             
-            <div style="display:flex; justify-content:space-between; margin-bottom:40px;">
-                <div style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid #e2e8f0; width:48%;">
-                    <p style="margin:0 0 5px; color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase;">Business Profile</p>
-                    <h3 style="margin:0; font-size:24px;" id="pdf-btype">SaaS</h3>
-                </div>
-                <div style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid #e2e8f0; width:48%;">
-                    <p style="margin:0 0 5px; color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase;">Health Score</p>
-                    <h3 style="margin:0; font-size:24px; color:#ef4444;" id="pdf-score">45/100</h3>
-                </div>
-            </div>
-            
-            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Primary Bottleneck Analysis</h2>
-            <p style="font-size:18px; line-height:1.6; color:#334155; margin-bottom:40px;" id="pdf-analysis"></p>
-            
-            <h2 style="border-bottom:1px solid #e2e8f0; padding-bottom:10px; margin-bottom:20px;">Custom Evolvix Action Plan</h2>
-            <div style="background:#e0f2fe; border-left:4px solid #38bdf8; padding:20px; margin-bottom:40px;">
-                <h3 style="margin:0 0 10px; color:#0284c7;" id="pdf-sol">SEO</h3>
-                <p style="margin:0; color:#0c4a6e; font-size:16px;" id="pdf-roi">ROI: 3x Traffic</p>
-            </div>
-            
-            <div style="margin-top:60px; padding-top:20px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+            <div style="border-bottom: 2px solid #e2e8f0; padding-bottom: 25px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end;">
                 <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Akash Signature">
-                    <p style="margin:5px 0 0; font-weight:700;">Akash Jadon</p>
-                    <p style="margin:0; font-size:12px; color:#64748b;">CEO, Evolvix Technologies</p>
+                    <h1 style="margin: 0; font-size: 38px; color: #0f172a; font-weight: 900; letter-spacing: -1px;">Evolvix Technologies</h1>
+                    <p style="margin: 5px 0 0; font-size: 14px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Executive Strategy Brief</p>
                 </div>
-                <div style="text-align:right;">
-                    <p style="margin:0; font-weight:700; color:#38bdf8;">evolvixtechnology@gmail.com</p>
-                    <p style="margin:0; font-size:14px; color:#64748b;">+91 7668758238</p>
+                <div style="text-align: right;">
+                    <span style="display: inline-block; padding: 6px 16px; background: #f1f5f9; border-radius: 20px; font-weight: 800; color: #3b82f6; font-size: 12px; letter-spacing: 1px;">CONFIDENTIAL</span>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 45px; gap: 20px;">
+                <div style="background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; flex: 1;">
+                    <p style="margin: 0 0 8px; color: #64748b; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Business Profile</p>
+                    <h3 style="margin: 0; font-size: 26px; font-weight: 800; color: #0f172a;" id="pdf-btype">SaaS Platform</h3>
+                </div>
+                <div style="background: #f8fafc; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; flex: 1;">
+                    <p style="margin: 0 0 8px; color: #64748b; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Health Score</p>
+                    <h3 style="margin: 0; font-size: 26px; font-weight: 900; color: #ef4444;" id="pdf-score">45/100</h3>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 45px;">
+                <h2 style="font-size: 20px; color: #0f172a; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="display: inline-block; width: 24px; height: 24px; background: #fee2e2; color: #ef4444; border-radius: 6px; text-align: center; line-height: 24px; font-size: 14px;">1</span>
+                    Primary Bottleneck Analysis
+                </h2>
+                <div style="border-left: 3px solid #e2e8f0; padding-left: 20px;">
+                    <p style="font-size: 17px; line-height: 1.7; color: #475569; margin: 0; font-family: 'Inter', sans-serif;" id="pdf-analysis">Analysis text goes here.</p>
+                </div>
+            </div>
+            
+            <div style="margin-bottom: 50px;">
+                <h2 style="font-size: 20px; color: #0f172a; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                    <span style="display: inline-block; width: 24px; height: 24px; background: #e0f2fe; color: #0284c7; border-radius: 6px; text-align: center; line-height: 24px; font-size: 14px;">2</span>
+                    Custom Evolvix Action Plan
+                </h2>
+                <div style="background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%); border: 1px solid #bae6fd; border-radius: 16px; padding: 30px;">
+                    <h3 style="margin: 0 0 12px; color: #0369a1; font-size: 22px; font-weight: 800;" id="pdf-sol">SEO & Content Architecture</h3>
+                    <p style="margin: 0; color: #0c4a6e; font-size: 18px; font-weight: 700; display: inline-block; background: rgba(2,132,199,0.1); padding: 8px 16px; border-radius: 8px;" id="pdf-roi">ROI: 3x Traffic</p>
+                </div>
+            </div>
+            
+            <div style="padding-top: 30px; border-top: 2px solid #f1f5f9; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height: 45px; opacity: 0.6; mix-blend-mode: multiply; filter: grayscale(100%); margin-bottom: 5px;" alt="Signature">
+                    <p style="margin: 0; font-weight: 800; font-size: 16px; color: #0f172a;">Akash Jadon</p>
+                    <p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 600;">CEO, Evolvix Technologies</p>
+                </div>
+                <div style="text-align: right;">
+                    <p style="margin: 0 0 4px; font-weight: 800; color: #38bdf8; font-size: 15px;">evolvixtechnology@gmail.com</p>
+                    <p style="margin: 0; font-size: 14px; color: #64748b; font-weight: 600;">+91 7668758238</p>
                 </div>
             </div>
         </div>
@@ -2222,7 +2243,7 @@
 
     <div class="playbook-modal" id="playbookModal">
         <div class="form-card" style="max-width:500px; position:relative;">
-            <button onclick="document.getElementById('playbookModal').style.display='none'" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#fff; cursor:pointer; font-size:1.5rem;">✕</button>
+            <button onclick="document.getElementById('playbookModal').style.display='none'" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#fff; cursor:pointer; font-size:1.5rem;" aria-label="Close Playbook">✕</button>
             <h2 style="color:#38bdf8 !important; margin-bottom:10px;">Wait! Before you go...</h2>
             <p style="color:#fff; margin-bottom:20px;">Download our <strong>2026 Enterprise Scaling Playbook</strong>. Learn exactly how companies like Apex Digital and Orbit Systems scaled using our framework.</p>
             <form onsubmit="event.preventDefault(); downloadPlaybook();">
