@@ -53,7 +53,7 @@
         .audit-step { transition: opacity 0.3s ease; }
         .wiz-btn { display:block; width:100%; text-align:left; padding:15px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:8px; cursor:pointer; font-weight:500; transition:all 0.2s; }
         .wiz-btn:hover { background:rgba(56,189,248,0.1); border-color:#38bdf8; }
-        .fab-whatsapp { position:fixed; bottom:30px; right:30px; background:#25D366; color:#fff; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,0.4); z-index:9999; cursor:pointer; transition:transform 0.3s; text-decoration:none; }
+        .fab-whatsapp { position:fixed; bottom:30px; left:30px; background:#25D366; color:#fff; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,0.4); z-index:9999; cursor:pointer; transition:transform 0.3s; text-decoration:none; }
         .fab-whatsapp:hover { transform:scale(1.1); }
         .fab-whatsapp svg { width:32px; height:32px; fill:currentColor; }
         .playbook-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center; }
@@ -65,7 +65,39 @@
         @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
 
-</head>
+
+    <style>
+    .btn-cta-glow {
+        position: relative;
+        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+        color: #fff !important;
+        border: none;
+        border-radius: 30px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        padding: 0.8rem 1.8rem !important;
+        overflow: hidden;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .btn-cta-glow::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(135deg, #818cf8 0%, #38bdf8 100%);
+        z-index: -1; transition: opacity 0.4s ease; opacity: 0;
+    }
+    .btn-cta-glow:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(56, 189, 248, 0.6), inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .btn-cta-glow:hover::before { opacity: 1; }
+    .btn-cta-glow .btn-arrow { display: inline-block; transition: transform 0.3s; margin-left: 6px; }
+    .btn-cta-glow:hover .btn-arrow { transform: translateX(4px); }
+    </style>
+    </head>
 <body>
 
     <!-- SVG Liquid Filter (for CTA) -->
@@ -705,7 +737,7 @@
                                 </div>
                                 <h3 style="color:#fff; font-size:2rem; font-weight: 800; margin-bottom:15px;">Roadmap Compiled Successfully</h3>
                                 <p style="color:var(--text-secondary); margin-bottom:30px; font-size: 1.1rem; max-width: 500px; margin-left: auto; margin-right: auto;">Your highly confidential enterprise strategy has been securely sent to your email. We have also initiated an encrypted download to your device.</p>
-                                <button class="btn btn-primary btn-cta-glow" style="padding: 15px 30px; font-size: 1.1rem;" onclick="window.open('https://wa.me/917999863831?text=Hi+Akash,+I+just+generated+the+AI+Growth+Strategy.+Let%27s+talk+implementation.', '_blank')">Discuss Strategy on WhatsApp &rarr;</button>
+                                <button class="btn btn-primary btn-cta-glow" style="padding: 15px 30px; font-size: 1.1rem;" onclick="window.open('https://wa.me/917668758238?text=Hi+Akash,+I+just+generated+the+AI+Growth+Strategy.+Let%27s+talk+implementation.', '_blank')">Discuss Strategy on WhatsApp &rarr;</button>
                             </div>
                         </div>
                     </div>
@@ -1998,7 +2030,7 @@
         </div>
     </div>
 \n
-    <a href="https://wa.me/917999863831?text=Hi+Akash,+I+want+to+scale+my+business." target="_blank" class="fab-whatsapp" title="Chat with Akash">
+    <a href="https://wa.me/917668758238?text=Hi+Akash,+I+want+to+scale+my+business." target="_blank" class="fab-whatsapp" title="Chat with Akash">
         <svg viewBox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.337a9.982 9.982 0 004.778 1.223h.004c5.504 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.926-7.062A9.935 9.935 0 0012.012 2zm.004 16.892h-.003a8.315 8.315 0 01-4.247-1.157l-.305-.18-3.155.804.843-3.074-.198-.314A8.293 8.293 0 013.684 11.98c.002-4.582 3.733-8.312 8.324-8.312 2.222.001 4.308.866 5.877 2.437a8.272 8.272 0 012.436 5.882c-.001 4.582-3.731 8.31-8.313 8.31zM16.58 13.9c-.25-.125-1.488-.734-1.718-.818-.23-.084-.399-.125-.567.125-.168.25-.65.818-.797.985-.148.167-.296.188-.546.063-1.32-.656-2.316-1.464-3.21-2.983-.105-.175.101-.163.344-.648.084-.167.042-.313-.021-.438-.063-.125-.567-1.368-.778-1.874-.205-.494-.413-.427-.567-.435l-.485-.008c-.168 0-.441.063-.672.313-.231.25-.882.862-.882 2.102 0 1.24.903 2.438 1.029 2.605.125.167 1.776 2.712 4.302 3.803 1.62.697 2.152.606 2.58.558.468-.053 1.488-.608 1.698-1.196.21-.588.21-1.092.148-1.196-.063-.105-.231-.167-.481-.292z"/></svg>
     </a>
 \n
@@ -2188,6 +2220,23 @@
         });
     </script>
 
-</body>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Push a dummy state so back button works
+        window.history.pushState({page: 1}, "Evolvix", "");
+        
+        window.addEventListener('popstate', function(event) {
+            const pm = document.getElementById('playbookModal');
+            if(pm && pm.style.display !== 'flex') {
+                pm.style.display = 'flex';
+                // Push state back so they don't actually leave if they dismiss it
+                window.history.pushState({page: 1}, "Evolvix", "");
+            }
+        });
+    });
+    </script>
+    </body>
+    
 </html>
 <!-- Deployment Trigger --> 
