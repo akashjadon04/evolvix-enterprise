@@ -343,6 +343,20 @@
                 if(!name || !email) return;
                 
                 document.getElementById('est-step-4').style.display='none';
+                // Send to FormSubmit
+                fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        _subject: 'New Pricing Estimate Request',
+                        Name: name,
+                        Email: email,
+                        Service: this.answers.service,
+                        Scale: this.answers.scale,
+                        Timeline: this.answers.time
+                    })
+                }).catch(e => console.error(e));
+        
                 document.getElementById('est-step-load').style.display='block';
                 
                 // 30% Lower base pricing 
