@@ -49,6 +49,24 @@ db.serialize(() => {
     db.run("ALTER TABLE users ADD COLUMN contract_status TEXT DEFAULT 'Pending'", (err) => {});
     db.run("ALTER TABLE users ADD COLUMN performance_score TEXT DEFAULT '100'", (err) => {});
 
+    db.run(`CREATE TABLE IF NOT EXISTS audit_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    admin_id INTEGER,
+    action TEXT,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+)`);
+
+    db.run(`CREATE TABLE IF NOT EXISTS leads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    email TEXT UNIQUE,
+    phone TEXT,
+    business_type TEXT,
+    revenue TEXT,
+    bottleneck TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+)`);
+
     db.run(`CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         sender_id INTEGER,
@@ -279,6 +297,40 @@ app.get('/api/files/download/:id', authenticateToken, (req, res) => {
         }
         const filePath = path.join(uploadDir, fileRow.filename);
         res.download(filePath, fileRow.original_name);
+    });
+});
+
+// ==========================================
+// LEADS CRM ROUTES
+// ==========================================
+app.post('/api/leads', (req, res) => {
+    const { name, email, phone, business_type, revenue, bottleneck } = req.body;
+    db.run("INSERT OR REPLACE INTO leads (name, email, phone, business_type, revenue, bottleneck) VALUES (?, ?, ?, ?, ?, ?)",
+        [name, email, phone, business_type, revenue, bottleneck], function(err) {
+            if (err) return res.status(400).json({ error: err.message });
+            res.json({ message: 'Lead captured successfully', id: this.lastID });
+        });
+});
+
+app.get('/api/admin/leads', authenticateToken, isAdmin, (req, res) => {
+    db.all("SELECT * FROM leads ORDER BY created_at DESC", [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(rows);
+    });
+});
+
+app.get('/api/admin/leads/export', authenticateToken, isAdmin, (req, res) => {
+    db.all("SELECT * FROM leads ORDER BY created_at DESC", [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+        
+        let csv = 'ID,Name,Email,Phone,Business Type,Revenue,Bottleneck,Date\n';
+        rows.forEach(r => {
+            csv += `${r.id},"${r.name}","${r.email}","${r.phone}","${r.business_type}","${r.revenue}","${r.bottleneck}","${r.created_at}"\n`;
+        });
+        
+        res.header('Content-Type', 'text/csv');
+        res.attachment('evolvix_leads_backup.csv');
+        return res.send(csv);
     });
 });
 
