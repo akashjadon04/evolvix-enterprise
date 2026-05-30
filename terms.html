@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Evolvix Enterprise</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,42 +16,94 @@
             --accent-glow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg-base); color: var(--text-primary); line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
-        .glass-panel { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid var(--border-glow); border-radius: 16px; padding: 40px; margin-top: 40px; }
-        h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
-        h2 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; color: var(--accent); margin-top: 40px; margin-bottom: 15px; }
-        p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.1rem; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .nav-link { display: inline-block; margin-bottom: 20px; color: var(--text-secondary); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+        body { background: var(--bg-base); color: var(--text-primary); line-height: 1.8; overflow-x: hidden; }
+        
+        .legal-hero { padding: 120px 20px 80px; text-align: center; position: relative; border-bottom: 1px solid var(--border-glow); }
+        .legal-hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); border-radius: 50%; z-index: -1; pointer-events: none; }
+        .badge { display: inline-block; padding: 8px 24px; border-radius: 30px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3); color: #c084fc; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .legal-hero h1 { font-family: 'Outfit', sans-serif; font-size: 4rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; color: #fff; }
+        .legal-hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        
+        .legal-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: 300px 1fr; gap: 60px; }
+        @media (max-width: 900px) { .legal-container { grid-template-columns: 1fr; } }
+        
+        .sidebar { position: sticky; top: 40px; }
+        .sidebar ul { list-style: none; border-left: 2px solid var(--border-glow); padding-left: 20px; }
+        .sidebar li { margin-bottom: 15px; }
+        .sidebar a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .sidebar a:hover, .sidebar a.active { color: #c084fc; }
+        
+        .content-panel { background: rgba(15,23,42,0.4); backdrop-filter: blur(20px); border: 1px solid var(--border-glow); border-radius: 24px; padding: 60px; }
+        .content-panel h2 { font-family: 'Outfit', sans-serif; font-size: 2rem; color: #fff; margin-top: 50px; margin-bottom: 20px; border-bottom: 1px solid var(--border-glow); padding-bottom: 15px; }
+        .content-panel h2:first-child { margin-top: 0; }
+        .content-panel p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+        .content-panel ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-secondary); }
+        .content-panel li { margin-bottom: 10px; }
+        .highlight-box { background: rgba(139,92,246,0.05); border-left: 4px solid #c084fc; padding: 20px; border-radius: 0 12px 12px 0; margin: 30px 0; }
+        
+        .nav-link { position: absolute; top: 40px; left: 40px; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+        .nav-link:hover { color: #fff; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="nav-link">← Return to Homepage</a>
+    <a href="index.html" class="nav-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Return Home</a>
+    
+    <div class="legal-hero">
+        <span class="badge">Master Agreement</span>
         <h1>Terms of Service</h1>
-        <p>Effective Date: January 1, 2026</p>
+        <p>The operational framework governing your relationship with Evolvix Technologies.</p>
+    </div>
+    
+    <div class="legal-container">
+        <aside class="sidebar">
+            <h3 style="color: #fff; margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px;">Contents</h3>
+            <ul>
+                <li><a href="#acceptance">1. Acceptance of Terms</a></li>
+                <li><a href="#ip">2. Intellectual Property Rights</a></li>
+                <li><a href="#financial">3. Financial & Billing Policies</a></li>
+                <li><a href="#liability">4. Limitation of Liability</a></li>
+                <li><a href="#termination">5. Suspension & Termination</a></li>
+                <li><a href="#governing">6. Governing Law & Jurisdiction</a></li>
+            </ul>
+        </aside>
         
-        <div class="glass-panel">
-            <h2>1. Agreement to Terms</h2>
-            <p>These Terms of Service constitute a legally binding agreement made between you and Evolvix Technologies concerning your access to and use of the website and enterprise services. By accessing the site, you agree that you have read, understood, and agree to be bound by all of these Terms of Service.</p>
+        <main class="content-panel">
+            <div class="highlight-box">
+                <p style="margin:0; color: #fff; font-weight: 600;">By commissioning a project or utilizing the Client Portal, you are entering into a legally binding contract with Evolvix Technologies. Please review carefully.</p>
+            </div>
 
-            <h2>2. Intellectual Property Rights</h2>
-            <p>Unless otherwise indicated, the Site and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the "Marks") are owned or controlled by us or licensed to us.</p>
+            <h2 id="acceptance">1. Acceptance of Terms</h2>
+            <p>These Terms of Service ("Terms") constitute a legally binding Master Services Agreement made between you, whether personally or on behalf of an entity ("Client"), and Evolvix Technologies. Access to the Client Portal implies explicit cryptographic acceptance of these terms.</p>
 
-            <h2>3. Client Portal Access</h2>
-            <p>Clients are provided with secure credentials to access the Evolvix Client Portal. You are strictly responsible for maintaining the confidentiality of your account password. If you suspect any unauthorized use of your account, you must immediately notify Evolvix Administration.</p>
+            <h2 id="ip">2. Intellectual Property & Code Ownership</h2>
+            <p>Unless explicitly outlined in a custom MSA generated within the Client Portal:</p>
+            <ul>
+                <li><strong>Core Infrastructure:</strong> Evolvix retains all rights to proprietary backend architectures, AI algorithms, and deployment scripts utilized to construct the software.</li>
+                <li><strong>Client Assets:</strong> Upon full execution of payment, the Client receives a perpetual, non-transferable license to utilize the finalized frontend interfaces and compiled binaries.</li>
+            </ul>
 
-            <h2>4. Service Delivery & Payments</h2>
-            <p>All enterprise software development services are subject to the specific terms outlined in the Master Services Agreement (MSA) generated within your Client Portal. Invoices must be paid within 15 days of issuance. Failure to remit payment may result in an immediate halt of development services and restricted access to the Client Portal.</p>
+            <h2 id="financial">3. Financial & Billing Policies</h2>
+            <p>All enterprise invoices generated via the Client Portal adhere to strict NET-15 terms. Failure to remit payment within 15 days will result in:</p>
+            <ul>
+                <li>Immediate suspension of API access and server hosting.</li>
+                <li>A late fee penalty compounding at 5% monthly on the outstanding balance.</li>
+                <li>Subsequent referral to international debt collection agencies and credit bureaus if delinquent beyond 45 days.</li>
+            </ul>
 
-            <h2>5. Disclaimer</h2>
-            <p>The site and our services are provided on an as-is and as-available basis. You agree that your use of the site and our services will be at your sole risk. We disclaim all warranties, express or implied, in connection with the site and your use thereof.</p>
+            <h2 id="liability">4. Limitation of Liability & Indemnification</h2>
+            <p>Under no legal framework shall Evolvix Technologies, its directors, employees, or contractors be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, or loss of data arising from your use of the delivered software. Our total liability shall explicitly never exceed the amount paid by you to us during the six (6) month period prior to any cause of action arising.</p>
 
-            <h2>6. Governing Law</h2>
-            <p>These Terms shall be governed by and defined following the laws of the jurisdiction in which Evolvix Technologies operates. Evolvix Technologies and yourself irrevocably consent that the courts shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms.</p>
-        </div>
+            <h2 id="termination">5. Suspension & Termination</h2>
+            <p>We reserve the right to unilaterally suspend, deactivate, or obliterate Client Portal access and associated server hosting if we detect:</p>
+            <ul>
+                <li>Breach of financial obligations.</li>
+                <li>Attempted reverse-engineering of proprietary Evolvix APIs.</li>
+                <li>Utilization of the delivered software for illicit, fraudulent, or illegal operations.</li>
+            </ul>
+
+            <h2 id="governing">6. Governing Law & Jurisdiction</h2>
+            <p>These Terms shall be governed by and defined following the laws of the jurisdiction in which Evolvix Technologies operates. Evolvix Technologies and yourself irrevocably consent that the courts shall have exclusive jurisdiction to resolve any dispute which may arise in connection with these terms, specifically precluding class-action litigation.</p>
+        </main>
     </div>
 </body>
 </html>
