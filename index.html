@@ -1274,8 +1274,6 @@
                 el.addEventListener('mouseenter',function(){document.body.classList.add('ch');});
                 el.addEventListener('mouseleave',function(){document.body.classList.remove('ch');});
             });
-        })();
-
         /* ─── Text Scramble On Hover ─── */
         (function(){
             var CHARS='!<>-_\\/[]{}—=+*^?#';
@@ -2123,17 +2121,6 @@
                 if(spToast) spToast.classList.add('show');
                 setTimeout(function() { if(spToast) spToast.classList.remove('show'); }, 5000);
             });
-        }
- while(usedIdx.indexOf(bi) !== -1 && tries < 20);
-            usedIdx.push(bi); if(usedIdx.length > bizNames.length - 2) usedIdx = [];
-            var biz = bizNames[bi];
-            var city = cities[Math.floor(Math.random() * cities.length)];
-            var action = actions[Math.floor(Math.random() * actions.length)];
-            var mins = Math.floor(Math.random() * 8) + 1;
-            if(spTitle) spTitle.textContent = biz + ' ' + action;
-            if(spDesc) spDesc.textContent = 'From ' + city + ' \u00b7 ' + mins + ' min ago';
-            if(spToast) spToast.classList.add('show');
-            setTimeout(function() { if(spToast) spToast.classList.remove('show'); }, 5000);
         }
         
         // Show toast every 25-40 seconds, first after 10s
