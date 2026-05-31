@@ -5,94 +5,402 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>About Zyrova | The Engineering of Growth</title>
-    <meta name="description" content="We are not a traditional agency. We are a digital infrastructure firm founded by Akash Jadon to eliminate slow, low-converting websites forever.">
-    <meta name="theme-color" content="#020617">
-    <link rel="canonical" href="https://zyrova.com/about">
+    <title>About Evolvix Technologies | The Engineering of Digital Empires</title>
+    <meta name="description" content="Evolvix Technologies is a digital product studio founded by Akash Jadon. We build high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://evolvix.in/about">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Page-Specific Overrides for About Page */
-        .timeline-line {
-            position: absolute;
-            left: 50%; top: 0; bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, var(--c-brand-main), transparent);
-            transform: translateX(-50%);
+        /* ═══════════════════════════════════════════════════════
+           GOD-MODE: ABOUT PAGE — GENESIS ENGINE
+           ═══════════════════════════════════════════════════════ */
+        body { background: #000; overflow-x: hidden; }
+
+        /* ── SCROLL PROGRESS BAR ── */
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); z-index: 99999; transition: width 0.1s linear; }
+
+        /* ── NEBULA CANVAS ── */
+        #nebula-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.5; pointer-events: none; }
+
+        /* ── AMBIENT MESH GRADIENT ── */
+        .mesh-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(56,189,248,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(139,92,246,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(14,116,144,0.05) 0%, transparent 50%);
+            animation: meshShift 15s ease-in-out infinite alternate;
         }
-        .story-text p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #cbd5e1;
+        @keyframes meshShift {
+            0% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+            100% { background-position: 100% 100%, 0% 100%, 50% 0%; }
         }
-        .signature-block {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            color: var(--c-accent-gold);
-            transform: rotate(-5deg);
-            opacity: 0.8;
-            margin-top: 2rem;
+
+        /* ── SECTION BASE ── */
+        .about-section { position: relative; z-index: 2; padding: 120px 0; }
+        .about-section + .about-section { border-top: 1px solid rgba(255,255,255,0.03); }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 1: CINEMATIC HERO — THE MANIFESTO
+           ═══════════════════════════════════════════════════════ */
+        .hero-manifesto {
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            padding: 160px 2rem 100px; position: relative; overflow: hidden;
         }
+        .hero-manifesto::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 200px;
+            background: linear-gradient(to top, #000, transparent); pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block; background: linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1));
+            border: 1px solid rgba(56,189,248,0.25); color: #38bdf8;
+            padding: 10px 28px; border-radius: 40px; font-size: 0.78rem; font-weight: 700;
+            letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px;
+            font-family: 'JetBrains Mono'; animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.3); } 50% { box-shadow: 0 0 0 12px rgba(56,189,248,0); } }
+
+        .hero-title {
+            font-family: 'Outfit'; font-weight: 900; font-size: clamp(3.5rem, 9vw, 7rem);
+            line-height: 0.95; letter-spacing: -3px; color: #fff; margin-bottom: 20px;
+            max-width: 900px;
+        }
+        .hero-morph-word {
+            display: inline-block; position: relative;
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; background-size: 200% 200%;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        .hero-sub {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,0.5);
+            max-width: 600px; line-height: 1.7; margin: 30px auto 50px;
+            font-weight: 300;
+        }
+
+        /* Terminal Block */
+        .hero-terminal {
+            background: rgba(0,0,0,0.6); border: 1px solid rgba(56,189,248,0.2);
+            border-left: 3px solid #38bdf8; padding: 24px 32px;
+            font-family: 'JetBrains Mono'; font-size: 0.82rem; color: #22c55e;
+            text-align: left; max-width: 520px; width: 100%;
+            box-shadow: 0 0 40px rgba(56,189,248,0.05); min-height: 100px;
+        }
+        .terminal-cursor { animation: termBlink 1s step-end infinite; }
+        @keyframes termBlink { 50% { opacity: 0; } }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 2: INFINITE MARQUEE STATS TICKER
+           ═══════════════════════════════════════════════════════ */
+        .marquee-section { padding: 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01); }
+        .marquee-track {
+            display: flex; width: max-content;
+            animation: marqueeScroll 30s linear infinite;
+        }
+        @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 28px 50px; white-space: nowrap; flex-shrink: 0;
+        }
+        .marquee-num {
+            font-family: 'Outfit'; font-weight: 900; font-size: 2rem;
+            background: linear-gradient(180deg, #fff, rgba(255,255,255,0.5));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .marquee-label { font-size: 0.85rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        .marquee-dot { width: 4px; height: 4px; background: #38bdf8; border-radius: 50%; flex-shrink: 0; }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 3: THE ORIGIN STORY — CINEMATIC NARRATIVE
+           ═══════════════════════════════════════════════════════ */
+        .story-container { max-width: 800px; margin: 0 auto; position: relative; }
+        .story-chapter {
+            opacity: 0; transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            margin-bottom: 60px;
+        }
+        .story-chapter.visible { opacity: 1; transform: translateY(0); }
+        .story-chapter p {
+            font-size: 1.25rem !important; line-height: 1.9 !important; color: #cbd5e1;
+            margin-bottom: 1.5rem !important;
+        }
+        .story-chapter p strong { color: #fff; }
+        .story-highlight {
+            display: inline; padding: 2px 8px; background: rgba(56,189,248,0.1);
+            border-bottom: 2px solid #38bdf8; color: #67e8f9; font-weight: 600;
+        }
+        .story-pullquote {
+            font-family: 'Outfit'; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800;
+            color: #fff; line-height: 1.3; margin: 50px 0; padding-left: 30px;
+            border-left: 4px solid; border-image: linear-gradient(180deg, #38bdf8, #818cf8) 1;
+        }
+        .signature-draw {
+            font-family: 'Brush Script MT', 'Bradley Hand', cursive;
+            font-size: 3rem; color: rgba(255,255,255,0.15); transform: rotate(-5deg);
+            margin-top: 40px; opacity: 0; transition: opacity 1s ease 0.5s;
+        }
+        .story-chapter.visible .signature-draw { opacity: 1; }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 4: PHILOSOPHY PRISMS — HOLOGRAPHIC 3D CARDS
+           ═══════════════════════════════════════════════════════ */
+        .prism-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .prism-card {
+            background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: 48px 32px; position: relative; overflow: hidden;
+            transform-style: preserve-3d; transition: transform 0.15s ease-out, box-shadow 0.3s;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+        .prism-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(56,189,248,0.05), transparent 50%, rgba(139,92,246,0.05));
+            opacity: 0; transition: opacity 0.4s;
+        }
+        .prism-card:hover::before { opacity: 1; }
+        .prism-card:hover { border-color: rgba(56,189,248,0.3); box-shadow: 0 20px 60px -15px rgba(56,189,248,0.15); }
+        
+        /* Animated gradient border glow */
+        .prism-card::after {
+            content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: conic-gradient(from var(--angle, 0deg), transparent 40%, #38bdf8, #818cf8, #c084fc, transparent 60%);
+            z-index: -1; opacity: 0; transition: opacity 0.5s;
+            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+        }
+        .prism-card:hover::after { opacity: 0.6; animation: borderRotate 3s linear infinite; }
+        @keyframes borderRotate { to { --angle: 360deg; } }
+        @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+        .prism-icon {
+            width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; background: rgba(56,189,248,0.05); border: 1px solid rgba(56,189,248,0.15);
+            border-radius: 16px; margin-bottom: 24px;
+        }
+        .prism-card h3 { font-family: 'Outfit'; font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+        .prism-card p { color: #94a3b8; line-height: 1.7; font-size: 0.95rem; }
+
+        /* Expanding Tech Specs */
+        .prism-expand {
+            max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1);
+            margin: 0 -32px; padding: 0 32px; border-top: 1px solid rgba(255,255,255,0.03);
+        }
+        .prism-card.open .prism-expand { max-height: 300px; padding-top: 20px; padding-bottom: 20px; }
+        .prism-toggle {
+            background: transparent; border: 1px solid rgba(255,255,255,0.08); color: #64748b;
+            font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; width: 100%;
+            padding: 10px; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 6px;
+            transition: 0.3s; letter-spacing: 1px;
+        }
+        .prism-toggle:hover { border-color: #38bdf8; color: #38bdf8; }
+        .prism-spec-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.88rem; color: #cbd5e1; }
+        .prism-spec-dot { width: 6px; height: 6px; background: #38bdf8; border-radius: 50%; flex-shrink: 0; }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 5: FOUNDER PROFILE — CINEMATIC PERSONAL BRANDING
+           ═══════════════════════════════════════════════════════ */
+        .founder-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+        .founder-photo-wrapper {
+            position: relative; display: flex; align-items: center; justify-content: center;
+        }
+        .founder-photo-frame {
+            position: relative; width: 100%; max-width: 400px; aspect-ratio: 3/4;
+            border-radius: 24px; overflow: hidden;
+            box-shadow: 0 40px 80px -20px rgba(56,189,248,0.15);
+        }
+        .founder-photo-frame img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) brightness(1.02); }
+        
+        /* Animated border ring */
+        .founder-photo-ring {
+            position: absolute; inset: -4px; border-radius: 28px; z-index: -1;
+            background: conic-gradient(from 0deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
+            animation: ringRotate 6s linear infinite;
+        }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+        
+        /* Orbiting stat badges */
+        .orbit-container { position: absolute; inset: -60px; pointer-events: none; }
+        .orbit-badge {
+            position: absolute; background: rgba(15,23,42,0.9); backdrop-filter: blur(10px);
+            border: 1px solid rgba(56,189,248,0.3); border-radius: 14px; padding: 12px 18px;
+            font-family: 'JetBrains Mono'; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            animation: floatBadge 6s ease-in-out infinite;
+            pointer-events: auto;
+        }
+        .orbit-badge:nth-child(1) { top: 5%; right: -30px; animation-delay: 0s; }
+        .orbit-badge:nth-child(2) { bottom: 15%; left: -40px; animation-delay: -2s; }
+        .orbit-badge:nth-child(3) { top: 40%; right: -50px; animation-delay: -4s; }
+        @keyframes floatBadge { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .orbit-num { font-size: 1.2rem; font-weight: 900; color: #fff; font-family: 'Outfit'; }
+        .orbit-label { font-size: 0.6rem; color: #64748b; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Founder bio text */
+        .founder-bio h2 { font-family: 'Outfit'; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.1; }
+        .founder-role { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #38bdf8; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; }
+        .founder-bio p { font-size: 1.1rem; line-height: 1.8; color: #94a3b8; margin-bottom: 1.25rem; }
+        .founder-signature {
+            font-family: 'Brush Script MT', 'Bradley Hand', cursive;
+            font-size: 2.5rem; color: rgba(255,255,255,0.2); transform: rotate(-3deg);
+            margin-top: 30px; display: inline-block;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 6: TECH ARSENAL — ANIMATED GRID
+           ═══════════════════════════════════════════════════════ */
+        .arsenal-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 16px;
+            max-width: 800px; margin: 0 auto;
+        }
+        .arsenal-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 20px 16px; text-align: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: default;
+        }
+        .arsenal-card:hover {
+            background: rgba(56,189,248,0.06); border-color: rgba(56,189,248,0.3);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 40px -10px rgba(56,189,248,0.2);
+        }
+        .arsenal-emoji { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+        .arsenal-name { font-size: 0.78rem; font-weight: 600; color: #94a3b8; letter-spacing: 0.5px; }
+        .arsenal-category {
+            grid-column: 1 / -1; font-family: 'JetBrains Mono'; font-size: 0.7rem;
+            color: #38bdf8; letter-spacing: 3px; text-transform: uppercase;
+            padding: 12px 0 4px; border-bottom: 1px solid rgba(56,189,248,0.1);
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 7: IMPACT COUNTERS — SCROLL-TRIGGERED
+           ═══════════════════════════════════════════════════════ */
+        .impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .impact-card {
+            background: rgba(15,23,42,0.5); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 20px;
+            padding: 40px 24px; text-align: center; position: relative; overflow: hidden;
+        }
+        .impact-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8); transform: scaleX(0);
+            transform-origin: left; transition: transform 1s ease 0.3s;
+        }
+        .impact-card.counted::before { transform: scaleX(1); }
+        .impact-num {
+            font-family: 'Outfit'; font-weight: 900; font-size: 3.5rem; line-height: 1;
+            background: linear-gradient(180deg, #fff, rgba(255,255,255,0.6));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 8px;
+        }
+        .impact-label { font-size: 0.82rem; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 8: ROI CALCULATOR — INTERACTIVE WIDGET
+           ═══════════════════════════════════════════════════════ */
+        .roi-container {
+            max-width: 700px; margin: 0 auto;
+            background: rgba(15,23,42,0.6); backdrop-filter: blur(20px);
+            border: 1px solid rgba(56,189,248,0.15); border-radius: 24px;
+            padding: 48px; position: relative; overflow: hidden;
+        }
+        .roi-container::before {
+            content: ''; position: absolute; top: -1px; left: 20%; width: 60%; height: 2px;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+        }
+        .roi-input-field {
+            background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; font-family: 'Outfit'; font-weight: 700; font-size: 2.5rem;
+            padding: 20px; text-align: center; width: 100%; border-radius: 16px;
+            outline: none; transition: border-color 0.3s;
+        }
+        .roi-input-field:focus { border-color: #38bdf8; box-shadow: 0 0 30px rgba(56,189,248,0.1); }
+        .roi-result {
+            text-align: center; margin-top: 30px; padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .roi-projected {
+            font-family: 'Outfit'; font-weight: 900; font-size: 3rem;
+            color: #22c55e; margin-bottom: 8px;
+        }
+        .roi-note { font-size: 0.85rem; color: #64748b; }
+
+        /* ═══════════════════════════════════════════════════════
+           FEATURE 9: CAREERS CTA — ENHANCED
+           ═══════════════════════════════════════════════════════ */
+        .careers-cta {
+            text-align: center; padding: 120px 0; position: relative;
+            background: linear-gradient(180deg, transparent, rgba(56,189,248,0.03), transparent);
+        }
+        .careers-cta h2 { font-family: 'Outfit'; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; margin-bottom: 16px; }
+        .careers-cta p { color: #94a3b8; font-size: 1.15rem; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .careers-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 40px; background: transparent; border: 1px solid rgba(56,189,248,0.4);
+            color: #38bdf8; font-family: 'Outfit'; font-weight: 700; font-size: 1.05rem;
+            border-radius: 60px; text-decoration: none; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.5px;
+        }
+        .careers-btn:hover {
+            background: rgba(56,189,248,0.1); border-color: #38bdf8;
+            transform: translateY(-4px); box-shadow: 0 12px 40px rgba(56,189,248,0.2);
+            gap: 16px;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           RESPONSIVE — MOBILE GOD MODE
+           ═══════════════════════════════════════════════════════ */
+        @media (max-width: 900px) {
+            .hero-manifesto { padding: 140px 1.5rem 80px; min-height: auto; }
+            .hero-title { font-size: clamp(2.5rem, 10vw, 4rem) !important; letter-spacing: -1px; }
+            .hero-terminal { font-size: 0.72rem; padding: 16px 20px; }
+            .prism-grid { grid-template-columns: 1fr; }
+            .founder-grid { grid-template-columns: 1fr; gap: 50px; }
+            .founder-photo-wrapper { order: -1; }
+            .orbit-badge:nth-child(1) { top: auto; bottom: -20px; right: 10px; }
+            .orbit-badge:nth-child(2) { bottom: auto; top: -20px; left: 10px; }
+            .orbit-badge:nth-child(3) { top: 30%; right: -10px; }
+            .impact-grid { grid-template-columns: repeat(2, 1fr); }
+            .impact-num { font-size: 2.5rem; }
+            .arsenal-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .roi-container { padding: 30px 20px; }
+            .roi-input-field { font-size: 1.8rem; }
+            .roi-projected { font-size: 2rem; }
+            .about-section { padding: 80px 0; }
+            .marquee-item { padding: 20px 30px; }
+            .marquee-num { font-size: 1.4rem; }
+            .story-pullquote { font-size: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .impact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .impact-card { padding: 24px 16px; }
+            .impact-num { font-size: 2rem; }
+            .arsenal-grid { grid-template-columns: repeat(3, 1fr); }
+            .orbit-container { inset: -30px; }
+        }
+
+        /* Global overrides */
+        .cmd-trigger-hint { display: none !important; }
     </style>
-
-<style>
-/* Global Mobile Fixes Overrides */
-@media (max-width: 768px) {
-    .container { padding: 0 1.25rem !important; }
-    .section, .service-section, .stats-section, .cta-section { padding: 3rem 0 !important; }
-    
-    h1 { font-size: clamp(2.2rem, 8vw, 2.8rem) !important; line-height: 1.15 !important; }
-    h2 { font-size: clamp(1.8rem, 6vw, 2.2rem) !important; line-height: 1.2 !important; }
-    h3 { font-size: clamp(1.3rem, 5vw, 1.6rem) !important; }
-    p { font-size: 0.95rem !important; margin-bottom: 1rem !important; }
-    
-    .grid-2, .grid-3, .grid-4, .svc-layout { 
-        grid-template-columns: 1fr !important; 
-        gap: 2rem !important; 
-    }
-    
-    .hero, .services-hero { 
-        padding-top: 100px !important; 
-        min-height: auto !important;
-        padding-bottom: 3rem !important;
-    }
-    
-    .btn { width: 100% !important; padding: 1.1rem !important; font-size: 0.95rem !important; margin-bottom: 0.5rem; }
-    .hero-cta-row { display: flex; flex-direction: column; width: 100%; gap: 0.75rem; }
-    
-    .process-grid { grid-template-columns: 1fr !important; margin-top: 2rem !important; }
-    .process-grid::before { display: none !important; }
-    
-    .footer-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-    .footer { padding: 4rem 0 2rem !important; }
-    
-    .svc-visual-card { min-height: 250px !important; margin-top: 1.5rem !important; }
-}
-
-/* Hide Quick Actions Graphic Globally */
-.cmd-trigger-hint { display: none !important; }
-
-/* Tighter Desktop Fits for Service Layouts */
-@media (min-width: 1025px) {
-    .service-section { padding: clamp(3rem, 5vh, 4rem) 0 !important; }
-    .svc-layout { gap: 3rem !important; }
-    .svc-visual-card { min-height: 400px !important; }
-    h2.svc-heading { font-size: clamp(2.25rem, 4vw, 3rem) !important; margin-bottom: 1rem !important; }
-    p.svc-desc { margin-bottom: 1.5rem !important; }
-    .svc-checks { margin-bottom: 1rem !important; }
-    .svc-check-item { margin-bottom: 0.75rem !important; }
-}
-</style>
-
 </head>
 
 <body>
 
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- NEBULA CANVAS -->
+    <canvas id="nebula-canvas"></canvas>
+
+    <!-- AMBIENT MESH -->
+    <div class="mesh-gradient"></div>
+
+    <!-- HEADER -->
     <header class="header" id="siteHeader">
         <div class="container nav-container">
             <a href="index.html" class="logo">
@@ -102,7 +410,6 @@
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                      style="display:none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </a>
-
             <nav>
                 <button class="nav-toggle" aria-label="Open Menu">☰</button>
                 <ul class="nav-menu">
@@ -114,7 +421,6 @@
                     <li><a href="client-portal.html" class="btn btn-secondary" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
                 </ul>
             </nav>
-
             <a href="contact.html" class="btn btn-primary btn-cta-glow">
                 Start Project <span class="btn-arrow">→</span>
             </a>
@@ -122,230 +428,284 @@
     </header>
 
     <main>
-        
-        <section class="section" style="padding-top: 180px; padding-bottom: 100px;">
-            <div class="container">
-                <div class="grid-2">
-                    <div class="reveal">
-                        <span class="badge mb-2">Our Manifesto</span>
-                        <h1 class="glitch" data-text="We don't build websites.">We don't build <br><span class="text-gradient">websites.</span></h1>
-                        <h1 class="glitch" data-text="We build Assets.">We build <br><span class="text-gradient">Assets.</span></h1>
-                        
-                        <p style="font-size: 1.25rem; margin-top: 2rem;">
-                            The internet is littered with beautiful, useless websites. Platforms like Wix and Squarespace have convinced the world that "drag-and-drop" is good enough. 
-                        </p>
-                        <p style="font-size: 1.25rem;">
-                            <strong>It isn't.</strong> At Zyrova, we believe small businesses deserve the same digital firepower as Fortune 500 companies. Custom code. Instant load times. Psychological conversion triggers.
-                        </p>
-                    </div>
 
-                    <div class="hero-visual reveal delay-200">
-                        <div class="hero-card-3d card" style="height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
-                            <div style="position: absolute; width: 300px; height: 300px; border: 1px solid rgba(14, 116, 144, 0.3); border-radius: 50%; animation: spin 20s linear infinite;"></div>
-                            <div style="position: absolute; width: 250px; height: 250px; border: 1px solid rgba(103, 232, 249, 0.2); border-radius: 50%; transform: rotateX(60deg); animation: spin 15s linear infinite reverse;"></div>
-                            <div style="position: absolute; width: 250px; height: 250px; border: 1px solid rgba(103, 232, 249, 0.2); border-radius: 50%; transform: rotateY(60deg); animation: spin 15s linear infinite;"></div>
-                            
-                            <div style="width: 20px; height: 20px; background: var(--c-brand-light); border-radius: 50%; box-shadow: 0 0 40px var(--c-brand-light); z-index: 10;"></div>
-                            
-                            <div class="float-tag tag-1" style="top: 20%; right: 10%;">Speed</div>
-                            <div class="float-tag tag-2" style="bottom: 20%; left: 10%;">Scale</div>
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 1: CINEMATIC HERO — THE MANIFESTO
+             ════════════════════════════════════════════════════ -->
+        <section class="hero-manifesto">
+            <div class="hero-badge reveal">// OUR MANIFESTO</div>
+            <h1 class="hero-title reveal">
+                We Don't Build<br>
+                Websites. We Build<br>
+                <span class="hero-morph-word" id="morphWord">Empires.</span>
+            </h1>
+            <p class="hero-sub reveal delay-100">
+                The internet is littered with beautiful, useless websites. We exist to replace every single one of them with digital infrastructure that prints money.
+            </p>
+            <div class="hero-terminal reveal delay-200" id="heroTerminal">
+                <span class="terminal-cursor">_</span>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 2: INFINITE MARQUEE STATS TICKER
+             ════════════════════════════════════════════════════ -->
+        <section class="marquee-section">
+            <div class="marquee-track">
+                <div class="marquee-item"><span class="marquee-num">50+</span><span class="marquee-label">Projects Delivered</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">₹2.4M+</span><span class="marquee-label">Revenue Generated</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">100%</span><span class="marquee-label">Client Satisfaction</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">3x</span><span class="marquee-label">Avg Traffic Growth</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">&lt;24h</span><span class="marquee-label">Response Time</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">99/100</span><span class="marquee-label">PageSpeed Score</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item"><span class="marquee-num">50+</span><span class="marquee-label">Projects Delivered</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">₹2.4M+</span><span class="marquee-label">Revenue Generated</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">100%</span><span class="marquee-label">Client Satisfaction</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">3x</span><span class="marquee-label">Avg Traffic Growth</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">&lt;24h</span><span class="marquee-label">Response Time</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+                <div class="marquee-item"><span class="marquee-num">99/100</span><span class="marquee-label">PageSpeed Score</span></div>
+                <div class="marquee-item"><span class="marquee-dot"></span></div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 3: THE ORIGIN STORY
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// THE ORIGIN</span>
+                    <h2 style="font-family:'Outfit';font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-top:16px;">How It <span class="text-gradient">Started.</span></h2>
+                </div>
+                <div class="story-container">
+                    <div class="story-chapter">
+                        <p>In 2023, I walked into a local dental practice. The doctor was brilliant, the clinic was pristine, but the waiting room was <strong>completely empty</strong>.</p>
+                        <p>I asked why. He sighed and pointed to his iPad. <span class="story-highlight">"We paid an agency ₹3,00,000 for this website, but nobody calls."</span></p>
+                    </div>
+                    <div class="story-chapter">
+                        <p>I opened the site on my phone. It took <strong>14 seconds</strong> to load. The "Book Now" button was broken on mobile. It wasn't a website — it was a <strong>digital wall</strong> keeping patients out.</p>
+                    </div>
+                    <div class="story-chapter">
+                        <div class="story-pullquote">
+                            "That night, I tore his site down. I didn't use WordPress. I didn't use a template. I hand-coded a raw HTML engine tailored for speed."
                         </div>
+                    </div>
+                    <div class="story-chapter">
+                        <p><strong>The result?</strong> His phone rang 12 times the next day. In one month, his practice was full.</p>
+                        <p>That was the moment <span class="story-highlight">Evolvix was born</span>. Not as an agency — but as a rebellion against lazy, bloated, template-based web design. A place where small businesses get the same digital firepower as Fortune 500 companies.</p>
+                        <div class="signature-draw">— Akash Jadon</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background: linear-gradient(180deg, var(--bg-body) 0%, #0f172a 100%);">
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 4: PHILOSOPHY PRISMS
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section" style="background: rgba(255,255,255,0.01);">
             <div class="container">
-                <div class="reveal text-center mb-4">
-                    <h2>The Origin Story</h2>
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// OUR PHILOSOPHY</span>
+                    <h2 style="font-family:'Outfit';font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-top:16px;">The Evolvix <span class="text-gradient">Standard.</span></h2>
+                    <p style="color:#94a3b8;max-width:500px;margin:16px auto 0;">Three non-negotiable laws that govern everything we build.</p>
                 </div>
-
-                <div class="glass-card reveal delay-100" style="padding: 4rem;">
-                    <div class="grid-2" style="align-items: flex-start;">
-                        <div class="story-text">
-                            <h3 style="color: var(--c-brand-light); margin-bottom: 2rem;">"It started with a slow dental clinic..."</h3>
-                            
-                            <p>
-                                In 2023, I (Akash) walked into a local dental practice. The doctor was brilliant, the clinic was pristine, but the waiting room was empty. I asked why. He sighed and pointed to his iPad. "We paid an agency $5,000 for this website, but nobody calls."
-                            </p>
-                            
-                            <p>
-                                I opened the site on my phone. It took <strong>14 seconds</strong> to load. The "Book Now" button was broken on mobile. It wasn't a website; it was a digital wall keeping patients out.
-                            </p>
-                            
-                            <p>
-                                That night, I tore his site down. I didn't use WordPress. I didn't use a template. I hand-coded a raw HTML engine tailored for speed. 
-                            </p>
-                            
-                            <p>
-                                <strong>The result?</strong> His phone rang 12 times the next day. In one month, his practice was full. That was the moment Zyrova was born. Not as an agency, but as a rebellion against lazy, bloated, template-based web design.
-                            </p>
-
-                            <div class="signature-block">
-                                - Akash Jadon, Founder
-                            </div>
-                        </div>
-
-                        <div style="position: relative;">
-                            <div class="card" style="padding: 1rem; transform: rotate(3deg);">
-                                <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?q=80&w=1000&auto=format&fit=crop" 
-                                     alt="Akash Jadon Working" 
-                                     style="width: 100%; border-radius: var(--radius-sm); filter: grayscale(20%) contrast(1.1);">
-                                <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
-                                    <span style="font-size: 0.9rem; font-weight: 700;">Akash Jadon</span>
-                                    <span style="font-size: 0.8rem; color: var(--c-brand-light);">CEO & Lead Architect</span>
-                                </div>
-                            </div>
-                            <div style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 2px solid var(--border-glass); border-radius: var(--radius-md); z-index: -1;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <div class="reveal text-center" style="margin-bottom: 4rem;">
-                    <h2>The Zyrova Standard</h2>
-                    <p>We operate by three non-negotiable laws.</p>
-                </div>
-
-                <div class="spotlight-group">
-                    <div class="card reveal">
-                        <div class="card-icon">⚡</div>
+                <div class="prism-grid">
+                    <div class="prism-card reveal" id="prism-1">
+                        <div class="prism-icon">⚡</div>
                         <h3>Code is Law</h3>
                         <p>We reject drag-and-drop builders. Every line of code is written by a human engineer to ensure mathematical perfection in performance.</p>
+                        <button class="prism-toggle" onclick="togglePrism(this)"><span>[+] VIEW TECH SPECS</span></button>
+                        <div class="prism-expand">
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Hand-coded HTML, CSS, JavaScript</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> 99/100 Google PageSpeed guaranteed</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Zero render-blocking resources</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Sub-second load times globally</div>
+                        </div>
                     </div>
-
-                    <div class="card reveal delay-100">
-                        <div class="card-icon">🤝</div>
+                    <div class="prism-card reveal delay-100" id="prism-2">
+                        <div class="prism-icon">🤝</div>
                         <h3>Client Ownership</h3>
-                        <p>We hate the "subscription trap." When you pay for a website, you should own it. No monthly rental fees. We hand over the keys.</p>
+                        <p>We despise the "subscription trap." When you pay for a website, you own it completely. No monthly rental fees. We hand over the keys.</p>
+                        <button class="prism-toggle" onclick="togglePrism(this)"><span>[+] VIEW TECH SPECS</span></button>
+                        <div class="prism-expand">
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Full source code delivered</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> No vendor lock-in ever</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Self-hosted or your cloud</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Lifetime ownership guarantee</div>
+                        </div>
                     </div>
-
-                    <div class="card reveal delay-200">
-                        <div class="card-icon">🧠</div>
+                    <div class="prism-card reveal delay-200" id="prism-3">
+                        <div class="prism-icon">🧠</div>
                         <h3>Psychology First</h3>
-                        <p>Design is not art; it is communication. We use cognitive bias principles to guide your visitor's eye directly to the "Buy" button.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" style="background: var(--bg-surface-2); overflow: hidden;">
-            <div class="container">
-                <div class="grid-2">
-                    <div class="reveal">
-                        <h2>Global Brain, <br><span class="text-gradient">Local Heart.</span></h2>
-                        <p>Zyrova operates on a distributed "Follow the Sun" model. Our design team in Austin passes the baton to our dev ops team in Europe, meaning your project moves forward 24 hours a day.</p>
-                        
-                        <div style="margin-top: 2rem;">
-                            <div class="flex items-center gap-2 mb-2">
-                                <div style="width: 10px; height: 10px; background: var(--c-brand-main); border-radius: 50%;"></div>
-                                <span><strong>Austin, TX:</strong> Strategy & Design HQ</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div style="width: 10px; height: 10px; background: var(--c-brand-light); border-radius: 50%;"></div>
-                                <span><strong>Krakow, PL:</strong> DevOps & Engineering</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reveal delay-200" style="position: relative; height: 400px;">
-                        <svg width="100%" height="100%" viewBox="0 0 800 400" style="opacity: 0.6;">
-                            <path fill="#334155" d="M150,150 Q200,100 300,150 T450,150 T650,100 T800,150" stroke="none" />
-                            <circle cx="200" cy="200" r="5" fill="white" /> <circle cx="600" cy="150" r="5" fill="white" /> <path d="M200,200 Q400,50 600,150" fill="none" stroke="url(#lineGradient)" stroke-width="2" stroke-dasharray="10,10">
-                                <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
-                            </path>
-                            
-                            <defs>
-                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:var(--c-brand-main);stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:var(--c-brand-light);stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                        
-                        <div style="position: absolute; top: 50%; left: 25%; width: 20px; height: 20px; background: rgba(14, 116, 144, 0.5); border-radius: 50%; animation: ping 2s infinite;"></div>
-                        <div style="position: absolute; top: 35%; right: 25%; width: 20px; height: 20px; background: rgba(103, 232, 249, 0.5); border-radius: 50%; animation: ping 2s infinite 1s;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="container">
-                <h2 class="text-center mb-4 reveal">The Architects</h2>
-                
-                <div class="grid-4">
-                    <div class="card reveal" style="padding: 0; border: none; background: transparent;">
-                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
-                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" 
-                                 onmouseover="this.style.filter='grayscale(0%)'" 
-                                 onmouseout="this.style.filter='grayscale(100%)'">
-                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                                <h4 style="margin: 0; color: #fff;">Akash Jadon</h4>
-                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Founder</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card reveal delay-100" style="padding: 0; border: none; background: transparent;">
-                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1000&auto=format&fit=crop" 
-                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" 
-                                 onmouseover="this.style.filter='grayscale(0%)'" 
-                                 onmouseout="this.style.filter='grayscale(100%)'">
-                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                                <h4 style="margin: 0; color: #fff;">Liam O'Neal</h4>
-                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Head of Design</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card reveal delay-200" style="padding: 0; border: none; background: transparent;">
-                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" 
-                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" 
-                                 onmouseover="this.style.filter='grayscale(0%)'" 
-                                 onmouseout="this.style.filter='grayscale(100%)'">
-                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                                <h4 style="margin: 0; color: #fff;">Marta Novak</h4>
-                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Lead Engineer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card reveal delay-300" style="padding: 0; border: none; background: transparent;">
-                        <div style="width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: var(--radius-md); position: relative;">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" 
-                                 style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.3s;" 
-                                 onmouseover="this.style.filter='grayscale(0%)'" 
-                                 onmouseout="this.style.filter='grayscale(100%)'">
-                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 1.5rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                                <h4 style="margin: 0; color: #fff;">Emma Carter</h4>
-                                <span style="font-size: 0.8rem; color: var(--c-brand-light); text-transform: uppercase;">Client Success</span>
-                            </div>
+                        <p>Design is not art — it is communication. We use cognitive bias principles to guide your visitor's eye directly to the conversion point.</p>
+                        <button class="prism-toggle" onclick="togglePrism(this)"><span>[+] VIEW TECH SPECS</span></button>
+                        <div class="prism-expand">
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Hick's Law for decision reduction</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> F-pattern and Z-pattern layouts</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Color psychology for CTA contrast</div>
+                            <div class="prism-spec-item"><span class="prism-spec-dot"></span> Social proof placement engine</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section text-center" style="background: linear-gradient(to top, var(--bg-surface-2), var(--bg-body));">
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 5: FOUNDER PROFILE
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section">
             <div class="container">
-                <h2 class="reveal">We are always hunting for talent.</h2>
-                <p class="reveal delay-100">If you are obsessed with pixel-perfection and clean code, we want to talk.</p>
-                <div class="reveal delay-200" style="margin-top: 2rem;">
-                    <a href="careers.html" class="btn btn-secondary">View Open Positions</a>
+                <div class="founder-grid">
+                    <div class="founder-photo-wrapper reveal">
+                        <div class="founder-photo-ring"></div>
+                        <div class="founder-photo-frame">
+                            <img src="assets/akash.png" alt="Akash Jadon — Founder & CEO, Evolvix Technologies" loading="lazy">
+                        </div>
+                        <div class="orbit-container">
+                            <div class="orbit-badge">
+                                <div class="orbit-num">50+</div>
+                                <div class="orbit-label">Projects</div>
+                            </div>
+                            <div class="orbit-badge">
+                                <div class="orbit-num">100%</div>
+                                <div class="orbit-label">Satisfaction</div>
+                            </div>
+                            <div class="orbit-badge">
+                                <div class="orbit-num">3x</div>
+                                <div class="orbit-label">Avg Growth</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-bio reveal delay-100">
+                        <span style="font-family:'JetBrains Mono';font-size:0.72rem;color:#38bdf8;letter-spacing:3px;">// THE ARCHITECT</span>
+                        <h2>Akash Jadon</h2>
+                        <div class="founder-role">Founder & CEO — Evolvix Technologies</div>
+                        <p>I started writing code at 16. By 19, I was building production systems for real businesses. The thing that always frustrated me was watching talented entrepreneurs get destroyed by terrible digital agencies.</p>
+                        <p>Agencies that charged ₹3-5 lakh for a WordPress template. Agencies that took 3 months to deliver a landing page. Agencies that vanished after the invoice cleared.</p>
+                        <p><strong style="color:#fff;">Evolvix is the antidote.</strong> Every project we touch is hand-coded, obsessively tested, and engineered to generate measurable revenue. We don't build websites — we build the digital engine that powers your entire business.</p>
+                        <div class="founder-signature">Akash Jadon</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 6: TECH ARSENAL
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section" style="background: rgba(255,255,255,0.01);">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 50px;">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// OUR ARSENAL</span>
+                    <h2 style="font-family:'Outfit';font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-top:16px;">Built With <span class="text-gradient">Modern Technology.</span></h2>
+                </div>
+                <div class="arsenal-grid reveal">
+                    <div class="arsenal-category">Frontend</div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">⚛️</span><span class="arsenal-name">React</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">▲</span><span class="arsenal-name">Next.js</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🦋</span><span class="arsenal-name">TypeScript</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🎨</span><span class="arsenal-name">Tailwind</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🖌️</span><span class="arsenal-name">Figma</span></div>
+                    <div class="arsenal-category">Backend</div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🟢</span><span class="arsenal-name">Node.js</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🐍</span><span class="arsenal-name">Python</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🗄️</span><span class="arsenal-name">PostgreSQL</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🔍</span><span class="arsenal-name">GraphQL</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">💳</span><span class="arsenal-name">Stripe</span></div>
+                    <div class="arsenal-category">Mobile</div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">📱</span><span class="arsenal-name">React Native</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🍎</span><span class="arsenal-name">Swift</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🤖</span><span class="arsenal-name">Kotlin</span></div>
+                    <div class="arsenal-category">Cloud & Infra</div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">☁️</span><span class="arsenal-name">AWS</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">▲</span><span class="arsenal-name">Vercel</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">⚡</span><span class="arsenal-name">Supabase</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🔥</span><span class="arsenal-name">Firebase</span></div>
+                    <div class="arsenal-card"><span class="arsenal-emoji">🐳</span><span class="arsenal-name">Docker</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 7: IMPACT COUNTERS
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 60px;">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// CLIENT IMPACT</span>
+                    <h2 style="font-family:'Outfit';font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-top:16px;">Numbers Don't <span class="text-gradient">Lie.</span></h2>
+                </div>
+                <div class="impact-grid">
+                    <div class="impact-card reveal">
+                        <div class="impact-num" data-target="50" data-suffix="+">0</div>
+                        <div class="impact-label">Projects Delivered</div>
+                    </div>
+                    <div class="impact-card reveal delay-100">
+                        <div class="impact-num" data-target="2.4" data-suffix="M+" data-prefix="₹" data-decimal="true">0</div>
+                        <div class="impact-label">Revenue Generated</div>
+                    </div>
+                    <div class="impact-card reveal delay-200">
+                        <div class="impact-num" data-target="100" data-suffix="%">0</div>
+                        <div class="impact-label">Client Satisfaction</div>
+                    </div>
+                    <div class="impact-card reveal delay-300">
+                        <div class="impact-num" data-target="3" data-suffix="x">0</div>
+                        <div class="impact-label">Avg Traffic Growth</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 8: ROI CALCULATOR
+             ════════════════════════════════════════════════════ -->
+        <section class="about-section" style="background: rgba(255,255,255,0.01);">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 50px;">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// PROJECTION ENGINE</span>
+                    <h2 style="font-family:'Outfit';font-weight:900;font-size:clamp(2rem,5vw,3rem);color:#fff;margin-top:16px;">What Would <span class="text-gradient">3x Growth</span> Mean For You?</h2>
+                </div>
+                <div class="roi-container reveal">
+                    <p style="text-align:center;color:#94a3b8;margin-bottom:24px;">Enter your current monthly revenue</p>
+                    <input type="text" class="roi-input-field" id="roiInput" placeholder="₹50,000" oninput="calculateROI()">
+                    <div class="roi-result">
+                        <div style="font-size:0.8rem;color:#64748b;margin-bottom:4px;">PROJECTED ANNUAL WITH EVOLVIX</div>
+                        <div class="roi-projected" id="roiOutput">₹0</div>
+                        <div class="roi-note">Based on our average 3x traffic & conversion multiplier</div>
+                        <a href="contact.html" class="btn-cta-glow" style="margin-top:24px;display:inline-flex;">Let's Make It Happen →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════
+             FEATURE 9: CAREERS CTA (PRESERVED)
+             ════════════════════════════════════════════════════ -->
+        <section class="careers-cta">
+            <div class="container">
+                <div class="reveal">
+                    <span style="font-family:'JetBrains Mono';font-size:0.75rem;color:#38bdf8;letter-spacing:4px;text-transform:uppercase;">// JOIN THE TEAM</span>
+                    <h2 style="margin-top:16px;">We Are Always Hunting<br>For <span class="text-gradient">Exceptional Talent.</span></h2>
+                    <p>If you're obsessed with pixel-perfection and clean code, we want to talk.</p>
+                    <a href="careers.html" class="careers-btn">View Open Positions <span>→</span></a>
                 </div>
             </div>
         </section>
 
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-graphic" aria-hidden="true">
             <svg width="100%" height="100%" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
@@ -359,26 +719,14 @@
         </div>
         <div class="footer-bg-text" aria-hidden="true">EVOLVIX</div>
         <div class="container" style="position:relative;z-index:2;">
-            <!-- Status Bar -->
             <div class="footer-status-bar">
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    All Systems Operational
-                </div>
+                <div class="footer-status-item"><span class="status-dot-green"></span> All Systems Operational</div>
                 <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-blue"></span>
-                    Accepting New Projects — 2026
-                </div>
+                <div class="footer-status-item"><span class="status-dot-blue"></span> Accepting New Projects — 2026</div>
                 <div class="footer-status-sep"></div>
-                <div class="footer-status-item">
-                    <span class="status-dot-green"></span>
-                    Response Time &lt; 24hrs
-                </div>
+                <div class="footer-status-item"><span class="status-dot-green"></span> Response Time &lt; 24hrs</div>
                 <div style="margin-left:auto;">
-                    <a href="contact.html" style="font-size:.78rem;color:#67e8f9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">
-                        Let's Talk → 
-                    </a>
+                    <a href="contact.html" style="font-size:.78rem;color:#67e8f9;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:.4rem;transition:gap .3s;" onmouseover="this.style.gap='.7rem'" onmouseout="this.style.gap='.4rem'">Let's Talk →</a>
                 </div>
             </div>
         </div>
@@ -392,15 +740,9 @@
                     Evolvix Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.
                 </p>
                 <div class="footer-socials">
-                    <a href="#" class="social-btn" aria-label="Twitter/X" title="Twitter">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/evolvixtechnologies" class="social-btn" aria-label="Instagram" title="Instagram">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    </a>
+                    <a href="#" class="social-btn" aria-label="Twitter/X" title="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                    <a href="https://www.instagram.com/evolvixtechnologies" class="social-btn" aria-label="Instagram" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                 </div>
             </div>
             <div>
@@ -439,10 +781,208 @@
         </div>
     </footer>
 
-    <script>
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
-    </script>
     <script src="script.js" defer></script>
+
+    <script>
+    /* ═══════════════════════════════════════════════════════
+       GOD-MODE ENGINE — ABOUT PAGE SCRIPTS
+       ═══════════════════════════════════════════════════════ */
+
+    // 1. SCROLL PROGRESS BAR
+    window.addEventListener('scroll', function() {
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+    });
+
+    // 2. NEBULA CANVAS — INTERACTIVE PARTICLE CONSTELLATION
+    (function() {
+        var canvas = document.getElementById('nebula-canvas');
+        var ctx = canvas.getContext('2d');
+        var w, h, particles = [], mouse = { x: -1000, y: -1000 };
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function init() {
+            resize();
+            particles = [];
+            var count = window.innerWidth < 768 ? 40 : 100;
+            for (var i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+                    size: Math.random() * 2 + 0.5,
+                    hue: Math.random() > 0.5 ? 195 : 270
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            for (var i = 0; i < particles.length; i++) {
+                var p = particles[i];
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > w) p.vx *= -1;
+                if (p.y < 0 || p.y > h) p.vy *= -1;
+
+                var dm = Math.hypot(mouse.x - p.x, mouse.y - p.y);
+                if (dm < 180) {
+                    p.x -= (mouse.x - p.x) * 0.015;
+                    p.y -= (mouse.y - p.y) * 0.015;
+                }
+
+                ctx.fillStyle = 'hsla(' + p.hue + ', 80%, 60%, ' + (0.3 + Math.random() * 0.15) + ')';
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+
+                for (var j = i + 1; j < particles.length; j++) {
+                    var p2 = particles[j];
+                    var dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.strokeStyle = 'hsla(195, 60%, 50%, ' + (0.15 * (1 - dist / 120)) + ')';
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+        init(); draw();
+    })();
+
+    // 3. MORPHING HERO TEXT
+    (function() {
+        var words = ['Empires.', 'Platforms.', 'Futures.', 'Legends.', 'Revenue.'];
+        var el = document.getElementById('morphWord');
+        var idx = 0;
+        setInterval(function() {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.4s ease-in';
+            setTimeout(function() {
+                idx = (idx + 1) % words.length;
+                el.textContent = words[idx];
+                el.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 400);
+        }, 2500);
+    })();
+
+    // 4. TYPEWRITER TERMINAL
+    (function() {
+        var lines = [
+            '> Initializing Evolvix Core...',
+            '> Founder: Akash Jadon',
+            '> Mission: Eliminate mediocre digital presence',
+            '> Status: ACCEPTING NEW PROJECTS',
+            '> Ready.'
+        ];
+        var el = document.getElementById('heroTerminal');
+        var lineIdx = 0, charIdx = 0, full = '';
+
+        function type() {
+            if (lineIdx >= lines.length) return;
+            if (charIdx < lines[lineIdx].length) {
+                full += lines[lineIdx].charAt(charIdx);
+                el.innerHTML = full.replace(/\n/g, '<br>') + '<span class="terminal-cursor">_</span>';
+                charIdx++;
+                setTimeout(type, 25 + Math.random() * 30);
+            } else {
+                full += '\n';
+                lineIdx++; charIdx = 0;
+                setTimeout(type, 500);
+            }
+        }
+        setTimeout(type, 1200);
+    })();
+
+    // 5. SCROLL-TRIGGERED STORY CHAPTERS
+    (function() {
+        var chapters = document.querySelectorAll('.story-chapter');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        chapters.forEach(function(ch) { observer.observe(ch); });
+    })();
+
+    // 6. PRISM CARD 3D TILT
+    document.querySelectorAll('.prism-card').forEach(function(card) {
+        card.addEventListener('mousemove', function(e) {
+            var rect = card.getBoundingClientRect();
+            var x = e.clientX - rect.left;
+            var y = e.clientY - rect.top;
+            var rx = ((y - rect.height / 2) / rect.height) * -8;
+            var ry = ((x - rect.width / 2) / rect.width) * 8;
+            card.style.transform = 'perspective(1200px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(1.03)';
+        });
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = 'perspective(1200px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+
+    // 7. PRISM TOGGLE
+    function togglePrism(btn) {
+        var card = btn.closest('.prism-card');
+        card.classList.toggle('open');
+        var span = btn.querySelector('span');
+        span.textContent = card.classList.contains('open') ? '[-] CLOSE TECH SPECS' : '[+] VIEW TECH SPECS';
+    }
+
+    // 8. IMPACT COUNTER ANIMATION
+    (function() {
+        var counters = document.querySelectorAll('.impact-num');
+        var animated = new Set();
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !animated.has(entry.target)) {
+                    animated.add(entry.target);
+                    var el = entry.target;
+                    var target = parseFloat(el.getAttribute('data-target'));
+                    var suffix = el.getAttribute('data-suffix') || '';
+                    var prefix = el.getAttribute('data-prefix') || '';
+                    var isDecimal = el.getAttribute('data-decimal') === 'true';
+                    var duration = 2000;
+                    var start = performance.now();
+
+                    el.closest('.impact-card').classList.add('counted');
+
+                    function animate(now) {
+                        var elapsed = now - start;
+                        var progress = Math.min(elapsed / duration, 1);
+                        // Ease out cubic
+                        var eased = 1 - Math.pow(1 - progress, 3);
+                        var current = eased * target;
+                        el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+                        if (progress < 1) requestAnimationFrame(animate);
+                    }
+                    requestAnimationFrame(animate);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(function(c) { observer.observe(c); });
+    })();
+
+    // 9. ROI CALCULATOR
+    function calculateROI() {
+        var raw = document.getElementById('roiInput').value.replace(/[^\d]/g, '');
+        var val = parseInt(raw) || 0;
+        var projected = val * 3 * 12; // 3x multiplier * 12 months
+        document.getElementById('roiOutput').textContent = '₹' + projected.toLocaleString('en-IN');
+    }
+    </script>
+
 </body>
 </html>
