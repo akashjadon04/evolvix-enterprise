@@ -213,11 +213,6 @@
     <!-- Preloader removed for maximum PageSpeed (FCP/LCP optimization) -->
 
     <!-- ================================================================
-         ★ ENTERPRISE FEATURE B: LIVE SOCIAL PROOF TOASTS
-         ================================================================ -->
-    <div class="toast-viewport" id="toastViewport" aria-live="polite" aria-atomic="true"></div>
-
-    <!-- ================================================================
          ★ ENTERPRISE FEATURE C: COMMAND PALETTE (⌘K)
          ================================================================ -->
     <div class="cmd-backdrop" id="cmdBackdrop"></div>
@@ -861,7 +856,7 @@
         <!-- LAYER 2: BUSINESS CORE -->
         <div id="qstep-2" class="qstep" style="display:none;">
             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What best describes your architecture?</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+            <div class="grid-responsive-2" style="margin-bottom:20px;">
                 <button class="qbtn" onclick="window.auditEngine.select('btype', 'SaaS / Tech', this, 2)">
                     <div class="qbtn-icon">⚡</div>
                     <div><div class="qbtn-title">SaaS / Tech Product</div><div class="qbtn-sub">Software, apps, digital tools</div></div>
@@ -881,7 +876,7 @@
             </div>
             
             <h3 style="color:#fff;font-size:1.2rem;margin-bottom:15px;text-align:center;">Current Monthly Revenue (MRR/Gross)</h3>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:600px;margin:0 auto;">
+            <div class="grid-responsive-3" style="max-width:600px;margin:0 auto;">
                 <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '< $10k/mo', this, 2, true)">$0 - $10k</button>
                 <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$10k-$50k/mo', this, 2, true)">$10k - $50k</button>
                 <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$50k+/mo', this, 2, true)">$50k+</button>
@@ -1739,80 +1734,7 @@
     </script>
 
     <!-- ================================================================
-         ★ ENTERPRISE FEATURE B: LIVE SOCIAL PROOF TOASTS
-         ================================================================ -->
-    <script>
-    (function(){
-        var viewport = document.getElementById('toastViewport');
-        if(!viewport) return;
 
-        var proofEvents = [
-            { name:'Rohan M.',    city:'Delhi',     action:'just booked a Discovery Call',   gradient:'linear-gradient(135deg,#0e7490,#67e8f9)' },
-            { name:'Priya S.',    city:'Mumbai',    action:'requested a Website Audit',       gradient:'linear-gradient(135deg,#8b5cf6,#c084fc)' },
-            { name:'Arjun K.',    city:'Bangalore', action:'started a Web Dev project',       gradient:'linear-gradient(135deg,#f59e0b,#fcd34d)' },
-            { name:'Neha R.',     city:'Hyderabad', action:'enquired about SaaS development', gradient:'linear-gradient(135deg,#10b981,#34d399)' },
-            { name:'Vikram T.',   city:'Chennai',   action:'signed up for Free Audit',        gradient:'linear-gradient(135deg,#ef4444,#f87171)' },
-            { name:'Anjali P.',   city:'Pune',      action:'requested App Dev quote',         gradient:'linear-gradient(135deg,#0e7490,#8b5cf6)' },
-            { name:'Rahul G.',    city:'Jaipur',    action:'booked a consultation call',      gradient:'linear-gradient(135deg,#f59e0b,#0e7490)' },
-            { name:'Sneha B.',    city:'Kolkata',   action:'started a Mobile App project',    gradient:'linear-gradient(135deg,#8b5cf6,#67e8f9)' },
-            { name:'Deepak L.',   city:'Ahmedabad', action:'requested Local SEO package',     gradient:'linear-gradient(135deg,#10b981,#0e7490)' },
-            { name:'Kavita N.',   city:'Lucknow',   action:'enquired about UI/UX Design',     gradient:'linear-gradient(135deg,#c084fc,#67e8f9)' },
-        ];
-
-        var activeToasts = [];
-        var MAX_VISIBLE = 2;
-
-        function timeAgo(){
-            var opts = ['Just now', '1 min ago', '2 mins ago', '3 mins ago'];
-            return opts[Math.floor(Math.random()*opts.length)];
-        }
-
-        function showToast(data){
-            if(activeToasts.length >= MAX_VISIBLE) return;
-
-            var toast = document.createElement('div');
-            toast.className = 'proof-toast';
-
-            var initials = data.name.split(' ').map(function(w){return w[0];}).join('');
-            toast.innerHTML =
-                '<div class="toast-av" style="background:'+data.gradient+'">'+initials+'</div>' +
-                '<div class="toast-body">' +
-                    '<div class="toast-name">'+data.name+' from '+data.city+'</div>' +
-                    '<div class="toast-action">'+data.action+'</div>' +
-                    '<div class="toast-meta"><span class="toast-live-dot"></span><span class="toast-time-label">'+timeAgo()+'</span></div>' +
-                '</div>';
-
-            viewport.appendChild(toast);
-            activeToasts.push(toast);
-
-            requestAnimationFrame(function(){
-                requestAnimationFrame(function(){
-                    toast.classList.add('show');
-                });
-            });
-
-            setTimeout(function(){
-                toast.classList.remove('show');
-                toast.classList.add('hide');
-                setTimeout(function(){
-                    if(toast.parentNode) toast.parentNode.removeChild(toast);
-                    activeToasts = activeToasts.filter(function(t){return t !== toast;});
-                }, 600);
-            }, 5200);
-        }
-
-        setTimeout(function(){
-            var idx = 0;
-            function nextToast(){
-                showToast(proofEvents[idx % proofEvents.length]);
-                idx++;
-                setTimeout(nextToast, 120000 + Math.random()*30000);
-            }
-            nextToast();
-        }, 6000);
-
-    })();
-    </script>
 
     <!-- ================================================================
          ★ ENTERPRISE FEATURE C: COMMAND PALETTE (⌘K)
@@ -2497,7 +2419,7 @@
             });
         }
         
-        // Show toast every 25-40 seconds, first after 10s
+        // Show toast every 90-120 seconds, first after 10s
         setTimeout(function loop() {
             triggerSocialProof();
             setTimeout(loop, Math.random() * 30000 + 90000);
