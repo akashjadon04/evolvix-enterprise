@@ -17,86 +17,41 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Premium Case Study Specifics */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-glass);
-        }
-        .stat-item h4 {
-            font-size: 1.5rem;
-            color: var(--c-success);
-            margin-bottom: 0.25rem;
-            font-weight: 800;
-        }
-        .stat-item p {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin: 0;
-            color: var(--text-tertiary);
-        }
         
-        .industry-tag {
-            background: rgba(14, 116, 144, 0.1);
-            color: var(--c-brand-light);
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(14, 116, 144, 0.3);
-        }
-
-        .budget-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(16, 185, 129, 0.9);
-            color: #020617;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        /* Image Container */
-        .case-img-container {
-            height: 220px;
-            width: 100%;
-            border-radius: var(--radius-sm);
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--border-glass);
-        }
+        /* ================================================================
+           PREMIUM CASE STUDIES CSS
+           ================================================================ */
+        .cs-hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; position: relative; padding-top: 140px; text-align: center; }
+        .cs-revenue-counter { font-family: var(--font-display); font-size: clamp(4rem, 12vw, 10rem); font-weight: 900; background: linear-gradient(180deg, #fff 0%, rgba(103,232,249,0.3) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; margin: 2rem 0; letter-spacing: -0.05em; filter: drop-shadow(0 0 40px rgba(103,232,249,0.2)); }
         
-        .case-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover .case-img {
-            transform: scale(1.05);
-        }
+        .cs-featured-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center; margin-bottom: 8rem; }
+        .cs-featured-layout.reverse { grid-template-columns: 0.8fr 1.2fr; }
+        @media (max-width: 1024px) { .cs-featured-layout, .cs-featured-layout.reverse { grid-template-columns: 1fr !important; gap: 2rem; margin-bottom: 4rem; } }
         
-        /* Dark overlay gradient on images */
-        .case-img-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
-            pointer-events: none;
-        }
+        .cs-mockup-wrapper { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); border: 1px solid var(--border-glass); background: rgba(2,6,23,0.5); aspect-ratio: 4/3; }
+        .cs-mockup-wrapper img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.5s, transform 0.5s; }
+        .cs-mockup-wrapper:hover img { opacity: 1; transform: scale(1.03); }
+        .cs-mockup-wrapper::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(103,232,249,0.1), transparent 50%); pointer-events: none; }
+        
+        .cs-meta-tag { display: inline-block; padding: 0.4rem 1rem; border-radius: 999px; background: rgba(14,116,144,0.15); border: 1px solid rgba(14,116,144,0.4); color: #67e8f9; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+        
+        .cs-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-glass); }
+        .cs-stat h4 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 900; color: #10b981; line-height: 1; margin-bottom: 0.25rem; }
+        .cs-stat p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-tertiary); margin: 0; font-weight: 600; }
+        
+        .cs-bento-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 4rem; }
+        @media (max-width: 768px) { .cs-bento-grid { grid-template-columns: 1fr; } }
+        
+        .cs-bento-card { background: linear-gradient(145deg, rgba(15,23,42,0.6), rgba(2,6,23,0.9)); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s; }
+        .cs-bento-card:hover { border-color: rgba(103,232,249,0.3); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .cs-bento-img { height: 240px; width: 100%; position: relative; border-bottom: 1px solid var(--border-glass); }
+        .cs-bento-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: transform 0.5s, opacity 0.5s; }
+        .cs-bento-card:hover .cs-bento-img img { transform: scale(1.05); opacity: 1; }
+        .cs-bento-content { padding: 2.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .cs-bento-stats { display: flex; justify-content: space-between; margin-top: 1.5rem; }
+        .cs-bento-stat h4 { font-size: 1.5rem; font-weight: 800; color: #10b981; margin-bottom: 0.1rem; }
+        .cs-bento-stat p { font-size: 0.65rem; text-transform: uppercase; color: var(--text-tertiary); margin: 0; font-weight: 700; letter-spacing: 0.05em; }
+
     </style>
 
 <style>
@@ -180,143 +135,214 @@
         </div>
     </header>
 
+    
     <main>
-        
-        <section class="section text-center" style="padding-bottom: 4rem; padding-top: 150px;">
+        <!-- HERO SECTION -->
+        <section class="cs-hero" id="hero">
+            <!-- Background Elements -->
+            <div class="ambient-blob" style="top: -10%; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, rgba(14,116,144,.2) 0%, transparent 60%); width: 1000px; height: 1000px;"></div>
+            
             <div class="container">
                 <div class="reveal">
-                    <span class="badge mb-2">Proven Track Record</span>
-                    <h1>Results, not <span class="text-gradient">excuses.</span></h1>
-                    <p style="margin: 0 auto; max-width: 700px;">
-                        We don't just build pretty websites. We build revenue engines. <br>
-                        Here are 6 businesses we scaled using our proprietary "God Mode" framework.
+                    <div class="hero-pill" style="margin: 0 auto 2rem;">
+                        <span class="hero-pill-dot" style="background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+                        Verified Client Results
+                    </div>
+                    <h1>We Engineer <span class="text-gradient">Market Leaders.</span></h1>
+                    
+                    <div class="cs-revenue-counter tilt-card">
+                        $14.2M+
+                    </div>
+                    
+                    <p style="margin: 0 auto; max-width: 600px; font-size: 1.25rem;">
+                        Revenue generated for our partners through elite digital architecture, sub-second load times, and data-driven design.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="padding-top: 0;">
+        <!-- FEATURED CASE STUDIES -->
+        <section class="section">
             <div class="container">
                 
-                <div class="grid-3">
+                <!-- FEATURE 1: ReachForever -->
+                <div class="cs-featured-layout">
+                    <div class="cs-mockup-wrapper tilt-card magnetic-spotlight reveal">
+                        <img src="assets/ui_reachforever_1780211854393.png" alt="ReachForever Digital Marketing Dashboard" loading="lazy">
+                    </div>
+                    <div class="reveal delay-100">
+                        <div class="cs-meta-tag">Digital Marketing / Funnel Architecture</div>
+                        <h2 style="font-size: clamp(2rem, 4vw, 3rem);">ReachForever</h2>
+                        <p style="font-size: 1.1rem; color: #e2e8f0; margin-bottom: 1rem;">
+                            "Evolvix completely rewired our lead acquisition engine. The dashboard they engineered gave us God-level visibility over our traffic."
+                        </p>
+                        <p>
+                            ReachForever's existing funnels were leaking data and suffering from a bloated 6-second load time, causing a 40% bounce rate on paid traffic. We rebuilt their entire frontend in React, deploying on Edge networks to achieve a 45ms time-to-interactive, and integrated a custom analytics pipeline.
+                        </p>
+                        
+                        <div class="cs-stats-grid">
+                            <div class="cs-stat">
+                                <h4>+314%</h4>
+                                <p>Lead Velocity</p>
+                            </div>
+                            <div class="cs-stat">
+                                <h4 style="color: #67e8f9;">45ms</h4>
+                                <p>Load Time</p>
+                            </div>
+                            <div class="cs-stat">
+                                <h4>$1.2M</h4>
+                                <p>Pipeline Gen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FEATURE 2: The Bake Stories -->
+                <div class="cs-featured-layout reverse" style="margin-top: 6rem;">
+                    <div class="reveal delay-100">
+                        <div class="cs-meta-tag" style="background: rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.4); color: #c084fc;">High-Volume E-Commerce</div>
+                        <h2 style="font-size: clamp(2rem, 4vw, 3rem);">The Bake Stories</h2>
+                        <p style="font-size: 1.1rem; color: #e2e8f0; margin-bottom: 1rem;">
+                            "Our checkout crashed every holiday season. Since Evolvix took over, we processed 10,000+ orders flawlessly with zero downtime."
+                        </p>
+                        <p>
+                            A luxury bakery brand constrained by a fragile Shopify template. We engineered a custom headless e-commerce architecture utilizing Next.js. By decoupling the frontend, we enabled an instant, app-like browsing experience with a zero-friction, sub-second checkout flow.
+                        </p>
+                        
+                        <div class="cs-stats-grid">
+                            <div class="cs-stat">
+                                <h4>2.5x</h4>
+                                <p>Conversion Rate</p>
+                            </div>
+                            <div class="cs-stat">
+                                <h4 style="color: #67e8f9;">100%</h4>
+                                <p>Uptime</p>
+                            </div>
+                            <div class="cs-stat">
+                                <h4>-82%</h4>
+                                <p>Cart Abandon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cs-mockup-wrapper tilt-card magnetic-spotlight reveal">
+                        <img src="assets/ui_bakestories_1780211875183.png" alt="The Bake Stories Premium E-commerce" loading="lazy">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BENTO BOX GRID: INDUSTRY LEADERS -->
+        <section class="section" style="background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-glass);">
+            <div class="container">
+                <div class="text-center reveal" style="margin-bottom: 4rem;">
+                    <h2>Elite Portfolios Across <span class="text-gradient">Every Sector</span></h2>
+                    <p style="max-width: 600px; margin: 0 auto;">From AI SaaS to Enterprise Logistics, we build platforms that define their categories.</p>
+                </div>
+
+                <div class="cs-bento-grid">
                     
-                    <div class="card reveal glass-card">
-                        <div class="budget-badge">$850 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Dental Clinic" class="case-img">
+                    <!-- BENTO 1: Nexus AI -->
+                    <div class="cs-bento-card tilt-card magnetic-spotlight reveal">
+                        <div class="cs-bento-img">
+                            <div class="cs-meta-tag" style="position:absolute; top: 1rem; right: 1rem; margin:0; z-index:2; background: rgba(16,185,129,0.2); border-color: #10b981; color: #10b981;">B2B SaaS</div>
+                            <img src="assets/ui_nexusai_1780211922385.png" alt="Nexus AI Dashboard" loading="lazy">
                         </div>
-                        <div class="industry-tag">Healthcare / Dental</div>
-                        <h3>Apex Dental Studio</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> 5-year-old WordPress site taking 8s to load. No Google Maps ranking.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> Rebuilt in raw HTML5. Added "Emergency Booking" funnel.
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>+214%</h4><p>Calls</p></div>
-                            <div class="stat-item"><h4>#1</h4><p>On Maps</p></div>
-                            <div class="stat-item"><h4>0.4s</h4><p>Load</p></div>
-                        </div>
-                    </div>
-
-                    <div class="card reveal delay-100 glass-card">
-                        <div class="budget-badge">$600 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="High End Gym" class="case-img">
-                        </div>
-                        <div class="industry-tag" style="color: #fca5a5; background: rgba(185, 28, 28, 0.1); border-color: rgba(185, 28, 28, 0.3);">Fitness / Gym</div>
-                        <h3>Ironclad Fitness</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> Losing members to franchise gyms. Website looked outdated on mobile.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> High-energy dark mode design. "Free Pass" lead capture popup.
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>+45</h4><p>Signups</p></div>
-                            <div class="stat-item"><h4>3x</h4><p>Traffic</p></div>
-                            <div class="stat-item"><h4>100%</h4><p>Mobile</p></div>
+                        <div class="cs-bento-content">
+                            <div>
+                                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Nexus AI</h3>
+                                <p style="color: var(--text-secondary);">
+                                    Their AI wrapper was experiencing a 12% monthly churn due to a clunky UX. We architected a sleek, Dribbble-tier dark mode dashboard that reduced cognitive load and introduced gamified data visualizations.
+                                </p>
+                            </div>
+                            <div class="cs-bento-stats">
+                                <div class="cs-bento-stat">
+                                    <h4>-68%</h4>
+                                    <p>User Churn</p>
+                                </div>
+                                <div class="cs-bento-stat">
+                                    <h4 style="color:#67e8f9;">$4.5M</h4>
+                                    <p>Series A Raised</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card reveal delay-200 glass-card">
-                        <div class="budget-badge">$900 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Law Firm Office" class="case-img">
+                    <!-- BENTO 2: Aura Logistics -->
+                    <div class="cs-bento-card tilt-card magnetic-spotlight reveal delay-100">
+                        <div class="cs-bento-img">
+                            <div class="cs-meta-tag" style="position:absolute; top: 1rem; right: 1rem; margin:0; z-index:2; background: rgba(245,158,11,0.2); border-color: #f59e0b; color: #f59e0b;">Enterprise Supply Chain</div>
+                            <img src="assets/ui_auralogistics_1780211936918.png" alt="Aura Logistics Freight UI" loading="lazy">
                         </div>
-                        <div class="industry-tag" style="color: #a78bfa; background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3);">Legal / Finance</div>
-                        <h3>Vanguard Partners</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> High ad spend, low conversions. Clients couldn't find "Contact" button.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> Professional "Trust" layout. Sticky call button. Speed optimization.
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>-40%</h4><p>Ad Cost</p></div>
-                            <div class="stat-item"><h4>5x</h4><p>Leads</p></div>
-                            <div class="stat-item"><h4>A+</h4><p>Speed</p></div>
-                        </div>
-                    </div>
-
-                    <div class="card reveal glass-card">
-                        <div class="budget-badge">$450 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Coffee Shop" class="case-img">
-                        </div>
-                        <div class="industry-tag" style="color: #fdba74; background: rgba(234, 88, 12, 0.1); border-color: rgba(234, 88, 12, 0.3);">Hospitality</div>
-                        <h3>Bean & Brew Co.</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> Invisible to tourists. Menu was a blurry PDF that didn't load.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> HTML Menu (Google readable). SEO for "Best Coffee Near Me".
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>+150%</h4><p>Foot Traffic</p></div>
-                            <div class="stat-item"><h4>#1</h4><p>Local SEO</p></div>
-                            <div class="stat-item"><h4>Fast</h4><p>Menu</p></div>
+                        <div class="cs-bento-content">
+                            <div>
+                                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Aura Logistics</h3>
+                                <p style="color: var(--text-secondary);">
+                                    Managing 500+ freight trucks on a legacy Oracle system was causing dispatch delays. We built a lightning-fast React frontend connecting to real-time GPS APIs, visualizing fleet data seamlessly.
+                                </p>
+                            </div>
+                            <div class="cs-bento-stats">
+                                <div class="cs-bento-stat">
+                                    <h4>99.9%</h4>
+                                    <p>Data Accuracy</p>
+                                </div>
+                                <div class="cs-bento-stat">
+                                    <h4 style="color:#67e8f9;">-3 hrs</h4>
+                                    <p>Daily Dispatch Time</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card reveal delay-100 glass-card">
-                        <div class="budget-badge">$750 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1581094794329-cd2a1fb0e538?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HVAC Technician" class="case-img">
+                    <!-- BENTO 3: FinShift Capital -->
+                    <div class="cs-bento-card tilt-card magnetic-spotlight reveal">
+                        <div class="cs-bento-img">
+                            <div class="cs-meta-tag" style="position:absolute; top: 1rem; right: 1rem; margin:0; z-index:2; background: rgba(59,130,246,0.2); border-color: #3b82f6; color: #60a5fa;">FinTech / Banking</div>
+                            <img src="assets/ui_finshift_1780211959768.png" alt="FinShift Capital Banking App" loading="lazy">
                         </div>
-                        <div class="industry-tag" style="color: #7dd3fc; background: rgba(14, 165, 233, 0.1); border-color: rgba(14, 165, 233, 0.3);">Home Services</div>
-                        <h3>Summit HVAC</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> Reliant on word-of-mouth. Zero online presence.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> "Quote Calculator" built-in. Trust badges and reviews front-and-center.
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>$12k</h4><p>New Rev</p></div>
-                            <div class="stat-item"><h4>24/7</h4><p>Booking</p></div>
-                            <div class="stat-item"><h4>Top 3</h4><p>Google</p></div>
+                        <div class="cs-bento-content">
+                            <div>
+                                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">FinShift Capital</h3>
+                                <p style="color: var(--text-secondary);">
+                                    Needed a trust-inspiring, highly secure web application for high-net-worth investors. We engineered an impenetrable, beautifully animated finance tracker with SOC2 compliant architecture.
+                                </p>
+                            </div>
+                            <div class="cs-bento-stats">
+                                <div class="cs-bento-stat">
+                                    <h4>$85M</h4>
+                                    <p>AUM Tracked</p>
+                                </div>
+                                <div class="cs-bento-stat">
+                                    <h4 style="color:#67e8f9;">Zero</h4>
+                                    <p>Security Breaches</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card reveal delay-200 glass-card">
-                        <div class="budget-badge">$500 Project</div>
-                        <div class="case-img-container">
-                            <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Spa Aesthetics" class="case-img">
+                    <!-- BENTO 4: Strata Real Estate -->
+                    <div class="cs-bento-card tilt-card magnetic-spotlight reveal delay-100">
+                        <div class="cs-bento-img">
+                            <div class="cs-meta-tag" style="position:absolute; top: 1rem; right: 1rem; margin:0; z-index:2; background: rgba(236,72,153,0.2); border-color: #ec4899; color: #f472b6;">Luxury PropTech</div>
+                            <img src="assets/ui_elevate_1780211974834.png" alt="Strata Real Estate Properties" loading="lazy">
                         </div>
-                        <div class="industry-tag" style="color: #f9a8d4; background: rgba(219, 39, 119, 0.1); border-color: rgba(219, 39, 119, 0.3);">Beauty / Spa</div>
-                        <h3>Lumina Aesthetics</h3>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Problem:</strong> Instagram was their only "website." Hard to book appointments.
-                        </p>
-                        <p style="font-size: 0.9rem;">
-                            <strong>Solution:</strong> Aesthetic minimal portfolio. Instagram feed integration.
-                        </p>
-                        <div class="stat-grid">
-                            <div class="stat-item"><h4>Full</h4><p>Bookings</p></div>
-                            <div class="stat-item"><h4>2x</h4><p>Prices</p></div>
-                            <div class="stat-item"><h4>Elite</h4><p>Brand</p></div>
+                        <div class="cs-bento-content">
+                            <div>
+                                <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Strata Real Estate</h3>
+                                <p style="color: var(--text-secondary);">
+                                    High-end properties deserve high-end presentation. We replaced their clunky MLS iframe with a custom-engineered API integration, presenting luxury homes in a cinematic, immersive 3D layout.
+                                </p>
+                            </div>
+                            <div class="cs-bento-stats">
+                                <div class="cs-bento-stat">
+                                    <h4>4.5x</h4>
+                                    <p>Time on Site</p>
+                                </div>
+                                <div class="cs-bento-stat">
+                                    <h4 style="color:#67e8f9;">+120%</h4>
+                                    <p>Viewing Requests</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -324,17 +350,21 @@
             </div>
         </section>
 
-        <section class="section text-center">
+        <!-- CTA SECTION -->
+        <section class="section text-center" style="margin-bottom: 4rem;">
             <div class="container">
-                <h2 class="reveal">We want to make YOU our next case study.</h2>
-                <p class="reveal delay-100">Join the top 1% of local businesses dominating their market.</p>
-                <div class="reveal delay-200" style="margin-top: 2rem;">
-                    <a href="contact.html" class="btn btn-primary">Start Your Transformation</a>
+                <div class="cta-card tilt-card magnetic-spotlight reveal">
+                    <h2>Ready to be our next <span class="text-gradient">Success Story?</span></h2>
+                    <p style="margin: 1.5rem auto 2.5rem; max-width: 600px; color: rgba(255,255,255,0.7) !important;">
+                        We only partner with 4 new clients per quarter to ensure elite quality. Secure your spot and let's engineer your dominance.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary btn-cta-glow">Initiate Project <span class="btn-arrow">→</span></a>
                 </div>
             </div>
         </section>
 
     </main>
+
 
     <footer class="footer">
         <div class="footer-graphic" aria-hidden="true">
@@ -430,5 +460,38 @@
     </footer>
 
     <script src="script.js" defer></script>
+
+<script>
+    // 3D Tilt Logic
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+            card.style.transition = 'none';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+    });
+
+    // Magnetic Spotlight
+    document.querySelectorAll('.magnetic-spotlight').forEach(el => {
+        el.addEventListener('mousemove', e => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            el.style.setProperty('--mouse-x', `${x}px`);
+            el.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
 </body>
+
 </html>
