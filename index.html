@@ -391,32 +391,33 @@
                 <!-- RIGHT: God-Level Metrics Engine -->
                 <div class="hero-visual reveal delay-200">
                     <style>
-                        .hero-metrics-engine { position: relative; width: 100%; max-width: 500px; height: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
-                        .hme-center { position: absolute; width: 180px; height: 180px; background: radial-gradient(circle, rgba(14,116,144,0.3) 0%, rgba(2,6,23,0.9) 100%); border: 1px solid rgba(103,232,249,0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(14,116,144,0.5), inset 0 0 20px rgba(103,232,249,0.2); z-index: 2; animation: float 6s ease-in-out infinite; }
+                        .hero-metrics-engine { position: relative; width: 100%; max-width: 500px; height: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; contain: layout style; }
+                        .hme-center { position: absolute; width: 180px; height: 180px; background: radial-gradient(circle, rgba(14,116,144,0.3) 0%, rgba(2,6,23,0.9) 100%); border: 1px solid rgba(103,232,249,0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(14,116,144,0.3); z-index: 2; animation: hme-float 6s ease-in-out infinite; will-change: transform; }
                         .hme-center-val { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #fff, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; margin-bottom: 0.2rem; }
                         .hme-center-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); font-weight: 700; }
                         
-                        .hme-card { position: absolute; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(20px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); z-index: 3; transition: all 0.3s; }
-                        .hme-card:hover { border-color: rgba(103,232,249,0.4); transform: scale(1.05) translateY(-5px); }
+                        .hme-card { position: absolute; background: rgba(15,23,42,0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 3; transition: transform 0.3s, border-color 0.3s; will-change: transform; }
+                        .hme-card:hover { border-color: rgba(103,232,249,0.4); }
                         
-                        .hme-c1 { top: 0; right: -5%; animation: float 5s ease-in-out infinite; animation-delay: -1s; }
-                        .hme-c2 { bottom: 5%; left: -10%; animation: float 7s ease-in-out infinite; animation-delay: -3s; }
-                        .hme-c3 { top: 40%; right: -15%; animation: float 6s ease-in-out infinite; animation-delay: -2s; }
+                        .hme-c1 { top: 0; right: -5%; animation: hme-float 5s ease-in-out infinite; animation-delay: -1s; }
+                        .hme-c2 { bottom: 5%; left: -10%; animation: hme-float 7s ease-in-out infinite; animation-delay: -3s; }
+                        .hme-c3 { top: 40%; right: -15%; animation: hme-float 6s ease-in-out infinite; animation-delay: -2s; }
                         
                         .hme-stat { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; line-height: 1; margin-bottom: 0.4rem; color: #fff; }
                         .hme-lbl { font-size: 0.75rem; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
                         
-                        .hme-orbit { position: absolute; width: 340px; height: 340px; border: 1px dashed rgba(103,232,249,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 20s linear infinite; }
-                        .hme-orbit-2 { position: absolute; width: 480px; height: 480px; border: 1px dashed rgba(139,92,246,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 30s linear infinite reverse; }
+                        .hme-orbit { position: absolute; width: 340px; height: 340px; border: 1px dashed rgba(103,232,249,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 20s linear infinite; will-change: transform; }
+                        .hme-orbit-2 { position: absolute; width: 480px; height: 480px; border: 1px dashed rgba(139,92,246,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 30s linear infinite reverse; will-change: transform; }
                         
-                        @keyframes spin-orb { 100% { transform: rotate(360deg); } }
+                        @keyframes spin-orb { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                        @keyframes hme-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
                         
-                        .hme-pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(103,232,249,0.4); border-radius: 50%; animation: hme-pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; pointer-events: none; }
+                        .hme-pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(103,232,249,0.4); border-radius: 50%; animation: hme-pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; pointer-events: none; will-change: transform, opacity; }
                         @keyframes hme-pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
 
                         @media (max-width: 768px) {
                             .hme-card { position: relative; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; width: 100%; margin-bottom: 1rem; animation: none !important; }
-                            .hero-metrics-engine { height: auto; display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; }
+                            .hero-metrics-engine { height: auto; display: flex; flex-direction: column; gap: 1rem; margin-top: 3rem; contain: none; }
                             .hme-center { position: relative; margin-bottom: 2rem; }
                             .hme-orbit, .hme-orbit-2 { display: none; }
                         }
@@ -425,13 +426,13 @@
                         <div class="hme-orbit"></div>
                         <div class="hme-orbit-2"></div>
                         
-                        <div class="hme-center tilt-card">
+                        <div class="hme-center">
                             <div class="hme-pulse-ring"></div>
                             <div class="hme-center-val">100</div>
                             <div class="hme-center-lbl">PageSpeed</div>
                         </div>
                         
-                        <div class="hme-card hme-c1 tilt-card">
+                        <div class="hme-card hme-c1">
                             <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
                                 <div style="width:12px;height:12px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></div>
                                 <div style="font-size:0.7rem; color:#10b981; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Conversion Lift</div>
@@ -440,7 +441,7 @@
                             <div class="hme-lbl">Industry Avg: +8%</div>
                         </div>
                         
-                        <div class="hme-card hme-c2 tilt-card">
+                        <div class="hme-card hme-c2">
                             <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
                                 <div style="width:12px;height:12px;border-radius:50%;background:#8b5cf6;box-shadow:0 0 10px #8b5cf6;"></div>
                                 <div style="font-size:0.7rem; color:#8b5cf6; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">Server Latency</div>
@@ -449,7 +450,7 @@
                             <div class="hme-lbl">Global Edge Network</div>
                         </div>
                         
-                        <div class="hme-card hme-c3 tilt-card">
+                        <div class="hme-card hme-c3">
                             <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
                                 <div style="width:12px;height:12px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24;"></div>
                                 <div style="font-size:0.7rem; color:#fbbf24; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;">User Retention</div>
