@@ -1036,7 +1036,8 @@
             try {
                 var form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                form.action = 'https://api.web3forms.com/submit';
+                var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
                 
                 var data = {
                     _subject: 'Enterprise Audit Lead: ' + this.answers.name,
@@ -2001,14 +2002,15 @@
                 
                 var form = document.createElement('form');
                 form.method = 'POST';
-                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                form.action = 'https://api.web3forms.com/submit';
+                var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
                 form.target = 'hidden_iframe';
-                form.innerHTML = '<input type="hidden" name="_subject" value="Free Audit Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'"><input type="hidden" name="Phone" value="'+phone+'"><input type="hidden" name="Website" value="'+website+'">';
+                form.innerHTML = '<input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955"><input type="hidden" name="_subject" value="Free Audit Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'"><input type="hidden" name="Phone" value="'+phone+'"><input type="hidden" name="Website" value="'+website+'">';
                 document.body.appendChild(form);
                 form.submit();
                 
                 // Try to download PDF immediately
-                try { if(typeof _buildPlaybookPDF === 'function') _buildPlaybookPDF(); } catch(err){}
+                if(typeof window.jspdf === 'undefined') { var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = function() { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }; document.head.appendChild(s); } else { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }
                 
                 setTimeout(() => { 
                     btn.textContent = 'Audit Scheduled! PDF Downloading...';
@@ -2584,7 +2586,7 @@
                         </div>
                     `;
                     
-                    function _buildPlaybookPDF() {
+                    window._buildPlaybookPDF = function() {
                         var jsPDF = window.jspdf.jsPDF;
                         var doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
                         var ad = window.auditData || {};
@@ -2679,9 +2681,9 @@
                     if(typeof window.jspdf === 'undefined') {
                         var s2 = document.createElement('script');
                         s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-                        s2.onload = _buildPlaybookPDF;
+                        s2.onload = window._buildPlaybookPDF;
                         document.head.appendChild(s2);
-                    } else { _buildPlaybookPDF(); }
+                    } else { window._buildPlaybookPDF(); }
                 }, 4000);
             };
 
@@ -2747,14 +2749,15 @@
         
         var form = document.createElement('form');
         form.method = 'POST';
-        form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+        form.action = 'https://api.web3forms.com/submit';
+                var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
         form.target = 'hidden_iframe';
-        form.innerHTML = '<input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
+        form.innerHTML = '<input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955"><input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
         document.body.appendChild(form);
         form.submit();
         
         // Try to generate PDF immediately
-        try { if(typeof _buildPlaybookPDF === 'function') _buildPlaybookPDF(); } catch(err){}
+        if(typeof window.jspdf === 'undefined') { var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = function() { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }; document.head.appendChild(s); } else { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }
         
         setTimeout(() => { 
             btn.textContent = 'Sent! Downloading PDF...';
@@ -2768,6 +2771,10 @@
     
 </html>
 <!-- Deployment Trigger --> 
+
+
+
+
 
 
 

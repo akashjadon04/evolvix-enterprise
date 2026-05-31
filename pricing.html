@@ -398,7 +398,8 @@
                 try {
                     var form = document.createElement('form');
                     form.method = 'POST';
-                    form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                    form.action = 'https://api.web3forms.com/submit';
+                    var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
                     
                     var data = {
                         _subject: 'New Pricing Estimate: ' + name,
@@ -684,6 +685,7 @@
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
+
 
 
 
