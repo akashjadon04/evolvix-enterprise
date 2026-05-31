@@ -842,24 +842,24 @@
         .audit-input:focus { border-color:#38bdf8; }
         </style>
         
-                <!-- LAYER 1: BUSINESS CORE -->
+                                <!-- LAYER 1: BUSINESS CORE -->
         <div id="qstep-1" class="qstep" style="display:block;">
             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What best describes your architecture?</h3>
             <div class="grid-responsive-2">
                 <button class="qbtn" onclick="window.auditEngine.select('btype', 'SaaS / Tech', this, 1, true)">
-                    <div class="qbtn-icon">?</div>
+                    <div class="qbtn-icon">⚡</div>
                     <div><div class="qbtn-title">SaaS / Tech Product</div><div class="qbtn-sub">Software, apps, digital tools</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('btype', 'Agency / B2B', this, 1, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">🎯</div>
                     <div><div class="qbtn-title">Agency / B2B Services</div><div class="qbtn-sub">Consulting, freelancing, B2B</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('btype', 'Ecommerce', this, 1, true)">
-                    <div class="qbtn-icon">???</div>
+                    <div class="qbtn-icon">🛍️</div>
                     <div><div class="qbtn-title">E-commerce / D2C</div><div class="qbtn-sub">Physical or digital products</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('btype', 'Local Business', this, 1, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">📍</div>
                     <div><div class="qbtn-title">Local / Service</div><div class="qbtn-sub">Restaurant, clinic, salon, etc.</div></div>
                 </button>
             </div>
@@ -869,9 +869,9 @@
         <div id="qstep-2" class="qstep" style="display:none;">
             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">Current Monthly Revenue (MRR/Gross)</h3>
             <div class="grid-responsive-3">
-                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '< /mo', this, 2, true)"> - </button>
-                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '-/mo', this, 2, true)"> - </button>
-                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '+/mo', this, 2, true)">+</button>
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '< $10k/mo', this, 2, true)">$0 - $10k</button>
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$10k-$50k/mo', this, 2, true)">$10k - $50k</button>
+                <button class="qbtn" style="padding:15px;justify-content:center;" onclick="window.auditEngine.select('rev', '$50k+/mo', this, 2, true)">$50k+</button>
             </div>
         </div>
         
@@ -880,15 +880,15 @@
             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your primary bottleneck?</h3>
             <div style="display:grid;grid-template-columns:1fr;gap:16px;">
                 <button class="qbtn" onclick="window.auditEngine.select('prob', 'Traffic & Leads', this, 3, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">📈</div>
                     <div><div class="qbtn-title">Acquisition (Traffic & Leads)</div><div class="qbtn-sub">Not enough qualified people finding us</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('prob', 'Conversion & UX', this, 3, true)">
-                    <div class="qbtn-icon">?</div>
+                    <div class="qbtn-icon">✨</div>
                     <div><div class="qbtn-title">Conversion (UI/UX & Sales)</div><div class="qbtn-sub">People visit but don't convert into paying customers</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('prob', 'Systems & Tech', this, 3, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">⚙️</div>
                     <div><div class="qbtn-title">Operations (Systems & Tech)</div><div class="qbtn-sub">Outdated tech, manual tasks, messy CRM</div></div>
                 </button>
             </div>
@@ -899,16 +899,16 @@
             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;text-align:center;">What is your target for the next 6 months?</h3>
             <div style="display:grid;grid-template-columns:1fr;gap:16px;">
                 <button class="qbtn" onclick="window.auditEngine.select('goal', 'Double Revenue', this, 4, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">🚀</div>
                     <div><div class="qbtn-title">Aggressive Growth</div><div class="qbtn-sub">Double our revenue / 2x our traffic</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('goal', 'Automation & Scale', this, 4, true)">
-                    <div class="qbtn-icon">??</div>
+                    <div class="qbtn-icon">🤖</div>
                     <div><div class="qbtn-title">Automate & Scale</div><div class="qbtn-sub">Reduce manual work, build custom software/apps</div></div>
                 </button>
                 <button class="qbtn" onclick="window.auditEngine.select('goal', 'Brand Authority', this, 4, true)">
-                    <div class="qbtn-icon">??</div>
-                    <div><div class="qbtn-title">Rebrand & Authority</div><div class="qbtn-sub">Look like a  enterprise, charge higher prices</div></div>
+                    <div class="qbtn-icon">👑</div>
+                    <div><div class="qbtn-title">Rebrand & Authority</div><div class="qbtn-sub">Look like a $100M enterprise, charge higher prices</div></div>
                 </button>
             </div>
         </div>
@@ -920,7 +920,7 @@
                 <input type="text" id="a-name" class="audit-input" placeholder="Your Name / Company Name" required>
                 <input type="email" id="a-email" class="audit-input" placeholder="Your Work Email" required>
                 <input type="tel" id="a-phone" class="audit-input" placeholder="WhatsApp / Phone Number" style="grid-column:1/-1;">
-                <button type="submit" class="btn-cta-glow" style="grid-column:1/-1;width:100%;justify-content:center;margin-top:10px;">Generate Enterprise Report ?</button>
+                <button type="submit" class="btn-cta-glow" style="grid-column:1/-1;width:100%;justify-content:center;margin-top:10px;">Generate Enterprise Report ⚡</button>
             </form>
         </div>
         
@@ -1037,11 +1037,12 @@
             document.getElementById('qstep-5').style.display = 'none';
             document.getElementById('qstep-load').style.display = 'block';
             
-            // Submit via FormSubmit natively
+            // Submit via FormSubmit natively silently
             try {
                 var form = document.createElement('form');
                 form.method = 'POST';
                 form.action = 'https://api.web3forms.com/submit';
+                form.target = 'hidden_iframe'; // PREVENTS REDIRECTION!
                 var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
                 
                 var data = {
@@ -1070,7 +1071,7 @@
                 document.getElementById('qstep-final').style.display = 'block';
                 
                 var score = Math.floor(Math.random() * 20) + 40; 
-                if(_this.answers.rev === '+/mo') score += 20;
+                if(_this.answers.rev === '$50k+/mo') score += 20;
                 if(_this.answers.prob === 'Systems & Tech') score -= 10;
                 
                 var sol = _this.answers.prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : 
