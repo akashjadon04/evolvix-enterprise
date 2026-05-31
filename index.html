@@ -504,8 +504,7 @@
                 </div>
                 <div class="h-scroll-track" id="hScrollTrack">
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project" width="800" height="600"
-                             alt="ReachForever Digital Marketing Agency Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="ReachForever Digital Marketing Agency Website" class="portfolio-card-img" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Digital Marketing Agency</span>
                             <h3>ReachForever</h3>
@@ -516,8 +515,7 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project" width="800" height="600"
-                             alt="The Bake Stories Artisan Bakery Website" class="portfolio-card-img" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="The Bake Stories Artisan Bakery Website" class="portfolio-card-img" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">Food &amp; Hospitality</span>
                             <h3>The Bake Stories</h3>
@@ -528,8 +526,7 @@
                         </div>
                     </div>
                     <div class="portfolio-card tilt-card holo-card">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="Evolvix Portfolio Project" width="800" height="600"
-                             alt="NexusAI SaaS Platform Dashboard" class="portfolio-card-img" loading="lazy" width="600" height="400">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=70" loading="lazy" alt="NexusAI SaaS Platform Dashboard" class="portfolio-card-img" width="600" height="400">
                         <div class="portfolio-card-body">
                             <span class="portfolio-tag">SaaS Platform</span>
                             <h3>NexusAI</h3>
@@ -812,7 +809,7 @@
         
         
         <!-- HIDDEN PDF TEMPLATE -->
-        <div style="width: 0; height: 0; overflow: hidden; position: absolute; z-index: -9999;">
+        <div id="pdf-wrapper" style="position: fixed; left: 0; top: 0; z-index: -9999; visibility: hidden; pointer-events: none;">
             <div id="hidden-pdf-template" style="width: 850px; background: #ffffff; color: #0f172a; font-family: 'Outfit', sans-serif; box-sizing: border-box;">
                 
                 <!-- Premium Header -->
@@ -986,17 +983,22 @@
             }, 5000);
         },
         downloadPDF: function() {
+            var wrapper = document.getElementById('pdf-wrapper');
             var el = document.getElementById('hidden-pdf-template');
-            el.style.display = 'block'; 
+            wrapper.style.visibility = 'visible';
+            wrapper.style.zIndex = '999999';
+            wrapper.style.left = '-9999px';
             var opt = {
-              margin:       0.5,
+              margin:       0.4,
               filename:     'Evolvix_Strategy_Audit.pdf',
               image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true },
+              html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 900 },
               jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
             html2pdf().set(opt).from(el).save().then(function(){
-                el.style.display = 'none';
+                wrapper.style.visibility = 'hidden';
+                wrapper.style.zIndex = '-9999';
+                wrapper.style.left = '0';
             });
         }
     };
@@ -1298,26 +1300,28 @@
         },{threshold:0.6});
         document.querySelectorAll('.stat-number[data-target]').forEach(function(el){ counterObs.observe(el); });
 
-        /* ─── Horizontal Scroll Portfolio ─── */
+        /* ─── Horizontal Scroll Portfolio (60fps) ─── */
         if(window.innerWidth>768){
             var hSection=document.getElementById('work');
             var hTrack=document.getElementById('hScrollTrack');
             if(hSection&&hTrack){
-                window.addEventListener('load',function(){
-                    var max=Math.max(0,hTrack.scrollWidth-window.innerWidth+60);
-                    hSection.style.height=(window.innerHeight+max*1.85)+'px';
-                });
+                var _hMaxT=0,_hScrollable=0,_hSecTop=0;
+                function _hCalc(){
+                    var vH=window.innerHeight;
+                    _hMaxT=Math.max(0,hTrack.scrollWidth-window.innerWidth+60);
+                    hSection.style.height=(vH+_hMaxT*1.85)+'px';
+                    _hScrollable=hSection.offsetHeight-vH;
+                    _hSecTop=hSection.offsetTop;
+                }
+                window.addEventListener('load',_hCalc);
+                window.addEventListener('resize',_hCalc);
                 var rafId=null;
                 window.addEventListener('scroll',function(){
+                    if(_hScrollable<=0) return;
                     if(rafId) cancelAnimationFrame(rafId);
                     rafId=requestAnimationFrame(function(){
-                        var rect=hSection.getBoundingClientRect();
-                        var sH=hSection.offsetHeight, vH=window.innerHeight;
-                        var scrollable=sH-vH;
-                        if(scrollable<=0) return;
-                        var prog=Math.max(0,Math.min(1,-rect.top/scrollable));
-                        var maxT=Math.max(0,hTrack.scrollWidth-window.innerWidth+60);
-                        hTrack.style.transform='translateX(-'+(prog*maxT)+'px)';
+                        var prog=Math.max(0,Math.min(1,(window.scrollY-_hSecTop)/_hScrollable));
+                        hTrack.style.transform='translate3d(-'+(prog*_hMaxT)+'px,0,0)';
                     });
                 },{passive:true});
             }
