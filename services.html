@@ -1007,6 +1007,56 @@
         @media(max-width:768px) { .pricing-teaser-grid { grid-template-columns:1fr; } .hero-stats-bar { gap:0; } .hero-stat-item { padding:.6rem .75rem; } .hero-stat-num { font-size:1.5rem; } .toast-viewport { bottom:5.5rem; left:1rem; } .proof-toast { min-width:230px; max-width:260px; } .cmd-palette { top:12%; width:calc(100vw - 2rem); } .cmd-trigger-hint { display:none; } .astra-chat-window { width:calc(100vw - 1.5rem); right:.75rem; bottom:5.5rem; height:72vh; } .process-steps { grid-template-columns:1fr; } .testimonial-cards { grid-template-columns:1fr; } }
         @media(max-width:480px) { .hero-stats-bar { flex-direction:column; } .hero-stat-item+.hero-stat-item::before { display:none; } .exit-form-row { flex-direction:column; } }
     </style>
+
+<style>
+/* Global Mobile Fixes Overrides */
+@media (max-width: 768px) {
+    .container { padding: 0 1.25rem !important; }
+    .section, .service-section, .stats-section, .cta-section { padding: 3rem 0 !important; }
+    
+    h1 { font-size: clamp(2.2rem, 8vw, 2.8rem) !important; line-height: 1.15 !important; }
+    h2 { font-size: clamp(1.8rem, 6vw, 2.2rem) !important; line-height: 1.2 !important; }
+    h3 { font-size: clamp(1.3rem, 5vw, 1.6rem) !important; }
+    p { font-size: 0.95rem !important; margin-bottom: 1rem !important; }
+    
+    .grid-2, .grid-3, .grid-4, .svc-layout { 
+        grid-template-columns: 1fr !important; 
+        gap: 2rem !important; 
+    }
+    
+    .hero, .services-hero { 
+        padding-top: 100px !important; 
+        min-height: auto !important;
+        padding-bottom: 3rem !important;
+    }
+    
+    .btn { width: 100% !important; padding: 1.1rem !important; font-size: 0.95rem !important; margin-bottom: 0.5rem; }
+    .hero-cta-row { display: flex; flex-direction: column; width: 100%; gap: 0.75rem; }
+    
+    .process-grid { grid-template-columns: 1fr !important; margin-top: 2rem !important; }
+    .process-grid::before { display: none !important; }
+    
+    .footer-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    .footer { padding: 4rem 0 2rem !important; }
+    
+    .svc-visual-card { min-height: 250px !important; margin-top: 1.5rem !important; }
+}
+
+/* Hide Quick Actions Graphic Globally */
+.cmd-trigger-hint { display: none !important; }
+
+/* Tighter Desktop Fits for Service Layouts */
+@media (min-width: 1025px) {
+    .service-section { padding: clamp(3rem, 5vh, 4rem) 0 !important; }
+    .svc-layout { gap: 3rem !important; }
+    .svc-visual-card { min-height: 400px !important; }
+    h2.svc-heading { font-size: clamp(2.25rem, 4vw, 3rem) !important; margin-bottom: 1rem !important; }
+    p.svc-desc { margin-bottom: 1.5rem !important; }
+    .svc-checks { margin-bottom: 1rem !important; }
+    .svc-check-item { margin-bottom: 0.75rem !important; }
+}
+</style>
+
 </head>
 <body>
 
@@ -1284,7 +1334,7 @@
 
                     <!-- RIGHT: Visual -->
                     <div class="reveal delay-200">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow"></div>
 
                             <!-- PageSpeed Gauge -->
@@ -1362,7 +1412,7 @@
                 <div class="svc-layout reverse">
                     <!-- LEFT: Visual -->
                     <div class="reveal">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow" style="background:radial-gradient(circle,rgba(139,92,246,.25),transparent 70%);top:-40px;left:-40px;"></div>
 
                             <div style="display:flex;gap:1.5rem;align-items:center;justify-content:center;flex-wrap:wrap;">
@@ -1518,7 +1568,7 @@
 
                     <!-- RIGHT: Visual -->
                     <div class="reveal delay-200">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow" style="background:radial-gradient(circle,rgba(103,232,249,.2),transparent 70%);"></div>
 
                             <!-- SaaS dashboard visual -->
@@ -1577,7 +1627,7 @@
                 <div class="svc-layout reverse">
                     <!-- LEFT: Visual -->
                     <div class="reveal">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow" style="background:radial-gradient(circle,rgba(16,185,129,.2),transparent 70%);top:-40px;left:-40px;"></div>
 
                             <!-- Google Maps style rank visual -->
@@ -1733,7 +1783,7 @@
 
                     <!-- RIGHT: Visual -->
                     <div class="reveal delay-200">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow" style="background:radial-gradient(circle,rgba(139,92,246,.25),transparent 70%);"></div>
 
                             <!-- Design system preview -->
@@ -1789,7 +1839,7 @@
                 <div class="svc-layout reverse">
                     <!-- LEFT: Visual -->
                     <div class="reveal">
-                        <div class="svc-visual-card holo-card">
+                        <div class="svc-visual-card holo-card tilt-card magnetic-spotlight">
                             <div class="svc-card-glow" style="background:radial-gradient(circle,rgba(245,158,11,.18),transparent 70%);top:-40px;left:-40px;"></div>
 
                             <!-- Ad performance visual -->
@@ -2415,6 +2465,29 @@
             });
         });
     </script>
+
+<script>
+    // 3D Tilt Logic for .tilt-card
+    document.querySelectorAll('.tilt-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg
+            const rotateY = ((x - centerX) / centerX) * 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            card.style.transition = 'none';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+    });
+</script>
 </body>
+
 
 </html>
