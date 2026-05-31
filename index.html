@@ -46,9 +46,10 @@
     
 
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <!-- html2pdf loaded on-demand for PageSpeed -->
     <style>
         .audit-step { transition: opacity 0.3s ease; }
         .wiz-btn { display:block; width:100%; text-align:left; padding:15px; margin-bottom:10px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#fff; border-radius:8px; cursor:pointer; font-weight:500; transition:all 0.2s; }
@@ -983,23 +984,66 @@
             }, 5000);
         },
         downloadPDF: function() {
-            var wrapper = document.getElementById('pdf-wrapper');
-            var el = document.getElementById('hidden-pdf-template');
-            wrapper.style.visibility = 'visible';
-            wrapper.style.zIndex = '999999';
-            wrapper.style.left = '-9999px';
-            var opt = {
-              margin:       0.4,
-              filename:     'Evolvix_Strategy_Audit.pdf',
-              image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true, logging: false, windowWidth: 900 },
-              jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(el).save().then(function(){
-                wrapper.style.visibility = 'hidden';
-                wrapper.style.zIndex = '-9999';
-                wrapper.style.left = '0';
-            });
+            var _this = this;
+            function _genPDF() {
+                var d = _this.answers;
+                var score = document.getElementById('pdf-score').innerText;
+                var analysis = document.getElementById('pdf-analysis').innerHTML;
+                var sol = document.getElementById('pdf-sol').innerText;
+                var roi = document.getElementById('pdf-roi').innerText;
+                var sColor = document.getElementById('pdf-score').style.color || '#ef4444';
+                var tmp = document.createElement('div');
+                tmp.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:999999;';
+                tmp.innerHTML = '<div style="width:850px;background:#fff;color:#0f172a;font-family:Helvetica,Arial,sans-serif;box-sizing:border-box;">'
+                  + '<div style="background:linear-gradient(135deg,#0f172a,#1e293b);padding:50px 50px 40px;position:relative;">'
+                  + '<div style="position:absolute;top:0;left:0;width:100%;height:6px;background:linear-gradient(90deg,#38bdf8,#8b5cf6);"></div>'
+                  + '<h1 style="margin:0 0 10px;font-size:42px;color:#fff;font-weight:900;letter-spacing:-1px;">Evolvix Technologies</h1>'
+                  + '<p style="margin:0;font-size:16px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:3px;">Enterprise Strategy &amp; Growth Audit</p>'
+                  + '</div>'
+                  + '<div style="padding:50px;">'
+                  + '<div style="display:flex;gap:20px;margin-bottom:50px;">'
+                  + '<div style="background:#f8fafc;padding:25px;border-radius:12px;border:1px solid #e2e8f0;flex:1;">'
+                  + '<p style="margin:0 0 5px;color:#64748b;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">Architecture Profile</p>'
+                  + '<h3 style="margin:0;font-size:24px;font-weight:800;color:#0f172a;">' + (d.btype||'Business') + '</h3></div>'
+                  + '<div style="background:#f8fafc;padding:25px;border-radius:12px;border:1px solid #e2e8f0;flex:1;text-align:center;">'
+                  + '<p style="margin:0 0 5px;color:#64748b;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;">System Health Score</p>'
+                  + '<h3 style="margin:0;font-size:32px;font-weight:900;color:' + sColor + ';">' + score + '</h3></div></div>'
+                  + '<div style="margin-bottom:40px;">'
+                  + '<h2 style="font-size:22px;color:#0f172a;font-weight:800;margin-bottom:20px;border-bottom:2px solid #f1f5f9;padding-bottom:10px;">Diagnostic Analysis</h2>'
+                  + '<p style="font-size:16px;line-height:1.8;color:#334155;margin:0;">' + analysis + '</p></div>'
+                  + '<div style="margin-bottom:50px;">'
+                  + '<h2 style="font-size:22px;color:#0f172a;font-weight:800;margin-bottom:20px;border-bottom:2px solid #f1f5f9;padding-bottom:10px;">Recommended Engineering Protocol</h2>'
+                  + '<div style="background:#f0f9ff;border-left:5px solid #38bdf8;padding:30px;border-radius:0 12px 12px 0;">'
+                  + '<h3 style="margin:0 0 15px;color:#0369a1;font-size:24px;font-weight:800;">' + sol + '</h3>'
+                  + '<p style="margin:0;color:#0c4a6e;font-size:18px;font-weight:700;">Projected Impact: <span style="background:#bae6fd;padding:5px 12px;border-radius:6px;">' + roi + '</span></p></div></div>'
+                  + '<div style="display:flex;justify-content:space-between;align-items:flex-end;padding-top:40px;border-top:2px solid #e2e8f0;">'
+                  + '<div>'
+                  + '<div style="font-family:cursive;font-size:38px;color:#0f172a;transform:rotate(-5deg);margin-bottom:12px;opacity:0.8;">Akash Jadon</div>'
+                  + '<p style="margin:0;font-weight:800;font-size:16px;color:#0f172a;">Akash Jadon</p>'
+                  + '<p style="margin:0;font-size:13px;color:#64748b;font-weight:600;">CEO, Evolvix Technologies</p></div>'
+                  + '<div style="text-align:right;background:#0f172a;padding:20px;border-radius:12px;">'
+                  + '<p style="margin:0 0 5px;font-weight:800;color:#38bdf8;font-size:16px;">evolvixtechnology@gmail.com</p>'
+                  + '<p style="margin:0 0 5px;font-size:15px;color:#f8fafc;font-weight:600;">+91 7668758238</p>'
+                  + '<p style="margin:0;font-size:13px;color:#94a3b8;">evolvix.in</p></div></div>'
+                  + '</div></div>';
+                document.body.appendChild(tmp);
+                var opt = {
+                  margin: 0.4,
+                  filename: 'Evolvix_Strategy_Audit.pdf',
+                  image: { type: 'jpeg', quality: 0.98 },
+                  html2canvas: { scale: 2, useCORS: true, logging: false, windowWidth: 900 },
+                  jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(tmp.firstChild).save().then(function(){
+                    document.body.removeChild(tmp);
+                });
+            }
+            if(typeof html2pdf === 'undefined') {
+                var s = document.createElement('script');
+                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                s.onload = _genPDF;
+                document.head.appendChild(s);
+            } else { _genPDF(); }
         }
     };
     </script>
@@ -2395,18 +2439,28 @@
                         </div>
                     `;
                     
-                    try {
-                        html2pdf().from(element).set({
-                            margin: 0,
-                            filename: 'Evolvix_Growth_Strategy_2026.pdf',
-                            image: { type: 'jpeg', quality: 1.0 },
-                            html2canvas: { scale: 2, useCORS: true, logging: false },
-                            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                        }).save();
-                    } catch(err) {
-                        console.error("PDF Gen Error", err);
-                        alert("PDF Generated. Check your downloads.");
+                    element.style.cssText = 'position:fixed;left:-9999px;top:0;z-index:999999;';
+                    document.body.appendChild(element);
+                    function _genPlaybook() {
+                        try {
+                            html2pdf().from(element).set({
+                                margin: 0,
+                                filename: 'Evolvix_Growth_Strategy_2026.pdf',
+                                image: { type: 'jpeg', quality: 1.0 },
+                                html2canvas: { scale: 2, useCORS: true, logging: false },
+                                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                            }).save().then(function(){ document.body.removeChild(element); });
+                        } catch(err) {
+                            console.error('PDF Gen Error', err);
+                            document.body.removeChild(element);
+                        }
                     }
+                    if(typeof html2pdf === 'undefined') {
+                        var s2 = document.createElement('script');
+                        s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+                        s2.onload = _genPlaybook;
+                        document.head.appendChild(s2);
+                    } else { _genPlaybook(); }
                 }, 4000);
             };
 
