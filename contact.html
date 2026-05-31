@@ -316,167 +316,226 @@
         </div>
     </header>
     <style>
-        /* CONTACT OMEGA LAYOUT */
-        body { background: #020617; overflow-x: hidden; padding-top: 80px; }
+        body { background: #020617; }
+        .contact-hero {
+            padding: 10rem 0 0rem;
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            background: radial-gradient(circle at center 30%, rgba(14,116,144,0.1) 0%, #020617 70%);
+        }
+        .contact-bg-grid {
+            position: absolute; inset: 0; pointer-events: none; z-index: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse at top, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at top, black 20%, transparent 70%);
+        }
 
-        .contact-omega-layout {
-            display: grid; grid-template-columns: 1fr 1fr;
-            min-height: calc(100vh - 80px);
+        .contact-wrapper {
+            width: 100%; max-width: 1400px; padding: 0 2rem; margin: 0 auto;
+            position: relative; z-index: 2;
+        }
+
+        .contact-layout {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
+            align-items: stretch; margin-bottom: 6rem;
+        }
+
+        /* LEFT SIDE - VISUAL & TEXT */
+        .contact-visual-panel {
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .contact-heading h1 {
+            font-family: 'Outfit'; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900;
+            line-height: 1; margin-bottom: 1.5rem; letter-spacing: -2px; color: #fff;
+        }
+        .contact-heading p {
+            font-size: 1.15rem; color: rgba(255,255,255,0.6); max-width: 480px; line-height: 1.6;
+        }
+        
+        .hologram-container {
+            margin-top: 4rem; position: relative; height: 350px;
+            border-radius: 24px; border: 1px solid rgba(103,232,249,0.15);
+            background: linear-gradient(135deg, rgba(14,116,144,0.1), rgba(2,6,23,0.8));
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 0 40px rgba(103,232,249,0.05);
+        }
+        .hologram-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+            animation: scanline 4s linear infinite;
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(350px); }
+        }
+        
+        .holo-globe { width: 250px; height: 250px; border-radius: 50%; border: 1px dashed rgba(103,232,249,0.3); position: relative; animation: spinGlobe 20s linear infinite; }
+        .holo-globe::before { content: ''; position: absolute; inset: -20px; border-radius: 50%; border: 1px solid rgba(139,92,246,0.2); animation: spinGlobe 15s linear infinite reverse; }
+        .holo-globe::after { content: ''; position: absolute; inset: -40px; border-radius: 50%; border: 1px dashed rgba(56,189,248,0.1); animation: spinGlobe 30s linear infinite; }
+        @keyframes spinGlobe { 100% { transform: rotate(360deg); } }
+
+        .holo-badge {
+            position: absolute; top: 1.5rem; left: 1.5rem; background: rgba(2,6,23,0.8);
+            border: 1px solid rgba(56,189,248,0.4); color: #38bdf8; font-family: 'JetBrains Mono';
+            font-size: 0.7rem; padding: 0.4rem 1rem; border-radius: 20px; backdrop-filter: blur(10px);
+        }
+
+        /* RIGHT SIDE - GOD MODE FORM */
+        .contact-form-panel {
+            background: rgba(15,23,42,0.4); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 32px; padding: 4rem;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.02);
             position: relative;
         }
-        @media(max-width: 900px) { .contact-omega-layout { grid-template-columns: 1fr; } }
+        /* Corner Brackets */
+        .contact-form-panel::before { content: ''; position: absolute; top: 2rem; right: 2rem; width: 30px; height: 30px; border-top: 2px solid rgba(103,232,249,0.5); border-right: 2px solid rgba(103,232,249,0.5); }
+        .contact-form-panel::after { content: ''; position: absolute; bottom: 2rem; left: 2rem; width: 30px; height: 30px; border-bottom: 2px solid rgba(103,232,249,0.5); border-left: 2px solid rgba(103,232,249,0.5); }
 
-        /* LEFT PANEL: 3D GRAPHIC & INFO */
-        .graphic-panel {
-            position: relative; padding: 4rem;
-            display: flex; flex-direction: column; justify-content: center;
-            border-right: 1px solid rgba(255,255,255,0.05);
-            background: radial-gradient(circle at left center, rgba(14, 116, 144, 0.15) 0%, transparent 70%);
-            overflow: hidden;
-        }
-        .graphic-panel h1 { font-family: 'Outfit'; font-size: clamp(3rem, 5vw, 5rem); line-height: 1; margin-bottom: 1.5rem; color: #fff; }
-        .text-gradient { background: linear-gradient(135deg, #fff, #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .graphic-panel p { color: rgba(255,255,255,0.6); font-size: 1.1rem; max-width: 400px; margin-bottom: 3rem; line-height: 1.6; }
+        .form-header { margin-bottom: 3rem; }
+        .form-header h3 { font-family: 'Outfit'; font-size: 2rem; color: #fff; margin-bottom: 0.5rem; }
+        .form-header p { color: rgba(255,255,255,0.5); font-size: 1rem; }
+
+        .input-group-x { position: relative; margin-bottom: 2rem; }
         
-        /* 3D LIVE GRAPHIC */
-        .live-3d-scene {
-            position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
-            width: 500px; height: 500px; pointer-events: none;
-            perspective: 1000px;
-        }
-        .planet-core {
-            position: absolute; inset: 100px;
-            background: radial-gradient(circle, rgba(14, 116, 144, 0.4), transparent);
-            border-radius: 50%; filter: blur(20px);
-            animation: pulse-core 4s infinite alternate;
-        }
-        .ring {
-            position: absolute; inset: 50px;
-            border: 1px solid rgba(103,232,249,0.2);
-            border-radius: 50%;
-            transform-style: preserve-3d;
-        }
-        .ring.r1 { animation: spin 20s linear infinite; }
-        .ring.r2 { animation: spin 15s linear infinite reverse; transform: rotateX(60deg); border-color: rgba(139,92,246,0.3); }
-        .ring.r3 { animation: spin 25s linear infinite; transform: rotateY(60deg); }
-        @keyframes spin { 100% { transform: rotateX(360deg) rotateY(360deg); } }
-        @keyframes pulse-core { 100% { opacity: 0.5; transform: scale(1.1); } }
-
-        .contact-info-cards { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 1rem; }
-        .holo-card {
-            display: flex; align-items: center; gap: 1rem; padding: 1.5rem;
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 16px; text-decoration: none; transition: all 0.3s;
-            max-width: 350px; backdrop-filter: blur(10px);
-        }
-        .holo-card:hover { background: rgba(103,232,249,0.1); border-color: rgba(103,232,249,0.3); transform: translateX(10px); }
-        .holo-card div:last-child { display: flex; flex-direction: column; }
-        .holo-card .c-label { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: rgba(255,255,255,0.5); }
-        .holo-card .c-value { font-weight: 700; color: #fff; font-size: 1rem; }
-
-        /* RIGHT PANEL: 3D FORM */
-        .form-panel {
-            padding: 4rem; display: flex; align-items: center; justify-content: center;
-            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
-        }
-        .premium-3d-form {
-            width: 100%; max-width: 500px;
-            background: rgba(10, 15, 30, 0.8);
-            backdrop-filter: blur(24px);
-            border-radius: 24px;
-            padding: 3.5rem;
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8), inset 0 2px 2px rgba(255,255,255,0.1);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-        }
-        .premium-3d-form:hover { transform: perspective(1000px) rotateY(0deg) translateY(-10px); }
-        .premium-3d-form h3 { font-family: 'Outfit'; font-size: 2rem; margin-bottom: 2rem; color: #fff; }
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         
-        .floating-input-group { position: relative; margin-bottom: 1.5rem; }
-        .floating-input {
-            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px; padding: 1.25rem 1rem 0.5rem; color: #fff; outline: none; transition: 0.3s;
-            font-family: 'JetBrains Mono', sans-serif; font-size: 0.95rem;
+        .input-v2 {
+            width: 100%; background: rgba(2,6,23,0.5); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 1.5rem 1.25rem 0.5rem; color: #fff; font-size: 1.05rem;
+            outline: none; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .floating-input:focus { border-color: #67e8f9; box-shadow: 0 0 15px rgba(103,232,249,0.2); background: rgba(103,232,249,0.05); }
-        .floating-label {
-            position: absolute; left: 1rem; top: 1rem; color: rgba(255,255,255,0.4);
-            pointer-events: none; transition: 0.3s; font-size: 1rem;
-        }
-        .floating-input:focus ~ .floating-label, .floating-input:not(:placeholder-shown) ~ .floating-label {
-            top: 0.3rem; font-size: 0.7rem; color: #67e8f9; font-weight: 700;
+        textarea.input-v2 { resize: none; min-height: 140px; padding-top: 1.8rem; }
+        
+        .label-v2 {
+            position: absolute; left: 1.25rem; top: 1.2rem; color: rgba(255,255,255,0.4);
+            font-size: 1.05rem; pointer-events: none; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: 'Inter', sans-serif;
         }
 
-        .submit-btn-3d {
-            width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #0e7490, #67e8f9);
-            border: none; border-radius: 12px; color: #020617; font-weight: 800; font-size: 1rem;
-            cursor: pointer; position: relative; overflow: hidden;
-            box-shadow: 0 10px 20px rgba(103,232,249,0.3), inset 0 -3px 0 rgba(0,0,0,0.2);
-            transition: all 0.3s; margin-top: 1rem; font-family: 'Outfit', sans-serif;
+        .input-v2:focus, .input-v2:not(:placeholder-shown) {
+            border-color: #38bdf8; background: rgba(14,116,144,0.1);
+            box-shadow: 0 0 0 4px rgba(56,189,248,0.1);
         }
-        .submit-btn-3d:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(103,232,249,0.5), inset 0 -3px 0 rgba(0,0,0,0.2); }
-        .submit-btn-3d:active { transform: translateY(0); box-shadow: inset 0 3px 0 rgba(0,0,0,0.2); }
+        .input-v2:focus + .label-v2, .input-v2:not(:placeholder-shown) + .label-v2 {
+            top: 0.4rem; font-size: 0.75rem; color: #67e8f9; font-weight: 700; letter-spacing: 1px;
+        }
+
+        .submit-btn {
+            width: 100%; background: linear-gradient(135deg, #0e7490, #67e8f9);
+            color: #020617; border: none; padding: 1.2rem; border-radius: 16px;
+            font-family: 'Outfit'; font-size: 1.2rem; font-weight: 800; cursor: pointer;
+            transition: 0.3s; position: relative; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(103,232,249,0.3);
+        }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(103,232,249,0.5); color: #fff; background: linear-gradient(135deg, #0891b2, #38bdf8); }
+        
+        @media (max-width: 1024px) {
+            .contact-layout { grid-template-columns: 1fr; gap: 4rem; }
+            .hologram-container { height: 250px; }
+            .contact-form-panel { padding: 2.5rem; }
+            .grid-2-col { grid-template-columns: 1fr; gap: 0; }
+            .contact-heading h1 { font-size: clamp(3rem, 10vw, 4rem); }
+        }
     </style>
 
     <main>
-        <div class="contact-omega-layout">
-            <div class="graphic-panel">
-                <div class="live-3d-scene">
-                    <div class="planet-core"></div>
-                    <div class="ring r1"></div>
-                    <div class="ring r2"></div>
-                    <div class="ring r3"></div>
-                </div>
-                <h1>Let's Build.<br><span class="text-gradient">Together.</span></h1>
-                <p>We partner with ambitious brands to build premium digital products. Reach out to schedule a consultation with our lead engineers.</p>
-                
-                <div class="contact-info-cards">
-                    <a href="tel:+917668758238" class="holo-card">
-                        <span style="font-size:1.5rem;">📞</span>
-                        <div><span class="c-label">DIRECT LINE</span><span class="c-value">+91 7668758238</span></div>
-                    </a>
-                    <a href="mailto:evolvixtechnology@gmail.com" class="holo-card">
-                        <span style="font-size:1.5rem;">✉️</span>
-                        <div><span class="c-label">EMAIL</span><span class="c-value">evolvixtechnology@gmail.com</span></div>
-                    </a>
-                </div>
-            </div>
+        <section class="contact-hero">
+            <div class="contact-bg-grid"></div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-layout">
+                    
+                    <!-- LEFT VISUAL -->
+                    <div class="contact-visual-panel reveal">
+                        <div class="contact-heading">
+                            <div style="font-family: 'JetBrains Mono'; color: #67e8f9; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 1.5rem; font-weight: 700;">// SECURE UPLINK //</div>
+                            <h1>Initiate <br><span class="text-gradient">Project.</span></h1>
+                            <p>You're one step away from building a dominant digital asset. Fill out the terminal, and our engineering team will evaluate your architecture needs.</p>
+                        </div>
+                        
+                        <div class="hologram-container reveal delay-200">
+                            <div class="holo-badge">UPLINK_READY</div>
+                            <div class="holo-globe"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- RIGHT FORM -->
+                    <div class="contact-form-panel reveal delay-100">
+                        <div class="form-header">
+                            <h3>Project Inception Terminal</h3>
+                            <p>Enter your credentials to begin.</p>
+                        </div>
 
-            <div class="form-panel">
-                <div class="premium-3d-form">
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(this.submitted) { document.getElementById('submit-btn').textContent='✓ REQUEST SENT'; document.getElementById('submit-btn').style.background='#10b981'; document.getElementById('submit-btn').style.color='#fff'; }"></iframe>
-                    <form action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" onsubmit="document.getElementById('hidden_iframe').submitted=true; document.getElementById('submit-btn').textContent='SENDING...';">
-                        <input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955">
-                        <input type="hidden" name="_subject" value="New Contact Form Submission">
-                        
-                        <h3>Start Your Project</h3>
-                        
-                        <div class="floating-input-group">
-                            <input type="text" name="name" class="floating-input" placeholder=" " required>
-                            <label class="floating-label">Full Name</label>
-                        </div>
-                        
-                        <div class="floating-input-group">
-                            <input type="email" name="email" class="floating-input" placeholder=" " required>
-                            <label class="floating-label">Email Address</label>
-                        </div>
-                        
-                        <div class="floating-input-group">
-                            <input type="text" name="company" class="floating-input" placeholder=" ">
-                            <label class="floating-label">Company / Brand (Optional)</label>
-                        </div>
-                        
-                        <div class="floating-input-group">
-                            <textarea name="message" class="floating-input" rows="4" placeholder=" " required></textarea>
-                            <label class="floating-label">Project Details</label>
-                        </div>
-                        
-                        <button type="submit" id="submit-btn" class="submit-btn-3d">SEND REQUEST</button>
-                    </form>
+                        <!-- We use web3forms to silently process the backend via hidden iframe -->
+                        <form action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" id="godContactForm" onsubmit="handleGodSubmit(event)">
+                            <input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955">
+                            <input type="hidden" name="subject" value="New Evolvix Project Lead">
+                            <input type="hidden" name="from_name" value="Evolvix God Mode Terminal">
+
+                            <div class="grid-2-col">
+                                <div class="input-group-x">
+                                    <input type="text" name="Name" id="godName" class="input-v2" placeholder=" " required>
+                                    <label for="godName" class="label-v2">Full Name</label>
+                                </div>
+                                <div class="input-group-x">
+                                    <input type="email" name="Email" id="godEmail" class="input-v2" placeholder=" " required>
+                                    <label for="godEmail" class="label-v2">Work Email</label>
+                                </div>
+                            </div>
+                            
+                            <!-- Phone Number (Required by User) & Company -->
+                            <div class="grid-2-col">
+                                <div class="input-group-x">
+                                    <input type="tel" name="Phone" id="godPhone" class="input-v2" placeholder=" " required>
+                                    <label for="godPhone" class="label-v2">Phone Number</label>
+                                </div>
+                                <div class="input-group-x">
+                                    <input type="text" name="Company" id="godCompany" class="input-v2" placeholder=" ">
+                                    <label for="godCompany" class="label-v2">Company / Brand</label>
+                                </div>
+                            </div>
+
+                            <div class="input-group-x">
+                                <textarea name="Message" id="godMessage" class="input-v2" placeholder=" " required></textarea>
+                                <label for="godMessage" class="label-v2">Project Details & Budget Range</label>
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="godSubmitBtn">Initialize Uplink ⚡</button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
-        </div>
+            
+            <!-- Hidden iframe to prevent redirect -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            
+        </section>
+
+        <script>
+            function handleGodSubmit(e) {
+                const btn = document.getElementById('godSubmitBtn');
+                btn.innerHTML = 'Establishing Secure Connection...';
+                btn.style.pointerEvents = 'none';
+                btn.style.opacity = '0.7';
+                
+                // Reset form and show success state after short delay
+                setTimeout(() => {
+                    const panel = document.querySelector('.contact-form-panel');
+                    panel.innerHTML = `
+                        <div style="text-align:center; padding: 4rem 2rem;">
+                            <div style="width: 80px; height: 80px; background: rgba(16,185,129,0.1); border: 2px solid #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #10b981; margin: 0 auto 2rem; box-shadow: 0 0 30px rgba(16,185,129,0.3);">✓</div>
+                            <h3 style="font-family: 'Outfit'; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">Uplink Established.</h3>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem;">Your transmission has been securely received by Evolvix Core Intelligence. An architect will respond shortly.</p>
+                        </div>
+                    `;
+                }, 1500);
+            }
+        </script>
     </main>
 <footer class="footer">
         <div class="footer-graphic" aria-hidden="true">
