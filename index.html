@@ -1032,34 +1032,25 @@
             document.getElementById('qstep-4').style.display = 'none';
             document.getElementById('qstep-5').style.display = 'block';
             
-            // 1. Submit via hidden FormSubmit iframe
+            // 1. Submit via FormSubmit AJAX
             try {
-                var form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
-                form.target = 'hidden_iframe';
-                
-                var data = {
-                    _subject: 'Enterprise Audit Lead: ' + this.answers.name,
-                    _captcha: 'false',
-                    Name: this.answers.name,
-                    Email: this.answers.email,
-                    Phone: this.answers.phone,
-                    BusinessType: this.answers.btype,
-                    Revenue: this.answers.rev,
-                    Bottleneck: this.answers.prob,
-                    TargetGoal: this.answers.goal
-                };
-                
-                for (var k in data) {
-                    var inp = document.createElement('input');
-                    inp.type = 'hidden';
-                    inp.name = k;
-                    inp.value = data[k];
-                    form.appendChild(inp);
-                }
-                document.body.appendChild(form);
-                form.submit();
+                fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _subject: 'Enterprise Audit Lead: ' + this.answers.name,
+                        Name: this.answers.name,
+                        Email: this.answers.email,
+                        Phone: this.answers.phone,
+                        BusinessType: this.answers.btype,
+                        Revenue: this.answers.rev,
+                        Bottleneck: this.answers.prob,
+                        TargetGoal: this.answers.goal
+                    })
+                }).catch(e => console.log(e));
             } catch(e) {}
             
             // 2. Dynamic Health Score Algorithm
@@ -1996,21 +1987,25 @@
                 btn.textContent = 'Sending...';
                 btn.disabled = true;
 
-                var formData = new FormData(exitForm);
+                var email = document.getElementById('exitEmailInput') ? document.getElementById('exitEmailInput').value : '';
+                var phone = document.getElementById('exitMobileInput') ? document.getElementById('exitMobileInput').value : '';
+                var website = document.getElementById('exitWebsiteInput') ? document.getElementById('exitWebsiteInput').value : '';
                 
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
-        form.target = 'hidden_iframe';
-        form.innerHTML = '<input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
-        document.body.appendChild(form);
-        form.submit();
-        
-        setTimeout(() => { 
-            btn.textContent = 'Sent! Check Email.';
-            setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2000);
-        }, 1000);
-
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                form.target = 'hidden_iframe';
+                form.innerHTML = '<input type="hidden" name="_subject" value="Free Audit Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'"><input type="hidden" name="Phone" value="'+phone+'"><input type="hidden" name="Website" value="'+website+'">';
+                document.body.appendChild(form);
+                form.submit();
+                
+                // Try to download PDF immediately
+                try { if(typeof _buildPlaybookPDF === 'function') _buildPlaybookPDF(); } catch(err){}
+                
+                setTimeout(() => { 
+                    btn.textContent = 'Audit Scheduled! PDF Downloading...';
+                    setTimeout(() => { closeModal(); }, 3000);
+                }, 1000);
             });
         }
     })();
@@ -2742,7 +2737,6 @@
         btn.textContent = 'Sending...';
         btn.style.pointerEvents = 'none';
         
-        
         var form = document.createElement('form');
         form.method = 'POST';
         form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
@@ -2751,11 +2745,13 @@
         document.body.appendChild(form);
         form.submit();
         
+        // Try to generate PDF immediately
+        try { if(typeof _buildPlaybookPDF === 'function') _buildPlaybookPDF(); } catch(err){}
+        
         setTimeout(() => { 
-            btn.textContent = 'Sent! Check Email.';
-            setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2000);
+            btn.textContent = 'Sent! Downloading PDF...';
+            setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2500);
         }, 1000);
-
     }
     </script>
     

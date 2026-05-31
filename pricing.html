@@ -396,13 +396,21 @@
                 // Send to FormSubmit
                 
                 try {
-                    var form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
-                    form.target = 'hidden_iframe';
-                    form.innerHTML = '<input type="hidden" name="_subject" value="New Pricing Estimate: ' + name + '"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Name" value="'+name+'"><input type="hidden" name="Email" value="'+email+'"><input type="hidden" name="Service" value="'+this.answers.service+'"><input type="hidden" name="Scale" value="'+this.answers.scale+'"><input type="hidden" name="Timeline" value="'+this.answers.time+'">';
-                    document.body.appendChild(form);
-                    form.submit();
+                    fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            _subject: 'New Pricing Estimate: ' + name,
+                            Name: name,
+                            Email: email,
+                            Service: this.answers.service,
+                            Scale: this.answers.scale,
+                            Timeline: this.answers.time
+                        })
+                    }).catch(e => console.log(e));
                 } catch(e) {}
 
         
