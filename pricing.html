@@ -18,17 +18,6 @@
         /* --- GOD MODE: INFINITE LEDGER STYLES --- */
         body { background: #000; overflow-x: hidden; padding-top: 40px; }
 
-        /* FEATURE 1: SYSTEM HUD */
-        .system-hud {
-            position: fixed; top: 0; left: 0; width: 100%; height: 40px;
-            background: rgba(5, 10, 20, 0.9); border-bottom: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px); z-index: 9999;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--c-brand-light);
-        }
-        .blink-red { animation: blink-red 1s infinite; width: 6px; height: 6px; background: var(--c-success); border-radius: 50%; }
-        @keyframes blink-red { 50% { opacity: 0; } }
-
         /* FEATURE 2: QUANTUM SWITCH */
         .quantum-container { display: flex; justify-content: center; margin: 4rem 0; position: relative; z-index: 10; }
         .quantum-switch {
@@ -100,16 +89,6 @@
         .velocity-fill.wix { background: var(--c-danger); width: 20%; } /* Simulate slow */
         .velocity-fill.zyrova { background: var(--c-success); width: 98%; box-shadow: 0 0 20px var(--c-success); }
 
-        /* FEATURE 7: LIVE FEED */
-        .live-feed {
-            position: fixed; bottom: 2rem; right: 2rem; width: 300px;
-            background: rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.1);
-            padding: 1rem; font-family: 'JetBrains Mono'; font-size: 0.7rem;
-            color: var(--c-success); z-index: 100; pointer-events: none;
-        }
-        .feed-item { margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
         /* FEATURE 8: THE KILL SWITCH */
         .kill-switch-container {
             display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 2rem;
@@ -131,8 +110,8 @@
         #singularity-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; pointer-events: none; }
 
         @media (max-width: 768px) {
-            .system-hud { display: none; }
-            .live-feed { display: none; }
+            
+            
             .mega-price { font-size: 3.5rem; }
             .prism-card { transform: none !important; margin-bottom: 2rem; }
             .switch-opt { padding: 1rem; font-size: 0.8rem; }
@@ -212,28 +191,9 @@
 
     <canvas id="singularity-canvas"></canvas>
 
-    <div class="system-hud">
-        <div class="hud-metric">
-            <div class="blink-red"></div>
-            <span style="margin-left: 8px;">SYSTEM: ONLINE</span>
-        </div>
-        <div class="hud-metric">
-            <span style="color: var(--text-tertiary);">CLIENTS:</span>
-            <span class="hud-value" id="hud-clients">50+</span>
-        </div>
-        <div class="hud-metric">
-            <span style="color: var(--text-tertiary);">UPTIME:</span>
-            <span class="hud-value">99.99%</span>
-        </div>
-        <div class="hud-metric">
-            <span style="color: var(--text-tertiary);">REGION:</span>
-            <span class="hud-value">GLOBAL</span>
-        </div>
-    </div>
+    
 
-    <div class="live-feed" id="live-feed">
-        <div style="border-bottom: 1px solid var(--c-success); margin-bottom: 0.5rem; padding-bottom: 0.2rem;">// ACQUISITION LOG</div>
-        </div>
+    
 
     <header class="header" id="siteHeader">
         <div class="container nav-container">
