@@ -210,21 +210,7 @@
         </defs>
     </svg>
 
-    <!-- ================================================================
-         ★ ENTERPRISE FEATURE A: ANIMATED PRELOADER
-         ================================================================ -->
-    <div id="preloader" role="status" aria-label="Loading Evolvix Technologies">
-        <div class="preloader-rings">
-            <div class="preloader-ring"></div>
-            <div class="preloader-ring"></div>
-            <div class="preloader-ring"></div>
-        </div>
-        <div class="preloader-logo-text">Evolvix</div>
-        <div class="preloader-bar-track">
-            <div class="preloader-bar-fill" id="preloaderBar"></div>
-        </div>
-        <div class="preloader-pct" id="preloaderPct">0%</div>
-    </div>
+    <!-- Preloader removed for maximum PageSpeed (FCP/LCP optimization) -->
 
     <!-- ================================================================
          ★ ENTERPRISE FEATURE B: LIVE SOCIAL PROOF TOASTS
@@ -310,7 +296,7 @@
     <header class="header" id="siteHeader">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="evolvix-logo" width="120" height="52" fetchpriority="high"
+                <img src="assets/evolvix.webp" alt="Evolvix Technologies" class="evolvix-logo" width="160" height="69" fetchpriority="high" style="height: 69px !important; width: auto;"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
                 <svg class="logo-fallback-svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -336,6 +322,20 @@
     </header>
 
     <main>
+        <style>
+            .kinetic-word {
+                background: linear-gradient(135deg, #fcd34d 20%, #f59e0b 100%) !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                color: transparent !important;
+                opacity: 0.9 !important;
+            }
+            .astra-toggle-btn { width: 72px !important; height: 72px !important; }
+            .astra-toggle-btn img { width: 44px !important; height: 44px !important; }
+            .astra-avatar-ring { width: 48px !important; height: 48px !important; }
+            .astra-avatar-ring img { width: 40px !important; height: 40px !important; }
+        </style>
 
         <!-- ================================================================
              HERO
@@ -392,9 +392,9 @@
                 <div class="hero-visual reveal delay-200">
                     <style>
                         .hero-metrics-engine { position: relative; width: 100%; max-width: 500px; height: 500px; margin: 0 auto; display: flex; align-items: center; justify-content: center; contain: layout style; }
-                        .hme-center { position: absolute; width: 180px; height: 180px; background: radial-gradient(circle, rgba(14,116,144,0.3) 0%, rgba(2,6,23,0.9) 100%); border: 1px solid rgba(103,232,249,0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(14,116,144,0.3); z-index: 2; animation: hme-float 6s ease-in-out infinite; will-change: transform; }
-                        .hme-center-val { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; background: linear-gradient(135deg, #fff, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; margin-bottom: 0.2rem; }
-                        .hme-center-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-secondary); font-weight: 700; }
+                        .hme-center { position: absolute; width: 180px; height: 180px; background: radial-gradient(circle, #fcd34d 0%, #f59e0b 50%, rgba(245,158,11,0.2) 100%); border: 1px solid rgba(245,158,11,0.3); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 60px rgba(245,158,11,0.3), inset 0 0 30px rgba(255,255,255,0.4); z-index: 2; animation: hme-float 6s ease-in-out infinite; will-change: transform; }
+                        .hme-center-val { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 0.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+                        .hme-center-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.9); font-weight: 700; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
                         
                         .hme-card { position: absolute; background: rgba(15,23,42,0.95); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 3; transition: transform 0.3s, border-color 0.3s; will-change: transform; }
                         .hme-card:hover { border-color: rgba(103,232,249,0.4); }
@@ -406,13 +406,19 @@
                         .hme-stat { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; line-height: 1; margin-bottom: 0.4rem; color: #fff; }
                         .hme-lbl { font-size: 0.75rem; color: var(--text-tertiary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
                         
-                        .hme-orbit { position: absolute; width: 340px; height: 340px; border: 1px dashed rgba(103,232,249,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 20s linear infinite; will-change: transform; }
-                        .hme-orbit-2 { position: absolute; width: 480px; height: 480px; border: 1px dashed rgba(139,92,246,0.2); border-radius: 50%; z-index: 1; animation: spin-orb 30s linear infinite reverse; will-change: transform; }
+                        .hme-orbit { position: absolute; width: 340px; height: 340px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 50%; z-index: 1; animation: spin-orb 20s linear infinite; will-change: transform; }
+                        .hme-orbit-2 { position: absolute; width: 480px; height: 480px; border: 1px dashed rgba(255,255,255,0.1); border-radius: 50%; z-index: 1; animation: spin-orb 30s linear infinite reverse; will-change: transform; }
+                        
+                        .hme-planet { position: absolute; border-radius: 50%; }
+                        .hme-p1 { width: 14px; height: 14px; background: linear-gradient(135deg, #67e8f9, #0e7490); top: -7px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 12px rgba(103,232,249,0.6); }
+                        .hme-p2 { width: 22px; height: 22px; background: linear-gradient(135deg, #c084fc, #8b5cf6); bottom: -11px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 16px rgba(139,92,246,0.6); }
+                        .hme-p3 { width: 10px; height: 10px; background: linear-gradient(135deg, #10b981, #047857); left: -5px; top: 50%; transform: translateY(-50%); box-shadow: 0 0 10px rgba(16,185,129,0.6); }
+                        .hme-p4 { width: 18px; height: 18px; background: linear-gradient(135deg, #f8fafc, #94a3b8); right: -9px; top: 50%; transform: translateY(-50%); box-shadow: 0 0 14px rgba(255,255,255,0.5); }
                         
                         @keyframes spin-orb { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
                         @keyframes hme-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
                         
-                        .hme-pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(103,232,249,0.4); border-radius: 50%; animation: hme-pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; pointer-events: none; will-change: transform, opacity; }
+                        .hme-pulse-ring { position: absolute; width: 100%; height: 100%; border: 2px solid rgba(245,158,11,0.5); border-radius: 50%; animation: hme-pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; pointer-events: none; will-change: transform, opacity; }
                         @keyframes hme-pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
 
                         @media (max-width: 768px) {
@@ -423,8 +429,14 @@
                         }
                     </style>
                     <div class="hero-metrics-engine">
-                        <div class="hme-orbit"></div>
-                        <div class="hme-orbit-2"></div>
+                        <div class="hme-orbit">
+                            <div class="hme-planet hme-p1"></div>
+                            <div class="hme-planet hme-p3"></div>
+                        </div>
+                        <div class="hme-orbit-2">
+                            <div class="hme-planet hme-p2"></div>
+                            <div class="hme-planet hme-p4"></div>
+                        </div>
                         
                         <div class="hme-center">
                             <div class="hme-pulse-ring"></div>
