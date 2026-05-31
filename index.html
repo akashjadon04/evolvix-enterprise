@@ -39,15 +39,12 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800;900&display=swap">
     <!-- Lenis removed for PageSpeed -->
     
 
     
-    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <link rel="stylesheet" href="style.css">
 
     <!-- html2pdf loaded on-demand for PageSpeed -->
     <style>
@@ -1270,11 +1267,13 @@
         'use strict';
 
         /* ─── Native Scroll Progress ─── */
+        var _scrollBar = document.getElementById('scrollProgress');
+        var _scrollMax = document.body.scrollHeight - window.innerHeight;
+        window.addEventListener('load', function(){ _scrollMax = document.body.scrollHeight - window.innerHeight; });
+        window.addEventListener('resize', function(){ _scrollMax = document.body.scrollHeight - window.innerHeight; });
         window.addEventListener('scroll', function(){
-            var bar = document.getElementById('scrollProgress');
-            if(!bar) return;
-            var max = document.body.scrollHeight - window.innerHeight;
-            if(max>0) bar.style.width=((window.scrollY/max)*100)+'%';
+            if(!_scrollBar || _scrollMax<=0) return;
+            _scrollBar.style.width=((window.scrollY/_scrollMax)*100)+'%';
         },{passive:true});
 
         /* ─── Header scroll state ─── */
@@ -1286,13 +1285,14 @@
 
         /* ─── MacBook Apple-style scroll animation ─── */
         var macbookDevice = document.getElementById('macbookDevice');
+        var _heroEl = document.getElementById('hero');
+        var _cachedHeroH = _heroEl ? _heroEl.offsetHeight : 0;
+        window.addEventListener('load', function(){ if(_heroEl) _cachedHeroH = _heroEl.offsetHeight; });
+        window.addEventListener('resize', function(){ if(_heroEl) _cachedHeroH = _heroEl.offsetHeight; });
         function animateMacBook(){
-            if(!macbookDevice) return;
-            var heroEl = document.getElementById('hero');
-            if(!heroEl) return;
+            if(!macbookDevice || !_cachedHeroH) return;
             var scrollY = window.scrollY;
-            var heroH = heroEl.offsetHeight;
-            var progress = Math.min(1, scrollY / (heroH * 0.5));
+            var progress = Math.min(1, scrollY / (_cachedHeroH * 0.5));
             var eased = 1 - Math.pow(1 - progress, 3);
             /* Starts upright (0deg), tilts back to 15deg on scroll */
             var rotX = eased * 15;
@@ -1333,8 +1333,10 @@
             }, 2400);
         })();
 
-        /* ─── Word-by-Word Reveal ─── */
+        /* ─── Word-by-Word Reveal (deferred to avoid long task) ─── */
         (function initWordReveal(){
+            var _ric = window.requestIdleCallback || function(cb){ setTimeout(cb, 1); };
+            _ric(function(){
             document.querySelectorAll('.word-reveal').forEach(function(el){
                 var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
                 var nodes = []; var n;
@@ -1366,6 +1368,7 @@
                 });
             },{threshold:0.15});
             document.querySelectorAll('.word-reveal').forEach(function(el){ obs.observe(el); });
+            }); /* end requestIdleCallback */
 
             /* FALLBACK: if words still invisible after 2s, force-show them */
             setTimeout(function(){
@@ -1382,7 +1385,7 @@
             window.addEventListener('mousemove',function(e){tX=e.clientX;tY=e.clientY;},{passive:true});
             (function tick(){
                 bX+=(tX-bX)*0.02; bY+=(tY-bY)*0.02;
-                blob.style.transform='translate('+(bX-350)+'px,'+(bY-350)+'px)';
+                blob.style.transform='translate3d('+(bX-350)+'px,'+(bY-350)+'px,0)';
                 requestAnimationFrame(tick);
             })();
         }
@@ -1458,13 +1461,16 @@
 
         /* ─── Tilt Cards ─── */
         document.querySelectorAll('.tilt-card').forEach(function(c){
+            var _tr=null;
+            c.addEventListener('mouseenter',function(){ _tr=c.getBoundingClientRect(); });
             c.addEventListener('mousemove',function(e){
-                var r=c.getBoundingClientRect();
+                if(!_tr) _tr=c.getBoundingClientRect();
+                var r=_tr;
                 var rx=((e.clientY-r.top-r.height/2)/r.height)*-7;
                 var ry=((e.clientX-r.left-r.width/2)/r.width)*7;
                 c.style.transform='perspective(1000px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';
             });
-            c.addEventListener('mouseleave',function(){ c.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale(1)'; });
+            c.addEventListener('mouseleave',function(){ c.style.transform='perspective(1000px) rotateX(0) rotateY(0) scale(1)'; _tr=null; });
         });
 
         /* ─── Audit Form Validation & Confetti ─── */
