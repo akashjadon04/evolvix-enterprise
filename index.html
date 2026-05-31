@@ -92,7 +92,7 @@
         .fab-whatsapp { position:fixed; bottom:30px; left:30px; background:#25D366; color:#fff; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(37,211,102,0.4); z-index:9999; cursor:pointer; transition:transform 0.3s; text-decoration:none; }
         .fab-whatsapp:hover { transform:scale(1.1); }
         .fab-whatsapp svg { width:32px; height:32px; fill:currentColor; }
-        .playbook-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center; }
+        @media(max-width: 768px) { .fab-whatsapp { width: 54px !important; height: 54px !important; bottom: 1.25rem !important; left: 1.25rem !important; } .fab-whatsapp svg { width: 28px !important; height: 28px !important; } } .playbook-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:10000; align-items:center; justify-content:center; }
     </style>
 
     <style>
@@ -339,7 +339,7 @@
             <div class="container grid-2">
 
                 <!-- LEFT: Content -->
-                <div class="hero-content reveal">
+                <div class="hero-content" style="animation: fadeInUp 0.8s ease forwards;">
                     <!-- Hero badges removed per user request -->
 
                     <h1>
@@ -1032,25 +1032,33 @@
             document.getElementById('qstep-4').style.display = 'none';
             document.getElementById('qstep-5').style.display = 'block';
             
-            // 1. Submit via FormSubmit AJAX
+            // 1. Submit via FormSubmit natively to ensure activation
             try {
-                fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _subject: 'Enterprise Audit Lead: ' + this.answers.name,
-                        Name: this.answers.name,
-                        Email: this.answers.email,
-                        Phone: this.answers.phone,
-                        BusinessType: this.answers.btype,
-                        Revenue: this.answers.rev,
-                        Bottleneck: this.answers.prob,
-                        TargetGoal: this.answers.goal
-                    })
-                }).catch(e => console.log(e));
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                
+                var data = {
+                    _subject: 'Enterprise Audit Lead: ' + this.answers.name,
+                    _captcha: 'false',
+                    Name: this.answers.name,
+                    Email: this.answers.email,
+                    Phone: this.answers.phone,
+                    BusinessType: this.answers.btype,
+                    Revenue: this.answers.rev,
+                    Bottleneck: this.answers.prob,
+                    TargetGoal: this.answers.goal
+                };
+                
+                for (var k in data) {
+                    var inp = document.createElement('input');
+                    inp.type = 'hidden';
+                    inp.name = k;
+                    inp.value = data[k];
+                    form.appendChild(inp);
+                }
+                document.body.appendChild(form);
+                form.submit();
             } catch(e) {}
             
             // 2. Dynamic Health Score Algorithm
@@ -2760,3 +2768,4 @@
     
 </html>
 <!-- Deployment Trigger --> 
+

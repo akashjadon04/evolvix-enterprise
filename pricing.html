@@ -396,21 +396,29 @@
                 // Send to FormSubmit
                 
                 try {
-                    fetch('https://formsubmit.co/ajax/evolvixtechnology@gmail.com', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            _subject: 'New Pricing Estimate: ' + name,
-                            Name: name,
-                            Email: email,
-                            Service: this.answers.service,
-                            Scale: this.answers.scale,
-                            Timeline: this.answers.time
-                        })
-                    }).catch(e => console.log(e));
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'https://formsubmit.co/evolvixtechnology@gmail.com';
+                    
+                    var data = {
+                        _subject: 'New Pricing Estimate: ' + name,
+                        _captcha: 'false',
+                        Name: name,
+                        Email: email,
+                        Service: this.answers.service,
+                        Scale: this.answers.scale,
+                        Timeline: this.answers.time
+                    };
+                    
+                    for (var k in data) {
+                        var inp = document.createElement('input');
+                        inp.type = 'hidden';
+                        inp.name = k;
+                        inp.value = data[k];
+                        form.appendChild(inp);
+                    }
+                    document.body.appendChild(form);
+                    form.submit();
                 } catch(e) {}
 
         
