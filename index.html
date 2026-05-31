@@ -323,19 +323,19 @@
 
     <main>
         <style>
-            .kinetic-word {
-                background: linear-gradient(135deg, #fcd34d 20%, #f59e0b 100%) !important;
-                -webkit-background-clip: text !important;
-                background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
-                color: transparent !important;
-                opacity: 0.9 !important;
-            }
-            .astra-toggle-btn { width: 72px !important; height: 72px !important; }
-            .astra-toggle-btn img { width: 44px !important; height: 44px !important; }
-            .astra-avatar-ring { width: 48px !important; height: 48px !important; }
-            .astra-avatar-ring img { width: 40px !important; height: 40px !important; }
-        </style>
+              .kinetic-word:nth-child(1) { background: linear-gradient(135deg, #f87171, #f43f5e) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
+              .kinetic-word:nth-child(2) { background: linear-gradient(135deg, #a78bfa, #8b5cf6) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
+              .kinetic-word:nth-child(3) { background: linear-gradient(135deg, #38bdf8, #0ea5e9) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
+              .kinetic-word:nth-child(4) { background: linear-gradient(135deg, #34d399, #10b981) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
+              .kinetic-word:nth-child(5) { background: linear-gradient(135deg, #f87171, #f43f5e) !important; -webkit-background-clip: text !important; background-clip: text !important; -webkit-text-fill-color: transparent !important; color: transparent !important; }
+              
+              @media(min-width: 769px) {
+                  .astra-toggle-btn { width: 72px !important; height: 72px !important; }
+                  .astra-toggle-btn img { width: 44px !important; height: 44px !important; }
+                  .astra-avatar-ring { width: 48px !important; height: 48px !important; }
+                  .astra-avatar-ring img { width: 40px !important; height: 40px !important; }
+              }
+          </style>
 
         <!-- ================================================================
              HERO
@@ -1806,7 +1806,7 @@
             function nextToast(){
                 showToast(proofEvents[idx % proofEvents.length]);
                 idx++;
-                setTimeout(nextToast, 60000 + Math.random()*60000);
+                setTimeout(nextToast, 120000 + Math.random()*30000);
             }
             nextToast();
         }, 6000);
@@ -2500,7 +2500,7 @@
         // Show toast every 25-40 seconds, first after 10s
         setTimeout(function loop() {
             triggerSocialProof();
-            setTimeout(loop, Math.random() * 15000 + 25000);
+            setTimeout(loop, Math.random() * 30000 + 90000);
         }, 10000);
     });
     </script>
@@ -2790,7 +2790,7 @@
             });
 
             // 30-second fallback timer (ensures it shows up even if they don't move the mouse out)
-            setTimeout(triggerExitIntent, 30000);
+            setTimeout(triggerExitIntent, 90000);
         });
     </script>
 
