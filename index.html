@@ -2674,12 +2674,21 @@ window._buildPlaybookPDF = function() {
       margin:       0,
       filename:     'Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
       image:        { type: 'jpeg', quality: 1.0 },
-      html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+      html2canvas:  { scale: 2, useCORS: true, letterRendering: true, windowWidth: 850 },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
     
-    // Render from the detached element
-    html2pdf().set(opt).from(pdfContainer).save();
+    // Attach to DOM to ensure computed styles and layout exist
+    pdfContainer.style.position = 'absolute';
+    pdfContainer.style.top = '0';
+    pdfContainer.style.left = '0';
+    pdfContainer.style.zIndex = '-9999';
+    document.body.appendChild(pdfContainer);
+    
+    // Render and then cleanup
+    html2pdf().set(opt).from(pdfContainer).save().then(function() {
+        document.body.removeChild(pdfContainer);
+    });
 };
 </script>
 
