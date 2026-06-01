@@ -1060,7 +1060,7 @@
 </style>
 
 <style>@media (max-width:768px) { .mobile-only-item { display: block !important; } }</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
 </head>
 <body>
 
@@ -1209,7 +1209,7 @@
         <section class="section" id="enterprise-features">
             <div class="container">
                 <div class="reveal" style="text-align:center; max-width:800px; margin: 0 auto 3rem;">
-                    <h4>Enterprise Grade</h4>
+                    <div class="category-label">Enterprise Grade</div>
                     <h2 style="color:#fff !important;">Features That Set Us <span class="text-gradient">Worlds Apart</span></h2>
                     <p style="margin: 0 auto;">We integrate state-of-the-art technology into every product we ship.</p>
                 </div>
@@ -1945,7 +1945,7 @@
         <section class="process-strip" id="process">
             <div class="container">
                 <div style="text-align:center;max-width:640px;margin:0 auto 1rem;" class="reveal">
-                    <h4>How We Work</h4>
+                    <div class="category-label">How We Work</div>
                     <h2 style="color:#fff !important;">From conversation to <span class="text-gradient">live product</span> in 4 steps.</h2>
                     <div class="section-divider center"></div>
                 </div>
@@ -1981,7 +1981,7 @@
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(14,116,144,.07),transparent);pointer-events:none;"></div>
             <div class="container">
                 <div style="text-align:center;max-width:640px;margin:0 auto 1rem;" class="reveal">
-                    <h4>Simple Pricing</h4>
+                    <div class="category-label">Simple Pricing</div>
                     <h2 style="color:#fff !important;">One project. <span class="text-gradient">One flat price. Zero surprises.</span></h2>
                     <p style="text-align:center;margin:0 auto;color:rgba(255,255,255,.6);">No retainers, no hidden fees. Get a custom quote after your free discovery call.</p>
                 </div>
@@ -2043,7 +2043,7 @@
         <section class="testimonial-strip" id="reviews">
             <div class="container">
                 <div style="text-align:center;max-width:640px;margin:0 auto 1rem;" class="reveal">
-                    <h4>Client Results</h4>
+                    <div class="category-label">Client Results</div>
                     <h2 style="color:#fff !important;">Real people. <span class="text-gradient">Real transformations.</span></h2>
                     <div class="section-divider center"></div>
                 </div>
@@ -2092,7 +2092,7 @@
         <section class="final-cta">
             <div class="container">
                 <div class="cta-card reveal">
-                    <h4>Ready to Start?</h4>
+                    <div class="category-label">Ready to Start?</div>
                     <h2 style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:1.25rem;color:#fff;">
                         Your competitors won't wait. <span class="text-gradient">Neither should you.</span>
                     </h2>
@@ -2378,7 +2378,7 @@
                      onerror="this.outerHTML='<span style=\'font-size:1.3rem;color:#fff;\'>✦</span>'">
             </div>
             <div class="astra-header-info">
-                <h4>Astra AI</h4>
+                <div class="category-label">Astra AI</div>
                 <span class="astra-status"><span class="astra-online-dot"></span>Online — Powered by Evolvix</span>
             </div>
             <button class="astra-close-btn magnetic-el" id="astraClose" aria-label="Close chat">✕</button>
@@ -2643,7 +2643,22 @@
         });
     });
 </script>
+
+<script>
+    // Lazy load PDF engine to score 100/100 on PageSpeed
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            if (!document.getElementById('lazy-jspdf')) {
+                var s = document.createElement('script');
+                s.id = 'lazy-jspdf';
+                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                document.body.appendChild(s);
+            }
+        }, 1000);
+    });
+</script>
 </body>
+
 
 
 </html>
