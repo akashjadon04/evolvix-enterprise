@@ -1,0 +1,92 @@
+        calculate: function() {
+            if(!this.answers.goal || !this.answers.btype || !this.answers.prob) return;
+            
+            document.getElementById('qstep-4').style.display = 'none';
+            document.getElementById('qstep-5').style.display = 'block';
+            
+            // 1. Submit via FormSubmit natively to ensure activation
+            try {
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://api.web3forms.com/submit';
+                var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
+                
+                var data = {
+                    _subject: 'Enterprise Audit Lead: ' + this.answers.name,
+                    _captcha: 'false',
+                    Name: this.answers.name,
+                    Email: this.answers.email,
+                    Phone: this.answers.phone,
+                    BusinessType: this.answers.btype,
+                    Revenue: this.answers.rev,
+                    Bottleneck: this.answers.prob,
+                    TargetGoal: this.answers.goal
+                };
+                
+                for (var k in data) {
+                    var inp = document.createElement('input');
+                    inp.type = 'hidden';
+                    inp.name = k;
+                    inp.value = data[k];
+                    form.appendChild(inp);
+                }
+                document.body.appendChild(form);
+                form.submit();
+            } catch(e) {}
+            
+            // 2. Dynamic Health Score Algorithm
+            var _this = this;
+            setTimeout(function(){
+                document.getElementById('qstep-5').style.display = 'none';
+                document.getElementById('qstep-6').style.display = 'block';
+                
+                // Algorithm
+                var score = Math.floor(Math.random() * 20) + 40; // 40-60
+                if(_this.answers.rev === '$50k+/mo') score += 20;
+                if(_this.answers.prob === 'Systems & Tech') score -= 10;
+                
+                var sol = _this.answers.prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : 
+                         (_this.answers.prob === 'Conversion & UX' ? 'Premium Web Design & Conversion Rate Optimization' : 
+                         'Custom SaaS & Workflow Automation Platform');
+                         
+                var roi = _this.answers.goal === 'Double Revenue' ? '2x Revenue in 6 Months' :
+                         (_this.answers.goal === 'Automation & Scale' ? 'Save 40+ Hours/Week & Scale Infinitely' :
+                         'Dominant Market Positioning & Premium Pricing Power');
+                
+                var html = '<div style="background:rgba(15,23,42,0.7);backdrop-filter:blur(15px);border:1px solid rgba(56,189,248,0.2);border-radius:20px;padding:30px;">';
+                html += '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:20px;margin-bottom:20px;">';
+                html += '<div><h4 style="color:#94a3b8;font-size:0.9rem;margin:0 0 5px;">BUSINESS HEALTH SCORE</h4>';
+                html += '<h2 style="color:#38bdf8;font-size:3rem;margin:0;font-weight:900;">' + score + '<span style="font-size:1.5rem;color:#64748b;">/100</span></h2></div>';
+                html += '</div>';
+                
+                html += '<h4 style="color:#fff;margin:0 0 10px;font-size:1.2rem;">Diagnosis:</h4>';
+                html += '<p style="color:#cbd5e1;margin:0 0 20px;">Your <strong>' + _this.answers.btype + '</strong> is severely restricted by <strong>' + _this.answers.prob + '</strong>. This is preventing you from reaching your goal of <strong>' + _this.answers.goal + '</strong>.</p>';
+                
+                html += '<div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);padding:20px;border-radius:12px;margin-bottom:25px;">';
+                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Evolvix Action Plan</h4>';
+                html += '<ul style="color:#f1f5f9;margin:0;padding-left:20px;line-height:1.6;">';
+                html += '<li>Deploy a <strong>' + sol + '</strong></li>';
+                html += '<li>Eliminate tech debt and restructure digital touchpoints</li>';
+                html += '<li>Expected Outcome: <span style="color:#22c55e;font-weight:bold;">' + roi + '</span></li>';
+                html += '</ul></div>';
+                
+                html += '<div style="text-align:center;"><a href="contact.html" class="btn-cta-glow" style="width:100%;justify-content:center;">Book Strategy Call to Execute Plan →</a></div>';
+                html += '</div>';
+                
+                document.getElementById('audit-results-final').innerHTML = html; if(window.innerWidth <= 768) { var hv = document.querySelector('.hero-visual'); if(hv) hv.style.display = 'none'; }
+                
+                // Set PDF template data
+                document.getElementById('pdf-btype').innerText = _this.answers.btype;
+                var sColor = score < 50 ? '#ef4444' : (score < 75 ? '#f59e0b' : '#22c55e');
+                var sText = score < 50 ? ' (Critical)' : (score < 75 ? ' (Warning)' : ' (Healthy)');
+                var elScore = document.getElementById('pdf-score');
+                elScore.innerText = score + '/100' + sText;
+                elScore.style.color = sColor;
+                
+                document.getElementById('pdf-analysis').innerHTML = 'Based on our diagnostic algorithm, your primary bottleneck is <strong>' + _this.answers.prob + '</strong>. This is the exact reason why you have not achieved <strong>' + _this.answers.goal + '</strong>.<br><br>The architectural solution requires immediate pivot in your digital strategy.';
+                document.getElementById('pdf-sol').innerText = 'Recommendation: ' + sol;
+                document.getElementById('pdf-roi').innerText = 'Expected Outcome: ' + roi;
+                
+            }, 5000);
+        },
+
