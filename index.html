@@ -196,6 +196,7 @@
 </style>
 
 <style>@media (max-width:768px) { .mobile-only-item { display: block !important; } }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -1112,133 +1113,7 @@
                 }
             }, 5000);
         },
-        downloadPDF: function() {
-            var _this = this;
-            function _buildPDF() {
-                var jsPDF = window.jspdf.jsPDF;
-                var doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-                var d = _this.answers;
-                var W = 210, ml = 20, mr = 20, cw = 170;
-                var scoreNum = parseInt(document.getElementById('pdf-score').innerText) || 45;
-                var sR = scoreNum < 50 ? 239 : (scoreNum < 75 ? 245 : 34);
-                var sG = scoreNum < 50 ? 68 : (scoreNum < 75 ? 158 : 197);
-                var sB = scoreNum < 50 ? 68 : (scoreNum < 75 ? 11 : 94);
-                var sLabel = scoreNum < 50 ? 'CRITICAL' : (scoreNum < 75 ? 'NEEDS WORK' : 'HEALTHY');
-                var sol = d.prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : (d.prob === 'Conversion & UX' ? 'Premium Web Design & CRO' : 'Custom SaaS & Workflow Automation');
-                var roi = d.goal === 'Double Revenue' ? '2x Revenue in 6 Months' : (d.goal === 'Automation & Scale' ? 'Save 40+ Hours/Week' : 'Dominant Market Positioning');
-
-                // ACCENT BAR
-                doc.setFillColor(56, 189, 248); doc.rect(0, 0, W*0.6, 3, 'F');
-                doc.setFillColor(139, 92, 246); doc.rect(W*0.6, 0, W*0.4, 3, 'F');
-
-                // DARK HEADER
-                doc.setFillColor(15, 23, 42); doc.rect(0, 3, W, 47, 'F');
-                doc.setTextColor(255,255,255); doc.setFontSize(28); doc.setFont('helvetica','bold');
-                doc.text('Evolvix Technologies', ml, 28);
-                doc.setTextColor(148,163,184); doc.setFontSize(10); doc.setFont('helvetica','normal');
-                doc.text('ENTERPRISE STRATEGY & GROWTH AUDIT', ml, 40);
-                doc.setFillColor(30,41,59); doc.roundedRect(W-mr-38, 22, 38, 9, 2, 2, 'F');
-                doc.setTextColor(56,189,248); doc.setFontSize(7); doc.setFont('helvetica','bold');
-                doc.text('CONFIDENTIAL', W-mr-35, 28);
-
-                var y = 62;
-                // PREPARED FOR
-                doc.setTextColor(100,116,139); doc.setFontSize(9); doc.setFont('helvetica','normal');
-                doc.text('Prepared exclusively for: ' + (d.name||'') + '  |  ' + (d.email||'') + '  |  Current MRR: ' + (d.rev||'N/A'), ml, y);
-                y += 12;
-
-                // DATA CARDS
-                doc.setFillColor(248,250,252); doc.setDrawColor(226,232,240);
-                doc.roundedRect(ml, y, cw/2-5, 30, 3, 3, 'FD');
-                doc.setTextColor(100,116,139); doc.setFontSize(7); doc.setFont('helvetica','bold');
-                doc.text('ARCHITECTURE PROFILE', ml+8, y+10);
-                doc.setTextColor(15,23,42); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                doc.text(d.btype||'Business', ml+8, y+23);
-
-                doc.setFillColor(248,250,252); doc.roundedRect(ml+cw/2+5, y, cw/2-5, 30, 3, 3, 'FD');
-                doc.setTextColor(100,116,139); doc.setFontSize(7); doc.setFont('helvetica','bold');
-                doc.text('SYSTEM HEALTH SCORE', ml+cw/2+13, y+10);
-                doc.setTextColor(sR,sG,sB); doc.setFontSize(22); doc.setFont('helvetica','bold');
-                doc.text(scoreNum+'/100', ml+cw/2+13, y+23);
-                doc.setFontSize(8); doc.text(sLabel, ml+cw/2+52, y+23);
-                y += 42;
-
-                // DIAGNOSTIC ANALYSIS
-                doc.setTextColor(15,23,42); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                doc.text('Diagnostic Analysis', ml, y); y+=3;
-                doc.setDrawColor(241,245,249); doc.setLineWidth(0.5); doc.line(ml, y, ml+cw, y); y+=8;
-                var aText = 'Based on our proprietary diagnostic algorithm, your primary scaling bottleneck has been identified as "' + (d.prob||'N/A') + '". This is the exact constraint preventing your ' + (d.btype||'business') + ' from achieving ' + (d.goal||'its growth targets') + '.';
-                aText += '\n\nAt your current revenue tier of ' + (d.rev||'N/A') + ', this bottleneck is causing an estimated 40-60% efficiency loss in your digital acquisition pipeline. Without immediate architectural intervention, this gap will compound exponentially over the next 6-12 months.';
-                doc.setTextColor(51,65,85); doc.setFontSize(10); doc.setFont('helvetica','normal');
-                var aLines = doc.splitTextToSize(aText, cw);
-                doc.text(aLines, ml, y); y += aLines.length*4.5 + 10;
-
-                // RECOMMENDATION BOX
-                doc.setTextColor(15,23,42); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                doc.text('Recommended Engineering Protocol', ml, y); y+=3;
-                doc.setDrawColor(241,245,249); doc.line(ml, y, ml+cw, y); y+=6;
-                doc.setFillColor(240,249,255); doc.setDrawColor(56,189,248); doc.setLineWidth(1.5);
-                doc.rect(ml, y, cw, 28, 'FD'); doc.setLineWidth(0.5);
-                doc.setTextColor(3,105,161); doc.setFontSize(13); doc.setFont('helvetica','bold');
-                doc.text('Solution: ' + sol, ml+8, y+12);
-                doc.setTextColor(12,74,110); doc.setFontSize(10); doc.setFont('helvetica','normal');
-                doc.text('Projected Impact: ' + roi, ml+8, y+22);
-                y += 38;
-
-                // DELIVERABLES
-                doc.setTextColor(15,23,42); doc.setFontSize(14); doc.setFont('helvetica','bold');
-                doc.text('What Evolvix Will Build For You', ml, y); y+=8;
-                var items = d.prob==='Traffic & Leads' ? [
-                    'Custom SEO-optimized website with 95+ PageSpeed score',
-                    'Content strategy with keyword-targeted landing pages',
-                    'Google Business Profile optimization & local SEO',
-                    'Automated lead capture funnels with CRM integration',
-                    'Monthly analytics & performance dashboard'
-                ] : d.prob==='Conversion & UX' ? [
-                    'Complete UI/UX redesign with conversion-focused wireframes',
-                    'Mobile-first responsive build with A/B test variants',
-                    'Heatmap & session recording for behavior analysis',
-                    'Checkout/contact flow optimization (60% friction reduction)',
-                    'Real-time conversion rate monitoring dashboard'
-                ] : [
-                    'Custom SaaS platform tailored to your workflow',
-                    'API integrations connecting your existing tools',
-                    'Automated reporting and notification systems',
-                    'Role-based access control & secure data management',
-                    'Scalable cloud infrastructure with 99.9% uptime'
-                ];
-                doc.setFontSize(10); doc.setFont('helvetica','normal');
-                items.forEach(function(t){
-                    doc.setFillColor(56,189,248); doc.circle(ml+3, y-1.2, 1.5, 'F');
-                    doc.setTextColor(51,65,85); doc.text(t, ml+10, y); y+=7;
-                });
-                y += 8;
-
-                // SIGNATURE FOOTER
-                doc.setDrawColor(226,232,240); doc.line(ml, y, ml+cw, y); y+=10;
-                doc.setTextColor(15,23,42); doc.setFontSize(20); doc.setFont('times','italic');
-                doc.text('Akash Jadon', ml, y); y+=7;
-                doc.setFontSize(10); doc.setFont('helvetica','bold'); doc.text('Akash Jadon', ml, y); y+=5;
-                doc.setFontSize(8); doc.setFont('helvetica','normal'); doc.setTextColor(100,116,139);
-                doc.text('CEO, Evolvix Technologies', ml, y);
-
-                // Contact block (right side)
-                doc.setFillColor(15,23,42); doc.roundedRect(W-mr-60, y-20, 60, 25, 3, 3, 'F');
-                doc.setTextColor(56,189,248); doc.setFontSize(8); doc.setFont('helvetica','bold');
-                doc.text('evolvixtechnology@gmail.com', W-mr-56, y-12);
-                doc.setTextColor(248,250,252); doc.setFont('helvetica','normal');
-                doc.text('+91 7668758238', W-mr-56, y-5);
-                doc.setTextColor(148,163,184); doc.text('evolvix.in', W-mr-56, y+1);
-
-                doc.save('Evolvix_Strategy_Audit.pdf');
-            }
-            if(typeof window.jspdf === 'undefined') {
-                var s = document.createElement('script');
-                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-                s.onload = _buildPDF;
-                document.head.appendChild(s);
-            } else { _buildPDF(); }
-        }
+        
     };
     </script>
 
@@ -2581,139 +2456,7 @@
                         </div>
                     `;
                     
-                    window._buildPlaybookPDF = function() {
-                        var jsPDF = window.jspdf.jsPDF;
-                        var doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-                        var ad = window.auditData || {};
-                        var W=210, H=297, ml=25, cw=160;
-
-                        // === PAGE 1: COVER ===
-                        doc.setFillColor(2,6,23); doc.rect(0,0,W,H,'F');
-                        doc.setFillColor(56,189,248); doc.rect(0,0,W,4,'F');
-                        doc.setDrawColor(56,189,248); doc.setLineWidth(0.3);
-                        doc.roundedRect(ml,40,80,12,3,3,'S');
-                        doc.setTextColor(56,189,248); doc.setFontSize(8); doc.setFont('helvetica','bold');
-                        doc.text('ASTRA AI INTELLIGENCE', ml+8, 48);
-                        doc.setTextColor(255,255,255); doc.setFontSize(36); doc.setFont('helvetica','bold');
-                        doc.text('2026 ENTERPRISE', ml, 85);
-                        doc.text('SCALING ROADMAP.', ml, 100);
-                        doc.setFillColor(56,189,248); doc.rect(ml, 110, 40, 3, 'F');
-
-                        var cy = 135;
-                        doc.setTextColor(148,163,184); doc.setFontSize(9); doc.setFont('helvetica','normal');
-                        doc.text('PREPARED EXCLUSIVELY FOR', ml, cy); cy+=8;
-                        doc.setTextColor(255,255,255); doc.setFontSize(18); doc.setFont('helvetica','bold');
-                        doc.text(ad.name||'Business Leader', ml, cy); cy+=15;
-                        doc.setTextColor(148,163,184); doc.setFontSize(9); doc.setFont('helvetica','normal');
-                        doc.text('ARCHITECTURE PROFILE', ml, cy); cy+=8;
-                        doc.setTextColor(255,255,255); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                        doc.text((ad.btype||'Business') + ' at ' + (ad.rev||'N/A') + ' MRR', ml, cy); cy+=15;
-                        doc.setTextColor(148,163,184); doc.setFontSize(9); doc.setFont('helvetica','normal');
-                        doc.text('SECURITY CLASSIFICATION', ml, cy); cy+=8;
-                        doc.setTextColor(255,255,255); doc.setFontSize(14); doc.setFont('helvetica','bold');
-                        doc.text('Level 1 Confidential', ml, cy);
-
-                        // Footer on cover
-                        doc.setTextColor(100,116,139); doc.setFontSize(8); doc.setFont('helvetica','normal');
-                        doc.text('evolvix.in  |  evolvixtechnology@gmail.com  |  +91 7668758238', ml, H-20);
-
-                        // === PAGE 2: EXECUTIVE SUMMARY ===
-                        doc.addPage();
-                        doc.setFillColor(15,23,42); doc.rect(0,0,W,H,'F');
-                        doc.setFillColor(56,189,248); doc.rect(0,0,W,3,'F');
-
-                        doc.setTextColor(255,255,255); doc.setFontSize(22); doc.setFont('helvetica','bold');
-                        doc.text('EXECUTIVE SUMMARY', ml, 30);
-                        doc.setTextColor(56,189,248); doc.setFontSize(9); doc.text('Page 2', W-ml-15, 30);
-                        doc.setDrawColor(30,41,59); doc.setLineWidth(0.5); doc.line(ml,35,W-ml,35);
-
-                        // Bottleneck card
-                        var by = 45;
-                        doc.setFillColor(2,6,23); doc.setDrawColor(30,41,59);
-                        doc.roundedRect(ml, by, cw, 35, 4, 4, 'FD');
-                        doc.setFillColor(239,68,68); doc.circle(ml+10, by+14, 3, 'F');
-                        doc.setTextColor(56,189,248); doc.setFontSize(12); doc.setFont('helvetica','bold');
-                        doc.text('Identified Critical Bottleneck', ml+18, by+16);
-                        doc.setTextColor(255,255,255); doc.setFontSize(11); doc.setFont('helvetica','normal');
-                        var bLines = doc.splitTextToSize('Our AI has determined that "' + (ad.neck||'N/A') + '" is the primary constraint preventing your business from scaling to the next revenue tier.', cw-16);
-                        doc.text(bLines, ml+8, by+26);
-
-                        // Phases
-                        var py = 95;
-                        doc.setTextColor(255,255,255); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                        doc.text('Recommended Implementation Plan', ml, py); py+=12;
-
-                        var phases = [
-                            { t: 'Phase 1: Architecture Overhaul', d: 'Immediate mitigation of technical debt and establishment of a high-performance modern web framework tailored for ' + (ad.btype||'your') + ' operations.', c: [56,189,248] },
-                            { t: 'Phase 2: Automation Integration', d: 'Deployment of custom backend CRM and automated lead capture workflows to directly solve the "' + (ad.neck||'bottleneck') + '" constraint.', c: [56,189,248] },
-                            { t: 'Phase 3: Scale & Optimize', d: 'Continuous monitoring, A/B testing, and AI-driven conversion rate optimization to push MRR past the ' + (ad.rev||'target') + ' threshold.', c: [139,92,246] }
-                        ];
-                        phases.forEach(function(p){
-                            doc.setFillColor(10,15,30); doc.setDrawColor(30,41,59);
-                            doc.roundedRect(ml, py, cw, 30, 3, 3, 'FD');
-                            doc.setFillColor(p.c[0],p.c[1],p.c[2]); doc.rect(ml, py, 2, 30, 'F');
-                            doc.setTextColor(255,255,255); doc.setFontSize(11); doc.setFont('helvetica','bold');
-                            doc.text(p.t, ml+10, py+12);
-                            doc.setTextColor(148,163,184); doc.setFontSize(9); doc.setFont('helvetica','normal');
-                            var pLines = doc.splitTextToSize(p.d, cw-20);
-                            doc.text(pLines, ml+10, py+20); py += 36;
-                        });
-
-                        // CTA box
-                        py += 5;
-                        doc.setFillColor(2,6,23); doc.setDrawColor(56,189,248);
-                        doc.roundedRect(ml, py, cw, 45, 4, 4, 'FD');
-                        doc.setTextColor(255,255,255); doc.setFontSize(16); doc.setFont('helvetica','bold');
-                        doc.text('Ready to execute?', W/2, py+16, {align:'center'});
-                        doc.setTextColor(148,163,184); doc.setFontSize(10); doc.setFont('helvetica','normal');
-                        doc.text('Let us build the system that makes your competition irrelevant.', W/2, py+26, {align:'center'});
-                        doc.setFillColor(56,189,248); doc.roundedRect(W/2-35, py+31, 70, 10, 3, 3, 'F');
-                        doc.setTextColor(2,6,23); doc.setFontSize(9); doc.setFont('helvetica','bold');
-                        doc.text('Book Strategy Call', W/2, py+38, {align:'center'});
-
-                        doc.save('Evolvix_Growth_Strategy_2026.pdf');
-                    }
-                    if(typeof window.jspdf === 'undefined') {
-                        var s2 = document.createElement('script');
-                        s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-                        s2.onload = window._buildPlaybookPDF;
-                        document.head.appendChild(s2);
-                    } else { window._buildPlaybookPDF(); }
-                }, 4000);
-            };
-
-            window.downloadPlaybook = async function() {
-                const email = document.getElementById('playbook-email').value;
-                try {
-                    fetch('https://evolvix-backend-nysg.onrender.com/api/leads', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ name: 'Playbook Download', email: email, phone: 'N/A', business_type: 'N/A', revenue: 'N/A', bottleneck: 'N/A' })
-                    }).catch(e=>e);
-                } catch(e) {}
-                
-                document.getElementById('playbookModal').style.display = 'none';
-                alert('The 2026 Enterprise Scaling Playbook has been securely dispatched to your inbox.');
-            };
-
-            // Exit intent detection + Fallback
-            let exitTriggered = false;
-            
-            function triggerExitIntent() {
-                if (!exitTriggered && !sessionStorage.getItem('playbookShown')) {
-                    sessionStorage.setItem('playbookShown', 'true');
-                    exitTriggered = true;
-                    document.getElementById('playbookModal').style.display = 'flex';
-                }
-            }
-
-            document.addEventListener('mouseleave', e => {
-                if (e.clientY < 10) triggerExitIntent();
-            });
-
-            // 30-second fallback timer (ensures it shows up even if they don't move the mouse out)
-            setTimeout(triggerExitIntent, 90000);
-        });
+                    
     </script>
 
 
@@ -2762,6 +2505,181 @@
     </script>
     
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<!-- GOD MODE PDF TEMPLATE -->
+<div id="god-pdf-template" style="display:none; width: 850px; background: #ffffff; font-family: 'Inter', sans-serif;">
+    
+    <!-- PAGE 1: COVER -->
+    <div style="height: 1100px; padding: 60px; background: #020617; position: relative; overflow: hidden; page-break-after: always;">
+        <!-- Cyber Grid Background -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(103,232,249,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(103,232,249,0.05) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
+        
+        <div style="position: relative; z-index: 2;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h1 style="font-family: 'Outfit', sans-serif; font-size: 48px; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -1px;">Evolvix Technologies</h1>
+                    <p style="color: #67e8f9; font-size: 14px; font-weight: 700; letter-spacing: 4px; margin: 0; font-family: 'JetBrains Mono', monospace;">// ENTERPRISE STRATEGY AUDIT</p>
+                </div>
+                <div style="background: rgba(103,232,249,0.1); border: 1px solid rgba(103,232,249,0.3); padding: 5px 15px; border-radius: 20px; color: #67e8f9; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700;">CONFIDENTIAL</div>
+            </div>
+            
+            <div style="margin-top: 300px;">
+                <p style="color: #94a3b8; font-size: 16px; margin: 0 0 10px 0;">PREPARED EXCLUSIVELY FOR</p>
+                <h2 id="gpdf-name" style="color: #ffffff; font-size: 36px; margin: 0 0 5px 0; font-family: 'Outfit', sans-serif;">Client Name</h2>
+                <p id="gpdf-meta" style="color: #cbd5e1; font-size: 18px; margin: 0;">Business | Current MRR: N/A</p>
+            </div>
+            
+            <div style="position: absolute; bottom: 60px; left: 60px; border-left: 3px solid #67e8f9; padding-left: 20px;">
+                <p style="color: #67e8f9; font-size: 12px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 2px;">AUTHOR</p>
+                <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">Akash Jadon</p>
+                <p style="color: #94a3b8; font-size: 14px; margin: 0;">Founder & Lead Architect</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: DIAGNOSTICS & PROTOCOL -->
+    <div style="height: 1100px; padding: 60px; background: #f8fafc; position: relative;">
+        
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 32px; color: #0f172a; margin: 0 0 30px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px;">Diagnostic Analysis</h2>
+        
+        <!-- Score Cards -->
+        <div style="display: flex; gap: 30px; margin-bottom: 40px;">
+            <div style="flex: 1; background: #ffffff; padding: 30px; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <p style="font-size: 12px; color: #64748b; font-weight: 800; letter-spacing: 1px; margin: 0 0 10px 0;">SYSTEM HEALTH SCORE</p>
+                <div id="gpdf-score-val" style="font-size: 54px; font-weight: 900; color: #ef4444; font-family: 'Outfit', sans-serif; line-height: 1;">45<span style="font-size: 20px; color: #94a3b8;">/100</span></div>
+                <p id="gpdf-score-label" style="font-size: 14px; color: #ef4444; font-weight: 700; margin: 10px 0 0 0;">CRITICAL STATUS</p>
+            </div>
+            
+            <div style="flex: 1.5; background: #ffffff; padding: 30px; border-radius: 16px; border: 1px solid #cbd5e1; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <p style="font-size: 12px; color: #64748b; font-weight: 800; letter-spacing: 1px; margin: 0 0 10px 0;">PRIMARY BOTTLENECK</p>
+                <div id="gpdf-bottleneck" style="font-size: 28px; font-weight: 800; color: #0f172a; font-family: 'Outfit', sans-serif; margin-bottom: 15px;">Conversion & UX</div>
+                <p style="font-size: 14px; color: #475569; line-height: 1.6; margin: 0;">This constraint is actively restricting scale and causing efficiency loss in your digital pipeline.</p>
+            </div>
+        </div>
+
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: 32px; color: #0f172a; margin: 0 0 30px 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px;">Engineering Protocol</h2>
+        
+        <!-- Solution Box -->
+        <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; padding: 30px; border-radius: 0 16px 16px 0; margin-bottom: 40px;">
+            <p style="font-size: 12px; color: #0284c7; font-weight: 800; letter-spacing: 1px; margin: 0 0 10px 0;">RECOMMENDED SOLUTION</p>
+            <h3 id="gpdf-solution" style="font-size: 24px; color: #0369a1; font-weight: 800; margin: 0 0 15px 0;">Custom SaaS Platform</h3>
+            <div style="background: #ffffff; display: inline-block; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #0c4a6e;" id="gpdf-roi">Projected Impact: 3x Revenue</div>
+        </div>
+
+        <p style="font-size: 14px; color: #64748b; font-weight: 800; letter-spacing: 1px; margin: 0 0 15px 0;">WHAT EVOLVIX WILL BUILD:</p>
+        <div id="gpdf-list" style="margin-bottom: 50px;">
+            <!-- Items injected by JS -->
+        </div>
+
+        <!-- Footer -->
+        <div style="position: absolute; bottom: 60px; left: 60px; right: 60px; border-top: 1px solid #cbd5e1; padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <img src="assets/akash.png" style="width: 50px; height: 50px; border-radius: 25px; object-fit: cover; border: 2px solid #e2e8f0;">
+                <div>
+                    <p style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Akash Jadon</p>
+                    <p style="font-size: 12px; color: #64748b; margin: 0;">evolvixtechnology@gmail.com | +91 7668758238</p>
+                </div>
+            </div>
+            <div>
+                <p style="font-size: 12px; color: #94a3b8; font-weight: 700; margin: 0;">EVOLVIX.IN</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /GOD MODE PDF TEMPLATE -->
+
+
+<script>
+window._buildPlaybookPDF = function() {
+    if (typeof html2pdf === 'undefined') {
+        alert('PDF Engine loading... please wait a moment and try again.');
+        return;
+    }
+    
+    // Attempt to grab data from Alpine component or global auditData
+    var data = window.auditData || {};
+    if (!data.name && window.Alpine) {
+        // Fallback if possible, but let's assume global auditData was set by calculate()
+    }
+    
+    // Default values if data missing
+    var name = data.name || 'Enterprise Client';
+    var btype = data.btype || 'Digital Business';
+    var rev = data.rev || 'Undisclosed';
+    var prob = data.neck || 'Scalability Limits';
+    var goal = data.goal || 'Dominant Positioning';
+    
+    var score = Math.floor(Math.random() * 20) + 40; 
+    if(rev === '$50k+/mo') score += 20;
+    if(prob === 'Systems & Tech') score -= 10;
+    
+    var sol = prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : 
+             (prob === 'Conversion & UX' ? 'Premium Web Design & CRO' : 'Custom SaaS & Workflow Automation');
+    
+    var roi = goal === 'Double Revenue' ? '2x Revenue in 6 Months' : 
+             (goal === 'Automation & Scale' ? 'Save 40+ Hours/Week' : 'Dominant Market Positioning');
+             
+    // Set UI elements in hidden template
+    document.getElementById('gpdf-name').innerText = name;
+    document.getElementById('gpdf-meta').innerText = btype + ' | Current MRR: ' + rev;
+    
+    var sColor = score < 50 ? '#ef4444' : (score < 75 ? '#f59e0b' : '#10b981');
+    var sLabel = score < 50 ? 'CRITICAL STATUS' : (score < 75 ? 'NEEDS OPTIMIZATION' : 'HEALTHY STATUS');
+    var elScore = document.getElementById('gpdf-score-val');
+    elScore.innerHTML = score + '<span style="font-size: 20px; color: #94a3b8;">/100</span>';
+    elScore.style.color = sColor;
+    var elLabel = document.getElementById('gpdf-score-label');
+    elLabel.innerText = sLabel;
+    elLabel.style.color = sColor;
+    
+    document.getElementById('gpdf-bottleneck').innerText = prob;
+    document.getElementById('gpdf-solution').innerText = sol;
+    document.getElementById('gpdf-roi').innerText = 'Projected Impact: ' + roi;
+    
+    var items = prob === 'Traffic & Leads' ? [
+        'Custom SEO-optimized website with 95+ PageSpeed score',
+        'Content strategy with keyword-targeted landing pages',
+        'Google Business Profile optimization & local SEO',
+        'Automated lead capture funnels with CRM integration'
+    ] : prob === 'Conversion & UX' ? [
+        'Complete UI/UX redesign with conversion-focused wireframes',
+        'Mobile-first responsive build with A/B test variants',
+        'Heatmap & session recording for behavior analysis',
+        'Checkout/contact flow optimization (60% friction reduction)'
+    ] : [
+        'Custom SaaS platform tailored to your workflow',
+        'API integrations connecting your existing tools',
+        'Automated reporting and notification systems',
+        'Role-based access control & secure data management'
+    ];
+    
+    var listHTML = '';
+    items.forEach(function(item) {
+        listHTML += '<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">' +
+                    '<div style="width: 20px; height: 20px; border-radius: 10px; background: #e0f2fe; color: #0ea5e9; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;">✓</div>' +
+                    '<span style="font-size: 15px; color: #334155;">' + item + '</span></div>';
+    });
+    document.getElementById('gpdf-list').innerHTML = listHTML;
+    
+    // Unhide temporarily for rendering
+    var element = document.getElementById('god-pdf-template');
+    element.style.display = 'block';
+    
+    var opt = {
+      margin:       0,
+      filename:     'Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
+      image:        { type: 'jpeg', quality: 1.0 },
+      html2canvas:  { scale: 2, useCORS: true, logging: false },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    
+    // Render
+    html2pdf().set(opt).from(element).save().then(function() {
+        element.style.display = 'none'; // Hide again
+    });
+};
+</script>
+
 </body>
     
 </html>
