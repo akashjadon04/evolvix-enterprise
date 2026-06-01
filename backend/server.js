@@ -9,7 +9,7 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
-const JWT_SECRET = 'evolvix-enterprise-ultra-secure-key-2026';
+const JWT_SECRET = 'evolnex-enterprise-ultra-secure-key-2026';
 
 // Middleware
 app.use(cors());
@@ -105,18 +105,18 @@ db.serialize(() => {
     )`);
 
     // Create Admin User if not exists
-    bcrypt.hash('evolvix2026admin', 10, (err, hash) => {
+    bcrypt.hash('evolnex2026admin', 10, (err, hash) => {
         if(err) return;
         db.get("SELECT * FROM users WHERE role = 'admin'", [], (err, row) => {
             if (!row) {
-                db.run("INSERT INTO users (role, email, password, name) VALUES ('admin', 'admin@evolvix.com', ?, 'Akash Jadon')", [hash]);
+                db.run("INSERT INTO users (role, email, password, name) VALUES ('admin', 'admin@evolnex.com', ?, 'Akash Jadon')", [hash]);
             }
         });
     });
 });
 
 // --- HEALTH CHECK ---
-app.get('/ping', (req, res) => { res.status(200).send('Evolvix Backend Awake'); });
+app.get('/ping', (req, res) => { res.status(200).send('Evolnex Backend Awake'); });
 
 // Authentication Middleware
 const authenticateToken = (req, res, next) => {
@@ -329,11 +329,11 @@ app.get('/api/admin/leads/export', authenticateToken, isAdmin, (req, res) => {
         });
         
         res.header('Content-Type', 'text/csv');
-        res.attachment('evolvix_leads_backup.csv');
+        res.attachment('evolnex_leads_backup.csv');
         return res.send(csv);
     });
 });
 
 app.listen(PORT, () => {
-    console.log(`Evolvix Backend running on port ${PORT}`);
+    console.log(`Evolnex Backend running on port ${PORT}`);
 });

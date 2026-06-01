@@ -1,7 +1,7 @@
 import re
 import os
 
-d = 'c:/projects/evolvix'
+d = 'c:/projects/evolnex'
 files = [f for f in os.listdir(d) if f.endswith('.html')]
 
 new_js = """<script>
@@ -43,7 +43,7 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(36); doc.setFont('helvetica', 'bold');
-    doc.text('Evolvix Technologies', ml, 60);
+    doc.text('Evolnex Technologies', ml, 60);
     
     doc.setTextColor(103, 232, 249);
     doc.setFontSize(12); doc.setFont('courier', 'bold');
@@ -151,7 +151,7 @@ window._buildPlaybookPDF = function() {
     // Deliverables
     doc.setTextColor(100, 116, 139);
     doc.setFontSize(10); doc.setFont('helvetica', 'bold');
-    doc.text('WHAT EVOLVIX WILL BUILD:', ml, 210);
+    doc.text('WHAT EVOLNEX WILL BUILD:', ml, 210);
     
     var items = prob === 'Traffic & Leads' ? [
         'Custom SEO-optimized website with 95+ PageSpeed score',
@@ -192,9 +192,9 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(9); doc.setFont('helvetica', 'bold');
-    doc.text('EVOLVIX.IN', W - mr - doc.getTextWidth('EVOLVIX.IN'), 280);
+    doc.text('EVOLNEX.IN', W - mr - doc.getTextWidth('EVOLNEX.IN'), 280);
     
-    doc.save('Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf');
+    doc.save('Evolnex_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf');
 };
 </script>"""
 

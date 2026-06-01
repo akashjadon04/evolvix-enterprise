@@ -1,7 +1,7 @@
 import re
 import os
 
-with open('c:/projects/evolvix/index.html', 'r', encoding='utf-8') as f:
+with open('c:/projects/evolnex/index.html', 'r', encoding='utf-8') as f:
     index_html = f.read()
 
 header_match = re.search(r'(?s)^.*?</header>', index_html)
@@ -11,7 +11,7 @@ footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
 # Replace titles and nav state
-header = header.replace('<title>Evolvix Technologies | Enterprise Software & Scale</title>', '<title>Start Project | Evolvix Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Start Project | Evolnex Technologies</title>')
 # Contact button is usually a CTA, but let's just make sure Home isn't active
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
 
@@ -174,8 +174,8 @@ contact_main = """
                         <!-- We use web3forms to silently process the backend via hidden iframe -->
                         <form action="https://api.web3forms.com/submit" method="POST" target="hidden_iframe" id="godContactForm" onsubmit="handleGodSubmit(event)">
                             <input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955">
-                            <input type="hidden" name="subject" value="New Evolvix Project Lead">
-                            <input type="hidden" name="from_name" value="Evolvix God Mode Terminal">
+                            <input type="hidden" name="subject" value="New Evolnex Project Lead">
+                            <input type="hidden" name="from_name" value="Evolnex God Mode Terminal">
 
                             <div class="grid-2-col">
                                 <div class="input-group-x">
@@ -231,7 +231,7 @@ contact_main = """
                         <div style="text-align:center; padding: 4rem 2rem;">
                             <div style="width: 80px; height: 80px; background: rgba(16,185,129,0.1); border: 2px solid #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #10b981; margin: 0 auto 2rem; box-shadow: 0 0 30px rgba(16,185,129,0.3);">✓</div>
                             <h3 style="font-family: 'Outfit'; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;">Uplink Established.</h3>
-                            <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem;">Your transmission has been securely received by Evolvix Core Intelligence. An architect will respond shortly.</p>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 1.1rem;">Your transmission has been securely received by Evolnex Core Intelligence. An architect will respond shortly.</p>
                         </div>
                     `;
                 }, 1500);
@@ -240,5 +240,5 @@ contact_main = """
     </main>
 """
 
-with open('c:/projects/evolvix/contact.html', 'w', encoding='utf-8') as f:
+with open('c:/projects/evolnex/contact.html', 'w', encoding='utf-8') as f:
     f.write(header + contact_main + footer)

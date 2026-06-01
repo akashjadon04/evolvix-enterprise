@@ -1,6 +1,6 @@
 import os
 
-d = 'c:/projects/evolvix'
+d = 'c:/projects/evolnex'
 files = [f for f in os.listdir(d) if f.endswith('.html')]
 
 script_tag = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>'

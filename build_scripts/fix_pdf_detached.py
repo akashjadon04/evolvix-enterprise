@@ -1,6 +1,6 @@
 import re
 
-html_path = 'c:/projects/evolvix/index.html'
+html_path = 'c:/projects/evolnex/index.html'
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
@@ -14,7 +14,7 @@ js_to_replace = """    var element = document.getElementById('god-pdf-template')
     
     var opt = {
       margin:       0,
-      filename:     'Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
+      filename:     'Evolnex_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
       image:        { type: 'jpeg', quality: 1.0 },
       html2canvas:  { scale: 2, useCORS: true, logging: false },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -39,7 +39,7 @@ new_js = """    // Create a completely detached element for html2pdf to prevent 
     
     var opt = {
       margin:       0,
-      filename:     'Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
+      filename:     'Evolnex_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
       image:        { type: 'jpeg', quality: 1.0 },
       html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }

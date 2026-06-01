@@ -1,6 +1,6 @@
 import re
 
-html_path = 'c:/projects/evolvix/index.html'
+html_path = 'c:/projects/evolnex/index.html'
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 

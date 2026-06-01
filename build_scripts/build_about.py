@@ -1,7 +1,7 @@
 import re
 import os
 
-with open('c:/projects/evolvix/index.html', 'r', encoding='utf-8') as f:
+with open('c:/projects/evolnex/index.html', 'r', encoding='utf-8') as f:
     index_html = f.read()
 
 # Extract header (from start to </header>)
@@ -13,7 +13,7 @@ footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
 # Replace title in header
-header = header.replace('<title>Evolvix Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolvix Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolnex Technologies</title>')
 # Replace nav link active state
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
@@ -133,7 +133,7 @@ about_main = """
                     </div>
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "I founded Evolvix because I was tired of seeing brilliant brands held back by mediocre digital experiences. The web is flooded with templates and slow code."
+                        "I founded Evolnex because I was tired of seeing brilliant brands held back by mediocre digital experiences. The web is flooded with templates and slow code."
                     </p>
                     <p>
                         "We do things differently. Every line of code, every pixel, and every animation is purposefully engineered to command attention and convert users into loyal customers. We build digital assets, not just websites."
@@ -148,10 +148,10 @@ about_main = """
             </div>
         </section>
 
-        <!-- THE EVOLVIX STANDARD (New Section 1) -->
+        <!-- THE EVOLNEX STANDARD (New Section 1) -->
         <section class="standard-section">
             <div class="container">
-                <h2 style="font-family: 'Outfit'; font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 1rem;">The Evolvix <span class="text-gradient">Standard</span></h2>
+                <h2 style="font-family: 'Outfit'; font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 1rem;">The Evolnex <span class="text-gradient">Standard</span></h2>
                 <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">We refuse to compromise on quality. This is our baseline for every project.</p>
                 
                 <div class="standard-grid">
@@ -224,5 +224,5 @@ about_main = """
     </main>
 """
 
-with open('c:/projects/evolvix/about.html', 'w', encoding='utf-8') as f:
+with open('c:/projects/evolnex/about.html', 'w', encoding='utf-8') as f:
     f.write(header + about_main + footer)

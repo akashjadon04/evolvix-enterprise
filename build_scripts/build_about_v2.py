@@ -1,7 +1,7 @@
 import re
 import os
 
-with open('c:/projects/evolvix/index.html', 'r', encoding='utf-8') as f:
+with open('c:/projects/evolnex/index.html', 'r', encoding='utf-8') as f:
     index_html = f.read()
 
 header_match = re.search(r'(?s)^.*?</header>', index_html)
@@ -10,7 +10,7 @@ header = header_match.group(0)
 footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
-header = header.replace('<title>Evolvix Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolvix Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolnex Technologies</title>')
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
 
@@ -161,7 +161,7 @@ about_main = """
         <section class="about-hero-v2">
             <div class="cyber-grid"></div>
             <div class="container hero-title-group reveal">
-                <div style="font-family: 'JetBrains Mono'; color: #67e8f9; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 2rem; font-weight: 700;">// EVOLVIX CORE //</div>
+                <div style="font-family: 'JetBrains Mono'; color: #67e8f9; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 2rem; font-weight: 700;">// EVOLNEX CORE //</div>
                 <h1>WE BUILD <span class="text-hollow">DIGITAL</span><br>EMPIRES</h1>
                 <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
                     We are not an agency. We are an elite product studio engineering the future of high-performance web architecture.
@@ -184,7 +184,7 @@ about_main = """
                 <div class="founder-text-block reveal delay-200">
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "I founded Evolvix because I was exhausted by seeing brilliant brands crippled by mediocre digital experiences. The web is flooded with lazy templates and bloated code."
+                        "I founded Evolnex because I was exhausted by seeing brilliant brands crippled by mediocre digital experiences. The web is flooded with lazy templates and bloated code."
                     </p>
                     <p>
                         "We refuse to operate on that level. Every line of code, every pixel, and every animation is engineered to command attention and crush your competition. We don't just build websites; we build scalable digital assets."
@@ -317,5 +317,5 @@ about_main = """
     </main>
 """
 
-with open('c:/projects/evolvix/about.html', 'w', encoding='utf-8') as f:
+with open('c:/projects/evolnex/about.html', 'w', encoding='utf-8') as f:
     f.write(header + about_main + footer)

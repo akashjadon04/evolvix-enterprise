@@ -63,7 +63,7 @@
                 html += '<p style="color:#cbd5e1;margin:0 0 20px;">Your <strong>' + _this.answers.btype + '</strong> is severely restricted by <strong>' + _this.answers.prob + '</strong>. This is preventing you from reaching your goal of <strong>' + _this.answers.goal + '</strong>.</p>';
                 
                 html += '<div style="background:rgba(56,189,248,0.05);border:1px solid rgba(56,189,248,0.15);padding:20px;border-radius:12px;margin-bottom:25px;">';
-                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Evolvix Action Plan</h4>';
+                html += '<h4 style="color:#38bdf8;margin:0 0 10px;">Evolnex Action Plan</h4>';
                 html += '<ul style="color:#f1f5f9;margin:0;padding-left:20px;line-height:1.6;">';
                 html += '<li>Deploy a <strong>' + sol + '</strong></li>';
                 html += '<li>Eliminate tech debt and restructure digital touchpoints</li>';

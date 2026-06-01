@@ -1,11 +1,11 @@
 import re
 import os
 
-d = 'c:/projects/evolvix'
+d = 'c:/projects/evolnex'
 files = [f for f in os.listdir(d) if f.endswith('.html')]
 
-# We want to add preload for evolvix.webp to the head of every page.
-preload_tag = '<link rel="preload" as="image" href="assets/evolvix.webp" type="image/webp">\n'
+# We want to add preload for evolnex.webp to the head of every page.
+preload_tag = '<link rel="preload" as="image" href="assets/evolnex.webp" type="image/webp">\n'
 
 for f in files:
     path = os.path.join(d, f)
@@ -13,7 +13,7 @@ for f in files:
         html = file.read()
     
     # Check if preload already exists
-    if 'rel="preload" as="image"' not in html and 'assets/evolvix.webp' in html:
+    if 'rel="preload" as="image"' not in html and 'assets/evolnex.webp' in html:
         # Insert after <meta charset="UTF-8"> or early in the head
         if '<head>' in html:
             html = html.replace('<head>', '<head>\n    ' + preload_tag, 1)

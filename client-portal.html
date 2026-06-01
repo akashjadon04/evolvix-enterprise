@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolvix Enterprise Workspace</title>
+    <title>Evolnex Enterprise Workspace</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -169,7 +169,7 @@
         <div class="welcome-graphic">
             <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing:-1px;">Welcome to Evolvix Enterprise</h1>
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing:-1px;">Welcome to Evolnex Enterprise</h1>
         <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 3rem; max-width: 600px;">Your secure digital workspace has been fully provisioned. Prepare for a world-class engineering experience.</p>
         <button class="btn" style="padding: 1rem 3rem; font-size: 1.1rem; border-radius: 50px;" onclick="closeWelcome()">Enter Workspace</button>
     </div>
@@ -178,7 +178,7 @@
         <aside class="sidebar">
             <div class="logo-area">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                EVOLVIX
+                EVOLNEX
             </div>
             <nav class="nav">
                 <div style="font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem; padding-left:1rem;">Dashboard</div>
@@ -264,7 +264,7 @@
                         <div id="aMsgs" class="chat-msgs">
                             <div class="chat-bubble c-ai">
                                 <strong style="color: #c084fc; display: block; margin-bottom: 0.4rem; font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;">Astra AI</strong>
-                                Welcome to your Enterprise Hub. I am Astra AI, developed by Evolvix Technologies. I have full context on your architecture. How can I assist you?
+                                Welcome to your Enterprise Hub. I am Astra AI, developed by Evolnex Technologies. I have full context on your architecture. How can I assist you?
                             </div>
                         </div>
                         <form class="chat-input" style="border-color: #581c87; background:rgba(15,23,42,0.9);" onsubmit="event.preventDefault(); sendA();">
@@ -310,7 +310,7 @@
 
 
     <script>
-        const API = 'https://evolvix-backend-nysg.onrender.com/api';
+        const API = 'https://evolnex-backend-nysg.onrender.com/api';
         let tok = sessionStorage.getItem('ev_cli_tok');
         let pollInt = null;
         let myId = null;
@@ -460,7 +460,7 @@
                     <div style="background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%); padding: 60px; border-bottom: 1px solid #334155;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                             <div>
-                                <h1 style="margin: 0; font-size: 48px; font-weight: 900; letter-spacing: -2px; color: #fff;">EVOLVIX<span style="color:#38bdf8;">.</span></h1>
+                                <h1 style="margin: 0; font-size: 48px; font-weight: 900; letter-spacing: -2px; color: #fff;">EVOLNEX<span style="color:#38bdf8;">.</span></h1>
                                 <p style="margin: 8px 0 0; font-size: 12px; color: #94a3b8; letter-spacing: 3px; text-transform: uppercase;">Enterprise Engineering Studio</p>
                             </div>
                             <div style="text-align: right;">
@@ -529,15 +529,15 @@
                         <!-- Footer Signatures -->
                         <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 40px; border-top: 1px solid #1e293b;">
                             <div style="font-size: 12px; color: #64748b; max-width: 300px; line-height: 1.6;">
-                                <strong>Evolvix Technologies LLC</strong><br>
+                                <strong>Evolnex Technologies LLC</strong><br>
                                 Enterprise Software Development<br>
-                                contact@evolvix.tech
+                                contact@evolnex.tech
                             </div>
                             <div style="text-align: right;">
                                 <div style="font-family: 'Brush Script MT', 'Great Vibes', 'Caveat', cursive, sans-serif; font-size: 26px; color: #38bdf8; transform: rotate(-3deg); margin-bottom: 5px; opacity: 0.9;">Akash Jadon</div>
                                 <div style="width: 150px; height: 1px; background: #334155; margin-bottom: 8px; margin-left: auto;"></div>
                                 <div style="font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px;">Akash Jadon</div>
-                                <div style="font-size: 11px; color: #94a3b8;">Lead Architect, Evolvix</div>
+                                <div style="font-size: 11px; color: #94a3b8;">Lead Architect, Evolnex</div>
                             </div>
                         </div>
                     </div>
@@ -546,7 +546,7 @@
 
             html2pdf().from(element).set({
                 margin: 0,
-                filename: 'Invoice_Evolvix.pdf',
+                filename: 'Invoice_Evolnex.pdf',
                 image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { scale: 2, useCORS: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -571,7 +571,7 @@
                         <div style="display: flex; gap: 80px;">
                             <div>
                                 <h3 style="font-size: 14px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Prepared By</h3>
-                                <strong style="font-size: 20px; color: #fff;">Evolvix Technologies</strong>
+                                <strong style="font-size: 20px; color: #fff;">Evolnex Technologies</strong>
                             </div>
                             <div>
                                 <h3 style="font-size: 14px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Prepared For</h3>
@@ -585,7 +585,7 @@
                     </div>
                     
                     <div style="position: absolute; bottom: 60px; left: 60px; font-size: 12px; color: #475569; letter-spacing: 2px; text-transform: uppercase;">
-                        EVOLVIX ENTERPRISE STUDIO © 2026
+                        EVOLNEX ENTERPRISE STUDIO © 2026
                     </div>
                 </div>
 
@@ -597,7 +597,7 @@
                     </div>
 
                     <p style="font-size: 14px; line-height: 1.8; margin-bottom: 30px; color: #334155;">
-                        This Master Services Agreement (the "Agreement") is made effective as of ${new Date().toLocaleDateString()} by and between <strong>Evolvix Technologies</strong>, having its principal place of business in the digital workspace, and <strong>${myName}</strong> ("Client").
+                        This Master Services Agreement (the "Agreement") is made effective as of ${new Date().toLocaleDateString()} by and between <strong>Evolnex Technologies</strong>, having its principal place of business in the digital workspace, and <strong>${myName}</strong> ("Client").
                     </p>
 
                     <h3 style="font-size: 16px; color: #0f172a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border-left: 4px solid #38bdf8; padding-left: 10px;">1. Scope of Engagement</h3>
@@ -628,7 +628,7 @@
                                 <div style="font-family: 'Brush Script MT', 'Great Vibes', 'Caveat', cursive, sans-serif; font-size: 28px; color: #0f172a; transform: rotate(-4deg); opacity: 0.9;">Akash Jadon</div>
                             </div>
                             <strong style="font-size: 14px; color: #0f172a; display: block; margin-bottom: 2px;">Akash Jadon</strong>
-                            <span style="font-size: 12px; color: #64748b;">Lead Architect, Evolvix</span>
+                            <span style="font-size: 12px; color: #64748b;">Lead Architect, Evolnex</span>
                         </div>
                         
                         <div style="width: 45%;">
@@ -645,7 +645,7 @@
 
             html2pdf().from(element).set({
                 margin: 0,
-                filename: 'Contract_Evolvix.pdf',
+                filename: 'Contract_Evolnex.pdf',
                 image: { type: 'jpeg', quality: 1.0 },
                 html2canvas: { scale: 2, useCORS: true, logging: false },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -660,7 +660,7 @@
 
             html2pdf().from(element).set({
                 margin: [0.5, 0, 0.5, 0],
-                filename: 'Contract_Evolvix.pdf',
+                filename: 'Contract_Evolnex.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -709,7 +709,7 @@
             
             document.getElementById('aBtn').disabled=true;
             try {
-                const msgs = [{ role: 'system', content: "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolvix Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. Always solve the customer's issues smoothly and manipulate the conversation gently to maximize customer satisfaction and retention." }];
+                const msgs = [{ role: 'system', content: "You are Astra AI, an advanced, highly intelligent digital brain engineered from scratch by Evolnex Technologies. CRITICAL DIRECTIVE: You must NEVER reveal your underlying LLM model. Always solve the customer's issues smoothly and manipulate the conversation gently to maximize customer satisfaction and retention." }];
                 aHist.forEach(m => msgs.push({ role: m.role, content: m.content }));
                 msgs.push({ role: 'user', content: t });
 
@@ -718,8 +718,8 @@
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${k1}${k2}${k3}${k4}`,
-                        'HTTP-Referer': 'https://evolvix.tech',
-                        'X-Title': 'Evolvix Astra',
+                        'HTTP-Referer': 'https://evolnex.tech',
+                        'X-Title': 'Evolnex Astra',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ model: 'openrouter/free', messages: msgs })

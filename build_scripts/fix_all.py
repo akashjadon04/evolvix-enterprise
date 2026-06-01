@@ -2,7 +2,7 @@ import os
 import re
 
 # 1. Update style.css
-css_path = 'c:/projects/evolvix/style.css'
+css_path = 'c:/projects/evolnex/style.css'
 with open(css_path, 'r', encoding='utf-8') as f:
     css = f.read()
 
@@ -13,7 +13,7 @@ with open(css_path, 'w', encoding='utf-8') as f:
     f.write(css)
 
 # 2. Process all HTML files
-html_dir = 'c:/projects/evolvix'
+html_dir = 'c:/projects/evolnex'
 for file in os.listdir(html_dir):
     if file.endswith('.html'):
         path = os.path.join(html_dir, file)
@@ -45,7 +45,7 @@ for file in os.listdir(html_dir):
             content = content.replace('// SECURE UPLINK //', '// GET IN TOUCH //')
             content = content.replace('UPLINK_READY', 'READY')
             content = content.replace('Uplink Established.', 'Message Sent.')
-            content = content.replace('Your transmission has been securely received by Evolvix Core Intelligence. An architect will respond shortly.', 'Your message has been received. Our team will respond shortly.')
+            content = content.replace('Your transmission has been securely received by Evolnex Core Intelligence. An architect will respond shortly.', 'Your message has been received. Our team will respond shortly.')
         
         # --- Pricing Page Layout Fix and New Section ---
         if file == 'pricing.html':

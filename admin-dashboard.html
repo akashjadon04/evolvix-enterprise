@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evolvix Command Center</title>
+    <title>Evolnex Command Center</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
 <body>
     <div id="authScreen" class="auth-overlay">
         <div class="auth-card">
-            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent);">Evolvix Command</h2>
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent);">Evolnex Command</h2>
             <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">Level 5 Clearance Required</p>
             <form onsubmit="event.preventDefault(); login();">
                 <input type="email" id="aEmail" class="input-field" placeholder="Owner Email" required>
@@ -252,7 +252,7 @@
     </div>
 
     <script>
-        const API = 'https://evolvix-backend-nysg.onrender.com/api';
+        const API = 'https://evolnex-backend-nysg.onrender.com/api';
         let tok = sessionStorage.getItem('ev_adm_tok');
         let sel = null;
         let pollInt = null;
@@ -342,7 +342,7 @@
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'evolvix_leads_backup.csv';
+                a.download = 'evolnex_leads_backup.csv';
                 a.click();
             } catch(e) {}
         }

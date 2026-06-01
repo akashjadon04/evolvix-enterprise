@@ -1,6 +1,6 @@
 import re
 
-js_path = 'c:/projects/evolvix/script.js'
+js_path = 'c:/projects/evolnex/script.js'
 with open(js_path, 'r', encoding='utf-8') as f:
     js = f.read()
 

@@ -88,7 +88,7 @@ new_html = '''        <!-- LAYER 1: BUSINESS CORE -->
         <!-- LAYER LOAD: COMPUTING -->
         <div id="qstep-load" class="qstep" style="display:none;text-align:center;padding:40px 0;">
             <div style="margin:0 auto 30px;width:80px;height:80px;border:4px solid rgba(56,189,248,0.1);border-top-color:#38bdf8;border-radius:50%;animation:spinPulse 1.2s linear infinite;"></div>
-            <h3 style="color:#fff;">Evolvix Core Computing Algorithm...</h3>
+            <h3 style="color:#fff;">Evolnex Core Computing Algorithm...</h3>
             <p style="color:#64748b;margin-top:10px;">Analyzing growth multipliers and formulating strategy</p>
         </div>
         

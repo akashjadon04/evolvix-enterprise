@@ -1,6 +1,6 @@
 import re
 
-with open('c:/projects/evolvix/index.html', 'r', encoding='utf-8') as f:
+with open('c:/projects/evolnex/index.html', 'r', encoding='utf-8') as f:
     index_html = f.read()
 
 # Extract header (from start to </header>)
@@ -12,7 +12,7 @@ footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
 # Replace title in header
-header = header.replace('<title>Evolvix Technologies | Enterprise Software & Scale</title>', '<title>Contact | Evolvix Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Contact | Evolnex Technologies</title>')
 # Replace nav link active state
 header = header.replace('href="contact.html" class="nav-link"', 'href="contact.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
@@ -183,5 +183,5 @@ contact_main = """
     </main>
 """
 
-with open('c:/projects/evolvix/contact.html', 'w', encoding='utf-8') as f:
+with open('c:/projects/evolnex/contact.html', 'w', encoding='utf-8') as f:
     f.write(header + contact_main + footer)

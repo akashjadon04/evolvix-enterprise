@@ -65,7 +65,7 @@ def fix_index():
             <div class="container">
                 <div class="form-card reveal" style="max-width:850px; margin:0 auto; padding:60px; background:rgba(15,23,42,0.7); backdrop-filter:blur(20px); border:1px solid rgba(56,189,248,0.2); border-radius:24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
                     <div style="text-align:center; margin-bottom:40px;">
-                        <span style="background:linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); color:#38bdf8; padding:8px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing: 2px; text-transform: uppercase;">Evolvix Core Intelligence</span>
+                        <span style="background:linear-gradient(90deg, rgba(56,189,248,0.1), rgba(139,92,246,0.1)); border: 1px solid rgba(56,189,248,0.3); color:#38bdf8; padding:8px 24px; border-radius:30px; font-size:0.85rem; font-weight:700; letter-spacing: 2px; text-transform: uppercase;">Evolnex Core Intelligence</span>
                         <h2 style="color:#fff !important; font-size:3rem; font-weight: 800; letter-spacing: -1px; margin-top:25px; line-height: 1.2;">Uncover Your Growth Bottlenecks</h2>
                     </div>
 
@@ -146,7 +146,7 @@ def fix_index():
         
         <div id="qstep-4" class="qstep" style="display:none;text-align:center;padding:40px 0;">
             <div style="margin:0 auto 30px;width:80px;height:80px;border:4px solid rgba(56,189,248,0.1);border-top-color:#38bdf8;border-radius:50%;animation:spinPulse 1.2s linear infinite;"></div>
-            <h3 style="color:#fff;">Evolvix Core Computing Algorithm...</h3>
+            <h3 style="color:#fff;">Evolnex Core Computing Algorithm...</h3>
             <p style="color:#64748b;margin-top:10px;">Analyzing growth multipliers</p>
         </div>
         
@@ -163,7 +163,7 @@ def fix_index():
         <!-- HIDDEN PDF TEMPLATE -->
         <div id="hidden-pdf-template" style="display:none; padding:40px; background:#fff; color:#0f172a; font-family:'Outfit',sans-serif; width:800px;">
             <div style="border-bottom:4px solid #38bdf8; padding-bottom:20px; margin-bottom:30px; display:flex; justify-content:space-between; align-items:center;">
-                <h1 style="margin:0; font-size:32px; color:#0f172a;">Evolvix Technologies</h1>
+                <h1 style="margin:0; font-size:32px; color:#0f172a;">Evolnex Technologies</h1>
                 <span style="font-weight:700; color:#64748b; font-size:14px;">ENTERPRISE STRATEGY AUDIT</span>
             </div>
             
@@ -191,7 +191,7 @@ def fix_index():
                 <div>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Akash Signature">
                     <p style="margin:5px 0 0; font-weight:700;">Akash Jadon</p>
-                    <p style="margin:0; font-size:12px; color:#64748b;">CEO, Evolvix Technologies</p>
+                    <p style="margin:0; font-size:12px; color:#64748b;">CEO, Evolnex Technologies</p>
                 </div>
                 <div style="text-align:right;">
                     <p style="margin:0; font-weight:700; color:#38bdf8;">evolvixtechnology@gmail.com</p>
@@ -266,7 +266,7 @@ def fix_index():
             el.style.display = 'block'; // unhide temporarily
             var opt = {
               margin:       0.5,
-              filename:     'Evolvix_Strategy_Audit.pdf',
+              filename:     'Evolnex_Strategy_Audit.pdf',
               image:        { type: 'jpeg', quality: 0.98 },
               html2canvas:  { scale: 2, useCORS: true },
               jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
@@ -288,14 +288,14 @@ def fix_index():
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Push a dummy state so back button works
-        window.history.pushState({page: 1}, "Evolvix", "");
+        window.history.pushState({page: 1}, "Evolnex", "");
         
         window.addEventListener('popstate', function(event) {
             const pm = document.getElementById('playbookModal');
             if(pm && pm.style.display !== 'flex') {
                 pm.style.display = 'flex';
                 // Push state back so they don't actually leave if they dismiss it
-                window.history.pushState({page: 1}, "Evolvix", "");
+                window.history.pushState({page: 1}, "Evolnex", "");
             }
         });
     });

@@ -1,7 +1,7 @@
 import re
 import os
 
-html_path = 'c:/projects/evolvix/index.html'
+html_path = 'c:/projects/evolnex/index.html'
 with open(html_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
@@ -22,7 +22,7 @@ god_pdf_template = """
         <div style="position: relative; z-index: 2;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                 <div>
-                    <h1 style="font-family: 'Outfit', sans-serif; font-size: 48px; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -1px;">Evolvix Technologies</h1>
+                    <h1 style="font-family: 'Outfit', sans-serif; font-size: 48px; color: #ffffff; margin: 0 0 10px 0; letter-spacing: -1px;">Evolnex Technologies</h1>
                     <p style="color: #67e8f9; font-size: 14px; font-weight: 700; letter-spacing: 4px; margin: 0; font-family: 'JetBrains Mono', monospace;">// ENTERPRISE STRATEGY AUDIT</p>
                 </div>
                 <div style="background: rgba(103,232,249,0.1); border: 1px solid rgba(103,232,249,0.3); padding: 5px 15px; border-radius: 20px; color: #67e8f9; font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700;">CONFIDENTIAL</div>
@@ -71,7 +71,7 @@ god_pdf_template = """
             <div style="background: #ffffff; display: inline-block; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 700; color: #0c4a6e;" id="gpdf-roi">Projected Impact: 3x Revenue</div>
         </div>
 
-        <p style="font-size: 14px; color: #64748b; font-weight: 800; letter-spacing: 1px; margin: 0 0 15px 0;">WHAT EVOLVIX WILL BUILD:</p>
+        <p style="font-size: 14px; color: #64748b; font-weight: 800; letter-spacing: 1px; margin: 0 0 15px 0;">WHAT EVOLNEX WILL BUILD:</p>
         <div id="gpdf-list" style="margin-bottom: 50px;">
             <!-- Items injected by JS -->
         </div>
@@ -86,7 +86,7 @@ god_pdf_template = """
                 </div>
             </div>
             <div>
-                <p style="font-size: 12px; color: #94a3b8; font-weight: 700; margin: 0;">EVOLVIX.IN</p>
+                <p style="font-size: 12px; color: #94a3b8; font-weight: 700; margin: 0;">EVOLNEX.IN</p>
             </div>
         </div>
     </div>
@@ -178,7 +178,7 @@ window._buildPlaybookPDF = function() {
     
     var opt = {
       margin:       0,
-      filename:     'Evolvix_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
+      filename:     'Evolnex_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf',
       image:        { type: 'jpeg', quality: 1.0 },
       html2canvas:  { scale: 2, useCORS: true, logging: false },
       jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
