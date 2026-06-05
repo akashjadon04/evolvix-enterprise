@@ -1014,7 +1014,7 @@ fbq('track', 'PageView');
         // PERSONALIZED MARKET INTELLIGENCE (Feature 5)
         // ================================================================
         function initMarketIntel() {
-            fetch('https://ipapi.co/json/')
+            fetch('https://get.geojs.io/v1/ip/geo.json')
                 .then(function(r) { return r.json(); })
                 .then(function(data) {
                     var city = data.city || 'Your City';

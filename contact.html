@@ -1880,8 +1880,8 @@ fbq('track', 'PageView');
             var mins = Math.floor(Math.random() * 8) + 1;
             
             // Fetch real location
-            fetch('https://ipapi.co/json/').then(r=>r.json()).then(geo => {
-                var city = (geo.city || 'Your Area') + ', ' + (geo.country_name || 'Local');
+            fetch('https://get.geojs.io/v1/ip/geo.json').then(r=>r.json()).then(geo => {
+                var city = (geo.city || 'Your Area') + ', ' + (geo.country || 'Local');
                 if(spTitle) spTitle.textContent = biz + ' ' + action;
                 if(spDesc) spDesc.textContent = 'From ' + city + ' · ' + mins + ' min ago';
                 if(spToast) spToast.classList.add('show');
