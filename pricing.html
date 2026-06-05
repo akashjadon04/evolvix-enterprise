@@ -449,7 +449,7 @@ fbq('track', 'PageView');
                         </div>
 
                         <!-- STEP 2: Scale/Features -->
-                        <div class="qstep" id="est-step-2" class="evl-disp-none">
+                        <div class="qstep evl-disp-none" id="est-step-2">
                             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;">2. What is the scale of the project?</h3>
                             <div style="display:grid;grid-template-columns:1fr;gap:16px;">
                                 <button class="qbtn" onclick="window.pricingEngine.select('scale', 'mvp', this)">
@@ -465,7 +465,7 @@ fbq('track', 'PageView');
                         </div>
 
                         <!-- STEP 3: Timeline -->
-                        <div class="qstep" id="est-step-3" class="evl-disp-none">
+                        <div class="qstep evl-disp-none" id="est-step-3">
                             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;">3. When do you need this launched?</h3>
                             <div class="grid-responsive-2">
                                 <button class="qbtn" onclick="window.pricingEngine.select('time', 'asap', this)">
@@ -481,7 +481,7 @@ fbq('track', 'PageView');
                         </div>
 
                         <!-- STEP 4: Form -->
-                        <div class="qstep" id="est-step-4" class="evl-disp-none">
+                        <div class="qstep evl-disp-none" id="est-step-4">
                             <h3 style="color:#fff;font-size:1.8rem;margin-bottom:24px;">4. Generate Your Estimate</h3>
                             <form onsubmit="event.preventDefault(); window.pricingEngine.calculate();" class="grid-responsive-2">
                                 <input id="est-name" type="text" placeholder="Full Name" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:18px;border-radius:14px;font-size:1rem;outline:none;">
@@ -498,7 +498,7 @@ fbq('track', 'PageView');
                         </div>
 
                         <!-- STEP 5: Results -->
-                        <div class="qstep" id="est-step-5" class="evl-disp-none">
+                        <div class="qstep evl-disp-none" id="est-step-5">
                             <div id="est-results"></div>
                         </div>
                     </div>
@@ -530,31 +530,22 @@ fbq('track', 'PageView');
                 // Send to FormSubmit
                 
                 try {
-                    var form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'https://api.web3forms.com/submit';
-                    var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
-                    
-                    var data = {
-                        _subject: 'New Pricing Estimate: ' + name,
-                        _captcha: 'false',
-                        Name: name,
-                        Email: email,
-                        Service: this.answers.service,
-                        Scale: this.answers.scale,
-                        Timeline: this.answers.time
-                    };
-                    
-                    for (var k in data) {
-                        var inp = document.createElement('input');
-                        inp.type = 'hidden';
-                        inp.name = k;
-                        inp.value = data[k];
-                        form.appendChild(inp);
-                    }
-                    form.target = 'hidden_iframe';
-                    document.body.appendChild(form);
-                    form.submit();
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            access_key: '453219ed-70bc-4e70-8b04-3be070c0f955',
+                            subject: 'New Pricing Estimate: ' + name,
+                            from_name: name,
+                            email: email,
+                            Service: this.answers.service,
+                            Scale: this.answers.scale,
+                            Timeline: this.answers.time
+                        })
+                    }).catch(console.error);
                 } catch(e) {}
 
         
