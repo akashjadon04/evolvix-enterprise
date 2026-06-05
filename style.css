@@ -14,3 +14,8 @@
 
 
 
+
+/* SAFE AUDIT FIX STYLES */
+.evl-disp-none { display: none; }
+.evl-disp-none-center { display:none; text-align:center; padding:40px 0; }
+.evl-disp-block-bold { display:block; font-size:inherit; font-weight:bold; margin:inherit; }
