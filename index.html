@@ -1641,10 +1641,16 @@ window.addEventListener('load', function() {
                 function _hCalc(){
                     requestAnimationFrame(function(){
                         var vH=window.innerHeight;
-                        _hMaxT=Math.max(0,hTrack.scrollWidth-window.innerWidth+60);
-                        hSection.style.height=(vH+_hMaxT*1.85)+'px';
-                        _hScrollable=hSection.offsetHeight-vH;
-                        _hSecTop=hSection.offsetTop;
+                        var wW=window.innerWidth;
+                        var sW=hTrack.scrollWidth;
+                        var oT=hSection.offsetTop;
+                        
+                        _hMaxT=Math.max(0,sW-wW+60);
+                        var newH = vH+_hMaxT*1.85;
+                        _hScrollable=newH-vH;
+                        _hSecTop=oT;
+                        
+                        hSection.style.height=newH+'px';
                     });
                 }
                 window.addEventListener('load',_hCalc);
