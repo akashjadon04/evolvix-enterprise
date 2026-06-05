@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Google Analytics 4 (Global Tag) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1Y2Z3W4V5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X1Y2Z3W4V5');
+    </script>
+
+    <link rel="icon" type="image/webp" href="assets/evolnex.webp">
     <link rel="preload" as="image" href="assets/evolnex.webp" type="image/webp">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Contact Evolnex | Hire the Best Digital Agency in Phagwara</title>
-    <meta name="description" content="Ready to scale? Contact Evolnex, the premier digital marketing and web development agency in Phagwara and Agra. Let us build your next big thing.">
+    <title>Evolnex | Premium Digital Product Studio</title>
+    <meta name="description" content="Evolnex is a premium digital product studio. We engineer high-performance websites, SaaS platforms, and mobile apps for global leaders.">
     <meta name="theme-color" content="#020617">
 
     <meta property="og:title" content="Evolnex Technologies | Elite Digital Product Studio">
@@ -227,7 +238,7 @@
           "name": "Evolnex Digital Marketing & Web Development",
           "image": "https://evolnex.digital/assets/evolnex.webp",
           "telephone": "+91-7668758238",
-          "email": "evolvixtechnology@gmail.com",
+          "email": "info&#64;evolnex.digital",
           "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
@@ -595,18 +606,22 @@
             </div>
             
             <!-- Hidden iframe to prevent redirect -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            
             
         </section>
 
         <script>
-            function handleGodSubmit(e) {
+            async function handleGodSubmit(e) {
+                e.preventDefault();
                 const btn = document.getElementById('godSubmitBtn');
+                const form = e.target;
+                const formData = new FormData(form);
                 btn.innerHTML = 'Establishing Secure Connection...';
                 btn.style.pointerEvents = 'none';
                 btn.style.opacity = '0.7';
-                
-                // Reset form and show success state after short delay
+                try {
+                    await fetch(form.action, { method: 'POST', body: formData });
+                } catch(err) { console.error(err); }
                 setTimeout(() => {
                     const panel = document.querySelector('.contact-form-panel');
                     panel.innerHTML = `
@@ -667,7 +682,7 @@
                 </a>
                 <p style="font-size:.92rem;margin-bottom:1.5rem;color:rgba(255,255,255,.5);line-height:1.7;">
                     Evolnex Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.</p>
-                <p style="font-size:.85rem;margin-bottom:1.5rem;color:rgba(255,255,255,.45);line-height:1.6;">As the <strong>Best Digital Marketing Agency in Phagwara & Agra</strong>, Evolnex proudly delivers premium Web Development, SaaS, and App Solutions globally.
+                <p style="font-size:.85rem;margin-bottom:1.5rem;color:rgba(255,255,255,.45);line-height:1.6;">As a <strong>Premium Digital Product Studio</strong>, Evolnex proudly engineers high-performance Web, SaaS, and App Solutions for brands <strong>Worldwide.</strong>
                 </p>
                 <div class="footer-socials">
                     <a href="#" class="social-btn" aria-label="Twitter/X" title="Twitter">
@@ -702,11 +717,11 @@
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.38 2.18 2 2 0 012.36.02h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
                     +91 7668758238
                 </a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=evolvixtechnology@gmail.com" target="_blank" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital" target="_blank" class="footer-link" style="display:flex;align-items:center;gap:.5rem;">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     Email Us
                 </a>
-                <div class="footer-heading" style="margin-top:1.5rem;">Legal</div>
+                <div class="footer-heading" style="margin-top:1.5rem;">Headquarters</div><p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1.5rem;">Global Operations<br>Serving Clients Worldwide</p><div class="footer-heading" style="margin-top:1.5rem;">Legal</div>
                 <a href="privacy.html" class="footer-link">Privacy Policy</a>
                 <a href="terms.html" class="footer-link">Terms of Service</a>
             </div>
@@ -1132,7 +1147,7 @@
             { section:'Actions',  icon:'🔍', title:'Free Website Audit', desc:'Get your site audited in 24h', href:'#audit', scroll:true },
             { section:'Actions',  icon:'💬', title:'Chat with Astra AI', desc:'Open our AI assistant', action:'openAstra' },
             { section:'Actions',  icon:'📞', title:'Call Directly', desc:'+91 7668758238', href:'tel:+917668758238' },
-            { section:'Actions',  icon:'📧', title:'Send Email', desc:'evolvixtechnology@gmail.com', href:'https://mail.google.com/mail/?view=cm&fs=1&to=evolvixtechnology@gmail.com', target:'_blank' },
+            { section:'Actions',  icon:'📧', title:'Send Email', desc:'info&#64;evolnex.digital', href:'https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', target:'_blank' },
         ];
 
         var isOpen = false;
@@ -1428,7 +1443,7 @@
             '--- YOUR CONVERSATION RULES ---',
             '1. Answer ANY general question the user asks (coding, math, philosophy, writing, science). You are a super-smart AI.',
             '2. If the user\'s topic relates to business, web development, or growth, subtly mention how Evolnex can help them achieve their goals.',
-            '3. If a user asks about pricing, starting a project, or hiring us, you must enthusiastically direct them to call or WhatsApp: +91 7668758238, or email evolvixtechnology@gmail.com.',
+            '3. If a user asks about pricing, starting a project, or hiring us, you must enthusiastically direct them to call or WhatsApp: +91 7668758238, or email info&#64;evolnex.digital.',
             '4. Keep your responses crisp, deeply helpful, and under 200 words unless technical detail is strictly required.'
         ].join('\n');
 
@@ -1687,7 +1702,7 @@
             { icon: '📈', title: 'Book Free Audit', action: function() { document.getElementById('audit').scrollIntoView(); } },
             { icon: '💬', title: 'Open Astra AI', action: function() { document.getElementById('astraToggle').click(); } },
             { icon: '💼', title: 'Case Studies', action: function() { document.getElementById('work').scrollIntoView(); } },
-            { icon: '📞', title: 'Contact Us', action: function() { window.open('https://mail.google.com/mail/?view=cm&fs=1&to=evolvixtechnology@gmail.com', '_blank'); } }
+            { icon: '📞', title: 'Contact Us', action: function() { window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', '_blank'); } }
         ];
 
         function renderCmd(query) {
@@ -1782,8 +1797,8 @@
             var mins = Math.floor(Math.random() * 8) + 1;
             
             // Fetch real location
-            fetch('https://get.geojs.io/v1/ip/geo.json').then(r=>r.json()).then(geo => {
-                var city = (geo.city || 'Your Area') + ', ' + (geo.country_code || 'Local');
+            fetch('https://ipapi.co/json/').then(r=>r.json()).then(geo => {
+                var city = (geo.city || 'Your Area') + ', ' + (geo.country_name || 'Local');
                 if(spTitle) spTitle.textContent = biz + ' ' + action;
                 if(spDesc) spDesc.textContent = 'From ' + city + ' · ' + mins + ' min ago';
                 if(spToast) spToast.classList.add('show');
@@ -1994,7 +2009,7 @@
 
                         // Footer on cover
                         doc.setTextColor(100,116,139); doc.setFontSize(8); doc.setFont('helvetica','normal');
-                        doc.text('evolnex.in  |  evolvixtechnology@gmail.com  |  +91 7668758238', ml, H-20);
+                        doc.text('evolnex.in  |  info&#64;evolnex.digital  |  +91 7668758238', ml, H-20);
 
                         // === PAGE 2: EXECUTIVE SUMMARY ===
                         doc.addPage();
@@ -2140,7 +2155,7 @@
     }
     </script>
     
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
 
 <script>
     // Lazy load PDF engine to score 100/100 on PageSpeed
@@ -2155,6 +2170,33 @@
         }, 1000);
     });
 </script>
+
+    <!-- Web3Forms AJAX Interceptor -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('form[action="https://api.web3forms.com/submit"]');
+            forms.forEach(form => {
+                form.removeAttribute('target');
+                form.addEventListener('submit', async function(e) {
+                    if (this.id === 'godContactForm' && typeof handleGodSubmit === 'function') {
+                        // handleGodSubmit is defined in contact.html, we let it handle UI
+                    } else {
+                        e.preventDefault();
+                        const btn = this.querySelector('button[type="submit"]');
+                        if(btn) btn.textContent = 'SENDING...';
+                        const formData = new FormData(this);
+                        try {
+                            await fetch(this.action, { method: 'POST', body: formData });
+                            if(btn) { btn.textContent = '✓ REQUEST SENT'; btn.style.background = '#10b981'; btn.style.color = '#fff'; }
+                        } catch(err) {
+                            if(btn) btn.textContent = 'ERROR, TRY AGAIN';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
     

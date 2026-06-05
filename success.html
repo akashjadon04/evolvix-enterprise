@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <!-- Google Analytics 4 (Global Tag) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1Y2Z3W4V5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X1Y2Z3W4V5');
+    </script>
+
+    <link rel="icon" type="image/webp" href="assets/evolnex.webp">
     <meta property="og:url" content="https://evolnex.digital/success.html">
     <meta property="og:type" content="business.business">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://evolnex.digital/success.html">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transmission Received | Zyrova</title>
+    <title>Evolnex | Premium Digital Product Studio</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -154,7 +165,7 @@
           "name": "Evolnex Digital Marketing & Web Development",
           "image": "https://evolnex.digital/assets/evolnex.webp",
           "telephone": "+91-7668758238",
-          "email": "evolvixtechnology@gmail.com",
+          "email": "info&#64;evolnex.digital",
           "priceRange": "$$$",
           "address": {
             "@type": "PostalAddress",
@@ -258,6 +269,33 @@
         }, 1000);
     });
 </script>
+
+    <!-- Web3Forms AJAX Interceptor -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('form[action="https://api.web3forms.com/submit"]');
+            forms.forEach(form => {
+                form.removeAttribute('target');
+                form.addEventListener('submit', async function(e) {
+                    if (this.id === 'godContactForm' && typeof handleGodSubmit === 'function') {
+                        // handleGodSubmit is defined in contact.html, we let it handle UI
+                    } else {
+                        e.preventDefault();
+                        const btn = this.querySelector('button[type="submit"]');
+                        if(btn) btn.textContent = 'SENDING...';
+                        const formData = new FormData(this);
+                        try {
+                            await fetch(this.action, { method: 'POST', body: formData });
+                            if(btn) { btn.textContent = '✓ REQUEST SENT'; btn.style.background = '#10b981'; btn.style.color = '#fff'; }
+                        } catch(err) {
+                            if(btn) btn.textContent = 'ERROR, TRY AGAIN';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>
