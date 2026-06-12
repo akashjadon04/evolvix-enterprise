@@ -28,35 +28,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Fade up reveals
         gsap.utils.toArray('.reveal').forEach(el => {
-            gsap.from(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 48,
-                opacity: 0,
-                duration: 0.9,
-                ease: "power3.out"
-            });
+            gsap.fromTo(el, 
+                { y: 48, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.9,
+                    ease: "power3.out"
+                }
+            );
         });
 
         // Staggered child reveals
         gsap.utils.toArray('.stagger-parent').forEach(parent => {
             const children = parent.querySelectorAll('.stagger-child');
             if (children.length > 0) {
-                gsap.from(children, {
-                    scrollTrigger: {
-                        trigger: parent,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 48,
-                    opacity: 0,
-                    duration: 0.8,
-                    stagger: 0.1,
-                    ease: "power3.out"
-                });
+                gsap.fromTo(children, 
+                    { y: 48, opacity: 0 },
+                    {
+                        scrollTrigger: {
+                            trigger: parent,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        },
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: "power3.out"
+                    }
+                );
             }
         });
     }
