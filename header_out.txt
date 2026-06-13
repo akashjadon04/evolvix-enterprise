@@ -1,0 +1,21 @@
+<header class="header" id="siteHeader">
+<div class="container nav-container">
+<a class="logo" href="/">
+<img alt="Evolnex Technologies" class="evolnex-logo" fetchpriority="high" height="69" src="assets/evolnex.webp" style="height: 69px !important; width: auto;" width="160"/>
+</a>
+<nav>
+<button aria-label="Open Menu" class="nav-toggle">☰</button>
+<ul class="nav-menu">
+<li><a class="nav-link" href="/">Home</a></li>
+<li><a class="nav-link" href="/services">Services</a></li>
+<li><a class="nav-link" href="/case-studies">Work</a></li>
+<li><a class="nav-link" href="/pricing">Pricing</a></li>
+<li><a class="nav-link" href="/about">Studio</a></li>
+<li><a class="btn btn-secondary" href="/client-portal" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
+<li class="mobile-only-item evl-disp-none"><a href="/contact" style="background:var(--c-brand-main);color:#fff;padding:1rem;border-radius:8px;font-weight:700;margin-top:1rem;display:block;text-align:center;text-decoration:none;">Start Project →</a></li>
+</ul>
+</nav>
+<a class="btn btn-primary btn-cta-glow" href="/contact">
+                Start Project <span class="btn-arrow">→</span>
+</a>
+</div>

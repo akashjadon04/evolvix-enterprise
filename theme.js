@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             color: materialColor,
             transparent: true,
             opacity: 0.8,
-            blending: THREE.AdditiveBlending
+            blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending
         });
 
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
