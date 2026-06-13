@@ -464,6 +464,91 @@ window.addEventListener('load', function() {
 });
 </script>
 <noscript><img class="evl-disp-none" height="1" src="https://www.facebook.com/tr?id=0000000000000000&amp;ev=PageView&amp;noscript=1" width="1"/></noscript>
+
+<style id="light-mode-forces">
+html[data-theme="light"] body {
+    background-color: #f8fafc !important;
+    background-image: none !important;
+    color: #020617 !important;
+}
+html[data-theme="light"] .section, 
+html[data-theme="light"] .stats-section, 
+html[data-theme="light"] .cta-section {
+    background-color: #f8fafc !important;
+}
+html[data-theme="light"] .hero {
+    background: radial-gradient(circle at 50% -20%, #f1f5f9 0%, #f8fafc 70%) !important;
+}
+html[data-theme="light"] h1, 
+html[data-theme="light"] h2, 
+html[data-theme="light"] h3, 
+html[data-theme="light"] p, 
+html[data-theme="light"] .stat-number,
+html[data-theme="light"] .service-card h3,
+html[data-theme="light"] .process-step h3,
+html[data-theme="light"] .tech-name,
+html[data-theme="light"] .portfolio-card-body h3,
+html[data-theme="light"] .text-primary,
+html[data-theme="light"] .kinetic-word,
+html[data-theme="light"] .word-unit {
+    color: #020617 !important;
+    -webkit-text-fill-color: #020617 !important;
+}
+html[data-theme="light"] .text-gradient {
+    background: linear-gradient(135deg, #f97316 10%, #ea580c 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+html[data-theme="light"] .service-card p,
+html[data-theme="light"] .process-step p,
+html[data-theme="light"] .portfolio-card-body p,
+html[data-theme="light"] .text-secondary,
+html[data-theme="light"] .text-tertiary {
+    color: #334155 !important;
+    -webkit-text-fill-color: #334155 !important;
+}
+html[data-theme="light"] .card,
+html[data-theme="light"] .service-card,
+html[data-theme="light"] .form-card,
+html[data-theme="light"] .portfolio-card,
+html[data-theme="light"] .stat-block,
+html[data-theme="light"] .tech-card,
+html[data-theme="light"] .cta-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+}
+html[data-theme="light"] .card::before,
+html[data-theme="light"] .service-card::before,
+html[data-theme="light"] .service-card::after {
+    display: none !important;
+}
+
+/* Invert white/blue graphics to black/orange */
+html[data-theme="light"] .hero-visual svg,
+html[data-theme="light"] .footer-graphic svg,
+html[data-theme="light"] svg.ambient-blob,
+html[data-theme="light"] .client-logo {
+    filter: invert(1)  !important;
+}
+
+/* Fix particle canvas */
+html[data-theme="light"] #webgl-hero {
+    filter: invert(1)  !important;
+}
+
+html[data-theme="light"] .reveal,
+html[data-theme="light"] .stagger-child {
+    opacity: 1 !important;
+    transform: none !important;
+}
+html[data-theme="light"] .cmd-backdrop,
+html[data-theme="light"] .cmd-palette {
+    display: none !important;
+}
+</style>
 </head>
 <body>
 <canvas id="webgl-hero" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
@@ -482,8 +567,6 @@ window.addEventListener('load', function() {
 <!-- ================================================================
          Γÿà ENTERPRISE FEATURE C: COMMAND PALETTE (ΓîÿK)
          ================================================================ -->
-
-
 <!-- RIGHT: God-Level Metrics Engine -->
 <div class="hero-visual reveal delay-200">
 <div class="hero-metrics-engine">
@@ -526,8 +609,6 @@ window.addEventListener('load', function() {
 </div>
 </div>
 </div>
-</div>
-</section>
 <!-- ================================================================
              MARQUEE
              ================================================================ -->
@@ -683,7 +764,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://reachforever.com" rel="nofollow noopener noreferrer" target="_blank">Visit reachforever.com <span>ΓåÆ</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(239,68,68,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">≡ƒì░</div>
 <div class="portfolio-card-body">
@@ -697,7 +777,6 @@ window.addEventListener('load', function() {
 </div>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(139,92,246,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">ΓÜÖ∩╕Å</div>
 <div class="portfolio-card-body">
@@ -712,7 +791,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://codemyspec.com" rel="nofollow noopener noreferrer" target="_blank">Visit codemyspec.com <span>ΓåÆ</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(14,116,144,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">≡ƒôè</div>
 <div class="portfolio-card-body">
@@ -727,7 +805,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://seedtable.com" rel="nofollow noopener noreferrer" target="_blank">Visit seedtable.com <span>ΓåÆ</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(14,116,144,.12),rgba(103,232,249,.06));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">≡ƒÆè</div>
 <div class="portfolio-card-body">
@@ -742,7 +819,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://fountainlife.com" rel="nofollow noopener noreferrer" target="_blank">Visit fountainlife.com <span>ΓåÆ</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(14,116,144,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">≡ƒÅÑ</div>
 <div class="portfolio-card-body">
@@ -757,14 +833,13 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://cls.health" rel="nofollow noopener noreferrer" target="_blank">Visit cls.health <span>ΓåÆ</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(14,116,144,.08),rgba(139,92,246,.05));border-style:dashed;min-height:420px;">
 <div class="portfolio-card-body" style="text-align:center;padding:3rem 2rem;">
 <div style="font-size:2.5rem;margin-bottom:1rem;">≡ƒÜÇ</div>
 <h3 style="font-size:1.2rem;">Your Project Here</h3>
 <p style="font-size:.875rem;margin:.75rem 0 1.5rem;color:rgba(255,255,255,.55);">Join our portfolio. Let's build something remarkable together.</p>
 <a class="btn btn-primary btn-cta-glow" href="/contact" style="padding:.8rem 1.75rem;font-size:.9rem;">Start Today</a>
-<button id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;" aria-label="Toggle Theme">🌓</button>
+<button aria-label="Toggle Theme" id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;">🌓</button>
 </div>
 </div>
 <div style="width:100px;flex-shrink:0;"></div>
@@ -831,8 +906,6 @@ window.addEventListener('load', function() {
 </div>
 </div>
 </div>
-
-
 </section>
 <!-- ================================================================
              CTA ΓÇö Liquid Water
@@ -849,7 +922,7 @@ window.addEventListener('load', function() {
                     </p>
 <div class="flex gap-1 justify-center" style="flex-wrap:wrap;">
 <a class="btn btn-primary btn-cta-glow" href="/contact">Start Your Project ΓåÆ</a>
-<button id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;" aria-label="Toggle Theme">🌓</button>
+<button aria-label="Toggle Theme" id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;">🌓</button>
 <a class="btn btn-secondary" href="#audit">Get a Free Audit</a>
 </div>
 </div>
@@ -1120,7 +1193,6 @@ window.addEventListener('load', function() {
         
     };
     </script>
-</main>
 <!-- ================================================================
          FOOTER ΓÇö Premium Redesign
          ================================================================ -->
@@ -1170,16 +1242,11 @@ window.addEventListener('load', function() {
 <p style="font-size:.85rem;margin-bottom:1.5rem;color:rgba(255,255,255,.45);line-height:1.6;">As a <strong>Premium Digital Product Studio</strong>, Evolnex proudly engineers high-performance Web, SaaS, and App Solutions for brands <strong>Worldwide.</strong>
 </p>
 <div class="footer-socials">
-<a href="https://www.linkedin.com/company/131953983/" class="social-btn">Li</a>
-<a href="https://x.com/evolnex" class="social-btn">X</a>
-<a href="https://www.instagram.com/evolnextechnologies/" class="social-btn">Ig</a>
+<a class="social-btn" href="https://www.linkedin.com/company/131953983/" target="_blank">in</a>
+<a class="social-btn" href="https://x.com/evolnex" target="_blank">𝕏</a>
+<a class="social-btn" href="https://www.instagram.com/evolnextechnologies/" target="_blank">ig</a>
 </div>
 
-<div class="footer-socials">
-<a href="https://www.linkedin.com/company/131953983/" class="social-btn">Li</a>
-<a href="https://x.com/evolnex" class="social-btn">X</a>
-<a href="https://www.instagram.com/evolnextechnologies/" class="social-btn">Ig</a>
-</div>
 </div>
 <div>
 <div class="footer-heading">Services</div>
@@ -2010,575 +2077,6 @@ window.addEventListener('load', function() {
          Γÿà ENTERPRISE ADD-ONS (Command Palette, Minimap, Social Proof)
          ================================================================ -->
 <!-- Command Palette HTML -->
-<div class="cmd-palette-backdrop" id="cmdBackdrop">
-
-<!-- Minimap HTML -->
-<div class="minimap" id="minimap"></div>
-<!-- Social Proof Toast HTML -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        /* --- 1. Command Palette Logic --- */
-        var cmdBackdrop = document.getElementById('cmdBackdrop');
-        var cmdInput = document.getElementById('cmdInput');
-        var cmdBody = document.getElementById('cmdBody');
-        
-        var commands = [
-            { icon: '≡ƒÅá', title: 'Go to Home', action: function() { window.scrollTo(0,0); } },
-            { icon: '≡ƒÜÇ', title: 'View Services', action: function() { document.getElementById('services').scrollIntoView(); } },
-            { icon: '≡ƒôê', title: 'Book Free Audit', action: function() { document.getElementById('audit').scrollIntoView(); } },
-            { icon: '≡ƒÆ¼', title: 'Open Astra AI', action: function() { document.getElementById('astraToggle').click(); } },
-            { icon: '≡ƒÆ╝', title: 'Case Studies', action: function() { document.getElementById('work').scrollIntoView(); } },
-            { icon: '≡ƒô₧', title: 'Contact Us', action: function() { window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', '_blank'); } }
-        ];
-
-        function renderCmd(query) {
-            cmdBody.innerHTML = '';
-            var filtered = commands.filter(function(c) { return c.title.toLowerCase().indexOf(query.toLowerCase()) !== -1; });
-            if(filtered.length === 0) {
-                cmdBody.innerHTML = '<div style="padding: 1rem 1.5rem; color: rgba(255,255,255,0.4);">No results found.</div>';
-            } else {
-                filtered.forEach(function(c, i) {
-                    var div = document.createElement('div');
-                    div.className = 'cmd-item' + (i === 0 ? ' active' : '');
-                    div.innerHTML = '<span style="font-size:1.2rem;">' + c.icon + '</span><span>' + c.title + '</span>';
-                    div.addEventListener('click', function() {
-                        c.action(); closeCmd();
-                    });
-                    cmdBody.appendChild(div);
-                });
-            }
-        }
-
-        function openCmd() {
-            cmdBackdrop.classList.add('open');
-            cmdInput.value = '';
-            renderCmd('');
-            setTimeout(function() { cmdInput.focus(); }, 100);
-        }
-        function closeCmd() { cmdBackdrop.classList.remove('open'); cmdInput.blur(); }
-
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openCmd(); }
-            if (e.key === 'Escape') { closeCmd(); }
-        });
-        if(cmdBackdrop) cmdBackdrop.addEventListener('click', function(e) { if (e.target === cmdBackdrop) closeCmd(); });
-        if(cmdInput) cmdInput.addEventListener('input', function(e) { renderCmd(e.target.value); });
-        
-        /* Add cmd hint to header */
-        var navMenu = document.querySelector('.nav-menu');
-        if(navMenu) {
-            var hint = document.createElement('li');
-            hint.innerHTML = '<button onclick="document.dispatchEvent(new KeyboardEvent(\'keydown\', {\'key\': \'k\', \'ctrlKey\': true}))" aria-label="Command Palette" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;border-radius:6px;padding:0.3rem 0.6rem;font-size:0.75rem;cursor:pointer;margin-top:2px;font-family:var(--font-sans);transition:all 0.2s;">ΓîÿK</button>';
-            navMenu.appendChild(hint);
-        }
-
-        /* --- 2. Scroll-Spy Minimap --- */
-        var minimap = document.getElementById('minimap');
-        var dots = [];
-        if(minimap) minimap.innerHTML = ''; /* Clear any duplicates */
-        
-        var majorIds = ['hero', 'services', 'work', 'pricing', 'contact'];
-        var seen = {};
-        majorIds.forEach(function(id) {
-            if(seen[id]) return;
-            var sec = document.getElementById(id);
-            if(!sec || sec.offsetHeight < 50) return;
-            seen[id] = true;
-            var dot = document.createElement('div');
-            dot.className = 'minimap-dot';
-            dot.setAttribute('data-tooltip', id.charAt(0).toUpperCase() + id.slice(1));
-            dot.addEventListener('click', function() { sec.scrollIntoView({behavior: 'smooth'}); });
-            if(minimap) minimap.appendChild(dot);
-            dots.push({ el: dot, sec: sec });
-        });
-
-        window.addEventListener('scroll', function() {
-            var scrollPos = window.scrollY + window.innerHeight / 3;
-            dots.forEach(function(d) {
-                if (d.sec.offsetTop <= scrollPos && (d.sec.offsetTop + d.sec.offsetHeight) > scrollPos) {
-                    d.el.classList.add('active');
-                } else {
-                    d.el.classList.remove('active');
-                }
-            });
-        }, {passive:true});
-
-        /* --- 3. Live Social Proof Notifications --- */
-        var spToast = document.getElementById('spToast');
-        var spTitle = document.getElementById('spTitle');
-        var spDesc = document.getElementById('spDesc');
-        
-        var bizNames = ['Zenith Labs','Apex Digital','Nova Studios','Pulse Media','Orbit Systems','Stellar Co','Nimbus Tech','Forge AI','Prism Creative','Summit SaaS','Vertex Solutions','Cobalt HQ','Quantum Works','Aether Digital','Stratos Agency'];
-        var cities = ['New York, USA','London, UK','Sydney, AU','Toronto, CA','Berlin, DE','Mumbai, IN','Dubai, AE','Singapore, SG','Tokyo, JP','Paris, FR','Stockholm, SE','Cape Town, ZA'];
-        var actions = ['just booked a Free Audit','inquired about a SaaS build','started a new project','requested a strategy call','signed up for a consultation'];
-        var usedIdx = [];
-
-        
-        function triggerSocialProof() {
-            var bi, tries = 0;
-            do { bi = Math.floor(Math.random() * bizNames.length); tries++; } while(usedIdx.indexOf(bi) !== -1 && tries < 20);
-            usedIdx.push(bi); if(usedIdx.length > bizNames.length - 2) usedIdx = [];
-            var biz = bizNames[bi];
-            var action = actions[Math.floor(Math.random() * actions.length)];
-            var mins = Math.floor(Math.random() * 8) + 1;
-            
-            // Fetch real location
-            fetch('https://get.geojs.io/v1/ip/geo.json').then(r=>r.json()).then(geo => {
-                var city = (geo.city || 'Your Area') + ', ' + (geo.country || 'Local');
-                if(spTitle) spTitle.textContent = biz + ' ' + action;
-                if(spDesc) spDesc.textContent = 'From ' + city + ' ┬╖ ' + mins + ' min ago';
-                if(spToast) spToast.classList.add('show');
-                setTimeout(function() { if(spToast) spToast.classList.remove('show'); }, 5000);
-            }).catch(e => {
-                // fallback
-                var city = cities[Math.floor(Math.random() * cities.length)];
-                if(spTitle) spTitle.textContent = biz + ' ' + action;
-                if(spDesc) spDesc.textContent = 'From ' + city + ' ┬╖ ' + mins + ' min ago';
-                if(spToast) spToast.classList.add('show');
-                setTimeout(function() { if(spToast) spToast.classList.remove('show'); }, 5000);
-            });
-        }
-        
-        // Show toast every 90-120 seconds, first after 10s
-        setTimeout(function loop() {
-            triggerSocialProof();
-            setTimeout(loop, Math.random() * 30000 + 90000);
-        }, 10000);
-    });
-    </script>
-<div class="playbook-modal" id="playbookModal">
-<div class="form-card" style="max-width:500px; position:relative;">
-<button aria-label="Close Playbook" onclick="document.getElementById('playbookModal').style.display='none'" style="position:absolute; top:15px; right:15px; background:none; border:none; color:#fff; cursor:pointer; font-size:1.5rem;">Γ£ò</button>
-<h2 style="color:#38bdf8 !important; margin-bottom:10px;">Wait! Before you go...</h2>
-<p style="color:#fff; margin-bottom:20px;">Download our <strong>2026 Enterprise Scaling Playbook</strong>. Learn exactly how companies like Apex Digital and Orbit Systems scaled using our framework.</p>
-<form onsubmit="event.preventDefault(); downloadPlaybook();">
-<input class="input-field" id="playbook-email" placeholder="Your Best Email" required="" type="email"/>
-<button class="btn btn-primary w-full" style="margin-top:10px;" type="submit">Get Free PDF Now</button>
-</form>
-</div>
-</div>
-<a class="fab-whatsapp" href="https://wa.me/917668758238?text=Hi+Akash,+I+want+to+scale+my+business." rel="nofollow noopener noreferrer" target="_blank" title="Chat with Akash">
-<svg viewbox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.337a9.982 9.982 0 004.778 1.223h.004c5.504 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.926-7.062A9.935 9.935 0 0012.012 2zm.004 16.892h-.003a8.315 8.315 0 01-4.247-1.157l-.305-.18-3.155.804.843-3.074-.198-.314A8.293 8.293 0 013.684 11.98c.002-4.582 3.733-8.312 8.324-8.312 2.222.001 4.308.866 5.877 2.437a8.272 8.272 0 012.436 5.882c-.001 4.582-3.731 8.31-8.313 8.31zM16.58 13.9c-.25-.125-1.488-.734-1.718-.818-.23-.084-.399-.125-.567.125-.168.25-.65.818-.797.985-.148.167-.296.188-.546.063-1.32-.656-2.316-1.464-3.21-2.983-.105-.175.101-.163.344-.648.084-.167.042-.313-.021-.438-.063-.125-.567-1.368-.778-1.874-.205-.494-.413-.427-.567-.435l-.485-.008c-.168 0-.441.063-.672.313-.231.25-.882.862-.882 2.102 0 1.24.903 2.438 1.029 2.605.125.167 1.776 2.712 4.302 3.803 1.62.697 2.152.606 2.58.558.468-.053 1.488-.608 1.698-1.196.21-.588.21-1.092.148-1.196-.063-.105-.231-.167-.481-.292z"></path></svg>
-</a>
-<!-- ENHANCED AI AUDIT & LEAD GEN SCRIPT -->
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log("Enterprise Lead Gen Engine Initialized.");
-            
-            window.auditData = { name:'', email:'', phone:'', btype:'', rev:'', neck:'' };
-            
-            window.nextStep = function(current, key, value) {
-                window.auditData[key] = value;
-                const currentStep = document.getElementById('step-'+current);
-                const nextStep = document.getElementById('step-'+(current+1));
-                
-                // Fade out current
-                currentStep.style.opacity = '0';
-                currentStep.style.transform = 'translateX(-20px)';
-                currentStep.style.pointerEvents = 'none';
-                
-                setTimeout(() => {
-                    // Fade in next
-                    nextStep.style.opacity = '1';
-                    nextStep.style.transform = 'translateX(0)';
-                    nextStep.style.pointerEvents = 'all';
-                }, 400);
-            };
-
-            window.submitAudit = async function() {
-                window.auditData.name = document.getElementById('lead-name').value;
-                window.auditData.email = document.getElementById('lead-email').value;
-                window.auditData.phone = document.getElementById('lead-phone').value;
-                
-                const currentStep = document.getElementById('step-4');
-                const nextStep = document.getElementById('step-5');
-                
-                currentStep.style.opacity = '0';
-                currentStep.style.pointerEvents = 'none';
-                
-                setTimeout(() => {
-                    nextStep.style.opacity = '1';
-                    nextStep.style.transform = 'translateX(0)';
-                    nextStep.style.pointerEvents = 'all';
-                }, 400);
-
-                // 1. Send to CRM Backend
-                try {
-                    fetch('https://evolnex-backend-nysg.onrender.com/api/leads', {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            name: window.auditData.name,
-                            email: window.auditData.email,
-                            phone: window.auditData.phone,
-                            business_type: window.auditData.btype,
-                            revenue: window.auditData.rev,
-                            bottleneck: window.auditData.neck
-                        })
-                    }).catch(e => console.error("CRM Sync Error", e));
-                } catch(e) {}
-
-                // 2. Generate Premium Enterprise PDF
-                setTimeout(() => {
-                    document.getElementById('audit-loading').style.display = 'none';
-                    document.getElementById('audit-success').style.display = 'block';
-                    
-                    const element = document.createElement('div');
-                    element.innerHTML = `
-                        <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background:#020617; color:#f8fafc; padding:0; width:100%; position:relative; overflow:hidden;">
-                            
-                            <!-- Cover Page -->
-                            <div style="padding: 120px 80px; min-height: 1000px; display: flex; flex-direction: column; justify-content: center; position: relative; page-break-after: always; overflow: hidden;">
-                                <div style="position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
-                                <div style="position: absolute; bottom: -200px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); border-radius: 50%;"></div>
-                                
-                                <div style="position: relative; z-index: 10;">
-                                    <div style="display: inline-block; padding: 10px 20px; border: 1px solid #38bdf8; border-radius: 30px; color: #38bdf8; font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 50px;">Astra AI Intelligence</div>
-                                    <div class="h1-seo" style="font-size: 72px; font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin: 0 0 30px 0; color: #fff;" class="evl-disp-block-bold">2026 ENTERPRISE<br>SCALING ROADMAP.</div>
-                                    <div style="width: 100px; height: 6px; background: #38bdf8; margin-bottom: 80px;"></div>
-                                    
-                                    <div style="display: flex; flex-direction: column; gap: 30px;">
-                                        <div>
-                                            <h3 style="font-size: 16px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Prepared Exclusively For</h3>
-                                            <strong style="font-size: 24px; color: #fff;">${window.auditData.name}</strong>
-                                        </div>
-                                        <div>
-                                            <h3 style="font-size: 16px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Architecture Profile</h3>
-                                            <strong style="font-size: 24px; color: #fff;">${window.auditData.btype} at ${window.auditData.rev} MRR</strong>
-                                        </div>
-                                        <div>
-                                            <h3 style="font-size: 16px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;">Security Classification</h3>
-                                            <strong style="font-size: 24px; color: #fff;">Level 1 Confidential</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Content Page -->
-                            <div style="padding: 80px; min-height: 1000px; background: #0f172a; position: relative;">
-                                <div style="border-bottom: 2px solid #1e293b; padding-bottom: 30px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end;">
-                                    <h2 style="margin: 0; font-size: 32px; font-weight: 800; color: #fff; text-transform: uppercase;">Executive Summary</h2>
-                                    <span style="font-size: 14px; color: #38bdf8; text-transform: uppercase; font-weight: 700;">Page 2</span>
-                                </div>
-
-                                <div style="background: rgba(2,6,23,0.5); border: 1px solid #1e293b; border-radius: 16px; padding: 40px; margin-bottom: 50px;">
-                                    <h3 style="font-size: 20px; color: #38bdf8; margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
-                                        <div style="width: 12px; height: 12px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px #ef4444;"></div>
-                                        Identified Critical Bottleneck
-                                    </h3>
-                                    <p style="font-size: 24px; color: #fff; font-weight: 600; line-height: 1.5; margin: 0;">
-                                        Our AI has determined that "${window.auditData.neck}" is the primary constraint preventing your business from scaling efficiently to the next revenue tier.
-                                    </p>
-                                </div>
-
-                                <h3 style="font-size: 24px; color: #fff; margin-bottom: 30px;">Recommended Implementation Plan</h3>
-                                
-                                <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 60px;">
-                                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #1e293b; padding: 25px; border-radius: 12px; border-left: 4px solid #38bdf8;">
-                                        <div class="category-label" style="font-size: 18px; color: #fff; margin: 0 0 10px 0;">Phase 1: Architecture Overhaul</div>
-                                        <p style="color: #94a3b8; font-size: 15px; margin: 0; line-height: 1.6;">Immediate mitigation of technical debt and establishment of a high-performance modern web framework tailored for ${window.auditData.btype} operations.</p>
-                                    </div>
-                                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #1e293b; padding: 25px; border-radius: 12px; border-left: 4px solid #38bdf8;">
-                                        <div class="category-label" style="font-size: 18px; color: #fff; margin: 0 0 10px 0;">Phase 2: Automation Integration</div>
-                                        <p style="color: #94a3b8; font-size: 15px; margin: 0; line-height: 1.6;">Deployment of custom backend CRM and automated lead capture workflows to directly solve the "${window.auditData.neck}" constraint.</p>
-                                    </div>
-                                    <div style="background: rgba(255,255,255,0.02); border: 1px solid #1e293b; padding: 25px; border-radius: 12px; border-left: 4px solid #8b5cf6;">
-                                        <div class="category-label" style="font-size: 18px; color: #fff; margin: 0 0 10px 0;">Phase 3: Scale & Optimize</div>
-                                        <p style="color: #94a3b8; font-size: 15px; margin: 0; line-height: 1.6;">Continuous monitoring, A/B testing, and AI-driven conversion rate optimization to push MRR past the ${window.auditData.rev} threshold.</p>
-                                    </div>
-                                </div>
-
-                                <div style="text-align: center; background: #020617; border: 1px solid #38bdf8; border-radius: 16px; padding: 50px;">
-                                    <h3 style="font-size: 28px; color: #fff; margin: 0 0 15px 0;">Ready to execute?</h3>
-                                    <p style="color: #94a3b8; font-size: 16px; margin: 0 0 30px 0;">Let's build the system that makes your competition irrelevant.</p>
-                                    <div style="display: inline-block; background: #38bdf8; color: #020617; padding: 15px 40px; border-radius: 8px; font-size: 18px; font-weight: 700;">Book Implementation Strategy Call</div>
-                                    <p style="color: #64748b; font-size: 12px; margin-top: 20px;">Use code EVOLNEX10 for enterprise priority onboarding.</p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }, 500);
-            };
-        });
-    </script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Push a dummy state so back button works
-        window.history.pushState({page: 1}, "Evolnex", "");
-        
-        window.addEventListener('popstate', function(event) {
-            const pm = document.getElementById('playbookModal');
-            if(pm && pm.style.display !== 'flex' && !sessionStorage.getItem('playbookShown')) {
-                sessionStorage.setItem('playbookShown', 'true');
-                pm.style.display = 'flex';
-                // Push state back so they don't actually leave if they dismiss it
-                window.history.pushState({page: 1}, "Evolnex", "");
-            }
-        });
-    });
-    </script>
-<script>
-    function downloadPlaybook() {
-        var email = document.getElementById('playbook-email').value;
-        if(!email) return;
-        var btn = document.querySelector('#playbookModal button[type="submit"]');
-        btn.textContent = 'Sending...';
-        btn.style.pointerEvents = 'none';
-        
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'https://api.web3forms.com/submit'; /* routes to mk074377@gmail.com via access_key */ /* routes to mk074377@gmail.com via access_key */
-                var keyInput = document.createElement('input'); keyInput.type='hidden'; keyInput.name='access_key'; keyInput.value='453219ed-70bc-4e70-8b04-3be070c0f955'; form.appendChild(keyInput);
-        form.target = 'hidden_iframe';
-        form.innerHTML = '<input type="hidden" name="access_key" value="453219ed-70bc-4e70-8b04-3be070c0f955"><input type="hidden" name="_subject" value="Playbook Download Request"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="Email" value="'+email+'">';
-        document.body.appendChild(form);
-        form.submit();
-        
-        // Try to generate PDF immediately
-        if(typeof window.jspdf === 'undefined') { var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = function() { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }; document.head.appendChild(s); } else { if(typeof window._buildPlaybookPDF === 'function') window._buildPlaybookPDF(); }
-        
-        setTimeout(() => { 
-            btn.textContent = 'Sent! Downloading PDF...';
-            setTimeout(() => { document.getElementById('playbookModal').style.display = 'none'; }, 2500);
-        }, 1000);
-    }
-    </script>
-<script>
-window._buildPlaybookPDF = function() {
-    if (typeof window.jspdf === 'undefined') {
-        alert('PDF Engine loading... please try again in a second.');
-        return;
-    }
-    
-    var jsPDF = window.jspdf.jsPDF;
-    var doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-    
-    var data = window.auditData || {};
-    var name = data.name || 'Enterprise Client';
-    var btype = data.btype || 'Digital Business';
-    var rev = data.rev || 'Undisclosed';
-    var prob = data.neck || 'Scalability Limits';
-    var goal = data.goal || 'Dominant Positioning';
-    
-    var score = Math.floor(Math.random() * 20) + 40; 
-    if(rev === '$50k+/mo') score += 20;
-    if(prob === 'Systems & Tech') score -= 10;
-    
-    var sol = prob === 'Traffic & Leads' ? 'SEO & Viral Organic Growth Funnel' : 
-             (prob === 'Conversion & UX' ? 'Premium Web Design & CRO' : 'Custom SaaS & Workflow Automation');
-    
-    var roi = goal === 'Double Revenue' ? '2x Revenue in 6 Months' : 
-             (goal === 'Automation & Scale' ? 'Save 40+ Hours/Week' : 'Dominant Market Positioning');
-             
-    var W = 210, H = 297, ml = 25, mr = 25, cw = W - ml - mr;
-    
-    // PAGE 1: COVER
-    // Dark background
-    doc.setFillColor(2, 6, 23); doc.rect(0, 0, W, H, 'F');
-    
-    // Accents
-    doc.setFillColor(14, 116, 144); doc.rect(0, 0, W, 8, 'F');
-    doc.setFillColor(56, 189, 248); doc.rect(0, 0, W*0.4, 8, 'F');
-    
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(36); doc.setFont('helvetica', 'bold');
-    doc.text('Evolnex Technologies', ml, 60);
-    
-    doc.setTextColor(103, 232, 249);
-    doc.setFontSize(12); doc.setFont('courier', 'bold');
-    doc.text('// ENTERPRISE STRATEGY AUDIT', ml, 75);
-    
-    // Confidential tag
-    doc.setDrawColor(103, 232, 249); doc.setLineWidth(0.5);
-    doc.roundedRect(W - mr - 40, 67, 40, 10, 2, 2, 'D');
-    doc.setFontSize(9); doc.text('CONFIDENTIAL', W - mr - 34, 73.5);
-    
-    // Client Info
-    doc.setTextColor(148, 163, 184);
-    doc.setFontSize(12); doc.setFont('helvetica', 'normal');
-    doc.text('PREPARED EXCLUSIVELY FOR', ml, 160);
-    
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(28); doc.setFont('helvetica', 'bold');
-    doc.text(name, ml, 172);
-    
-    doc.setTextColor(203, 213, 225);
-    doc.setFontSize(14); doc.setFont('helvetica', 'normal');
-    doc.text(btype + '  |  Current MRR: ' + rev, ml, 182);
-    
-    // Author Info
-    doc.setDrawColor(103, 232, 249); doc.setLineWidth(1.5);
-    doc.line(ml, 250, ml, 275);
-    doc.setTextColor(103, 232, 249);
-    doc.setFontSize(10); doc.setFont('courier', 'bold');
-    doc.text('AUTHOR', ml + 5, 255);
-    
-    doc.setTextColor(255, 255, 255);
-    doc.setFontSize(18); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml + 5, 265);
-    
-    doc.setTextColor(148, 163, 184);
-    doc.setFontSize(12); doc.setFont('helvetica', 'normal');
-    doc.text('Founder & Lead Architect', ml + 5, 272);
-    
-    // PAGE 2: DIAGNOSTICS & PROTOCOL
-    doc.addPage();
-    
-    // Light background
-    doc.setFillColor(248, 250, 252); doc.rect(0, 0, W, H, 'F');
-    
-    // Header
-    doc.setTextColor(15, 23, 42);
-    doc.setFontSize(24); doc.setFont('helvetica', 'bold');
-    doc.text('Diagnostic Analysis', ml, 35);
-    doc.setDrawColor(226, 232, 240); doc.setLineWidth(1);
-    doc.line(ml, 42, W - mr, 42);
-    
-    // Score Cards
-    var cardW = (cw - 10) / 2;
-    doc.setFillColor(255, 255, 255); doc.setDrawColor(203, 213, 225); doc.setLineWidth(0.5);
-    doc.roundedRect(ml, 55, cardW, 45, 3, 3, 'FD');
-    doc.roundedRect(ml + cardW + 10, 55, cardW, 45, 3, 3, 'FD');
-    
-    doc.setTextColor(100, 116, 139);
-    doc.setFontSize(8); doc.setFont('helvetica', 'bold');
-    doc.text('SYSTEM HEALTH SCORE', ml + 8, 65);
-    doc.text('PRIMARY BOTTLENECK', ml + cardW + 18, 65);
-    
-    var sColor = score < 50 ? [239,68,68] : (score < 75 ? [245,158,11] : [16,185,129]);
-    var sLabel = score < 50 ? 'CRITICAL STATUS' : (score < 75 ? 'NEEDS OPTIMIZATION' : 'HEALTHY STATUS');
-    
-    doc.setTextColor.apply(this, sColor);
-    doc.setFontSize(36); doc.setFont('helvetica', 'bold');
-    doc.text(score + '', ml + 8, 82);
-    doc.setTextColor(148, 163, 184); doc.setFontSize(14);
-    doc.text('/100', ml + 8 + doc.getTextWidth(score + ''), 82);
-    
-    doc.setTextColor.apply(this, sColor);
-    doc.setFontSize(10);
-    doc.text(sLabel, ml + 8, 92);
-    
-    doc.setTextColor(15, 23, 42);
-    doc.setFontSize(16); doc.setFont('helvetica', 'bold');
-    var pLines = doc.splitTextToSize(prob, cardW - 16);
-    doc.text(pLines, ml + cardW + 18, 80);
-    
-    // Protocol
-    doc.setTextColor(15, 23, 42);
-    doc.setFontSize(24); doc.setFont('helvetica', 'bold');
-    doc.text('Engineering Protocol', ml, 135);
-    doc.setDrawColor(226, 232, 240); doc.setLineWidth(1);
-    doc.line(ml, 142, W - mr, 142);
-    
-    // Solution Box
-    doc.setFillColor(224, 242, 254); doc.rect(ml, 155, cw, 35, 'F');
-    doc.setDrawColor(14, 165, 233); doc.setLineWidth(2);
-    doc.line(ml, 155, ml, 190);
-    
-    doc.setTextColor(2, 132, 199);
-    doc.setFontSize(9); doc.setFont('helvetica', 'bold');
-    doc.text('RECOMMENDED SOLUTION', ml + 10, 165);
-    
-    doc.setTextColor(3, 105, 161);
-    doc.setFontSize(16); doc.setFont('helvetica', 'bold');
-    doc.text(sol, ml + 10, 175);
-    
-    doc.setFillColor(255, 255, 255); doc.roundedRect(ml + 10, 180, doc.getTextWidth('Projected Impact: ' + roi) + 6, 6, 1, 1, 'F');
-    doc.setTextColor(12, 74, 110); doc.setFontSize(9); doc.setFont('helvetica', 'normal');
-    doc.text('Projected Impact: ' + roi, ml + 13, 184.2);
-    
-    // Deliverables
-    doc.setTextColor(100, 116, 139);
-    doc.setFontSize(10); doc.setFont('helvetica', 'bold');
-    doc.text('WHAT EVOLNEX WILL BUILD:', ml, 210);
-    
-    var items = prob === 'Traffic & Leads' ? [
-        'Custom SEO-optimized website with 95+ PageSpeed score',
-        'Content strategy with keyword-targeted landing pages',
-        'Google Business Profile optimization & local SEO',
-        'Automated lead capture funnels with CRM integration'
-    ] : prob === 'Conversion & UX' ? [
-        'Complete UI/UX redesign with conversion-focused wireframes',
-        'Mobile-first responsive build with A/B test variants',
-        'Heatmap & session recording for behavior analysis',
-        'Checkout/contact flow optimization (60% friction reduction)'
-    ] : [
-        'Custom SaaS platform tailored to your workflow',
-        'API integrations connecting your existing tools',
-        'Automated reporting and notification systems',
-        'Role-based access control & secure data management'
-    ];
-    
-    doc.setTextColor(51, 65, 85);
-    doc.setFontSize(12); doc.setFont('helvetica', 'normal');
-    for(var i=0; i<items.length; i++) {
-        doc.setFillColor(224, 242, 254); doc.circle(ml + 3, 220 + (i*9) - 1.5, 2, 'F');
-        doc.setTextColor(14, 165, 233); doc.setFontSize(8); doc.setFont('helvetica', 'bold'); doc.text('+', ml + 2.2, 220 + (i*9) - 0.2); 
-        doc.setTextColor(51, 65, 85); doc.setFontSize(11); doc.setFont('helvetica', 'normal');
-        doc.text(items[i], ml + 10, 220 + (i*9));
-    }
-    
-    // Footer signature
-    doc.setDrawColor(203, 213, 225); doc.setLineWidth(0.5);
-    doc.line(ml, 270, W - mr, 270);
-    
-    doc.setTextColor(15, 23, 42);
-    doc.setFontSize(12); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml, 280);
-    doc.setTextColor(100, 116, 139);
-    doc.setFontSize(9); doc.setFont('helvetica', 'normal');
-    doc.text('info&#64;evolnex.digital  |  +91 7668758238', ml, 285);
-    
-    doc.setTextColor(148, 163, 184);
-    doc.setFontSize(9); doc.setFont('helvetica', 'bold');
-    doc.text('EVOLNEX.IN', W - mr - doc.getTextWidth('EVOLNEX.IN'), 280);
-    
-    doc.save('Evolnex_Strategy_Audit_' + name.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf');
-};
-</script>
-<script>
-    // Lazy load PDF engine to score 100/100 on PageSpeed
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            if (!document.getElementById('lazy-jspdf')) {
-                var s = document.createElement('script');
-                s.id = 'lazy-jspdf';
-                s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
-                document.body.appendChild(s);
-            }
-        }, 1000);
-    });
-</script>
-<!-- Web3Forms AJAX Interceptor -->
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form[action="https://api.web3forms.com/submit"]');
-            forms.forEach(form => {
-                form.removeAttribute('target');
-                form.addEventListener('submit', async function(e) {
-                    if (this.id === 'godContactForm' && typeof handleGodSubmit === 'function') {
-                        // handleGodSubmit is defined in contact.html, we let it handle UI
-                    } else {
-                        e.preventDefault();
-                        const btn = this.querySelector('button[type="submit"]');
-                        if(btn) btn.textContent = 'SENDING...';
-                        const formData = new FormData(this);
-                        try {
-                            await fetch(this.action, { method: 'POST', body: formData });
-                            if(btn) { btn.textContent = 'Γ£ô REQUEST SENT'; btn.style.background = '#10b981'; btn.style.color = '#fff'; }
-                        } catch(err) {
-                            if(btn) btn.textContent = 'ERROR, TRY AGAIN';
-                        }
-                    }
-                });
-            });
-        });
-    </script>
-<!-- GSAP & Theme Script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-<script src="theme.js" defer></script>
 </body>
 </html>
 <!-- Deployment Trigger -->

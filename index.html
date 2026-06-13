@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <!-- Google Analytics 4 (Global Tag) - Deferred -->
 <script>
@@ -59,7 +59,7 @@
 
     *,::after,::before{box-sizing:border-box;margin:0;padding:0}
     html{font-size:16px;scroll-behavior:smooth}
-    body{background-color:#020617;color:#f8fafc;font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;overflow-x:hidden;position:relative}
+    
     h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif;font-weight:800;color:#f8fafc;line-height:1.1;letter-spacing:-.025em}
     h1{font-size:clamp(3rem,7vw,6rem);letter-spacing:-.04em;margin-bottom:1.5rem}
     .container{width:100%;max-width:1440px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem);position:relative;z-index:2}
@@ -345,7 +345,7 @@
         
 
 </style>
-<link rel="stylesheet" href="theme.css">
+<link href="theme.css" rel="stylesheet"/>
 <!-- CRITICAL CSS: inlined to prevent CLS while style.css loads async -->
 <!-- html2pdf loaded on-demand for PageSpeed -->
 <!-- God-Tier SEO Knowledge Graph & Semantic Authority Schema -->
@@ -465,6 +465,91 @@ window.addEventListener('load', function() {
 });
 </script>
 <noscript><img class="evl-disp-none" height="1" src="https://www.facebook.com/tr?id=0000000000000000&amp;ev=PageView&amp;noscript=1" width="1"/></noscript>
+
+<style id="light-mode-forces">
+html[data-theme="light"] body {
+    background-color: #f8fafc !important;
+    background-image: none !important;
+    color: #020617 !important;
+}
+html[data-theme="light"] .section, 
+html[data-theme="light"] .stats-section, 
+html[data-theme="light"] .cta-section {
+    background-color: #f8fafc !important;
+}
+html[data-theme="light"] .hero {
+    background: radial-gradient(circle at 50% -20%, #f1f5f9 0%, #f8fafc 70%) !important;
+}
+html[data-theme="light"] h1, 
+html[data-theme="light"] h2, 
+html[data-theme="light"] h3, 
+html[data-theme="light"] p, 
+html[data-theme="light"] .stat-number,
+html[data-theme="light"] .service-card h3,
+html[data-theme="light"] .process-step h3,
+html[data-theme="light"] .tech-name,
+html[data-theme="light"] .portfolio-card-body h3,
+html[data-theme="light"] .text-primary,
+html[data-theme="light"] .kinetic-word,
+html[data-theme="light"] .word-unit {
+    color: #020617 !important;
+    -webkit-text-fill-color: #020617 !important;
+}
+html[data-theme="light"] .text-gradient {
+    background: linear-gradient(135deg, #f97316 10%, #ea580c 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+html[data-theme="light"] .service-card p,
+html[data-theme="light"] .process-step p,
+html[data-theme="light"] .portfolio-card-body p,
+html[data-theme="light"] .text-secondary,
+html[data-theme="light"] .text-tertiary {
+    color: #334155 !important;
+    -webkit-text-fill-color: #334155 !important;
+}
+html[data-theme="light"] .card,
+html[data-theme="light"] .service-card,
+html[data-theme="light"] .form-card,
+html[data-theme="light"] .portfolio-card,
+html[data-theme="light"] .stat-block,
+html[data-theme="light"] .tech-card,
+html[data-theme="light"] .cta-card {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+}
+html[data-theme="light"] .card::before,
+html[data-theme="light"] .service-card::before,
+html[data-theme="light"] .service-card::after {
+    display: none !important;
+}
+
+/* Invert white/blue graphics to black/orange */
+html[data-theme="light"] .hero-visual svg,
+html[data-theme="light"] .footer-graphic svg,
+html[data-theme="light"] svg.ambient-blob,
+html[data-theme="light"] .client-logo {
+    filter: invert(1)  !important;
+}
+
+/* Fix particle canvas */
+html[data-theme="light"] #webgl-hero {
+    filter: invert(1)  !important;
+}
+
+html[data-theme="light"] .reveal,
+html[data-theme="light"] .stagger-child {
+    opacity: 1 !important;
+    transform: none !important;
+}
+html[data-theme="light"] .cmd-backdrop,
+html[data-theme="light"] .cmd-palette {
+    display: none !important;
+}
+</style>
 </head>
 <body>
 <canvas id="webgl-hero" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
@@ -483,8 +568,109 @@ window.addEventListener('load', function() {
 <!-- ================================================================
          ★ ENTERPRISE FEATURE C: COMMAND PALETTE (⌘K)
          ================================================================ -->
-
-
+<!-- ★ NEW FEATURE E: SMART ENGAGEMENT BANNER -->
+<!-- ★ NEW FEATURE F: EXIT INTENT MODAL -->
+<div id="exitBackdrop"></div>
+<div aria-label="Special offer" id="exitModal" role="dialog">
+<button aria-label="Close" class="exit-close-x" id="exitClose">✕</button>
+<span class="exit-badge">🎁 Wait — Free Offer</span>
+<h2 class="exit-title">Before You Go —<br/><span style="background:linear-gradient(135deg,#67e8f9,#8b5cf6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Get a Free Audit</span></h2>
+<p class="exit-sub">We'll personally review your website for speed, SEO, and conversion blockers — completely free. Takes 30 seconds to submit.</p>
+<form class="exit-form-row" id="exitForm">
+<input autocomplete="email" class="exit-email-input" id="exitEmailInput" name="email" placeholder="your@email.com" required="" type="email"/>
+<input class="exit-email-input" id="exitMobileInput" name="phone" placeholder="Mobile Number" required="" type="tel"/>
+<input class="exit-email-input" id="exitWebsiteInput" name="website" placeholder="Website Link (Optional)" type="url"/>
+<input name="_captcha" type="hidden" value="false"/>
+<button class="exit-submit" id="exitSubmitBtn" type="submit">Get Free Audit →</button>
+</form>
+<div class="exit-proof">
+<div class="exit-avatars">
+<span style="background:linear-gradient(135deg,#0e7490,#67e8f9)">A</span>
+<span style="background:linear-gradient(135deg,#8b5cf6,#c084fc)">R</span>
+<span style="background:linear-gradient(135deg,#f59e0b,#fcd34d)">M</span>
+<span style="background:linear-gradient(135deg,#10b981,#34d399)">K</span>
+</div>
+            50+ founders have already claimed their audit
+        </div>
+</div>
+<!-- ENTERPRISE FEATURE 2: Scroll Progress -->
+<div class="scroll-progress-bar" id="scrollProgress"></div>
+<!-- ENTERPRISE FEATURE 8: Premium Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<!-- ENTERPRISE FEATURE 5: Ambient Blob -->
+<div class="ambient-blob" id="ambientBlob"></div>
+<!-- ================================================================
+         HEADER
+         ================================================================ -->
+<header class="header" id="siteHeader">
+<div class="container nav-container">
+<a class="logo" href="/">
+<img alt="Evolnex Technologies" class="evolnex-logo" fetchpriority="high" height="69" src="assets/evolnex.webp" style="height: 69px !important; width: auto;" width="160"/>
+</a>
+<nav>
+<button aria-label="Toggle Theme" class="theme-toggle-btn" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-right:1rem;transition:all 0.3s;font-size:1.2rem;z-index:999;">🌓</button><button aria-label="Open Menu" class="nav-toggle">☰</button>
+<ul class="nav-menu">
+<li><a class="nav-link" href="/">Home</a></li>
+<li><a class="nav-link" href="/services">Services</a></li>
+<li><a class="nav-link" href="/case-studies">Work</a></li>
+<li><a class="nav-link" href="/pricing">Pricing</a></li>
+<li><a class="nav-link" href="/about">Studio</a></li>
+<li><a class="btn btn-secondary" href="/client-portal" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
+<li class="mobile-only-item evl-disp-none"><a href="/contact" style="background:var(--c-brand-main);color:#fff;padding:1rem;border-radius:8px;font-weight:700;margin-top:1rem;display:block;text-align:center;text-decoration:none;">Start Project →</a></li>
+</ul>
+</nav>
+<a class="btn btn-primary btn-cta-glow" href="/contact">
+                Start Project <span class="btn-arrow">→</span>
+</a>
+</div>
+</header>
+<main>
+<!-- ================================================================
+             HERO
+             ================================================================ -->
+<section class="hero" id="hero" style="position:relative;">
+<div class="container grid-2">
+<!-- LEFT: Content -->
+<div class="hero-content" style="animation: fadeInUp 0.8s ease forwards;">
+<!-- Hero badges removed per user request -->
+<h1>
+                        We Engineer<br/>
+<span aria-label="SaaS Platforms, Web Applications, Healthcare Portals, Developer Tools" class="kinetic-wrapper" id="kineticWrapper">
+<span class="kinetic-inner" id="kineticInner">
+<span class="kinetic-word">SaaS Platforms.</span>
+<span class="kinetic-word">Web Applications.</span>
+<span class="kinetic-word">Healthcare Portals.</span>
+<span class="kinetic-word">Developer Tools.</span>
+<span class="kinetic-word">SaaS Platforms.</span>
+</span>
+</span><br/>
+<span class="text-gradient">That Actually Scale.</span>
+</h1>
+<p style="margin-bottom:2rem;color:rgba(255,255,255,.7);">
+                        The engineering studio behind CodeMySpec, Fountain Life, CLS Health, and more. We build
+                        <span class="text-accent">production-grade SaaS platforms, web applications &amp; digital products</span>
+                        for founders who refuse to ship anything mediocre.
+                    </p>
+<div class="flex gap-1" style="flex-wrap:wrap;">
+<a class="btn btn-primary btn-cta-glow" href="/contact">Start Your Project <span class="btn-arrow">→</span></a>
+<a class="btn btn-secondary" href="#audit">Free Website Audit</a>
+</div>
+<div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+<svg fill="none" height="14" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><polyline points="20 6 9 17 4 12"></polyline></svg> No credit card required. 100% Free Audit.
+                    </div>
+<div style="margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+<div style="display:flex;">
+<svg fill="none" height="34" style="margin-right:-10px;z-index:4;" viewbox="0 0 34 34" width="34"><circle cx="17" cy="17" fill="#0f172a" r="16" stroke="rgba(103,232,249,.5)" stroke-width="1.5"></circle><text fill="#67e8f9" font-size="13" font-weight="700" text-anchor="middle" x="17" y="22">R</text></svg>
+<svg fill="none" height="34" style="margin-right:-10px;z-index:3;" viewbox="0 0 34 34" width="34"><circle cx="17" cy="17" fill="#0f172a" r="16" stroke="rgba(139,92,246,.5)" stroke-width="1.5"></circle><text fill="#8b5cf6" font-size="13" font-weight="700" text-anchor="middle" x="17" y="22">B</text></svg>
+<svg fill="none" height="34" style="margin-right:-10px;z-index:2;" viewbox="0 0 34 34" width="34"><circle cx="17" cy="17" fill="#0f172a" r="16" stroke="rgba(16,185,129,.5)" stroke-width="1.5"></circle><text fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" x="17" y="22">N</text></svg>
+<svg fill="none" height="34" style="z-index:1;" viewbox="0 0 34 34" width="34"><circle cx="17" cy="17" fill="#0f172a" r="16" stroke="rgba(251,191,36,.5)" stroke-width="1.5"></circle><text fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle" x="17" y="22">S</text></svg>
+</div>
+<div style="font-size:.9rem;color:rgba(255,255,255,.6);">
+                            Trusted by <strong style="color:#fff;">Founders &amp; CTOs</strong>
+</div>
+</div>
+</div>
 <!-- RIGHT: God-Level Metrics Engine -->
 <div class="hero-visual reveal delay-200">
 <div class="hero-metrics-engine">
@@ -684,7 +870,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://reachforever.com" rel="nofollow noopener noreferrer" target="_blank">Visit reachforever.com <span>→</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(239,68,68,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🍰</div>
 <div class="portfolio-card-body">
@@ -698,7 +883,6 @@ window.addEventListener('load', function() {
 </div>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(139,92,246,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">⚙️</div>
 <div class="portfolio-card-body">
@@ -713,7 +897,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://codemyspec.com" rel="nofollow noopener noreferrer" target="_blank">Visit codemyspec.com <span>→</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(14,116,144,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">📊</div>
 <div class="portfolio-card-body">
@@ -728,7 +911,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://seedtable.com" rel="nofollow noopener noreferrer" target="_blank">Visit seedtable.com <span>→</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(14,116,144,.12),rgba(103,232,249,.06));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">💊</div>
 <div class="portfolio-card-body">
@@ -743,7 +925,6 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://fountainlife.com" rel="nofollow noopener noreferrer" target="_blank">Visit fountainlife.com <span>→</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card holo-card">
 <div style="width:100%;height:230px;background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(14,116,144,.08));border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🏥</div>
 <div class="portfolio-card-body">
@@ -758,14 +939,12 @@ window.addEventListener('load', function() {
 <a class="portfolio-link" href="https://cls.health" rel="nofollow noopener noreferrer" target="_blank">Visit cls.health <span>→</span></a>
 </div>
 </div>
-
 <div class="portfolio-card tilt-card" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(14,116,144,.08),rgba(139,92,246,.05));border-style:dashed;min-height:420px;">
 <div class="portfolio-card-body" style="text-align:center;padding:3rem 2rem;">
 <div style="font-size:2.5rem;margin-bottom:1rem;">🚀</div>
 <h3 style="font-size:1.2rem;">Your Project Here</h3>
 <p style="font-size:.875rem;margin:.75rem 0 1.5rem;color:rgba(255,255,255,.55);">Join our portfolio. Let's build something remarkable together.</p>
 <a class="btn btn-primary btn-cta-glow" href="/contact" style="padding:.8rem 1.75rem;font-size:.9rem;">Start Today</a>
-<button id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;" aria-label="Toggle Theme">🌓</button>
 </div>
 </div>
 <div style="width:100px;flex-shrink:0;"></div>
@@ -832,8 +1011,6 @@ window.addEventListener('load', function() {
 </div>
 </div>
 </div>
-
-
 </section>
 <!-- ================================================================
              CTA — Liquid Water
@@ -850,7 +1027,6 @@ window.addEventListener('load', function() {
                     </p>
 <div class="flex gap-1 justify-center" style="flex-wrap:wrap;">
 <a class="btn btn-primary btn-cta-glow" href="/contact">Start Your Project →</a>
-<button id="themeToggle" style="background:transparent;border:1px solid var(--border-glass);color:var(--text-primary);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-left:0.5rem;transition:all 0.3s;font-size:1.2rem;" aria-label="Toggle Theme">🌓</button>
 <a class="btn btn-secondary" href="#audit">Get a Free Audit</a>
 </div>
 </div>
@@ -1170,7 +1346,6 @@ window.addEventListener('load', function() {
                     Evolnex Technologies — a digital product studio that builds high-performance websites, apps, and SaaS platforms for founders who refuse to be ordinary.</p>
 <p style="font-size:.85rem;margin-bottom:1.5rem;color:rgba(255,255,255,.45);line-height:1.6;">As a <strong>Premium Digital Product Studio</strong>, Evolnex proudly engineers high-performance Web, SaaS, and App Solutions for brands <strong>Worldwide.</strong>
 </p>
-
 <div>
 <div class="footer-heading">Services</div>
 <a class="footer-link" href="/services">Web Development</a>
@@ -1205,7 +1380,11 @@ window.addEventListener('load', function() {
 </p>
 <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1.5rem;">
 <span itemprop="telephone">+91 76687 58238</span>
-</p>
+</p><div class="footer-socials">
+<a class="social-btn" href="https://www.linkedin.com/company/131953983/" target="_blank">in</a>
+<a class="social-btn" href="https://x.com/evolnex" target="_blank">𝕏</a>
+<a class="social-btn" href="https://www.instagram.com/evolnextechnologies/" target="_blank">ig</a>
+</div>
 </div><div class="footer-heading" style="margin-top:1.5rem;">Legal</div>
 <a class="footer-link" href="/privacy">Privacy Policy</a>
 <a class="footer-link" href="/terms">Terms of Service</a>
@@ -1215,7 +1394,7 @@ window.addEventListener('load', function() {
 <div class="copyright-left">© 2026 Evolnex Technologies. All rights reserved.</div>
 <a class="owner-signature" href="/about">Crafted by Akash Jadon</a>
 </div>
-</footer>
+</div></footer>
 <!-- ================================================================
          ASTRA AI CHATBOT
          ================================================================ -->
@@ -1608,7 +1787,141 @@ window.addEventListener('load', function() {
 <script>
     (function(){
         var backdrop  = document.getElementById('cmdBackdrop');
-        </script>
+        var palette   = document.getElementById('cmdPalette');
+        var cmdInput  = document.getElementById('cmdInput');
+        var cmdBody   = document.getElementById('cmdBody');
+        var triggerHint = document.getElementById('cmdTriggerHint');
+        if(!backdrop || !palette || !cmdInput || !cmdBody) return;
+
+        var COMMANDS = [
+            { section:'Navigate', icon:'🏠', title:'Home', desc:'Back to the homepage', href:'/' },
+            { section:'Navigate', icon:'⚡', title:'Services', desc:'See everything we build', href:'/services' },
+            { section:'Navigate', icon:'🎨', title:'Our Work', desc:'Portfolio & case studies', href:'/case-studies' },
+            { section:'Navigate', icon:'💰', title:'Pricing', desc:'Transparent project pricing', href:'/pricing' },
+            { section:'Navigate', icon:'👤', title:'About Studio', desc:'Meet the team behind Evolnex', href:'/about' },
+            { section:'Actions',  icon:'🚀', title:'Start a Project', desc:'Book a discovery call now', href:'/contact' },
+            { section:'Actions',  icon:'🔍', title:'Free Website Audit', desc:'Get your site audited in 24h', href:'#audit', scroll:true },
+            { section:'Actions',  icon:'💬', title:'Chat with Astra AI', desc:'Open our AI assistant', action:'openAstra' },
+            { section:'Actions',  icon:'📞', title:'Call Directly', desc:'+91 7668758238', href:'tel:+917668758238' },
+            { section:'Actions',  icon:'📧', title:'Send Email', desc:'info&#64;evolnex.digital', href:'https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', target:'_blank' },
+        ];
+
+        var isOpen = false;
+        var selectedIdx = -1;
+        var filteredCmds = COMMANDS.slice();
+
+        function renderItems(cmds){
+            cmdBody.innerHTML = '';
+            if(!cmds.length){
+                cmdBody.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-tertiary);font-size:.88rem;">No results found</div>';
+                return;
+            }
+            var sections = {};
+            cmds.forEach(function(c){ (sections[c.section]||(sections[c.section]=[])).push(c); });
+            Object.keys(sections).forEach(function(sec){
+                var label = document.createElement('span');
+                label.className = 'cmd-section-label';
+                label.textContent = sec;
+                cmdBody.appendChild(label);
+                sections[sec].forEach(function(cmd){
+                    var item = document.createElement(cmd.href ? 'a' : 'button');
+                    item.className = 'cmd-item';
+                    if(cmd.href) { item.href = cmd.href; }
+                    item.setAttribute('data-idx', cmds.indexOf(cmd));
+                    item.innerHTML =
+                        '<div class="cmd-item-icon">'+cmd.icon+'</div>' +
+                        '<div class="cmd-item-info">' +
+                            '<div class="cmd-item-title">'+cmd.title+'</div>' +
+                            '<div class="cmd-item-desc">'+cmd.desc+'</div>' +
+                        '</div>' +
+                        '<span class="cmd-item-arrow">→</span>';
+                    item.addEventListener('click', function(e){
+                        e.preventDefault();
+                        executeCmd(cmd);
+                    });
+                    cmdBody.appendChild(item);
+                });
+            });
+            selectedIdx = -1;
+        }
+
+        function executeCmd(cmd){
+            closeCmd();
+            if(cmd.action === 'openAstra'){
+                var win = document.getElementById('astraChatWindow');
+                if(win) win.classList.add('open');
+                var inp = document.getElementById('astraInput');
+                if(inp) setTimeout(function(){ inp.focus(); }, 100);
+                return;
+            }
+            if(cmd.scroll && cmd.href && cmd.href.startsWith('#')){
+                var el = document.getElementById(cmd.href.slice(1));
+                if(el) el.scrollIntoView({behavior:'smooth'});
+                return;
+            }
+            if(cmd.href) window.location.href = cmd.href;
+        }
+
+        function openCmd(){
+            isOpen = true;
+            backdrop.classList.add('open');
+            palette.classList.add('open');
+            cmdInput.value = '';
+            filteredCmds = COMMANDS.slice();
+            renderItems(filteredCmds);
+            setTimeout(function(){ cmdInput.focus(); }, 50);
+        }
+
+        function closeCmd(){
+            isOpen = false;
+            backdrop.classList.remove('open');
+            palette.classList.remove('open');
+        }
+
+        function navigateItems(dir){
+            var items = cmdBody.querySelectorAll('.cmd-item');
+            if(!items.length) return;
+            items.forEach(function(i){ i.classList.remove('active'); });
+            selectedIdx = (selectedIdx + dir + items.length) % items.length;
+            items[selectedIdx].classList.add('active');
+            items[selectedIdx].scrollIntoView({block:'nearest'});
+        }
+
+        document.addEventListener('keydown', function(e){
+            var isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+            var trigger = (isMac ? e.metaKey : e.ctrlKey) && e.key.toLowerCase() === 'k';
+            if(trigger){ e.preventDefault(); isOpen ? closeCmd() : openCmd(); return; }
+            if(!isOpen) return;
+            if(e.key === 'Escape'){ closeCmd(); return; }
+            if(e.key === 'ArrowDown'){ e.preventDefault(); navigateItems(1); return; }
+            if(e.key === 'ArrowUp'){ e.preventDefault(); navigateItems(-1); return; }
+            if(e.key === 'Enter'){
+                var activeItem = cmdBody.querySelector('.cmd-item.active');
+                if(activeItem){
+                    var idx = parseInt(activeItem.getAttribute('data-idx'));
+                    if(filteredCmds[idx]) executeCmd(filteredCmds[idx]);
+                } else {
+                    var items = cmdBody.querySelectorAll('.cmd-item');
+                    if(items.length) items[0].click();
+                }
+                return;
+            }
+        });
+
+        cmdInput.addEventListener('input', function(){
+            var q = cmdInput.value.trim().toLowerCase();
+            filteredCmds = q ? COMMANDS.filter(function(c){
+                return c.title.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q) || c.section.toLowerCase().includes(q);
+            }) : COMMANDS.slice();
+            renderItems(filteredCmds);
+        });
+
+        backdrop.addEventListener('click', closeCmd);
+        if(triggerHint) triggerHint.addEventListener('click', openCmd);
+        renderItems(filteredCmds);
+
+    })();
+    </script>
 <!-- ================================================================
          ★ NEW FEATURE D: HOLOGRAPHIC PRISMATIC FOIL ENGINE
          ================================================================ -->
@@ -2001,7 +2314,17 @@ window.addEventListener('load', function() {
          ================================================================ -->
 <!-- Command Palette HTML -->
 <div class="cmd-palette-backdrop" id="cmdBackdrop">
-
+<div class="cmd-palette" id="cmdPalette">
+<div class="cmd-header">
+<svg fill="none" height="20" stroke="rgba(255,255,255,0.5)" stroke-width="2" viewbox="0 0 24 24" width="20"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+<input class="cmd-input" id="cmdInput" placeholder="Type a command or search..." type="text"/>
+<span onclick="document.getElementById('cmdBackdrop').classList.remove('open')" style="font-size: 0.7rem; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.2); padding: 2px 6px; border-radius: 4px; cursor: pointer;">ESC</span>
+</div>
+<div class="cmd-body" id="cmdBody">
+<!-- Populated by JS -->
+</div>
+</div>
+</div>
 <!-- Minimap HTML -->
 <div class="minimap" id="minimap"></div>
 <!-- Social Proof Toast HTML -->
@@ -2564,13 +2887,11 @@ window._buildPlaybookPDF = function() {
             });
         });
     </script>
-
 <!-- GSAP & Theme Script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-<script src="theme.js" defer></script>
-
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script defer="" src="theme.js"></script>
 </body>
 </html>
 <!-- Deployment Trigger -->

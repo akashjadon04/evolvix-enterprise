@@ -1,7 +1,7 @@
 // Theme Toggle & Persistence
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('themeToggle');
-    if (themeToggleBtn) {
+    const themeToggleBtns = document.querySelectorAll('#themeToggle, .theme-toggle-btn');
+    if (themeToggleBtns.length > 0) {
         // Determine initial theme
         const storedTheme = localStorage.getItem('evx-theme');
         const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -10,15 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.setAttribute('data-theme', 'light');
         }
 
-        themeToggleBtn.addEventListener('click', () => {
-            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            if (isLight) {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('evx-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('evx-theme', 'light');
-            }
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                if (isLight) {
+                    document.documentElement.removeAttribute('data-theme');
+                    localStorage.setItem('evx-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('evx-theme', 'light');
+                }
+            });
         });
     }
 
@@ -112,12 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Handle theme change for particles color
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', () => {
-                const currentLight = document.documentElement.getAttribute('data-theme') === 'light';
-                particlesMaterial.color.setHex(currentLight ? 0xf97316 : 0x67e8f9);
-                particlesMaterial.blending = currentLight ? THREE.NormalBlending : THREE.AdditiveBlending;
-                particlesMaterial.needsUpdate = true;
+        if (themeToggleBtns.length > 0) {
+            themeToggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const currentLight = document.documentElement.getAttribute('data-theme') === 'light';
+                    particlesMaterial.color.setHex(currentLight ? 0xf97316 : 0x67e8f9);
+                    particlesMaterial.blending = currentLight ? THREE.NormalBlending : THREE.AdditiveBlending;
+                    particlesMaterial.needsUpdate = true;
+                });
             });
         }
 
