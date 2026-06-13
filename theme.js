@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
         
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        const materialColor = isLight ? 0x0e7490 : 0x67e8f9;
+        const materialColor = isLight ? 0xf97316 : 0x67e8f9;
 
         const particlesMaterial = new THREE.PointsMaterial({
             size: 0.15,
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (themeToggleBtn) {
             themeToggleBtn.addEventListener('click', () => {
                 const currentLight = document.documentElement.getAttribute('data-theme') === 'light';
-                particlesMaterial.color.setHex(currentLight ? 0x0e7490 : 0x67e8f9);
+                particlesMaterial.color.setHex(currentLight ? 0xf97316 : 0x67e8f9);
                 particlesMaterial.blending = currentLight ? THREE.NormalBlending : THREE.AdditiveBlending;
                 particlesMaterial.needsUpdate = true;
             });

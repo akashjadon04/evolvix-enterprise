@@ -1,0 +1,25 @@
+<div class="cmd-backdrop" id="cmdBackdrop"></div>
+<div aria-label="Command palette" class="cmd-palette" id="cmdPalette" role="dialog">
+<div class="cmd-search-row">
+<span class="cmd-search-icon">Γîÿ</span>
+<input autocomplete="off" class="cmd-input" id="cmdInput" placeholder="Search pages, services, actionsΓÇª" type="text"/>
+<span class="cmd-kbd-hint">ESC to close</span>
+</div>
+<div class="cmd-body" id="cmdBody"></div>
+<div class="cmd-footer">
+<span class="cmd-footer-key"><kbd>Γåæ</kbd><kbd>Γåô</
+---
+        // Hide graphics on mobile when audit completes
+                if(window.innerWidth <= 768) {
+                    var hv = document.querySelector('.hero-visual');
+                    if(hv) hv.style.display = 'none';
+                }
+            }, 5000);
+        },
+        
+    };
+    </script>
+</main>
+<!-- ================================================================
+         FOOTER ΓÇö Premium Redesign
+         ================================================================ -->
