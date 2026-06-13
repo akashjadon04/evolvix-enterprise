@@ -891,7 +891,7 @@ fbq('track', 'PageView');
 <!-- Web3Forms AJAX Interceptor -->
 <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('form[action="https://api.web3forms.com/submit"]');
+            const forms = document.querySelectorAll('form[action="https://formsubmit.co/ajax/contact@evolnex.digital"]');
             forms.forEach(form => {
                 form.removeAttribute('target');
                 form.addEventListener('submit', async function(e) {
@@ -903,7 +903,7 @@ fbq('track', 'PageView');
                         if(btn) btn.textContent = 'SENDING...';
                         const formData = new FormData(this);
                         try {
-                            await fetch(this.action, { method: 'POST', body: formData });
+                            await fetch(this.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
                             if(btn) { btn.textContent = '✓ REQUEST SENT'; btn.style.background = '#10b981'; btn.style.color = '#fff'; }
                         } catch(err) {
                             if(btn) btn.textContent = 'ERROR, TRY AGAIN';
@@ -919,4 +919,8 @@ fbq('track', 'PageView');
 <script defer="" src="theme.js"></script>
 </body>
 </html>
+
+
+
+
 
