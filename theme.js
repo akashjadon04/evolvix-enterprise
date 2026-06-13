@@ -157,3 +157,34 @@ document.addEventListener('DOMContentLoaded', () => {
         heroCanvas.style.display = 'none';
     }
 });
+
+// Add this to theme.js to handle SVG toggling
+document.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.theme-toggle-btn');
+    const updateIcons = () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        btns.forEach(btn => {
+            const sun = btn.querySelector('.icon-sun');
+            const moon = btn.querySelector('.icon-moon');
+            if(sun && moon) {
+                if(isLight) {
+                    sun.style.display = 'block';
+                    moon.style.display = 'none';
+                } else {
+                    sun.style.display = 'none';
+                    moon.style.display = 'block';
+                }
+            }
+        });
+    };
+    
+    // Initial update
+    updateIcons();
+    
+    // Bind to click
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(updateIcons, 10);
+        });
+    });
+});
