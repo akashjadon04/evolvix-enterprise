@@ -1,20 +1,41 @@
-import re
+import asyncio
+from playwright.async_api import async_playwright
 
-c = open('index.html', encoding='utf-8').read()
-matches = list(re.finditer(r'<div class="footer-socials">', c))
-print('Count of <div class="footer-socials">:', len(matches))
+async def capture():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        page = await browser.new_page()
+        await page.goto('http://localhost:8080/index.html')
+        await page.wait_for_timeout(2000)
+        
+        # Click theme toggle to ensure light mode
+        await page.click('.theme-toggle-btn')
+        await page.wait_for_timeout(1000)
+        
+        # Log computed background of body
+        bg = await page.evaluate('window.getComputedStyle(document.body).backgroundColor')
+        print('body bg:', bg)
+        
+        # Log which element covers the viewport (100px from top)
+        el = await page.evaluate('''() => {
+            let e = document.elementFromPoint(100, 300);
+            return e ? e.tagName + "." + e.className : "None";
+        }''')
+        print('element at 100,300:', el)
+        
+        # Get elements with dark backgrounds
+        dark_els = await page.evaluate('''() => {
+            let res = [];
+            document.querySelectorAll('*').forEach(el => {
+                let st = window.getComputedStyle(el);
+                if(st.backgroundColor === 'rgb(2, 6, 23)' || st.backgroundColor === 'rgba(2, 6, 23, 1)') {
+                    res.push(el.tagName + "." + el.className + " (" + el.id + ")");
+                }
+            });
+            return res;
+        }''')
+        print('Dark elements:', dark_els)
+        
+        await browser.close()
 
-body_match = re.search(r'<body[^>]*>', c)
-print('Body tag:', body_match.group(0) if body_match else 'Not found')
-
-canvas_match = re.search(r'<canvas[^>]*>', c)
-print('Canvas tag:', canvas_match.group(0) if canvas_match else 'Not found')
-
-# Let's check why page is stuck. Preloader maybe? Or the PageLoader overlay.
-print('preloader in content:', 'id="preloader"' in c)
-
-# Let's check the footer structure for duplication
-footer_start = c.find('<footer')
-print('Footer content preview:')
-print(c[footer_start:footer_start+2000])
-
+asyncio.run(capture())

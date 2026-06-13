@@ -14,6 +14,8 @@
 
 /* Light mode overrides */
 [data-theme="light"] {
+  --c-brand-main-rgb: 249, 115, 22;
+  --c-brand-light-rgb: 251, 146, 60;
   --bg-body: #f8fafc;
   --bg-surface-1: #ffffff;
   --bg-surface-2: #f1f5f9;
@@ -77,20 +79,7 @@
 [data-theme="light"] .portfolio-card-body p,
 [data-theme="light"] .process-step p { color: #334155 !important; }
 
-[data-theme="light"] .kinetic-word {
-  background: linear-gradient(135deg,#020617 20%,#0e7490 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #0e7490;
-}
 
-[data-theme="light"] .word-reveal .text-gradient .word-unit {
-  background: linear-gradient(135deg,#020617 10%,#0e7490 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 [data-theme="light"] .hero-card-3d {
   background: rgba(255,255,255,0.8);
@@ -158,13 +147,6 @@
 }
 
 [data-theme="light"] .service-card::before { background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(0,0,0,0.03) 50%, rgba(251,146,60,0.1)); }
-[data-theme="light"] .kinetic-word, [data-theme="light"] .word-reveal .text-gradient .word-unit {
-  background: linear-gradient(135deg, #7c2d12 10%, #f97316 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
 [data-theme="light"] .theme-toggle-btn::after {
   background: #f97316;
   box-shadow: 0 0 10px rgba(249,115,22,0.5);
@@ -196,15 +178,6 @@
 /* Make sure all hardcoded #fff text becomes dark in light mode */
 [data-theme="light"] body { color: #020617; }
 [data-theme="light"] .stat-number, 
-[data-theme="light"] .kinetic-word,
-[data-theme="light"] .word-reveal .text-gradient .word-unit,
-[data-theme="light"] .text-gradient {
-    background: linear-gradient(135deg, #7c2d12 10%, #f97316 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent !important;
-}
 
 [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6 {
     color: #020617 !important;
@@ -439,3 +412,8 @@
     filter: none !important;
     opacity: 1 !important;
 }
+
+[data-theme='light'] img[src*='evolnex'] {
+    filter: hue-rotate(190deg) saturate(1.5) brightness(0.9);
+}
+

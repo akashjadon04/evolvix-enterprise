@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isLight) {
                     document.documentElement.removeAttribute('data-theme');
                     localStorage.setItem('evx-theme', 'dark');
+                    if(window.updateParticles) window.updateParticles(false);
                 } else {
                     document.documentElement.setAttribute('data-theme', 'light');
                     localStorage.setItem('evx-theme', 'light');
+                    if(window.updateParticles) window.updateParticles(true);
                 }
             });
         });
@@ -104,6 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
+        window.updateParticles = function(light) {
+            if(particlesMaterial) {
+                particlesMaterial.color.setHex(light ? 0xf97316 : 0x67e8f9);
+                particlesMaterial.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+                particlesMaterial.needsUpdate = true;
+            }
+        };
+
 
         let mouseX = 0;
         let mouseY = 0;
