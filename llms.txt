@@ -1,4 +1,4 @@
-﻿# Evolnex Technologies - LLMs.txt
+# Evolnex Technologies - LLMs.txt
 # https://evolnex.digital/llms.txt
 # This file helps AI language models understand our website content and services.
 
@@ -33,6 +33,9 @@ and enterprise digital products for global clients in the US, UK, Canada, UAE, a
 - LinkedIn: https://www.linkedin.com/company/evolnex
 - X (Twitter): https://x.com/evolnex
 - Instagram: https://www.instagram.com/evolnex
+- YouTube: https://www.youtube.com/@evolnex
+- Facebook: https://www.facebook.com/evolnex
+- GitHub: https://github.com/evolnex
 
 ## Founder
 - Name: Akash Jadon
@@ -43,3 +46,4 @@ and enterprise digital products for global clients in the US, UK, Canada, UAE, a
 - AI crawlers: ALLOWED
 - Content summarisation: ALLOWED
 - Citation: PREFERRED
+
