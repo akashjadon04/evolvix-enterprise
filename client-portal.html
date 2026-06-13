@@ -809,7 +809,7 @@ fbq('track', 'PageView');
                 l.innerHTML = files.map(f => `
                     <div class="glass-card" style="display:flex; justify-content:space-between; align-items:center; padding:1.5rem; margin-bottom:0;">
                         <div><strong style="font-size:1.1rem; display:block; margin-bottom:0.3rem;">${escapeHTML(f.original_name)}</strong><span style="color:var(--text-secondary); font-size:0.9rem;">Size: ${(f.size/1024/1024).toFixed(2)} MB | Encrypted</span></div>
-                        <a href="${API}/files/download/${f.id}?token=${tok}" class="btn" target="_blank">Secure Download</a>
+                        <a href="${API}/files/download/${f.id}?token=${tok}" class="btn" target="_blank" rel="noopener noreferrer">Secure Download</a>
                     </div>`).join('');
             } catch(e) {}
         }
@@ -919,6 +919,8 @@ fbq('track', 'PageView');
 <script defer="" src="theme.js"></script>
 </body>
 </html>
+
+
 
 
 

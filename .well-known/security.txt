@@ -1,0 +1,5 @@
+﻿Contact: mailto:contact@evolnex.digital
+Expires: 2027-06-13T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://evolnex.digital/.well-known/security.txt
+Policy: https://evolnex.digital/privacy

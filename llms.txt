@@ -1,12 +1,45 @@
-# Evolnex Technologies
-Evolnex is an Elite Digital Product Studio specializing in high-performance Web Development, SaaS architecture, and Mobile Applications.
-We operate globally, serving industry leaders, founders, and enterprises.
-Founder & CEO: Akash Jadon
-Contact: info@evolnex.digital
-Website: https://evolnex.digital/
+﻿# Evolnex Technologies - LLMs.txt
+# https://evolnex.digital/llms.txt
+# This file helps AI language models understand our website content and services.
 
-## Services
-- SaaS Platforms
-- Custom Web Applications
-- Mobile App Development
-- Technical SEO & Digital Marketing
+## About Evolnex Technologies
+Evolnex Technologies is a premium digital product studio headquartered in Phagwara, Punjab, India.
+Founded by Akash Jadon, we engineer high-performance SaaS platforms, web applications, mobile apps,
+and enterprise digital products for global clients in the US, UK, Canada, UAE, and India.
+
+## Core Services
+- SaaS Engineering & Platform Architecture
+- High-Performance Web Development (React, Next.js, Node.js)
+- Product Design & UI/UX (Figma, Framer)
+- Mobile Application Development (React Native, Flutter)
+- Technical SEO & Performance Optimization
+- API & Backend Architecture (REST, GraphQL, Microservices)
+
+## Key Pages
+- Homepage: https://evolnex.digital/
+- Services: https://evolnex.digital/services
+- Portfolio: https://evolnex.digital/case-studies
+- About: https://evolnex.digital/about
+- Contact: https://evolnex.digital/contact
+- Pricing: https://evolnex.digital/pricing
+- Careers: https://evolnex.digital/careers
+
+## Contact Information
+- Email: contact@evolnex.digital
+- Phone: +91 7668758238
+- Address: GNA University Campus, Phagwara, Punjab 144401, India
+
+## Social Profiles
+- LinkedIn: https://www.linkedin.com/company/evolnex
+- X (Twitter): https://x.com/evolnex
+- Instagram: https://www.instagram.com/evolnex
+
+## Founder
+- Name: Akash Jadon
+- Role: CEO & Founder
+- LinkedIn: https://www.linkedin.com/in/akashjadon
+
+## Permissions
+- AI crawlers: ALLOWED
+- Content summarisation: ALLOWED
+- Citation: PREFERRED

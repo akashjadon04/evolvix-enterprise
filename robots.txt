@@ -1,4 +1,31 @@
+﻿# Evolnex Technologies - robots.txt
+# https://evolnex.digital/robots.txt
+
 User-agent: *
 Allow: /
+Disallow: /admin-dashboard
+Disallow: /client-portal
+Disallow: /.git/
+Disallow: /backend/
 
+# Sitemaps
 Sitemap: https://evolnex.digital/sitemap.xml
+
+# AI Crawlers - Explicitly Allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# LLMs Reference
+# AI context file: https://evolnex.digital/llms.txt

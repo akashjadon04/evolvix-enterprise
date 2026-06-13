@@ -1,0 +1,53 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020617"/>
+      <stop offset="50%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#020617"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0ea5e9"/>
+      <stop offset="100%" style="stop-color:#38bdf8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid dots -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.04)"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <!-- Glow orb -->
+  <ellipse cx="200" cy="315" rx="300" ry="300" fill="rgba(14,165,233,0.06)"/>
+  <ellipse cx="1000" cy="315" rx="250" ry="250" fill="rgba(139,92,246,0.05)"/>
+  <!-- Top accent bar -->
+  <rect x="80" y="80" width="120" height="4" rx="2" fill="url(#accent)"/>
+  <!-- Logo area -->
+  <text x="80" y="160" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="52" fill="#f8fafc" letter-spacing="-2">Evolnex</text>
+  <text x="80" y="220" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="52" fill="#38bdf8" letter-spacing="-1">Technologies</text>
+  <!-- Divider -->
+  <rect x="80" y="255" width="1040" height="1" fill="rgba(255,255,255,0.08)"/>
+  <!-- Tagline -->
+  <text x="80" y="320" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="34" fill="#f8fafc">Elite Digital Product Studio</text>
+  <!-- Sub text -->
+  <text x="80" y="370" font-family="system-ui,-apple-system,sans-serif" font-weight="400" font-size="22" fill="#94a3b8">SaaS Platforms · Web Apps · Mobile · Enterprise</text>
+  <!-- Stats row -->
+  <rect x="80" y="420" width="180" height="80" rx="12" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+  <text x="170" y="455" font-family="system-ui" font-weight="900" font-size="28" fill="#38bdf8" text-anchor="middle">50+</text>
+  <text x="170" y="480" font-family="system-ui" font-weight="500" font-size="14" fill="#94a3b8" text-anchor="middle">Projects</text>
+  <rect x="280" y="420" width="180" height="80" rx="12" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+  <text x="370" y="455" font-family="system-ui" font-weight="900" font-size="28" fill="#38bdf8" text-anchor="middle">98%</text>
+  <text x="370" y="480" font-family="system-ui" font-weight="500" font-size="14" fill="#94a3b8" text-anchor="middle">Satisfaction</text>
+  <rect x="480" y="420" width="180" height="80" rx="12" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+  <text x="570" y="455" font-family="system-ui" font-weight="900" font-size="28" fill="#38bdf8" text-anchor="middle">$2M+</text>
+  <text x="570" y="480" font-family="system-ui" font-weight="500" font-size="14" fill="#94a3b8" text-anchor="middle">Revenue Generated</text>
+  <!-- URL -->
+  <text x="80" y="580" font-family="system-ui" font-weight="500" font-size="18" fill="#64748b">evolnex.digital</text>
+  <!-- Right icon -->
+  <circle cx="1080" cy="315" r="60" fill="rgba(14,165,233,0.1)" stroke="rgba(56,189,248,0.3)" stroke-width="2"/>
+  <text x="1080" y="330" font-family="system-ui" font-size="40" text-anchor="middle" filter="url(#glow)">⚡</text>
+</svg>

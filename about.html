@@ -21,10 +21,20 @@
 <meta content="Evolnex Technologies | Elite Digital Product Studio" property="og:title"/>
 <meta content="Stop losing customers to slow, ugly digital products. We build high-performance websites, mobile apps, and SaaS platforms for brands that refuse to settle for average." property="og:description"/>
 <meta content="website" property="og:type"/>
+<meta content="https://evolnex.digital/assets/evolnex-og.svg" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" property="twitter:card"/>
+<meta content="https://evolnex.digital/assets/evolnex-og.svg" property="twitter:image"/>
 <meta content="https://evolnex.digital/about" property="og:url"/>
 <meta content="summary_large_image" property="twitter:card"/>
 <link href="https://evolnex.digital/about" rel="canonical"/>
+<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
+<meta content="DENY" http-equiv="X-Frame-Options"/>
+<meta content="no-referrer-when-downgrade" name="referrer"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://cdnjs.cloudflare.com" rel="preconnect"/>
+<link href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <!-- Fonts: async to avoid render-blocking, display=swap prevents invisible text -->
 <link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@700;800;900&amp;display=swap" rel="preload"/>
@@ -355,7 +365,7 @@ fbq('track', 'PageView');
 
 
 </head>
-<body><canvas id="webgl-hero" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
+<body><a class="skip-nav" href="#main-content" style="position:absolute;left:-9999px;top:0;z-index:9999999;background:#0ea5e9;color:#fff;padding:.75rem 1.5rem;font-weight:700" onfocus="this.style.left=`0`" onblur="this.style.left=`-9999px`">Skip to main content</a><canvas id="webgl-hero" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
 <!-- SVG Liquid Filter (for CTA) -->
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
 <defs>
@@ -747,9 +757,9 @@ fbq('track', 'PageView');
 <p style="font-size:.85rem;margin-bottom:1.5rem;color:rgba(255,255,255,.45);line-height:1.6;">As a <strong>Premium Digital Product Studio</strong>, Evolnex proudly engineers high-performance Web, SaaS, and App Solutions for brands <strong>Worldwide.</strong>
 </p>
 <div class="footer-socials">
-<a class="social-btn" href="https://www.linkedin.com/company/131953983/" target="_blank">in</a>
-<a class="social-btn" href="https://x.com/evolnex" target="_blank">𝕏</a>
-<a class="social-btn" href="https://www.instagram.com/evolnextechnologies/" target="_blank">ig</a>
+<a class="social-btn" href="https://www.linkedin.com/company/131953983/" target="_blank" rel="noopener noreferrer">in</a>
+<a class="social-btn" href="https://x.com/evolnex" target="_blank" rel="noopener noreferrer">𝕏</a>
+<a class="social-btn" href="https://www.instagram.com/evolnextechnologies/" target="_blank" rel="noopener noreferrer">ig</a>
 </div>
 </div>
 <div>
@@ -773,7 +783,7 @@ fbq('track', 'PageView');
 <svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.38 2.18 2 2 0 012.36.02h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92v2z"></path></svg>
                     +91 7668758238
                 </a>
-<a class="footer-link" href="mailto:contact@evolnex.digital" style="display:flex;align-items:center;gap:.5rem;" target="_blank">
+<a class="footer-link" href="mailto:contact@evolnex.digital" style="display:flex;align-items:center;gap:.5rem;" target="_blank" rel="noopener noreferrer">
 <svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                     Email Us
                 </a>
@@ -2228,6 +2238,9 @@ fbq('track', 'PageView');
 </body>
 </html>
 <!-- Deployment Trigger -->
+
+
+
 
 
 
