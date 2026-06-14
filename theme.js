@@ -180,9 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
             checkCount++;
             if (checkCount > 50) clearInterval(checkThree); // Stop after 5s
         }, 100);
-    } else if (heroCanvas) {
-        // Hide canvas on mobile or if Three.js not loaded
-        heroCanvas.style.display = 'none';
     }
 });
 
