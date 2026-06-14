@@ -11,7 +11,7 @@
           s.async = true;
           document.head.appendChild(s);
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);--c-brand-main-rgb:14,116,144;--c-brand-light-rgb:103,232,249;}
+          function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag('js', new Date());
           gtag('config', 'G-X1Y2Z3W4V5');
@@ -67,7 +67,7 @@
 html{background:#020617}
 body{background:#020617;margin:0;font-family:system-ui,-apple-system,sans-serif;color:#f8fafc}
 .header{position:fixed;top:0;left:0;right:0;height:90px;z-index:9999;background:transparent}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px}
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;padding-top:90px}
 .container{width:100%;max-width:1440px;margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem)}
 #preloader{position:fixed;inset:0;background:#020617;z-index:9999999;display:flex;align-items:center;justify-content:center}
 </style>
@@ -622,7 +622,7 @@ window.addEventListener('load', function() {
 </script>
 </head>
 <body><a class="skip-nav" href="#main-content" style="position:absolute;left:-9999px;top:0;z-index:9999999;background:var(--c-brand-main);color:#fff;padding:.75rem 1.5rem;border-radius:0 0 8px 0;font-weight:700;transition:left 0s" onfocus="this.style.left=`0`" onblur="this.style.left=`-9999px`">Skip to main content</a>
-<canvas id="webgl-hero" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
+<canvas id="webgl-hero" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;"></canvas>
 <!-- SVG Liquid Filter (for CTA) -->
 <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
 <defs>
