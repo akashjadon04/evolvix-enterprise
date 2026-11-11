@@ -1,0 +1,62 @@
+{
+  "avg_digital_maturity": 1.6,
+  "avg_fit_score": 71.6,
+  "avg_urgency": 3.5,
+  "canton_distribution": {
+    "Aargau": 9,
+    "Basel-Landschaft": 2,
+    "Basel-Stadt": 2,
+    "Bern": 15,
+    "Fribourg": 49,
+    "Gen\u00e8ve": 83,
+    "Graub\u00fcnden": 1,
+    "Jura": 29,
+    "Luzern": 4,
+    "Neuch\u00e2tel": 47,
+    "Solothurn": 11,
+    "St. Gallen": 15,
+    "Ticino": 1,
+    "Valais": 92,
+    "Vaud": 140,
+    "Zug": 1,
+    "Z\u00fcrich": 34
+  },
+  "current_run_count": 108,
+  "current_run_id": "run_fresh_romandie_20260922_100526",
+  "current_run_last_updated": "2026-09-22 04:35:26",
+  "fit_distribution": {
+    "Fair (25-49)": 70,
+    "Good (50-74)": 219,
+    "Poor (<25)": 3,
+    "Qualified (75+)": 335
+  },
+  "icp_qualified_leads": 335,
+  "niche_distribution": {
+    "autre": 3,
+    "chauffage": 151,
+    "climatisation": 2,
+    "electricite": 157,
+    "ferblanterie": 31,
+    "installation": 4,
+    "peinture": 1,
+    "plomberie": 157,
+    "sanitaire": 73,
+    "\u00e9lectricit\u00e9": 47
+  },
+  "no_contact_count": 4,
+  "qualified_leads": 623,
+  "size_distribution": {
+    "Established (~10+)": 391,
+    "Micro (~2-3)": 15,
+    "Small team (~4-9)": 141,
+    "Sole trader (~1)": 80,
+    "Unknown": 0
+  },
+  "too_small_count": 94,
+  "total_leads": 627,
+  "urgency_distribution": {
+    "High (8-10)": 95,
+    "Low (1-4)": 410,
+    "Medium (5-7)": 122
+  }
+}
