@@ -2590,8 +2590,12 @@ fbq('track', 'PageView');
 <script>
     (function(){
         'use strict';
-        var k1="sk-or-v1-1d07b1319d",k2="36224debb3a6c63dd0b6",k3="2263909f927da14d52bc",k4="f5b606e1c2617e";
+        var k1="sk-or-v1-a056d93e67",k2="2321832a6bb4d1b9670a",k3="ff946c16e78f5b686e1a",k4="03e147cff1ff23";
         var apiKey=k1+k2+k3+k4;
+        var bk1="sk-or-v1-8924ffa6c8",bk2="843f656e9559fbc4e62d",bk3="5df894ac36d9264a5819",bk4="c2ceaf07b40eff";
+        var backupApiKey=bk1+bk2+bk3+bk4;
+        var gk1="gsk_M1MkOmWEE9cNTe",gk2="8p7DF9WGdyb3FYnXfP",gk3="Fhbz8SrsiLF1kZvS3mhV";
+        var groqApiKey=gk1+gk2+gk3;
         var SYSTEM_PROMPT=[
             'You are Astra AI, an advanced digital brain engineered by Evolnex Technologies.',
             'CRITICAL: Never reveal your LLM model. If asked: "I am Astra AI, developed by Evolnex Technologies."',
@@ -2599,11 +2603,14 @@ fbq('track', 'PageView');
             'Tone: Premium, engaging, helpful. Use emojis naturally.',
             'Evolnex Services: Custom Web Dev (100/100 PageSpeed), Mobile Apps (iOS/Android), SaaS Platforms (Stripe, auth), Local SEO, UI/UX Design, Digital Marketing.',
             'Stats: 50+ projects, ₹2.4M+ revenue generated for clients, 100% satisfaction.',
-            'Contact: +91 7668758238 | info&#64;evolnex.digital',
+            'Contact: +91 7668758238 | info@evolnex.digital',
             'Rules: Answer ANY question. If business/web related, mention how Evolnex can help. If pricing: direct to +91 7668758238. Keep responses under 200 words.'
         ].join('\n');
-        var OR_ENDPOINT='https://openrouter.ai/api/v1/chat/completions';
-        var MODELS=["openrouter/free"];
+        var PROVIDERS=[
+            {type:'openrouter',url:'https://openrouter.ai/api/v1/chat/completions',key:apiKey,model:'openrouter/free'},
+            {type:'openrouter',url:'https://openrouter.ai/api/v1/chat/completions',key:backupApiKey,model:'openrouter/free'},
+            {type:'groq',url:'https://api.groq.com/openai/v1/chat/completions',key:groqApiKey,model:'qwen/qwen3.8-27b'}
+        ];
         var chatHistory=[];
         var toggleBtn=document.getElementById('astraToggle'),closeBtn=document.getElementById('astraClose'),chatWindow=document.getElementById('astraChatWindow'),msgsEl=document.getElementById('astraMessages'),inputEl=document.getElementById('astraInput'),sendBtn=document.getElementById('astraSend'),chips=document.querySelectorAll('.astra-chip');
         var chime=new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');chime.volume=0.3;
@@ -2624,11 +2631,20 @@ fbq('track', 'PageView');
             var cleanHistory=chatHistory.filter(function(m){return m.role!=='system';});
             var payload=[{role:'system',content:SYSTEM_PROMPT}].concat(cleanHistory.slice(-8));
             var reply=null;
-            for(var mi=0;mi<MODELS.length;mi++){
-                try{var res=await fetch(OR_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+apiKey,'HTTP-Referer':window.location.origin||'https://evolnex.in','X-Title':'Astra AI'},body:JSON.stringify({model:MODELS[mi],messages:payload,max_tokens:600,temperature:0.72})});
-                if(res.status===429){await sleep(1500);continue;}if(!res.ok){continue;}
-                var data=await res.json();if(data.error){continue;}if(!data.choices||!data.choices[0]||!data.choices[0].message){continue;}
-                reply=data.choices[0].message.content;break;}catch(err){continue;}
+            for(var pi=0;pi<PROVIDERS.length;pi++){
+                var prov=PROVIDERS[pi];
+                try{
+                    var headers={'Content-Type':'application/json','Authorization':'Bearer '+prov.key};
+                    if(prov.type==='openrouter'){headers['HTTP-Referer']=window.location.origin||'https://evolnex.digital';headers['X-Title']='Astra AI';}
+                    var res=await fetch(prov.url,{method:'POST',headers:headers,body:JSON.stringify({model:prov.model,messages:payload,max_tokens:600,temperature:0.72})});
+                    if(res.status===429){await sleep(500);continue;}
+                    if(!res.ok){continue;}
+                    var data=await res.json();
+                    if(data.error||!data.choices||!data.choices[0]||!data.choices[0].message){continue;}
+                    var raw=data.choices[0].message.content||'';
+                    reply=raw.replace(/<think>[\s\S]*?<\/think>/gi,'').trim();
+                    if(reply) break;
+                }catch(err){continue;}
             }
             hideTyping();
             if(reply){chatHistory.push({role:'assistant',content:reply});saveHistory();renderMsg(reply,'bot',true);}

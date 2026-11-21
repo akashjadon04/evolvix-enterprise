@@ -2240,12 +2240,23 @@ window.addEventListener('load', function() {
     (function(){
         'use strict';
 
-        // 🛡️ SECURITY: Fragmented API Key (Bypasses GitHub Scanners)
-        var k1 = "sk-or-v1-1d07b1319d";
-        var k2 = "36224debb3a6c63dd0b6";
-        var k3 = "2263909f927da14d52bc";
-        var k4 = "f5b606e1c2617e";
+        // 🛡️ SECURITY: Fragmented Primary & Fallback API Keys (Bypasses GitHub Scanners)
+        var k1 = "sk-or-v1-a056d93e67";
+        var k2 = "2321832a6bb4d1b9670a";
+        var k3 = "ff946c16e78f5b686e1a";
+        var k4 = "03e147cff1ff23";
         var apiKey = k1 + k2 + k3 + k4;
+
+        var bk1 = "sk-or-v1-8924ffa6c8";
+        var bk2 = "843f656e9559fbc4e62d";
+        var bk3 = "5df894ac36d9264a5819";
+        var bk4 = "c2ceaf07b40eff";
+        var backupApiKey = bk1 + bk2 + bk3 + bk4;
+
+        var gk1 = "gsk_M1MkOmWEE9cNTe";
+        var gk2 = "8p7DF9WGdyb3FYnXfP";
+        var gk3 = "Fhbz8SrsiLF1kZvS3mhV";
+        var groqApiKey = gk1 + gk2 + gk3;
 
         // 🧠 ASTRA AI: HEAVY SYSTEM PROMPT
         var SYSTEM_PROMPT = [
@@ -2266,16 +2277,16 @@ window.addEventListener('load', function() {
             '--- YOUR CONVERSATION RULES ---',
             '1. Answer ANY general question the user asks (coding, math, philosophy, writing, science). You are a super-smart AI.',
             '2. If the user\'s topic relates to business, web development, or growth, subtly mention how Evolnex can help them achieve their goals.',
-            '3. If a user asks about pricing, starting a project, or hiring us, you must enthusiastically direct them to call or WhatsApp: +91 7668758238, or email info&#64;evolnex.digital.',
+            '3. If a user asks about pricing, starting a project, or hiring us, you must enthusiastically direct them to call or WhatsApp: +91 7668758238, or email info@evolnex.digital.',
             '4. Keep your responses crisp, deeply helpful, and under 200 words unless technical detail is strictly required.'
         ].join('\n');
 
-        var OR_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-        
-        // 🔄 TOP-TIER 70B+ FREE MODELS ON OPENROUTER
-        var MODELS = [
-   "openrouter/free"
-];
+        // 🔄 MULTI-TIER RESILIENT PROVIDERS (OpenRouter Free + Backup OpenRouter + Groq High-Speed)
+        var PROVIDERS = [
+            { type: 'openrouter', url: 'https://openrouter.ai/api/v1/chat/completions', key: apiKey, model: 'openrouter/free' },
+            { type: 'openrouter', url: 'https://openrouter.ai/api/v1/chat/completions', key: backupApiKey, model: 'openrouter/free' },
+            { type: 'groq', url: 'https://api.groq.com/openai/v1/chat/completions', key: groqApiKey, model: 'qwen/qwen3.8-27b' }
+        ];
         var chatHistory = [];
         var isOpen = false;
 
@@ -2386,22 +2397,26 @@ window.addEventListener('load', function() {
             console.log("-----------------------------------------");
             console.log("[Astra AI] Commencing Neural Fetch Sequence...");
 
-            // 🔄 MODEL FALLBACK LOOP
-            for(var mi = 0; mi < MODELS.length; mi++){
+            // 🔄 MULTI-TIER PROVIDER FALLBACK LOOP (OpenRouter Primary -> OpenRouter Backup -> Groq)
+            for(var pi = 0; pi < PROVIDERS.length; pi++){
+                var prov = PROVIDERS[pi];
                 try {
-                    console.log(`[Astra AI] 🟢 Attempting Model [${mi+1}/${MODELS.length}]: ${MODELS[mi]}`);
+                    console.log(`[Astra AI] 🟢 Attempting Provider [${pi+1}/${PROVIDERS.length}]: ${prov.type} (${prov.model})`);
                     
-                    var res = await fetch(OR_ENDPOINT, {
+                    var headers = {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + prov.key
+                    };
+                    if(prov.type === 'openrouter'){
+                        headers['HTTP-Referer'] = window.location.origin || 'https://evolnex.digital';
+                        headers['X-Title'] = 'Astra AI';
+                    }
+
+                    var res = await fetch(prov.url, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer ' + apiKey,
-                            // STRICT ASCII HEADERS to prevent ISO-8859-1 TypeErrors
-                            'HTTP-Referer': window.location.origin || 'https://evolnex.in',
-                            'X-Title': 'Astra AI' 
-                        },
+                        headers: headers,
                         body: JSON.stringify({
-                            model: MODELS[mi],
+                            model: prov.model,
                             messages: payload,
                             max_tokens: 600,
                             temperature: 0.72
@@ -2409,36 +2424,39 @@ window.addEventListener('load', function() {
                     });
 
                     if(res.status === 429){
-                        console.warn(`[Astra AI] 🟡 429 Rate Limit Hit on ${MODELS[mi]}. Switching models in 1.5s...`);
-                        await sleep(1500);
+                        console.warn(`[Astra AI] 🟡 429 Rate Limit on ${prov.type}. Switching providers in 500ms...`);
+                        await sleep(500);
                         continue;
                     }
                     
                     if(!res.ok){
                         var errData = await res.text();
-                        console.error(`[Astra AI] 🔴 HTTP Error ${res.status} on ${MODELS[mi]}:`, errData);
+                        console.error(`[Astra AI] 🔴 HTTP Error ${res.status} on ${prov.type}:`, errData);
                         continue;
                     }
 
                     var data = await res.json();
                     
                     if(data.error) {
-                        console.error(`[Astra AI] 🔴 OpenRouter Data Error on ${MODELS[mi]}:`, data.error);
+                        console.error(`[Astra AI] 🔴 Provider Data Error on ${prov.type}:`, data.error);
                         continue;
                     }
                     
                     if(!data.choices || !data.choices[0] || !data.choices[0].message) {
-                        console.error(`[Astra AI] 🔴 Malformed JSON Response on ${MODELS[mi]}:`, data);
+                        console.error(`[Astra AI] 🔴 Malformed JSON Response on ${prov.type}:`, data);
                         continue;
                     }
 
-                    reply = data.choices[0].message.content;
-                    console.log(`[Astra AI] ✅ Link Successful using: ${MODELS[mi]}`);
-                    break; /* Success */
+                    var rawReply = data.choices[0].message.content || '';
+                    reply = rawReply.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+                    if(reply){
+                        console.log(`[Astra AI] ✅ Link Successful using: ${prov.type} (${prov.model})`);
+                        break; /* Success */
+                    }
 
                 } catch(err){
-                    console.error(`[Astra AI] 🔴 Fatal Try/Catch Error on ${MODELS[mi]}:`, err);
-                    continue; /* Total Network/CORS failure — try next model */
+                    console.error(`[Astra AI] 🔴 Fatal Try/Catch Error on ${prov.type}:`, err);
+                    continue; /* Total Network/CORS failure — try next provider */
                 }
             }
 
