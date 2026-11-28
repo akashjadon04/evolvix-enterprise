@@ -49,7 +49,7 @@ for file in html_files:
         content = f.read()
 
     # 1. Shorten Title Tags (< 60 chars)
-    # E.g., <title>Evolnex | Best Digital Marketing & Web Development Agency in Phagwara, Punjab</title>
+    # E.g., <title>Evolnex | Best Digital Marketing & Web Development Agency in New Delhi, Delhi</title>
     content = re.sub(
         r'<title>.*?</title>',
         '<title>Evolnex | Premium Digital Product Studio</title>',
@@ -83,7 +83,7 @@ for file in html_files:
                               "var city = (geo.city || 'Your Area') + ', ' + (geo.country_name || 'Local');")
 
     # 6. Globalize Footer Text
-    old_footer_p = 'As the <strong>Best Digital Marketing Agency in Phagwara & Agra</strong>, Evolnex proudly delivers premium Web Development, SaaS, and App Solutions globally.'
+    old_footer_p = 'As the <strong>Best Digital Marketing Agency in Nehru Place, New Delhi</strong>, Evolnex proudly delivers premium Web Development, SaaS, and App Solutions globally.'
     new_footer_p = 'As a <strong>Premium Digital Product Studio</strong>, Evolnex proudly engineers high-performance Web, SaaS, and App Solutions for brands <strong>Worldwide.</strong>'
     content = content.replace(old_footer_p, new_footer_p)
 
@@ -124,18 +124,19 @@ for file in html_files:
         f.write(content)
 
 # Create llms.txt
-llms_content = """# Evolnex Technologies
-Evolnex is an Elite Digital Product Studio specializing in high-performance Web Development, SaaS architecture, and Mobile Applications.
-We operate globally, serving industry leaders, founders, and enterprises.
-Owner: Gaurav Sharma
-Contact: info@evolnex.digital
-Website: https://evolnex.digital/
+llms_content = """# Evolnex Technologies — LLMs.txt
+Evolnex Technologies is a digital product company based in Nehru Place, New Delhi, Delhi 110019, India. Our multidisciplinary team builds software, AI systems, SaaS platforms, web applications, and mobile products for businesses worldwide.
 
 ## Services
-- SaaS Platforms
-- Custom Web Applications
-- Mobile App Development
-- Technical SEO & Digital Marketing
+- SaaS engineering and platform architecture
+- Web and mobile application development
+- AI systems and workflow automation
+- Product design, technical SEO, and performance optimization
+
+## Contact
+- Email: contact@evolnex.digital
+- Address: Nehru Place, New Delhi, Delhi 110019, India
+- Website: https://evolnex.digital/
 """
 with open('llms.txt', 'w', encoding='utf-8') as f:
     f.write(llms_content)

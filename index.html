@@ -49,7 +49,7 @@
 
 <link href="https://www.linkedin.com/company/evolnex" rel="me"/>
 <link href="https://www.instagram.com/evolnex" rel="me"/>
-<link href="https://github.com/evolnex" rel="me"/>
+
 <link href="/sitemap.xml" rel="sitemap" type="application/xml"/>
 <link href="/llms.txt" rel="ai-metadata" type="text/plain"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -382,93 +382,75 @@ body{background:#020617;margin:0;font-family:system-ui,-apple-system,sans-serif;
 <!-- html2pdf loaded on-demand for PageSpeed -->
 <!-- God-Tier SEO Knowledge Graph & Semantic Authority Schema -->
 <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://evolnex.digital/#website",
-          "url": "https://evolnex.digital/",
-          "name": "Evolnex Technologies",
-          "description": "Premium Digital Marketing & Web Development Agency in Phagwara and Agra. We build SaaS, Apps, and Digital Empires.",
-          "publisher": {
-            "@id": "https://evolnex.digital/#organization"
-          }
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://evolnex.digital/#organization",
-          "name": "Evolnex Technologies",
-          "url": "https://evolnex.digital/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://evolnex.digital/assets/evolnex.webp",
-            "width": 160,
-            "height": 69
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "customer service",
-            "areaServed": [
-              "IN",
-              "US",
-              "GB",
-              "CA",
-              "AE"
-            ],
-            "availableLanguage": [
-              "English",
-              "Hindi"
-            ]
-          },
-          "sameAs": [
-            "https://www.linkedin.com/company/evolnex",
-            "https://x.com/evolnex",
-            "https://www.instagram.com/evolnex",
-            "https://github.com/evolnex",
-            "https://www.youtube.com/@evolnex",
-            "https://www.facebook.com/evolnex"
-          ]
-        },
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://evolnex.digital/#localbusiness",
-          "name": "Evolnex Digital Marketing & Web Development",
-          "image": "https://evolnex.digital/assets/evolnex.webp",
-          "telephone": "contact@evolnex.digital",
-          "email": "contact@evolnex.digital",
-          "priceRange": "$$$",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "GNA University Campus",
-            "addressLocality": "Phagwara",
-            "addressRegion": "Punjab",
-            "postalCode": "144401",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 31.2559,
-            "longitude": 75.7933
-          },
-          "parentOrganization": {
-            "@id": "https://evolnex.digital/#organization"
-          }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://evolnex.digital/#owner",
-          "name": "Gaurav Sharma",
-          "jobTitle": "Owner",
-          "description": "Gaurav Sharma is the owner of Evolnex Technologies.",
-          "url": "https://evolnex.digital/about",
-          "worksFor": {
-            "@id": "https://evolnex.digital/#organization"
-          }
-        }
+      "@type": "WebSite",
+      "@id": "https://evolnex.digital/#website",
+      "url": "https://evolnex.digital/",
+      "name": "Evolnex Technologies",
+      "description": "Evolnex Technologies is a digital product company based in Nehru Place, New Delhi, building software, AI systems, and digital products for businesses worldwide.",
+      "publisher": {
+        "@id": "https://evolnex.digital/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://evolnex.digital/#organization",
+      "name": "Evolnex Technologies",
+      "url": "https://evolnex.digital/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://evolnex.digital/assets/evolnex.webp",
+        "width": 160,
+        "height": 69
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "areaServed": [
+          "IN",
+          "US",
+          "GB",
+          "CA",
+          "AE"
+        ],
+        "availableLanguage": [
+          "English",
+          "Hindi"
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/evolnex",
+        "https://x.com/evolnex",
+        "https://www.instagram.com/evolnex",
+        "https://www.youtube.com/@evolnex",
+        "https://www.facebook.com/evolnex"
       ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://evolnex.digital/#localbusiness",
+      "name": "Evolnex Digital Marketing & Web Development",
+      "image": "https://evolnex.digital/assets/evolnex.webp",
+      "email": "contact@evolnex.digital",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nehru Place",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
+        "postalCode": "110019",
+        "addressCountry": "IN"
+      },
+      "parentOrganization": {
+        "@id": "https://evolnex.digital/#organization"
+      }
     }
-    </script>
+  ]
+}
+</script>
 <!-- Meta Pixel Code - Idle -->
 <script>
 window.addEventListener('load', function() {
@@ -496,7 +478,9 @@ window.addEventListener('load', function() {
   "@type": "Product",
   "@id": "https://evolnex.digital/#services",
   "name": "Evolnex Digital Services",
-  "brand": {"@id": "https://evolnex.digital/#organization"},
+  "brand": {
+    "@id": "https://evolnex.digital/#organization"
+  },
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
@@ -507,14 +491,18 @@ window.addEventListener('load', function() {
   "review": [
     {
       "@type": "Review",
-      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-      "author": {"@type": "Person", "name": "Marcus Chen"},
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
       "reviewBody": "Finally a developer who speaks plain English and delivers on promises. Our SaaS dashboard went live in three weeks and our investors were blown away."
     },
     {
       "@type": "Review",
-      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-      "author": {"@type": "Person", "name": "Priya Mehta"},
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
       "reviewBody": "Evolnex redesigned our entire platform in 6 weeks. Bounce rate dropped 40% and our conversion rate doubled in the first month."
     }
   ]
@@ -525,17 +513,6 @@ window.addEventListener('load', function() {
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://evolnex.digital/#owner",
-      "name": "Gaurav Sharma",
-      "jobTitle": "Owner",
-      "worksFor": {
-        "@id": "https://evolnex.digital/#organization"
-      },
-      "url": "https://evolnex.digital/about",
-      "description": "Gaurav Sharma is the owner of Evolnex Technologies."
-    },
     {
       "@type": "FAQPage",
       "@id": "https://evolnex.digital/#faq",
@@ -561,7 +538,7 @@ window.addEventListener('load', function() {
           "name": "Where is Evolnex Technologies located?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Evolnex Technologies is headquartered in Phagwara, Punjab, India, and serves clients globally across the US, UK, Canada, UAE, and India."
+            "text": "Evolnex Technologies is based in Nehru Place, New Delhi, India, and serves clients globally across the US, UK, Canada, UAE, and India."
           }
         },
         {
@@ -993,7 +970,7 @@ window.addEventListener('load', function() {
 </div>
 <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;">
 <a class="portfolio-link" href="https://devisbat.ch" target="_blank" rel="noopener noreferrer" style="color:#fb7185;font-weight:700;">Visit devisbat.ch <span>↗</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/devisbat" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">Codebase <span>→</span></a>
+
 </div>
 </div>
 </div>
@@ -1012,8 +989,8 @@ window.addEventListener('load', function() {
 <span style="font-size:.72rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#34d399;padding:.2rem .55rem;border-radius:4px;">FSM Failover</span>
 </div>
 <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;">
-<a class="portfolio-link" href="https://github.com/akashjadon04/astra-backend" target="_blank" rel="noopener noreferrer">Backend Repo <span>→</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/astra-frontend" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">Frontend UI <span>↗</span></a>
+
+
 </div>
 </div>
 </div>
@@ -1033,7 +1010,7 @@ window.addEventListener('load', function() {
 </div>
 <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;">
 <a class="portfolio-link" href="https://github.com/risa-labs-inc/BossConsole" target="_blank" rel="noopener noreferrer">Official Repo <span>→</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/BossConsole" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">Community Fork <span>↗</span></a>
+
 </div>
 </div>
 </div>
@@ -1053,7 +1030,7 @@ window.addEventListener('load', function() {
 </div>
 <div style="display:flex;gap:1.2rem;align-items:center;margin-top:1rem;flex-wrap:wrap;">
 <a class="portfolio-link" href="/astraquote/" style="color:#38bdf8;font-weight:600;">Live Interactive Dashboard <span>↗</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/AstraQuoteLeadEngine" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">GitHub Open Source <span>→</span></a>
+
 </div>
 </div>
 </div>
@@ -1073,7 +1050,7 @@ window.addEventListener('load', function() {
 </div>
 <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;">
 <a class="portfolio-link" href="https://evolnex-relay.vercel.app" target="_blank" rel="noopener noreferrer">Live Gateway <span>→</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/evolnex-relay" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">GitHub Repo <span>↗</span></a>
+
 </div>
 </div>
 </div>
@@ -1395,9 +1372,9 @@ window.addEventListener('load', function() {
 <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 40px; border-top: 2px solid #e2e8f0;">
 <div>
 <!-- Pure CSS Signature to bypass CORS -->
-<div style="font-family: 'Brush Script MT', 'Bradley Hand', cursive; font-size: 42px; color: #0f172a; line-height: 1; transform: rotate(-5deg); margin-bottom: 15px; opacity: 0.8;">Gaurav Sharma</div>
-<p style="margin: 0; font-weight: 800; font-size: 16px; color: #0f172a;">Gaurav Sharma</p>
-<p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 600;">Owner, Evolnex Technologies</p>
+<div style="font-family: 'Brush Script MT', 'Bradley Hand', cursive; font-size: 42px; color: #0f172a; line-height: 1; transform: rotate(-5deg); margin-bottom: 15px; opacity: 0.8;">Evolnex Technologies</div>
+<p style="margin: 0; font-weight: 800; font-size: 16px; color: #0f172a;">Evolnex Technologies</p>
+<p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 600;">Product & Engineering Team</p>
 </div>
 <div style="text-align: right; background: #0f172a; padding: 20px; border-radius: 12px;">
 <p style="margin: 0 0 5px; font-weight: 800; color: #38bdf8; font-size: 16px;">contact@evolnex.digital</p>
@@ -1529,13 +1506,10 @@ window.addEventListener('load', function() {
 <section aria-hidden="false" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);" id="seo-rich-content">
 <article itemscope itemtype="https://schema.org/Article">
 <h2 itemprop="headline">Evolnex Technologies � Elite Digital Product Studio</h2>
-<p itemprop="description">Evolnex Technologies is a premium digital product studio architected by Evolnex Systems Engineering in Phagwara, Punjab, India. We specialise in engineering high-performance SaaS platforms, enterprise web applications, mobile apps, and complete digital ecosystems for ambitious businesses across the US, UK, Canada, UAE, and India.</p>
+<p itemprop="description">Evolnex Technologies is a premium digital product studio architected by Evolnex Systems Engineering in New Delhi, Delhi, India. We specialise in engineering high-performance SaaS platforms, enterprise web applications, mobile apps, and complete digital ecosystems for ambitious businesses across the US, UK, Canada, UAE, and India.</p>
 <meta itemprop="datePublished" content="2024-01-01"/>
 <meta itemprop="dateModified" content="2026-06-13"/>
-<div itemprop="author" itemscope itemtype="https://schema.org/Person">
-  <span itemprop="name">Gaurav Sharma</span>
-  <span itemprop="jobTitle">Head of Technology & Lead AI Systems Architect</span>
-</div>
+<div itemprop="author" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Evolnex Technologies</span></div>
 <h3>Our Core Services</h3>
 <p>We offer a comprehensive suite of digital product engineering services. Our SaaS Engineering practice covers full-stack platform architecture, scalable microservices, multi-tenant database design, real-time features, payment integration, and DevOps automation. Our web development team builds blazing-fast websites with Lighthouse performance scores of 95+ using React, Next.js, Astro, and Tailwind CSS.</p>
 <p>Our Product Design and UI/UX studio crafts conversion-focused interfaces that balance aesthetics with business outcomes. We follow a rigorous design system methodology using Figma, ensuring consistency across every touchpoint. Our Mobile Application development practice builds cross-platform apps with React Native and Flutter, targeting iOS and Android simultaneously without compromising native performance.</p>
@@ -1549,7 +1523,7 @@ window.addEventListener('load', function() {
 <h3>Technology Stack</h3>
 <p>Evolnex projects are built on a modern, battle-tested technology stack. Frontend: React, Next.js, TypeScript, Tailwind CSS, Framer Motion. Backend: Node.js, Python, FastAPI, PostgreSQL, MongoDB, Redis, Elasticsearch. Mobile: React Native, Expo, Flutter. DevOps: Docker, Kubernetes, GitHub Actions, AWS, GCP, Cloudflare. Design: Figma, Adobe XD, Principle, Lottie animations.</p>
 <h3>Contact Evolnex Technologies</h3>
-<p>Reach us at contact@evolnex.digital or call contact@evolnex.digital. Our headquarters is at GNA University Campus, Phagwara, Punjab 144401, India. We serve clients globally and are available Monday to Saturday, 9 AM to 9 PM IST.</p>
+<p>Reach us at contact@evolnex.digital or email contact@evolnex.digital. Our headquarters is at Nehru Place, New Delhi, Delhi 110019, India. We serve clients globally and are available Monday to Saturday, 9 AM to 9 PM IST.</p>
 </article>
 </section>
 <footer class="footer" role="contentinfo">
@@ -2016,7 +1990,7 @@ window.addEventListener('load', function() {
             { section:'Actions',  icon:'🚀', title:'Start a Project', desc:'Book a discovery call now', href:'/contact' },
             { section:'Actions',  icon:'🔍', title:'Free Website Audit', desc:'Get your site audited in 24h', href:'#audit', scroll:true },
             { section:'Actions',  icon:'💬', title:'Chat with Astra AI', desc:'Open our AI assistant', action:'openAstra' },
-            { section:'Actions',  icon:'📞', title:'Call Directly', desc:'contact@evolnex.digital', href:'tel:contact@evolnex.digital' },
+            
             { section:'Actions',  icon:'📧', title:'Send Email', desc:'info&#64;evolnex.digital', href:'https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', target:'_blank' },
         ];
 
@@ -2958,7 +2932,7 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(18); doc.setFont('helvetica', 'bold');
-    doc.text('Gaurav Sharma', ml + 5, 265);
+    doc.text('Evolnex Technologies', ml + 5, 265);
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(12); doc.setFont('helvetica', 'normal');
@@ -3067,7 +3041,7 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(15, 23, 42);
     doc.setFontSize(12); doc.setFont('helvetica', 'bold');
-    doc.text('Gaurav Sharma', ml, 280);
+    doc.text('Evolnex Technologies', ml, 280);
     doc.setTextColor(100, 116, 139);
     doc.setFontSize(9); doc.setFont('helvetica', 'normal');
     doc.text('info&#64;evolnex.digital  |  contact@evolnex.digital', ml, 285);

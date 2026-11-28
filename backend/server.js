@@ -109,7 +109,7 @@ db.serialize(() => {
         if(err) return;
         db.get("SELECT * FROM users WHERE role = 'admin'", [], (err, row) => {
             if (!row) {
-                db.run("INSERT INTO users (role, email, password, name) VALUES ('admin', 'admin@evolnex.com', ?, 'Gaurav Sharma')", [hash]);
+                db.run("INSERT INTO users (role, email, password, name) VALUES ('admin', 'admin@evolnex.com', ?, 'Evolnex Team')", [hash]);
             }
         });
     });

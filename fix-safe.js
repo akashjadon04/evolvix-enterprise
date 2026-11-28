@@ -61,7 +61,7 @@ if (footerStart > 0 && footerEnd > 0) {
       </div>
       <address style="margin-top:1.5rem;font-size:.82rem;color:var(--text-secondary);line-height:1.9;font-style:normal;">
         <strong style="color:var(--text-primary);display:block;margin-bottom:.25rem;">Evolnex Technologies</strong>
-        GNA University Campus, Phagwara, Punjab 144401, India<br/>
+        Nehru Place, New Delhi, Delhi 110019, India<br/>
       </address>
     </div>
     <div>
@@ -90,7 +90,7 @@ if (footerStart > 0 && footerEnd > 0) {
   </div>
   <div class="container copyright">
     <div class="copyright-left">&copy; 2026 Evolnex Technologies. All rights reserved.</div>
-    <a class="owner-signature" href="/about">Owner: Gaurav Sharma</a>
+    <span class="company-signature">Evolnex Technologies | Product &amp; Engineering Team</span>
   </div>
 </footer>`;
     c = before + footer + after;

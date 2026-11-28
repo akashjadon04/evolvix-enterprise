@@ -13,7 +13,7 @@ footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
 # Replace title in header
-header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Owner | Evolnex Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>About Evolnex Technologies | Digital Product Engineering</title>')
 # Replace nav link active state
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
@@ -43,7 +43,7 @@ about_main = """
             -webkit-text-stroke: 1px rgba(255,255,255,0.3);
         }
         
-        .founder-section {
+        .company-profile-section {
             padding: 8rem 0; position: relative; background: #020617;
         }
         .founder-grid {
@@ -103,7 +103,7 @@ about_main = """
 
         @media (max-width: 900px) {
             .founder-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .founder-section, .standard-section, .process-section { padding: 4rem 0; }
+            .company-profile-section, .standard-section, .process-section { padding: 4rem 0; }
             .process-step { min-width: 280px; }
             .join-box { padding: 2rem; }
         }
@@ -120,8 +120,8 @@ about_main = """
             </div>
         </section>
 
-        <!-- COMPANY OWNER -->
-        <section class="founder-section">
+        <!-- COMPANY PROFILE -->
+        <section class="company-profile-section">
             <div class="container founder-grid">
                 <div class="founder-image-wrapper reveal">
                     <div class="founder-glare"></div>
@@ -129,19 +129,19 @@ about_main = """
                 </div>
                 <div class="founder-content reveal delay-200">
                     <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 1rem; letter-spacing: 2px; font-size: 0.8rem;">
-                        // COMPANY OWNER
+                        // COMPANY PROFILE
                     </div>
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "Gaurav Sharma is the owner of Evolnex Technologies. The company builds software, AI systems, and digital products for businesses."
+                        "Evolnex Technologies is a digital product company building software, AI systems, and digital products for businesses."
                     </p>
                     <p>
                         "We do things differently. Every line of code, every pixel, and every animation is purposefully engineered to command attention and convert users into loyal customers. We build digital assets, not just websites."
                     </p>
                     <div style="margin-top: 3rem; display: flex; align-items: center; gap: 1rem;">
                         <div>
-                            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff;">Gaurav Sharma</div>
-                            <div style="color: var(--text-tertiary); font-size: 0.9rem;">Owner, Evolnex Technologies</div>
+                            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff;">Evolnex Technologies</div>
+                            <div style="color: var(--text-tertiary); font-size: 0.9rem;">Product & Engineering Team</div>
                         </div>
                     </div>
                 </div>

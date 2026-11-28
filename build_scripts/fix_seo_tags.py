@@ -14,20 +14,20 @@ schema_markup = """
       "url": "https://evolnex.digital",
       "logo": "https://evolnex.digital/assets/evolnex.png",
       "image": "https://evolnex.digital/assets/evolnex.png",
-      "description": "Best Digital Marketing & Web Development Agency in Phagwara, Agra, and Punjab. We build high-performance SaaS platforms, mobile apps, and websites.",
+      "description": "Best Digital Marketing & Web Development Agency in New Delhi, New Delhi, and Delhi. We build high-performance SaaS platforms, mobile apps, and websites.",
       "email": "contact@evolnex.digital",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Phagwara",
-        "addressRegion": "Punjab",
+        "addressLocality": "New Delhi",
+        "addressRegion": "Delhi",
         "addressCountry": "IN"
       },
       "areaServed": [
-        "Phagwara",
-        "Agra",
+        "New Delhi",
+        "New Delhi",
         "Jalandhar",
         "Ludhiana",
-        "Punjab",
+        "Delhi",
         "India"
       ],
       "sameAs": [
@@ -46,7 +46,7 @@ seo_footer_html = """
                 <div class="footer-col" style="flex: 1 1 250px;">
                     <h4 class="footer-title" style="color: #fff; font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 700;">Service Areas</h4>
                     <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
-                        As the <strong>Best Digital Marketing Agency in Phagwara & Agra</strong>, Evolnex Technologies proudly delivers premium Web Development, SaaS, and App Solutions to clients across <strong>Punjab, India, and Globally.</strong>
+                        As the <strong>Best Digital Marketing Agency in Nehru Place, New Delhi</strong>, Evolnex Technologies proudly delivers premium Web Development, SaaS, and App Solutions to clients across <strong>Delhi, India, and Globally.</strong>
                     </p>
                     <div style="display:flex; gap: 15px; margin-top: 15px;">
                         <a href="https://linkedin.com/company/evolnex" target="_blank" rel="noopener noreferrer" style="color: #38bdf8; text-decoration: none; font-weight: bold; font-size: 0.9rem;">LinkedIn</a>
@@ -85,10 +85,10 @@ def update_file(filepath, filename):
 
     # 3. Update Title
     title_map = {
-        'index.html': 'Evolnex | Best Digital Marketing & Web Development Agency in Phagwara, Punjab',
-        'about.html': 'About Evolnex | Top Digital Product Studio in Agra & Punjab',
+        'index.html': 'Evolnex | Best Digital Marketing & Web Development Agency in New Delhi, Delhi',
+        'about.html': 'About Evolnex | Top Digital Product Studio in New Delhi & Delhi',
         'services.html': 'Our Services | Premium Web, SaaS & App Development in India',
-        'contact.html': 'Contact Evolnex | Hire the Best Digital Agency in Phagwara',
+        'contact.html': 'Contact Evolnex | Hire the Best Digital Agency in New Delhi',
         'case-studies.html': 'Case Studies | Proven SaaS & Web Success by Evolnex',
         'pricing.html': 'Pricing | Transparent Web & App Development Rates',
     }
@@ -98,13 +98,13 @@ def update_file(filepath, filename):
 
     # 4. Update Meta Description
     desc_map = {
-        'index.html': 'Looking for the best digital marketing agency in Phagwara or Agra? Evolnex builds high-performance websites, mobile apps, and SaaS platforms that scale.',
-        'about.html': 'Meet the team behind Evolnex. We are the top digital product studio serving Phagwara, Punjab, and global leaders with premium software solutions.',
-        'services.html': 'From cutting-edge web development to SaaS and mobile apps, Evolnex is the trusted digital agency in Punjab for brands that refuse to settle for average.',
-        'contact.html': 'Ready to scale? Contact Evolnex, the premier digital marketing and web development agency in Phagwara and Agra. Let us build your next big thing.',
+        'index.html': 'Looking for the best digital marketing agency in New Delhi or New Delhi? Evolnex builds high-performance websites, mobile apps, and SaaS platforms that scale.',
+        'about.html': 'Meet the team behind Evolnex. We are the top digital product studio serving New Delhi, Delhi, and global leaders with premium software solutions.',
+        'services.html': 'From cutting-edge web development to SaaS and mobile apps, Evolnex is the trusted digital agency in Delhi for brands that refuse to settle for average.',
+        'contact.html': 'Ready to scale? Contact Evolnex, the premier digital marketing and web development agency in Nehru Place, New Delhi. Let us build your next big thing.',
     }
     
-    new_desc = desc_map.get(filename, 'Evolnex builds high-performance websites, mobile apps, and SaaS platforms for brands in Punjab and globally that refuse to settle for average.')
+    new_desc = desc_map.get(filename, 'Evolnex builds high-performance websites, mobile apps, and SaaS platforms for brands in Delhi and globally that refuse to settle for average.')
     
     if '<meta name="description"' in html:
         html = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{new_desc}">', html, flags=re.IGNORECASE)

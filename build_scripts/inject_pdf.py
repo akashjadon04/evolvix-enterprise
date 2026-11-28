@@ -35,9 +35,9 @@ god_pdf_template = """
             </div>
             
             <div style="position: absolute; bottom: 60px; left: 60px; border-left: 3px solid #67e8f9; padding-left: 20px;">
-                <p style="color: #67e8f9; font-size: 12px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 2px;">AUTHOR</p>
-                <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">Gaurav Sharma</p>
-                <p style="color: #94a3b8; font-size: 14px; margin: 0;">Owner, Evolnex Technologies</p>
+                <p style="color: #67e8f9; font-size: 12px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 2px;">PREPARED BY</p>
+                <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">Evolnex Technologies</p>
+                <p style="color: #94a3b8; font-size: 14px; margin: 0;">Product & Engineering Team</p>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@ god_pdf_template = """
             <div style="display: flex; align-items: center; gap: 15px;">
                 <img src="assets/evolnex.webp" style="width: 50px; height: 50px; border-radius: 25px; object-fit: cover; border: 2px solid #e2e8f0;">
                 <div>
-                    <p style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Gaurav Sharma</p>
+                    <p style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Evolnex Technologies</p>
                     <p style="font-size: 12px; color: #64748b; margin: 0;">contact@evolnex.digital</p>
                 </div>
             </div>

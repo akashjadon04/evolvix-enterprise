@@ -188,9 +188,9 @@ def fix_index():
             
             <div style="margin-top:60px; padding-top:20px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Evolnex Owner">
-                    <p style="margin:5px 0 0; font-weight:700;">Gaurav Sharma</p>
-                    <p style="margin:0; font-size:12px; color:#64748b;">Owner, Evolnex Technologies</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Evolnex Technologies">
+                    <p style="margin:5px 0 0; font-weight:700;">Evolnex Technologies</p>
+                    <p style="margin:0; font-size:12px; color:#64748b;">Product & Engineering Team</p>
                 </div>
                 <div style="text-align:right;">
                     <p style="margin:0; font-weight:700; color:#38bdf8;">contact@evolnex.digital</p>

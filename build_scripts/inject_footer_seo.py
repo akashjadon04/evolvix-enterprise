@@ -7,7 +7,7 @@ seo_footer_html = """
             <div>
                 <div class="footer-heading">Service Areas</div>
                 <p style="color: rgba(255,255,255,.5); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
-                    As the <strong>Best Digital Marketing Agency in Phagwara & Agra</strong>, Evolnex Technologies proudly delivers premium Web Development, SaaS, and App Solutions to clients across <strong>Punjab, India, and Globally.</strong>
+                    As the <strong>Best Digital Marketing Agency in Nehru Place, New Delhi</strong>, Evolnex Technologies proudly delivers premium Web Development, SaaS, and App Solutions to clients across <strong>Delhi, India, and Globally.</strong>
                 </p>
                 <div style="display:flex; flex-direction:column; gap: 8px;">
                     <a href="https://linkedin.com/company/evolnex" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>

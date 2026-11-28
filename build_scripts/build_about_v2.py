@@ -10,7 +10,7 @@ header = header_match.group(0)
 footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
-header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Owner | Evolnex Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>About Evolnex Technologies | Digital Product Engineering</title>')
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
 
@@ -58,8 +58,8 @@ about_main = """
         }
 
         /* 2. Founder Profile HUD */
-        .founder-hud-section { padding: 10rem 0; position: relative; background: #020617; overflow: hidden; }
-        .founder-hud-section::before {
+        .company-profile-hud-section { padding: 10rem 0; position: relative; background: #020617; overflow: hidden; }
+        .company-profile-hud-section::before {
             content: ''; position: absolute; right: -20%; top: 20%; width: 60%; height: 60%;
             background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); filter: blur(60px); z-index: 0; pointer-events: none;
         }
@@ -169,14 +169,14 @@ about_main = """
             </div>
         </section>
 
-        <!-- COMPANY OWNER -->
-        <section class="founder-hud-section">
+        <!-- COMPANY PROFILE -->
+        <section class="company-profile-hud-section">
             <div class="container founder-grid">
                 <div class="hud-frame reveal">
                     <div class="hud-image-box">
                         <img src="assets/evolnex.webp" alt="Evolnex Technologies">
                         <div class="hud-data-points">
-                            <div class="data-badge badge-1">OWNER: GAURAV SHARMA</div>
+                            <div class="data-badge badge-1">EVOLNEX TECHNOLOGIES</div>
                             <div class="data-badge badge-2">STATUS: ACTIVE</div>
                         </div>
                     </div>
@@ -184,14 +184,14 @@ about_main = """
                 <div class="founder-text-block reveal delay-200">
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "Gaurav Sharma is the owner of Evolnex Technologies. The company builds software, AI systems, and digital products for businesses."
+                        "Evolnex Technologies is a digital product company building software, AI systems, and digital products for businesses."
                     </p>
                     <p>
                         "We refuse to operate on that level. Every line of code, every pixel, and every animation is engineered to command attention and crush your competition. We don't just build websites; we build scalable digital assets."
                     </p>
                     <div class="sign-off">
-                        Gaurav Sharma
-                        <span>Owner, Evolnex Technologies</span>
+                        Evolnex Technologies
+                        <span>Product & Engineering Team</span>
                     </div>
                 </div>
             </div>
