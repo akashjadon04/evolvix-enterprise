@@ -46,7 +46,7 @@
 <meta content="no-referrer-when-downgrade" name="referrer"/>
 
 <!-- rel=me for social profile ownership verification (E-E-A-T signal) -->
-<link href="https://x.com/akashjadon04" rel="me"/>
+
 <link href="https://www.linkedin.com/company/evolnex" rel="me"/>
 <link href="https://www.instagram.com/evolnex" rel="me"/>
 <link href="https://github.com/evolnex" rel="me"/>
@@ -406,23 +406,28 @@ body{background:#020617;margin:0;font-family:system-ui,-apple-system,sans-serif;
             "width": 160,
             "height": 69
           },
-          "founder": {
-            "@id": "https://evolnex.digital/#founder"
-          },
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+91-7668758238",
             "contactType": "customer service",
-            "areaServed": ["IN", "US", "GB", "CA", "AE"],
-            "availableLanguage": ["English", "Hindi"]
+            "areaServed": [
+              "IN",
+              "US",
+              "GB",
+              "CA",
+              "AE"
+            ],
+            "availableLanguage": [
+              "English",
+              "Hindi"
+            ]
           },
           "sameAs": [
             "https://www.linkedin.com/company/evolnex",
             "https://x.com/evolnex",
             "https://www.instagram.com/evolnex",
             "https://github.com/evolnex",
-              "https://www.youtube.com/@evolnex",
-              "https://www.facebook.com/evolnex"
+            "https://www.youtube.com/@evolnex",
+            "https://www.facebook.com/evolnex"
           ]
         },
         {
@@ -430,7 +435,7 @@ body{background:#020617;margin:0;font-family:system-ui,-apple-system,sans-serif;
           "@id": "https://evolnex.digital/#localbusiness",
           "name": "Evolnex Digital Marketing & Web Development",
           "image": "https://evolnex.digital/assets/evolnex.webp",
-          "telephone": "+91-7668758238",
+          "telephone": "contact@evolnex.digital",
           "email": "contact@evolnex.digital",
           "priceRange": "$$$",
           "address": {
@@ -452,29 +457,11 @@ body{background:#020617;margin:0;font-family:system-ui,-apple-system,sans-serif;
         },
         {
           "@type": "Person",
-          "@id": "https://evolnex.digital/#founder",
-          "name": "Akash Jadon",
-          "jobTitle": ["Head of Technology & Lead AI Systems Architect", "Top SEO Specialist", "Digital Marketing Expert", "Full-Stack Developer"],
-          "description": "Akash Jadon is the Head of Technology & Lead AI Systems Architect at Evolnex Technologies. Certified in Automation & Agentic AI and Full-Stack Engineering, he architects autonomous LLM runtimes (Astra AI Core), native desktop agent consoles (BossConsole), and high-throughput concurrency pipelines.",
-          "hasCredential": ["Certificate in Automation and Agentic AI (Udemy)", "Certificate in Full-Stack Software Engineering (Udemy)", "Govt of India MSME: UDYAM-UP-01-0202485"],
+          "@id": "https://evolnex.digital/#owner",
+          "name": "Gaurav Sharma",
+          "jobTitle": "Owner",
+          "description": "Gaurav Sharma is the owner of Evolnex Technologies.",
           "url": "https://evolnex.digital/about",
-          "sameAs": [
-            "https://linkedin.com/in/akashjadon04",
-            "https://twitter.com/akashjadon04",
-            "https://github.com/akashjadon04"
-          ],
-          "knowsAbout": [
-            "Search Engine Optimization (SEO)",
-            "Local SEO",
-            "Technical SEO",
-            "SaaS Architecture",
-            "Digital Marketing",
-            "Conversion Rate Optimization (CRO)"
-          ],
-          "alumniOf": {
-            "@type": "CollegeOrUniversity",
-            "name": "GNA University"
-          },
           "worksFor": {
             "@id": "https://evolnex.digital/#organization"
           }
@@ -540,16 +527,14 @@ window.addEventListener('load', function() {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://evolnex.digital/#founder",
-      "name": "Akash Jadon",
-      "jobTitle": "Head of Technology & Lead AI Systems Architect",
-      "worksFor": {"@id": "https://evolnex.digital/#organization"},
+      "@id": "https://evolnex.digital/#owner",
+      "name": "Gaurav Sharma",
+      "jobTitle": "Owner",
+      "worksFor": {
+        "@id": "https://evolnex.digital/#organization"
+      },
       "url": "https://evolnex.digital/about",
-      "sameAs": [
-        "https://www.linkedin.com/in/akashjadon",
-        "https://x.com/akashjadon04",
-        "https://www.instagram.com/akashjadon04"
-      ]
+      "description": "Gaurav Sharma is the owner of Evolnex Technologies."
     },
     {
       "@type": "FAQPage",
@@ -593,10 +578,30 @@ window.addEventListener('load', function() {
       "@type": "BreadcrumbList",
       "@id": "https://evolnex.digital/#breadcrumb",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://evolnex.digital/"},
-        {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://evolnex.digital/services"},
-        {"@type": "ListItem", "position": 3, "name": "Portfolio", "item": "https://evolnex.digital/case-studies"},
-        {"@type": "ListItem", "position": 4, "name": "Contact", "item": "https://evolnex.digital/contact"}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://evolnex.digital/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://evolnex.digital/services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Portfolio",
+          "item": "https://evolnex.digital/case-studies"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://evolnex.digital/contact"
+        }
       ]
     },
     {
@@ -604,17 +609,55 @@ window.addEventListener('load', function() {
       "@id": "https://evolnex.digital/#service",
       "name": "Evolnex Technologies",
       "serviceType": "Digital Product Studio",
-      "provider": {"@id": "https://evolnex.digital/#organization"},
-      "areaServed": ["India", "United States", "United Kingdom", "Canada", "UAE"],
+      "provider": {
+        "@id": "https://evolnex.digital/#organization"
+      },
+      "areaServed": [
+        "India",
+        "United States",
+        "United Kingdom",
+        "Canada",
+        "UAE"
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Digital Services",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SaaS Engineering"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "High-Performance Web Development"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile App Development"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technical SEO & Performance"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "API & Backend Architecture"}}
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SaaS Engineering"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "High-Performance Web Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile App Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Technical SEO & Performance"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "API & Backend Architecture"
+            }
+          }
         ]
       }
     }
@@ -689,7 +732,7 @@ window.addEventListener('load', function() {
 <li><a class="nav-link" href="/case-studies">Work</a></li>
 <li><a class="nav-link" href="/pricing">Pricing</a></li>
 
-<li><a class="nav-link" href="/Akash_Jadon_CV.pdf" target="_blank" style="color: #67e8f9; font-weight: 600;">Executive CV ↗</a></li>
+<li></li>
 <li><a class="btn btn-secondary" href="/client-portal" style="padding:.5rem 1.4rem;font-size:.88rem;">Client Login</a></li>
 <li class="mobile-only-item evl-disp-none"><a href="/contact" style="background:var(--c-brand-main);color:var(--text-primary);padding:1rem;border-radius:8px;font-weight:700;margin-top:1rem;display:block;text-align:center;text-decoration:none;">Start Project →</a></li>
 </ul>
@@ -735,7 +778,7 @@ window.addEventListener('load', function() {
                     </p>
 <div class="flex gap-1" style="flex-wrap:wrap;">
 <a class="btn btn-primary btn-cta-glow" href="/contact">Start Your Project <span class="btn-arrow">→</span></a>
-<a class="btn btn-secondary" href="/Akash_Jadon_CV.pdf" target="_blank" style="border-color: rgba(103,232,249,0.4); color: #67e8f9;">View Executive CV (PDF) ↗</a>
+
 </div>
 <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
 <svg fill="none" height="14" stroke="#22c55e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><polyline points="20 6 9 17 4 12"></polyline></svg> No credit card required. 100% Free Audit.
@@ -990,7 +1033,7 @@ window.addEventListener('load', function() {
 </div>
 <div style="display:flex;gap:1rem;align-items:center;margin-top:1rem;">
 <a class="portfolio-link" href="https://github.com/risa-labs-inc/BossConsole" target="_blank" rel="noopener noreferrer">Official Repo <span>→</span></a>
-<a class="portfolio-link" href="https://github.com/akashjadon04/BossConsole" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">Akash Fork <span>↗</span></a>
+<a class="portfolio-link" href="https://github.com/akashjadon04/BossConsole" target="_blank" rel="noopener noreferrer" style="color:var(--text-secondary);">Community Fork <span>↗</span></a>
 </div>
 </div>
 </div>
@@ -1122,7 +1165,7 @@ window.addEventListener('load', function() {
 <p style="font-size:.875rem;margin:.75rem 0 1.5rem;color:var(--text-secondary);">Need custom autonomous AI kernels, distributed pipelines, or low-latency SaaS infrastructure? Consult with our systems engineering team.</p>
 <div style="display:flex;flex-direction:column;gap:.75rem;align-items:center;">
 <a class="btn btn-primary btn-cta-glow" href="/contact" style="padding:.8rem 1.75rem;font-size:.9rem;width:100%;">Initiate Discussion →</a>
-<a class="btn btn-secondary" href="/Akash_Jadon_CV.pdf" target="_blank" style="padding:.6rem 1.4rem;font-size:.82rem;width:100%;border-color:rgba(103,232,249,0.3);color:#67e8f9;">Download Master CV ↗</a>
+
 </div>
 </div>
 </div>
@@ -1352,13 +1395,13 @@ window.addEventListener('load', function() {
 <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 40px; border-top: 2px solid #e2e8f0;">
 <div>
 <!-- Pure CSS Signature to bypass CORS -->
-<div style="font-family: 'Brush Script MT', 'Bradley Hand', cursive; font-size: 42px; color: #0f172a; line-height: 1; transform: rotate(-5deg); margin-bottom: 15px; opacity: 0.8;">Akash Jadon</div>
-<p style="margin: 0; font-weight: 800; font-size: 16px; color: #0f172a;">Akash Jadon</p>
-<p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 600;">Head of Technology, Evolnex Technologies</p>
+<div style="font-family: 'Brush Script MT', 'Bradley Hand', cursive; font-size: 42px; color: #0f172a; line-height: 1; transform: rotate(-5deg); margin-bottom: 15px; opacity: 0.8;">Gaurav Sharma</div>
+<p style="margin: 0; font-weight: 800; font-size: 16px; color: #0f172a;">Gaurav Sharma</p>
+<p style="margin: 0; font-size: 13px; color: #64748b; font-weight: 600;">Owner, Evolnex Technologies</p>
 </div>
 <div style="text-align: right; background: #0f172a; padding: 20px; border-radius: 12px;">
 <p style="margin: 0 0 5px; font-weight: 800; color: #38bdf8; font-size: 16px;">contact@evolnex.digital</p>
-<p style="margin: 0 0 5px; font-size: 15px; color: #f8fafc; font-weight: 600;">+91 7668758238</p>
+<p style="margin: 0 0 5px; font-size: 15px; color: #f8fafc; font-weight: 600;">contact@evolnex.digital</p>
 <p style="margin: 0; font-size: 13px; color: #94a3b8;">evolnex.in</p>
 </div>
 </div>
@@ -1490,7 +1533,7 @@ window.addEventListener('load', function() {
 <meta itemprop="datePublished" content="2024-01-01"/>
 <meta itemprop="dateModified" content="2026-06-13"/>
 <div itemprop="author" itemscope itemtype="https://schema.org/Person">
-  <span itemprop="name">Akash Jadon</span>
+  <span itemprop="name">Gaurav Sharma</span>
   <span itemprop="jobTitle">Head of Technology & Lead AI Systems Architect</span>
 </div>
 <h3>Our Core Services</h3>
@@ -1506,7 +1549,7 @@ window.addEventListener('load', function() {
 <h3>Technology Stack</h3>
 <p>Evolnex projects are built on a modern, battle-tested technology stack. Frontend: React, Next.js, TypeScript, Tailwind CSS, Framer Motion. Backend: Node.js, Python, FastAPI, PostgreSQL, MongoDB, Redis, Elasticsearch. Mobile: React Native, Expo, Flutter. DevOps: Docker, Kubernetes, GitHub Actions, AWS, GCP, Cloudflare. Design: Figma, Adobe XD, Principle, Lottie animations.</p>
 <h3>Contact Evolnex Technologies</h3>
-<p>Reach us at contact@evolnex.digital or call +91 7668758238. Our headquarters is at GNA University Campus, Phagwara, Punjab 144401, India. We serve clients globally and are available Monday to Saturday, 9 AM to 9 PM IST.</p>
+<p>Reach us at contact@evolnex.digital or call contact@evolnex.digital. Our headquarters is at GNA University Campus, Phagwara, Punjab 144401, India. We serve clients globally and are available Monday to Saturday, 9 AM to 9 PM IST.</p>
 </article>
 </section>
 <footer class="footer" role="contentinfo">
@@ -1555,7 +1598,7 @@ window.addEventListener('load', function() {
       <a class="footer-link" href="/privacy">Privacy Policy</a>
       <a class="footer-link" href="/terms">Terms of Service</a>
       <div class="footer-heading" style="margin-top:2rem;">Contact</div>
-      <a class="footer-link" href="tel:+917668758238">&#128222; +91 7668758238</a>
+      
       <a class="footer-link" href="mailto:contact@evolnex.digital">&#9993; contact@evolnex.digital</a>
     </div>
   </div>
@@ -1973,7 +2016,7 @@ window.addEventListener('load', function() {
             { section:'Actions',  icon:'🚀', title:'Start a Project', desc:'Book a discovery call now', href:'/contact' },
             { section:'Actions',  icon:'🔍', title:'Free Website Audit', desc:'Get your site audited in 24h', href:'#audit', scroll:true },
             { section:'Actions',  icon:'💬', title:'Chat with Astra AI', desc:'Open our AI assistant', action:'openAstra' },
-            { section:'Actions',  icon:'📞', title:'Call Directly', desc:'+91 7668758238', href:'tel:+917668758238' },
+            { section:'Actions',  icon:'📞', title:'Call Directly', desc:'contact@evolnex.digital', href:'tel:contact@evolnex.digital' },
             { section:'Actions',  icon:'📧', title:'Send Email', desc:'info&#64;evolnex.digital', href:'https://mail.google.com/mail/?view=cm&fs=1&to=info&#64;evolnex.digital', target:'_blank' },
         ];
 
@@ -2277,7 +2320,7 @@ window.addEventListener('load', function() {
             '--- YOUR CONVERSATION RULES ---',
             '1. Answer ANY general question the user asks (coding, math, philosophy, writing, science). You are a super-smart AI.',
             '2. If the user\'s topic relates to business, web development, or growth, subtly mention how Evolnex can help them achieve their goals.',
-            '3. If a user asks about pricing, starting a project, or hiring us, you must enthusiastically direct them to call or WhatsApp: +91 7668758238, or email info@evolnex.digital.',
+            '3. If a user asks about pricing, starting a project, or hiring us, direct them to contact@evolnex.digital.',
             '4. Keep your responses crisp, deeply helpful, and under 200 words unless technical detail is strictly required.'
         ].join('\n');
 
@@ -2469,7 +2512,7 @@ window.addEventListener('load', function() {
                 renderMsg(reply, 'bot', true);
             } else {
                 console.error("[Astra AI] ❌ CRITICAL: All models in fallback chain failed or rate-limited.");
-                renderMsg('My neural network is experiencing high traffic right now! ⚡ Please try again in a minute — or reach our engineering team at **+91 7668758238**.', 'bot', false);
+                renderMsg('My neural network is experiencing high traffic right now! ⚡ Please try again in a minute — please email contact@evolnex.digital.', 'bot', false);
             }
 
             if(sendBtn) sendBtn.disabled = false;
@@ -2659,9 +2702,7 @@ window.addEventListener('load', function() {
 </form>
 </div>
 </div>
-<a class="fab-whatsapp" href="https://wa.me/917668758238?text=Hello+Evolnex+Team,+I+want+to+discuss+a+project." rel="nofollow noopener noreferrer" target="_blank" title="Contact Evolnex Engineering">
-<svg viewbox="0 0 24 24"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.233-1.337a9.982 9.982 0 004.778 1.223h.004c5.504 0 9.988-4.478 9.989-9.984 0-2.669-1.037-5.176-2.926-7.062A9.935 9.935 0 0012.012 2zm.004 16.892h-.003a8.315 8.315 0 01-4.247-1.157l-.305-.18-3.155.804.843-3.074-.198-.314A8.293 8.293 0 013.684 11.98c.002-4.582 3.733-8.312 8.324-8.312 2.222.001 4.308.866 5.877 2.437a8.272 8.272 0 012.436 5.882c-.001 4.582-3.731 8.31-8.313 8.31zM16.58 13.9c-.25-.125-1.488-.734-1.718-.818-.23-.084-.399-.125-.567.125-.168.25-.65.818-.797.985-.148.167-.296.188-.546.063-1.32-.656-2.316-1.464-3.21-2.983-.105-.175.101-.163.344-.648.084-.167.042-.313-.021-.438-.063-.125-.567-1.368-.778-1.874-.205-.494-.413-.427-.567-.435l-.485-.008c-.168 0-.441.063-.672.313-.231.25-.882.862-.882 2.102 0 1.24.903 2.438 1.029 2.605.125.167 1.776 2.712 4.302 3.803 1.62.697 2.152.606 2.58.558.468-.053 1.488-.608 1.698-1.196.21-.588.21-1.092.148-1.196-.063-.105-.231-.167-.481-.292z"></path></svg>
-</a>
+
 <!-- ENHANCED AI AUDIT & LEAD GEN SCRIPT -->
 <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -2917,7 +2958,7 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(18); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml + 5, 265);
+    doc.text('Gaurav Sharma', ml + 5, 265);
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(12); doc.setFont('helvetica', 'normal');
@@ -3026,10 +3067,10 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(15, 23, 42);
     doc.setFontSize(12); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml, 280);
+    doc.text('Gaurav Sharma', ml, 280);
     doc.setTextColor(100, 116, 139);
     doc.setFontSize(9); doc.setFont('helvetica', 'normal');
-    doc.text('info&#64;evolnex.digital  |  +91 7668758238', ml, 285);
+    doc.text('info&#64;evolnex.digital  |  contact@evolnex.digital', ml, 285);
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(9); doc.setFont('helvetica', 'bold');

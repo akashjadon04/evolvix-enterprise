@@ -76,11 +76,11 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(18); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml + 5, 265);
+    doc.text('Gaurav Sharma', ml + 5, 265);
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(12); doc.setFont('helvetica', 'normal');
-    doc.text('Founder & Lead Architect', ml + 5, 272);
+    doc.text('Owner, Evolnex Technologies', ml + 5, 272);
     
     // PAGE 2: DIAGNOSTICS & PROTOCOL
     doc.addPage();
@@ -185,10 +185,10 @@ window._buildPlaybookPDF = function() {
     
     doc.setTextColor(15, 23, 42);
     doc.setFontSize(12); doc.setFont('helvetica', 'bold');
-    doc.text('Akash Jadon', ml, 280);
+    doc.text('Gaurav Sharma', ml, 280);
     doc.setTextColor(100, 116, 139);
     doc.setFontSize(9); doc.setFont('helvetica', 'normal');
-    doc.text('evolvixtechnology@gmail.com  |  +91 7668758238', ml, 285);
+    doc.text('contact@evolnex.digital', ml, 285);
     
     doc.setTextColor(148, 163, 184);
     doc.setFontSize(9); doc.setFont('helvetica', 'bold');

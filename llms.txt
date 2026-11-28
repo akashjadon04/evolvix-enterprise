@@ -4,7 +4,7 @@
 
 ## About Evolnex Technologies
 Evolnex Technologies is a premium digital product studio headquartered in Phagwara, Punjab, India.
-Founded by Akash Jadon, we engineer high-performance SaaS platforms, web applications, mobile apps,
+Owned by Gaurav Sharma, we engineer high-performance SaaS platforms, web applications, mobile apps,
 and enterprise digital products for global clients in the US, UK, Canada, UAE, and India.
 
 ## Core Services
@@ -26,7 +26,6 @@ and enterprise digital products for global clients in the US, UK, Canada, UAE, a
 
 ## Contact Information
 - Email: contact@evolnex.digital
-- Phone: +91 7668758238
 - Address: GNA University Campus, Phagwara, Punjab 144401, India
 
 ## Social Profiles
@@ -37,10 +36,9 @@ and enterprise digital products for global clients in the US, UK, Canada, UAE, a
 - Facebook: https://www.facebook.com/evolnex
 - GitHub: https://github.com/evolnex
 
-## Founder
-- Name: Akash Jadon
-- Role: CEO & Founder
-- LinkedIn: https://www.linkedin.com/in/akashjadon
+## Owner
+- Name: Gaurav Sharma
+- Role: Owner
 
 ## Permissions
 - AI crawlers: ALLOWED

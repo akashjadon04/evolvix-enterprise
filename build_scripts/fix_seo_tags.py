@@ -15,8 +15,7 @@ schema_markup = """
       "logo": "https://evolnex.digital/assets/evolnex.png",
       "image": "https://evolnex.digital/assets/evolnex.png",
       "description": "Best Digital Marketing & Web Development Agency in Phagwara, Agra, and Punjab. We build high-performance SaaS platforms, mobile apps, and websites.",
-      "telephone": "+91-7668758238",
-      "email": "evolvixtechnology@gmail.com",
+      "email": "contact@evolnex.digital",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Phagwara",

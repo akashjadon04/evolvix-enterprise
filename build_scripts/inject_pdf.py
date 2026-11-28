@@ -36,8 +36,8 @@ god_pdf_template = """
             
             <div style="position: absolute; bottom: 60px; left: 60px; border-left: 3px solid #67e8f9; padding-left: 20px;">
                 <p style="color: #67e8f9; font-size: 12px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 2px;">AUTHOR</p>
-                <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">Akash Jadon</p>
-                <p style="color: #94a3b8; font-size: 14px; margin: 0;">Founder & Lead Architect</p>
+                <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">Gaurav Sharma</p>
+                <p style="color: #94a3b8; font-size: 14px; margin: 0;">Owner, Evolnex Technologies</p>
             </div>
         </div>
     </div>
@@ -79,10 +79,10 @@ god_pdf_template = """
         <!-- Footer -->
         <div style="position: absolute; bottom: 60px; left: 60px; right: 60px; border-top: 1px solid #cbd5e1; padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
             <div style="display: flex; align-items: center; gap: 15px;">
-                <img src="assets/akash.png" style="width: 50px; height: 50px; border-radius: 25px; object-fit: cover; border: 2px solid #e2e8f0;">
+                <img src="assets/evolnex.webp" style="width: 50px; height: 50px; border-radius: 25px; object-fit: cover; border: 2px solid #e2e8f0;">
                 <div>
-                    <p style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Akash Jadon</p>
-                    <p style="font-size: 12px; color: #64748b; margin: 0;">evolvixtechnology@gmail.com | +91 7668758238</p>
+                    <p style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Gaurav Sharma</p>
+                    <p style="font-size: 12px; color: #64748b; margin: 0;">contact@evolnex.digital</p>
                 </div>
             </div>
             <div>

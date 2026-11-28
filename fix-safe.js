@@ -62,7 +62,6 @@ if (footerStart > 0 && footerEnd > 0) {
       <address style="margin-top:1.5rem;font-size:.82rem;color:var(--text-secondary);line-height:1.9;font-style:normal;">
         <strong style="color:var(--text-primary);display:block;margin-bottom:.25rem;">Evolnex Technologies</strong>
         GNA University Campus, Phagwara, Punjab 144401, India<br/>
-        <a href="tel:+917668758238" style="color:var(--c-brand-light);text-decoration:none;">+91 76687 58238</a>
       </address>
     </div>
     <div>
@@ -86,13 +85,12 @@ if (footerStart > 0 && footerEnd > 0) {
       <a class="footer-link" href="/privacy">Privacy Policy</a>
       <a class="footer-link" href="/terms">Terms of Service</a>
       <div class="footer-heading" style="margin-top:2rem;">Contact</div>
-      <a class="footer-link" href="tel:+917668758238">&#128222; +91 7668758238</a>
       <a class="footer-link" href="mailto:contact@evolnex.digital">&#9993; contact@evolnex.digital</a>
     </div>
   </div>
   <div class="container copyright">
     <div class="copyright-left">&copy; 2026 Evolnex Technologies. All rights reserved.</div>
-    <a class="owner-signature" href="/about">Crafted by Akash Jadon</a>
+    <a class="owner-signature" href="/about">Owner: Gaurav Sharma</a>
   </div>
 </footer>`;
     c = before + footer + after;

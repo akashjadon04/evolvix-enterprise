@@ -10,7 +10,7 @@ header = header_match.group(0)
 footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
-header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolnex Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Owner | Evolnex Technologies</title>')
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
 
@@ -169,29 +169,29 @@ about_main = """
             </div>
         </section>
 
-        <!-- THE FOUNDER -->
+        <!-- COMPANY OWNER -->
         <section class="founder-hud-section">
             <div class="container founder-grid">
                 <div class="hud-frame reveal">
                     <div class="hud-image-box">
-                        <img src="assets/akash.png" alt="Akash Jadon - Founder">
+                        <img src="assets/evolnex.webp" alt="Evolnex Technologies">
                         <div class="hud-data-points">
-                            <div class="data-badge badge-1">ID: ARCHITECT-01</div>
-                            <div class="data-badge badge-2">STATUS: DEPLOYING</div>
+                            <div class="data-badge badge-1">OWNER: GAURAV SHARMA</div>
+                            <div class="data-badge badge-2">STATUS: ACTIVE</div>
                         </div>
                     </div>
                 </div>
                 <div class="founder-text-block reveal delay-200">
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "I founded Evolnex because I was exhausted by seeing brilliant brands crippled by mediocre digital experiences. The web is flooded with lazy templates and bloated code."
+                        "Gaurav Sharma is the owner of Evolnex Technologies. The company builds software, AI systems, and digital products for businesses."
                     </p>
                     <p>
                         "We refuse to operate on that level. Every line of code, every pixel, and every animation is engineered to command attention and crush your competition. We don't just build websites; we build scalable digital assets."
                     </p>
                     <div class="sign-off">
-                        Akash Jadon
-                        <span>Founder & Lead Engineer</span>
+                        Gaurav Sharma
+                        <span>Owner, Evolnex Technologies</span>
                     </div>
                 </div>
             </div>

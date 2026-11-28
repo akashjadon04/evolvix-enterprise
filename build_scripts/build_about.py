@@ -13,7 +13,7 @@ footer_match = re.search(r'(?s)<footer.*$', index_html)
 footer = footer_match.group(0)
 
 # Replace title in header
-header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Founder | Evolnex Technologies</title>')
+header = header.replace('<title>Evolnex Technologies | Enterprise Software & Scale</title>', '<title>Studio & Owner | Evolnex Technologies</title>')
 # Replace nav link active state
 header = header.replace('href="about.html" class="nav-link"', 'href="about.html" class="nav-link active"')
 header = header.replace('href="index.html" class="nav-link active"', 'href="index.html" class="nav-link"')
@@ -120,28 +120,28 @@ about_main = """
             </div>
         </section>
 
-        <!-- THE FOUNDER -->
+        <!-- COMPANY OWNER -->
         <section class="founder-section">
             <div class="container founder-grid">
                 <div class="founder-image-wrapper reveal">
                     <div class="founder-glare"></div>
-                    <img src="assets/akash.png" alt="Akash Jadon - Founder">
+                    <img src="assets/evolnex.webp" alt="Evolnex Technologies">
                 </div>
                 <div class="founder-content reveal delay-200">
                     <div style="font-family: 'JetBrains Mono'; color: var(--c-brand-light); margin-bottom: 1rem; letter-spacing: 2px; font-size: 0.8rem;">
-                        // THE ARCHITECT
+                        // COMPANY OWNER
                     </div>
                     <h2>Vision Meets <span class="text-gradient">Execution.</span></h2>
                     <p>
-                        "I founded Evolnex because I was tired of seeing brilliant brands held back by mediocre digital experiences. The web is flooded with templates and slow code."
+                        "Gaurav Sharma is the owner of Evolnex Technologies. The company builds software, AI systems, and digital products for businesses."
                     </p>
                     <p>
                         "We do things differently. Every line of code, every pixel, and every animation is purposefully engineered to command attention and convert users into loyal customers. We build digital assets, not just websites."
                     </p>
                     <div style="margin-top: 3rem; display: flex; align-items: center; gap: 1rem;">
                         <div>
-                            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff;">Akash Jadon</div>
-                            <div style="color: var(--text-tertiary); font-size: 0.9rem;">Founder & Lead Engineer</div>
+                            <div style="font-family: 'Outfit'; font-weight: 700; font-size: 1.2rem; color: #fff;">Gaurav Sharma</div>
+                            <div style="color: var(--text-tertiary); font-size: 0.9rem;">Owner, Evolnex Technologies</div>
                         </div>
                     </div>
                 </div>

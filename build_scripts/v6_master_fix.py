@@ -7,9 +7,8 @@ def fix_index():
     with codecs.open('index.html', 'r', 'utf-8') as f:
         html = f.read()
 
-    # 1. FIX WHATSAPP
+    # 1. Keep contact actions on the company email; do not inject a personal WhatsApp number.
     html = html.replace('right:30px', 'left:30px').replace('right: 30px', 'left: 30px')
-    html = html.replace('917999863831', '917668758238')
     
     # 2. START PROJECT BUTTONS GLOW & STYLE
     glow_css = '''
@@ -189,13 +188,13 @@ def fix_index():
             
             <div style="margin-top:60px; padding-top:20px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Akash Signature">
-                    <p style="margin:5px 0 0; font-weight:700;">Akash Jadon</p>
-                    <p style="margin:0; font-size:12px; color:#64748b;">CEO, Evolnex Technologies</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Signature_Placeholder.png" style="height:50px; opacity:0.8; mix-blend-mode:multiply; filter: grayscale(100%);" alt="Evolnex Owner">
+                    <p style="margin:5px 0 0; font-weight:700;">Gaurav Sharma</p>
+                    <p style="margin:0; font-size:12px; color:#64748b;">Owner, Evolnex Technologies</p>
                 </div>
                 <div style="text-align:right;">
-                    <p style="margin:0; font-weight:700; color:#38bdf8;">evolvixtechnology@gmail.com</p>
-                    <p style="margin:0; font-size:14px; color:#64748b;">+91 7668758238</p>
+                    <p style="margin:0; font-weight:700; color:#38bdf8;">contact@evolnex.digital</p>
+                    <p style="margin:0; font-size:14px; color:#64748b;">contact@evolnex.digital</p>
                 </div>
             </div>
         </div>

@@ -127,7 +127,7 @@ for file in html_files:
 llms_content = """# Evolnex Technologies
 Evolnex is an Elite Digital Product Studio specializing in high-performance Web Development, SaaS architecture, and Mobile Applications.
 We operate globally, serving industry leaders, founders, and enterprises.
-Founder & CEO: Akash Jadon
+Owner: Gaurav Sharma
 Contact: info@evolnex.digital
 Website: https://evolnex.digital/
 

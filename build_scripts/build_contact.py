@@ -135,13 +135,9 @@ contact_main = """
                 <p>We partner with ambitious brands to build premium digital products. Reach out to schedule a consultation with our lead engineers.</p>
                 
                 <div class="contact-info-cards">
-                    <a href="tel:+917668758238" class="holo-card">
-                        <span style="font-size:1.5rem;">📞</span>
-                        <div><span class="c-label">DIRECT LINE</span><span class="c-value">+91 7668758238</span></div>
-                    </a>
-                    <a href="mailto:evolvixtechnology@gmail.com" class="holo-card">
+                    <a href="mailto:contact@evolnex.digital" class="holo-card">
                         <span style="font-size:1.5rem;">✉️</span>
-                        <div><span class="c-label">EMAIL</span><span class="c-value">evolvixtechnology@gmail.com</span></div>
+                        <div><span class="c-label">EMAIL</span><span class="c-value">contact@evolnex.digital</span></div>
                     </a>
                 </div>
             </div>
