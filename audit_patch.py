@@ -40,7 +40,7 @@ for file in html_files:
     if 'connect.facebook.net' not in content:
         content = content.replace('</head>', f'{fb_pixel}\n</head>')
 
-    # 3. Add Business Address and Phone with Microdata Schema to Footer
+    # 3. Add the company address to the footer without publishing a phone number
     # Looking for the Headquarters block we added earlier
     old_hq = '<div class="footer-heading" style="margin-top:1.5rem;">Headquarters</div><p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1.5rem;">Global Operations<br>Serving Clients Worldwide</p>'
     
@@ -48,17 +48,13 @@ for file in html_files:
                 <div itemscope itemtype="https://schema.org/LocalBusiness">
                     <meta itemprop="name" content="Evolnex Technologies">
                     <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress" style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:0.5rem;">
-                        <span itemprop="streetAddress">Global Operations Center</span><br>
-                        <span itemprop="addressLocality">Serving Worldwide</span>
-                    </p>
-                    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1.5rem;">
-                        <span itemprop="telephone">+91 76687 58238</span>
-                    </p>
-                </div>'''
+                        <span itemprop="streetAddress">Nehru Place</span><br>
+                        <span itemprop="addressLocality">New Delhi</span>, <span itemprop="addressRegion">Delhi</span> <span itemprop="postalCode">110019</span>, <span itemprop="addressCountry">India</span>
+                    </p></div>'''
     
     content = content.replace(old_hq, new_hq_microdata)
 
     with open(file, 'w', encoding='utf-8') as f:
         f.write(content)
 
-print("Audit Patch Executed: Title lengthened, FB Pixel installed, LocalBusiness Microdata added to footer.")
+print("Audit Patch Executed: Title lengthened, FB Pixel installed, company address added to footer.")

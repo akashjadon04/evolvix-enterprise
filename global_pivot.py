@@ -93,7 +93,7 @@ for file in html_files:
 
     # 8. Add Business Address to Footer (Generic Global)
     old_address_html = '<div class="footer-heading" style="margin-top:1.5rem;">Legal</div>'
-    new_address_html = '<div class="footer-heading" style="margin-top:1.5rem;">Headquarters</div><p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1.5rem;">Global Operations<br>Serving Clients Worldwide</p>' + old_address_html
+    new_address_html = '<div class="footer-heading" style="margin-top:1.5rem;">Headquarters</div><address style="color:rgba(255,255,255,0.5);font-size:0.85rem;font-style:normal;line-height:1.6;margin-bottom:1.5rem;">Nehru Place, New Delhi, Delhi 110019, India</address>' + old_address_html
     if 'Global Operations' not in content and old_address_html in content:
         content = content.replace(old_address_html, new_address_html)
 
